@@ -62,7 +62,7 @@ building_colony_shelter = {
 			owner = {
 				NOR = {
 					has_origin = origin_barbarichorde
-					has_active_tradition = tr_synthetics_finish
+					has_active_tradition = tr_synthetics_prefabricated_components
 				}
 				has_valid_civic = civic_dystopian_society
 			}
@@ -85,6 +85,16 @@ building_colony_shelter = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
+			owner = { is_regular_empire = yes }
+			has_modifier = penal_colony
+		}
+		job_warden_add = 1
+		job_colonist_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
 			owner = {
 				is_individual_machine = yes
 			}
@@ -97,13 +107,11 @@ building_colony_shelter = {
 		potential = {
 			exists = owner
 			owner = { NOT = { has_origin = origin_barbarichorde } }
-			owner = { has_active_tradition = tr_synthetics_finish }
+			owner = { has_active_tradition = tr_synthetics_prefabricated_components }
 		}
-		modifier = {
-			job_roboticist_add = 1
-			job_colonist_add = -1
+		job_roboticist_add = 1
+		job_colonist_add = -1
 		}
-	}
 
 	resources = {
 		category = planet_buildings
@@ -123,7 +131,7 @@ building_colony_shelter = {
 			owner = {
 				NAND = {
 					has_valid_civic = civic_dystopian_society
-					has_active_tradition = tr_synthetics_finish
+					has_active_tradition = tr_synthetics_prefabricated_components
 				}
 			}
 		}
@@ -143,7 +151,7 @@ building_colony_shelter = {
 			exists = owner
 			owner = {
 				OR = {
-					has_active_tradition = tr_synthetics_finish
+					has_active_tradition = tr_synthetics_prefabricated_components
 					is_individual_machine = yes
 				}
 			}
@@ -157,12 +165,21 @@ building_colony_shelter = {
 		}
 		text = job_unifier_effect_desc
 	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			has_modifier = penal_colony
+		}
+		text = job_warden_effect_desc
+	}
 
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = { NOT = { has_origin = origin_barbarichorde } }
-			owner = { has_active_tradition = tr_synthetics_finish }
+			owner = { has_active_tradition = tr_synthetics_prefabricated_components }
 		}
 		text = job_roboticist_effect_desc
 	}
@@ -325,6 +342,7 @@ building_capital = {
 		}
 		text = job_entertainer_effect_desc
 	}
+
 	triggered_desc = {
 		trigger = {
 			has_modifier = payback_unified_purpose

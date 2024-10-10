@@ -60,6 +60,12 @@ on_monthly_pulse = {
 # 	}
 # }
 
+on_yearly_pulse_country = {
+	events = {
+		aagrimstarts.100
+	}
+}
+
 # on_yearly_pulse = {
 # 	events = {
 # 		lessgalcom.1
@@ -84,8 +90,8 @@ on_decade_pulse = {
 		lessgalcom.3 # Chaos ally
 	}
 	random_events = {
-		50 = lessgalcom.7 # Ork war
-		50 = lessgalcom.8 # Tyranid war
+		20 = lessgalcom.7 # Ork war
+		80 = lessgalcom.8 # Tyranid war
 	}
 }
 

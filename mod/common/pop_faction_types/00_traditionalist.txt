@@ -436,8 +436,10 @@ traditionalist = {
 
 		trigger = {
 			owner = {
-				is_cyborg_empire = no # Checks for the Cybernetic trait
-				NOT = { has_country_flag = cyborg_empire } # i.e. Has completed "FLESH_IS_WEAK_PROJECT"
+				NOR = {
+					has_country_flag = cyborg_empire # i.e. Has completed "FLESH_IS_WEAK_PROJECT"
+					is_cyborg_empire = yes # Checks for the Cybernetic trait
+				}
 			}
 		}
 	}

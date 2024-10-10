@@ -5,11 +5,13 @@ country_event = {
 	id = aagrimstarts.2000
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { merg_is_default_empire = yes }
+	trigger = { is_country_type = default }
 	immediate = {
 		set_global_flag = allthatisgrimdark_mod
 		# set_update_modifiers_batch = begin
 		get_capital_planet = yes
+		give_tech_no_error_effect = { tech = tech_planetary_defenses MESSAGE = no }		# Tier 0
+		give_tech_no_error_effect = { tech = tech_assault_armies MESSAGE = no }			# Tier 0
 		if = { # 1 Setup Barbaric Horde "Ork Horde"
 			limit = {
 				OR = {
@@ -25,8 +27,8 @@ country_event = {
 					}
 				}
 			}
-			give_technology = { message = no tech = tech_assault_armies }
-			give_technology = { message = no tech = tech_penal_colonies }
+			give_technology = { message = no tech = tech_artificial_moral_codes }		# tier = 2
+			give_tech_option_or_progress_effect = { TECH = tech_penal_colonies }		# tier = 3
 			if = {
 				limit = { exists = event_target:capital_planet }
 				event_target:capital_planet = {
@@ -173,11 +175,10 @@ country_event = {
 					is_species = "Nurglen"
 				}
 			}
-			give_technology = { message = no tech = tech_assault_armies }
-			give_technology = { tech = tech_genome_mapping message = yes } # Tier 1
+			give_technology = { tech = tech_genome_mapping message = yes }				# Tier 1
 			# give_tech_no_error_effect = { tech = tech_society_1 MESSAGE = yes }		# Tier 2
 			# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3
-			give_technology = { message = no tech = tech_gene_tailoring } # Tier 3
+			give_technology = { message = no tech = tech_gene_tailoring }				# Tier 3
 			give_technology = { message = no tech = tech_glandular_acclimation }
 			give_technology = { message = no tech = tech_gene_seed_purification }
 			give_technology = { message = no tech = tech_exotic_gases }
@@ -1253,7 +1254,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { has_origin = origin_shroudrage }
 	immediate = {
-		give_technology = { message = no tech = tech_assault_armies }
 		give_technology = { message = no tech = tech_gene_seed_purification }
 		give_technology = { message = no tech = tech_penal_colonies }
 		get_capital_planet = yes
@@ -1820,7 +1820,6 @@ country_event = {
 	is_triggered_only = yes
 	# trigger = { has_origin = origin_paindrinkers }
 	immediate = {
-		give_technology = { message = no tech = tech_assault_armies }
 		give_technology = { message = no tech = tech_space_exploration }
 		give_technology = { message = no tech = tech_sensors_2 }	# Tier 2
 		give_technology = { message = no tech = tech_neural_implants }
@@ -2306,7 +2305,6 @@ country_event = {
 		give_technology = { message = no tech = tech_robotic_workers }
 		give_technology = { message = no tech = tech_droid_workers }
 		give_technology = { message = no tech = tech_space_trading }
-		give_technology = { message = no tech = tech_assault_armies }
 
 		owner_main_species = {
 			if = {
@@ -2541,7 +2539,6 @@ country_event = {
 		# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3
 		give_technology = { message = no tech = tech_gene_tailoring }	# Tier 3
 		give_technology = { message = no tech = tech_morphogenetic_field_mastery }
-		give_technology = { message = no tech = tech_assault_armies }
 		give_technology = { message = no tech = tech_climate_restoration }
 
 		get_capital_planet = yes
@@ -2699,7 +2696,6 @@ country_event = {
 				remove_invalid_civics = yes
 			}
 		}
-
 		give_technology = { message = no tech = tech_power_hub_1 }
 		give_technology = { message = no tech = tech_cryostasis_1 }
 		give_technology = { message = no tech = tech_sensors_2 }			# Tier 2
@@ -3051,7 +3047,6 @@ country_event = {
 			give_tech_no_error_effect = { TECH = tech_self_aware_logic MESSAGE = yes }
 		}
 		give_tech_no_error_effect = { TECH = tech_adaptive_combat_algorithms MESSAGE = no }
-		give_tech_no_error_effect = { TECH = tech_assault_armies MESSAGE = no }
 		give_tech_no_error_effect = { TECH = tech_powered_exoskeletons MESSAGE = no }
 
 		random_owned_species = {
@@ -3653,15 +3648,19 @@ event = {
 	}
 }
 
-# Handle peace_sucks modifiers (on_war_beginning / on_monthly_pulse_country)
+# Handle peace_sucks modifiers (on_war_beginning / on_yearly_pulse_country) # Was on_monthly_pulse_country
 country_event = {
 	id = aagrimstarts.100
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
 		is_ai = yes
-		OR = { has_origin = origin_shroudrage has_origin = origin_barbarichorde }
-		# num_communications > 1
+		OR = {
+			has_origin = origin_shroudrage
+			has_origin = origin_barbarichorde
+			has_origin = origin_bioreformers
+		}
+		years_passed > 30 # num_communications > 1
 	}
 	immediate = {
 		set_update_modifiers_batch = begin
@@ -3769,14 +3768,11 @@ event = {
 	id = aagrimstarts.1001
 	hide_window = yes
 	is_triggered_only = yes
+	trigger = {
+		years_passed > 24
+	}
 	immediate = {
 		random_playable_country = {
-			# limit = {
-			# 	OR = {
-			# 		has_origin = origin_shroudrage
-			# 		has_origin = origin_barbarichorde
-			# 	}
-			# }
 			limit = {
 				is_ai = yes
 				num_communications > 1
@@ -3786,14 +3782,15 @@ event = {
 					has_origin = origin_shroudsinners	# Chaos Slaaneshi (Emperor's Children)
 					has_origin = origin_shroudmutated	# Chaos Tzeentch (Thousand Sons)
 					has_origin = origin_paindrinkers	# Dark Eldar (Drukhari)
-					has_origin = origin_barbarichorde	# Ork Greenskins (Waaagh!)
-					has_origin = origin_necron_awakening		# Necrons (The Undying)
+					has_origin = origin_necron_awakening	# Necrons (The Undying)
+					has_origin = origin_bioreformers	# Tyranid
+					# has_origin = origin_barbarichorde	# Ork Greenskins (Waaagh!) seems too strong
 					# has_country_flag = chaos_empire
 				}
 				NOR = { has_country_flag = cf_grimdark_unemployed_cooldown has_country_flag = under_tmp_colonization }
 
 			}
-			country_event = { id = aagrimstarts.100 }	# Handle peace_sucks modifiers
+			# country_event = { id = aagrimstarts.100 }	# Handle peace_sucks modifiers
 			country_event = { id = aagrimstarts.1300 }	# Check planets employment
 		}
 	}

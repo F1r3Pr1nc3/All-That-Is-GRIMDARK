@@ -164,7 +164,7 @@ origin_shroudrage = {
 		# "the_world_eater"
 		"khorne"
 	}
-	advanced_start = no
+	advanced_start = yes
 	random_weight = { base = 0 }
 }
 
@@ -216,7 +216,7 @@ origin_shroudsinners = {
 		# "the_emperor_children"
 		"slaanesh"
 	}
-	advanced_start = no
+	advanced_start = yes
 	random_weight = { base = 0 }
 }
 
@@ -256,7 +256,7 @@ origin_shroudsick = {
 		"nurgle"
 	}
 	# has_secondary_species = { title = civic_necrophage_secondary_species } TODO!
-	advanced_start = no
+	advanced_start = yes
 	random_weight = { base = 0 }
 }
 
@@ -283,7 +283,7 @@ origin_barbarichorde = {
 	modifier = {
 		pop_growth_speed = 0.1
 		country_war_exhaustion_mult = -0.1
-		country_claim_influence_cost_mult = -0.2
+		country_claim_influence_cost_mult = -0.1 # -0.2
 	}
 	traits = {
 		# trait = trait_orkz TODO
@@ -438,7 +438,7 @@ origin_bioreformers = {
 	# traits = { trait = trait_tyranid } TODO
 	description = "origin_tooltip_bioreformers_effects"
 	flags = { custom_start_screen }
-	advanced_start = no
+	advanced_start = yes
 	random_weight = { base = 0.5 }
 }
 
@@ -510,7 +510,7 @@ origin_godruler = {
 		"ai_no_leave_fed"
 		"the_mankind"
 	}
-	advanced_start = no
+	advanced_start = yes
 	random_weight = { base = 0 }
 }
 
