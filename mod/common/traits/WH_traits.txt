@@ -1,0 +1,716 @@
+##################
+# WH Traits
+##################
+# Distinguishes trait_adeptus_mechanicus
+trait_cyborg = {
+	cost = 1
+	# icon = "gfx/interface/icons/traits/trait_mechanical.dds"
+	sorting_priority = 18
+	# initial = no
+	randomized = no
+	potential_crossbreeding_chance = 0
+	opposites = {
+		# "trait_naturalist"
+		# "trait_robot"
+		"trait_natural_machinist"
+		"trait_natural_engineers"
+		"trait_natural_physicists"
+		"trait_natural_sociologists"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
+	# species_class = {
+	# 	Mechanicus
+	# 	Chaos_Cultists
+	# 	HUM
+	# }
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	forced_happiness = yes
+	immortal_leaders = yes
+	improves_leaders = yes
+	leader_age_min = 50
+	leader_age_max = 100 # 1000
+	modifier = {
+		pop_environment_tolerance = 0.2		# 0.5
+		pop_growth_speed = -0.2
+		# Sacred Machines
+		pop_happiness = 0.1
+		planet_jobs_energy_produces_mult = 0.15
+		planet_jobs_minerals_produces_mult = 0.15
+		planet_cyborg_jobs_energy_produces_mult = 0.15
+		planet_cyborg_jobs_minerals_produces_mult = 0.15
+		leader_lifespan_add = 200 # 1000
+	}
+	slave_cost = { energy = 1500 }
+}
+
+trait_adeptus_astartes = {
+	cost = 1
+	# icon = "gfx/interface/icons/traits/trait_adeptus_astartes.dds"
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		Astartes
+		Legiones_Astartes
+		HUM
+	}
+	initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = no
+	improves_leaders = yes
+	leader_age_min = 50	# 100
+	leader_age_max = 200
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = 0.25		# 1
+		pop_growth_speed = -0.1 # -0.15
+		leader_lifespan_add = 1000
+		# leader_skill_levels = 1
+		# species_leader_exp_gain = 0.1
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+# trait_chaos_infusion = { Chaos-Touched
+trait_heretic_astartes = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_primordial_touch.dds"
+	allowed_origins = {
+		origin_shroudrage
+		origin_shroudmutated
+		origin_shroudsinners
+		origin_shroudsick
+		origin_fallen_psionic
+		origin_black_legion
+	}
+	# TODO more
+	forbidden_origins = {
+		origin_iforge
+		origin_barbarichorde
+		origin_soulkeepers
+		origin_necron_awakening
+		origin_paindrinkers
+		origin_bioreformers
+		origin_greatergood
+		origin_godruler
+	}
+	allowed_ethics = {
+		# ethic_fanatic_xenophobe
+		# ethic_fanatic_militarist
+		# ethic_fanatic_spiritualist
+		ethic_xenophobe
+		ethic_militarist
+		ethic_spiritualist
+	}
+	# initial = no
+	randomized = no
+	infertile = yes
+	potential_crossbreeding_chance = 0.75
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = no
+	improves_leaders = yes
+	leader_age_min = 100
+	leader_age_max = 500		# 2000
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	# species_class = {
+	# 	Chaos_Daemons
+	#	Heretic_Astartes
+	#	Legiones_Astartes
+	# 	HUM
+	# }
+	opposites = {
+		"trait_unruly"
+		"trait_sedentary"
+		"trait_deviants"
+		"trait_decadent"
+		"trait_conservational"
+		"trait_wasteful"
+		"trait_functional"
+	}
+	modifier = {
+		army_damage_mult = 0.2			# Reflecting their formidable combat abilities, give a bonus to army damage. This represents the enhanced martial prowess of the Warp-touched warriors.
+		army_defense_health_mult = 0.5
+		pop_environment_tolerance = 0.5	# 1.5
+		pop_growth_speed = -0.1			# -0.3	The chaotic transformations and mutations might make their population growth less stable or predictable.
+		planet_pops_consumer_goods_upkeep_mult = -0.25
+		# planet_jobs_minerals_produces_mult = 0.25
+		leader_skill_levels = 2			# This represents the leadership prowess of Chaos Space Marine commanders, who often lead their warbands with tactical acumen and strategic brilliance.
+		species_leader_exp_gain = 0.2	# Due to their exposure to the chaotic energies of the Warp, these warriors might gain experience more rapidly than other species. This reflects the knowledge and power they acquire from their connection to the chaotic realms.
+		leader_lifespan_add = 5000		# 10000
+		pop_government_ethic_attraction = 0.1
+	}
+	slave_cost = {
+		energy = 500
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_adeptus_mechanicus = {
+	cost = 1
+	# icon = "gfx/interface/icons/traits/trait_adeptus_mechanicus.dds"
+	allowed_origins = {
+		origin_mechanists
+		origin_iforge
+	}
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	# species_class = {
+	# 	Mechanicus
+	# 	HUM
+	# }
+	# initial = no
+	randomized = no
+	species_potential_add = { always = no }
+	species_possible_remove = { always = no }
+	species_possible_merge_add = { always = no }
+	forced_happiness = yes
+	immortal_leaders = yes
+	improves_leaders = yes
+	leader_age_min = 50
+	leader_age_max = 250		# 1000
+	modifier = {
+		pop_environment_tolerance = 0.5
+		pop_growth_speed = -0.1
+		leader_lifespan_add = 2500 # 10000
+		leader_skill_levels = 2
+		planet_cyborg_jobs_engineering_research_produces_mult = 0.1
+		planet_cyborg_jobs_physics_research_produces_mult = -0.1 # Omnisha forbids
+		planet_cyborg_jobs_society_research_produces_mult = -0.25
+		# Cybernetic Integration
+		# species_leader_exp_gain = 0.15
+		# planet_cyborg_jobs_produces_mult = 0.1
+		planet_jobs_robotic_produces_mult = 0.1
+		planet_pops_robotics_upkeep_mult = -0.1
+		planet_pops_cyborgs_upkeep_mult = -0.1
+		# councilor_modifier = {
+			# all_technology_research_speed = 0.1 # Technological Prowess
+			# monthly_unity_add = 0.05 # Machine Cognition
+			# tradition_cost_add = -0.1 # Techsage Tradition
+		# }
+		# # Leader Innovative Minds
+		# survey_speed_add = 0.15
+		# ship_anomaly_research_speed_mult = 0.2
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_necrons = {
+	# icon = "gfx/interface/icons/traits/trait_necrons.dds"
+	cost = 0
+	sorting_priority = 18
+	allowed_origins = {
+		origin_necron_awakening
+	}
+	# initial = no
+	randomized = no
+	forced_happiness = yes
+	infertile = yes
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	potential_crossbreeding_chance = 0
+	species_class = {
+		Necrons
+		MACHINE
+		PARAGON # Not really
+	}
+	allowed_archetypes = {
+		ROBOT
+		MACHINE
+	}
+	immortal_leaders = yes # Due machine?
+	improves_leaders = yes
+	leader_age_min = 10000
+	leader_age_max = 100000
+	opposites = {
+		trait_heretic_astartes
+		trait_adeptus_custodes
+		trait_orkz
+		trait_cyborg
+		trait_tyranid
+		trait_daemons
+		trait_tau
+		trait_eldar
+		trait_drukhari
+		trait_cute_AI
+	}
+	modifier = {
+		# pop_environment_tolerance = 2 due machine
+		# pop_growth_speed = -0.15
+		army_morale_damage_mult = 0.2
+		army_damage_mult = 0.5
+		army_health = 0.2
+		planet_jobs_produces_mult = 0.25
+		planet_pops_upkeep_mult = 0.2
+		# leader_skill_levels = 2
+		leader_lifespan_add = 100000
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_orkz = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_orkz.dds"
+	potential_crossbreeding_chance = 1
+	allowed_origins = {
+		origin_barbarichorde
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		Orkz
+		HUM
+	}
+	# initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = no
+	improves_leaders = yes
+	leader_age_min = 50 # 100
+	leader_age_max = 90 # 150
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = 0.5	# 2
+		pop_growth_speed = 0.1			#  0.15
+		leader_lifespan_add = 100		# 500 leader_lifespan_mult = 2
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.1
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_tyranid = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_tyranid.dds"
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		Tyranids
+		ART
+	}
+	# initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = no
+	leader_age_min = 40
+	leader_age_max = 100
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = 1		# 3
+		pop_growth_speed = 0.2
+		leader_lifespan_add = 500 # 1000
+		# leader_skill_levels = 2
+		# species_leader_exp_gain = 0.2
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_daemons = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_daemons.dds"
+	allowed_origins = {
+		origin_shroudrage
+		origin_shroudmutated
+		origin_shroudsinners
+		origin_shroudsick
+		origin_fallen_psionic
+		origin_black_legion
+	}
+	# TODO more
+	forbidden_origins = {
+		origin_iforge
+		origin_barbarichorde
+		origin_soulkeepers
+		origin_necron_awakening
+		origin_paindrinkers
+		origin_bioreformers
+		origin_greatergood
+		origin_godruler
+	}
+	allowed_ethics = {
+		# ethic_fanatic_xenophobe
+		# ethic_fanatic_militarist
+		# ethic_fanatic_spiritualist
+		ethic_xenophobe
+		ethic_militarist
+		ethic_spiritualist
+	}
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	# species_class = {
+	# 	Chaos_Daemons # TODO?
+	# 	HUM
+	# }
+	# initial = no
+	randomized = no
+	potential_crossbreeding_chance = 0
+	advanced_trait = yes
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = yes
+	improves_leaders = yes
+	leader_age_min = 100
+	leader_age_max = 2000
+	opposites = {
+		trait_adeptus_astartes
+		trait_adeptus_custodes
+		trait_adeptus_mechanicus
+		trait_necrons
+	}
+	modifier = {
+		army_damage_mult = 0.1
+		army_defense_health_mult = 0.25
+		pop_environment_tolerance = 0.35		# 2
+		pop_growth_speed = -0.3
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.1 # 0.2
+		leader_lifespan_add = 10000
+	}
+	slave_cost = {
+		energy = 500
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_tau = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_tau.dds"
+	allowed_origins = {
+		origin_greatergood
+	}
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		HUM
+		MAM
+		REP
+		Tau
+	}
+	# initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = no
+	improves_leaders = yes
+	leader_age_min = 20
+	leader_age_max = 40
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = 0.05
+		pop_growth_speed = 0.05
+		leader_lifespan_add = 100
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.15
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_eldar = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_eldar.dds"
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	slave_cost = {
+		energy = 1500
+	}
+	species_class = {
+		Eldars
+		HUM
+	}
+	# initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = yes
+	improves_leaders = yes
+	leader_age_min = 100
+	leader_age_max = 1500
+	opposites = {
+	}
+	# Dying species with other advantages
+	modifier = {
+		pop_environment_tolerance = 0.25		# 1
+		pop_growth_speed = -0.5 # TODO TEST if too high
+		planet_colony_development_speed_mult = -0.25
+		planet_jobs_specialist_produces_mult = 0.05 # agenda_favored_society_finish
+		leader_skill_levels = 2
+		species_leader_exp_gain = 0.25
+		leader_lifespan_add = 5000 # 10000
+	}
+}
+
+# TODO? Elite protectors of the Emperor
+trait_adeptus_custodes = {
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_custodian.dds"
+	potential_crossbreeding_chance = 0.75
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		Imperium
+		HUM
+	}
+	# initial = no
+	randomized = no
+	infertile = yes
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = yes
+	improves_leaders = yes
+	leader_age_min = 100
+	leader_age_max = 2000
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = 0.5		# 2
+		pop_growth_speed = -0.25
+		leader_lifespan_add = 6000 # 10000
+		leader_skill_levels = 2
+		species_leader_exp_gain = 0.25
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+trait_drukhari = {
+	cost = 0
+	# icon = "gfx/interface/icons/traits/trait_drukhari.dds"
+	allowed_origins = {
+		origin_paindrinkers
+	}
+	potential_crossbreeding_chance = 1
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	species_class = {
+		Drukhari
+		HUM
+	}
+	# initial = no
+	randomized = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = yes
+	immortal_leaders = no
+	improves_leaders = yes
+	leader_age_min = 100 # 200
+	leader_age_max = 1500 # 3000
+	opposites = {
+	}
+	modifier = {
+		pop_environment_tolerance = -0.1
+		pop_growth_speed = -0.2
+		leader_lifespan_add = 5000 # 10000
+		leader_skill_levels = 2
+		species_leader_exp_gain = 0.3
+	}
+	slave_cost = {
+		energy = 1500
+	}
+}
+
+# trait_anathema_psykana = {
+# 	cost = 1
+# 	icon = "gfx/interface/icons/traits/trait_silence.dds"
+# 	potential_crossbreeding_chance = 1
+# 	allowed_archetypes = {
+# 		BIOLOGICAL
+# 	}
+# 	slave_cost = {
+# 		energy = 1500
+# 	}
+# 	species_class = {
+# 		# Imperium
+# 		HUM
+# 	}
+# 	randomized = no
+# 	species_potential_add = {
+# 		always = no
+# 	}
+# 	species_possible_remove = {
+# 		always = no
+# 	}
+# 	species_possible_merge_add = {
+# 		always = no
+# 	}
+# 	forced_happiness = yes
+# 	immortal_leaders = no
+# 	improves_leaders = yes
+# 	leader_age_min = 50
+# 	leader_age_max = 80
+# 	opposites = {
+# 	}
+# 	modifier = {
+# 		pop_environment_tolerance = 0.5
+# 		pop_growth_speed = -0.15
+# 		leader_lifespan_add = 400
+# 		# leader_skill_levels = 1
+# 		# species_leader_exp_gain = 0.1
+# 	}
+# }
+
+# TODO DEPRECATED 3.11 - replace with trait_adeptus_mechanicus?
+# trait_dark_mechanicum = {
+# 	cost = 1
+# 	icon = "gfx/interface/icons/traits/trait_dark_mechanicum.dds"
+# 	potential_crossbreeding_chance = 1
+# 	allowed_archetypes = {
+# 		BIOLOGICAL
+# 	}
+# 	slave_cost = {
+# 		energy = 1500
+# 	}
+# 	species_class = {
+# 		Chaos_Cultists
+# 		Mechanicus
+# 		HUM
+# 	}
+# 	initial = no
+# 	randomized = no
+# 	species_potential_add = {
+# 		always = no
+# 	}
+# 	species_possible_remove = {
+# 		always = no
+# 	}
+# 	species_possible_merge_add = {
+# 		always = no
+# 	}
+# 	forced_happiness = yes
+# 	immortal_leaders = no
+# 	improves_leaders = yes
+# 	leader_age_min = 1000
+# 	leader_age_max = 2000
+# 	opposites = {
+# 	}
+# 	modifier = {
+# 		pop_environment_tolerance = 2
+# 		pop_growth_speed = -0.2
+# 		leader_lifespan_add = 1000 # 10000
+# 		leader_skill_levels = 2
+# 		species_leader_exp_gain = 0.2
+# 	}
+# }

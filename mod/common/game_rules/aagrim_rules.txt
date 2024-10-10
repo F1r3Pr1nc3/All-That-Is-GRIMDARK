@@ -1,0 +1,86 @@
+# This = country
+can_be_part_of_galactic_community = {
+	custom_tooltip = {
+		fail_text = "community_default_failtext"
+		merg_is_default_empire = yes
+		# OR = {
+		# 	# ACOT
+		# 	is_country_type = sbtg_stellarborne_empire_active
+		# 	# More Emperor & Custodian Resolutions, and Galactic Unification
+		# 	MECR_trigger_0_community_country_type = yes
+		# 	# ZOFE
+		# 	is_zofe_oe = yes
+		# }
+	}
+	custom_tooltip = {
+		fail_text = "community_homicidal_failtext"
+		is_homicidal = no
+		# NOR = {
+		# 	is_homicidal = yes
+		# 	# Galactic Imperium Origin
+		# 	has_origin = origin_chosen_of_the_shroud
+		# 	has_origin = origin_necron_awakening
+		# }
+		NAND = {
+			is_ai = yes
+			has_country_flag = chaos_empire
+		}
+		# NOR = {
+		# 	# has_origin = origin_chosen_of_the_shroud # Galactic Imperium Origin
+		# 	AND = {
+		# 		is_ai = yes
+		# 		has_country_flag = chaos_empire
+		# 		OR = {
+		# 			# has_country_flag = tzeentch
+		# 			# has_country_flag = slaanesh
+		# 			has_origin = origin_shroudmutated
+		# 			has_origin = origin_shroudsinners
+		# 		}
+		# 	}
+		# }
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		has_been_declared_crisis = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		# fail_text = "community_overlord_declared_crisis_failtext"
+		NAND = {
+			exists = overlord
+			overlord = { has_been_declared_crisis = yes }
+			# has_country_flag = wgfm_quit_community # Warship Girls R And MIST Species
+		}
+	}
+	# Playable Katzenartig Imperium
+	# custom_tooltip = {
+	# 	fail_text = "community_declared_crisis_failtext"
+	# 	OR = {
+	# 		NOT = {
+	# 			pki_is_katzenartig_imperium = yes
+	# 			has_global_flag = pki_galactic_tension_stage_5
+	# 		}
+	# 		NOT = {
+	# 			has_global_flag = galcom_kaiser_crusade
+	# 			OR = {
+	# 				pki_is_katzenartig_imperium = yes
+	# 				pki_is_katzprotektorat = yes
+	# 				pki_is_allied_with_katzen = yes
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# # B5 Species - Shadows
+	# custom_tooltip = {
+	# 	fail_text = "community_shadows_failtext"
+	# 	NOT = { has_civic = civic_shadows1 }
+	# }
+	# More Emperor & Custodian Resolutions, and Galactic Unification
+	MECR_trigger_1_can_be_part_of_galactic_community = yes
+	custom_tooltip = {
+		fail_text = "community_expelled_failtext"
+		NOT = {
+			has_country_flag = expelled_from_community
+		}
+	}
+}

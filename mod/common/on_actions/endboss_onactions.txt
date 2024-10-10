@@ -1,0 +1,18 @@
+
+on_game_start = {
+	events = {
+		endboss.0
+	}
+}
+
+on_single_player_save_game_load = {
+	events = {
+		endboss.0
+	}
+}
+
+on_mid_game_pulse = {
+	events = {
+		endboss.1
+	}
+}

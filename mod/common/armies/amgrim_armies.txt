@@ -1,0 +1,79 @@
+# Assault Armies
+assault_army_ae_guardians = {
+	damage = 1.1
+	health = 0.9
+	morale = 1.25
+	morale_damage = 1
+	collateral_damage = 0.5
+	war_exhaustion = 1
+	time = 30
+	icon = GFX_army_type_guardian
+	resources = {
+		category = armies
+		cost = { rare_crystals = 25 }
+		upkeep = { rare_crystals = 1 }
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = { has_origin_soulkeepers = yes }
+	}
+}
+
+assault_army_ae_aspect = {
+	damage = 1.5
+	health = 1.5
+	morale = 2
+	morale_damage = 1.5
+	collateral_damage = 0.5
+	war_exhaustion = 1.2
+	time = 360
+	icon = GFX_army_type_aspect
+	resources = {
+		category = armies
+		cost = { rare_crystals = 50 sr_zro = 20 }
+		upkeep = { rare_crystals = 1 }
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = { has_origin_soulkeepers = yes }
+		planet = { has_building = building_aspect_shrine }
+	}
+}
+
+assault_army_dr_raiders = {
+	damage = 0.9
+	health = 0.9
+	morale = 1
+	morale_damage = 2
+	collateral_damage = 1.25
+	war_exhaustion = 0.5
+	time = 90
+	icon = GFX_army_type_drukhari
+	resources = {
+		category = armies
+		cost = { minerals = 50 }
+		upkeep = { energy = 1 }
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = { has_origin = origin_paindrinkers }
+	}
+}

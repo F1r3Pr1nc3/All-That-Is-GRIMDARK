@@ -1,0 +1,64 @@
+origin_necron_awakening = {
+	is_origin = yes
+	# icon = "gfx/interface/icons/origins/origins_remnant.dds"
+	# picture = GFX_origin_necron_awakening
+	# starting_colony = pc_necron_awakend_tomb_world
+	icon = "gfx/interface/icons/origins/origins_reawakened.dds"
+	picture = GFX_evt_reawakened
+	max_once_global = yes
+	starting_colony = pc_relic
+	preferred_planet_class_neighbor = no
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOR = {
+	# 			has_job = enforcer
+	# 			has_job = colonist
+	# 			has_job = telepath
+	# 		}
+	# 		OR = {
+	# 			is_pop_category = worker
+	# 			is_pop_category = criminal
+	# 			is_pop_category = slave
+	# 			is_pop_category = unemployed
+	# 		}
+	# 	}
+	# 	pop_amenities_usage_base = -2
+	# 	pop_job_amenities_mult = 0.1
+	# }
+	playable = { host_has_dlc = "Synthetic Dawn Story Pack" has_ancrel = yes }
+	possible = {
+		authority = {
+			OR = { value = auth_machine_intelligence value = auth_necron_authority }
+		}
+		civics = {
+			# OR = { value = civic_machine_terminator value = civic_machine_servitor }
+			NOT = { value = civic_machine_memorialist }
+		}
+	}
+	traits = {
+		trait = trait_machine_unit		# MACHINE
+		# trait_mechanical ROBOT
+		# trait = trait_necrons
+	}
+	modifier = {
+		army_health = 0.5
+		army_damage_mult = 0.2
+		# pop_cat_worker_happiness = 2.00
+		# pop_amenities_usage_base = -2
+		# pop_job_amenities_mult = 0.10
+		# New in v.3.9
+		planet_pop_assembly_add = -1
+		country_naval_cap_mult = -0.5
+		shipclass_military_build_speed_mult = -0.25
+		country_base_sr_dark_matter_produces_add = 20
+	}
+	description = "origin_tooltip_reawakened_effects"
+	flags = {
+		"custom_start_screen"
+		"necron_empire"
+		first_contact_event
+		Story7
+	}
+	advanced_start = no
+	random_weight = { base = 1 }
+}

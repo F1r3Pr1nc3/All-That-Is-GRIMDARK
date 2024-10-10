@@ -1,0 +1,89 @@
+[h3]This is an approved update and continuation in honor of [b]AlphaAsh's great [URL=//steamcommunity.com/sharedfiles/filedetails/2833876037]All That Is GRIMDARK[/URL][/b], bringing it to version [b]3.13.*[/b] of the game. Credit goes to him and all the WH40K creators.[/h3]
+
+[img]//i.ibb.co/G9XB6gZ/grimdark-head.png[/IMG][b]Bringing a galaxy's worth of WH40K-themed content to Stellaris…[/b]
+This mod combines God Ruler and all four volumes of GRIMDARK, providing an extensive set of origins and predefined empires, as well as bespoke content for them.
+
+[img]//i.ibb.co/R7TGM2y/atigrim-mods.png[/IMG] 
+
+[b][i]'Similarities'[/i] of all the major factions from Games Workshop's Warhammer 40K are included.[/b]
+
+[img]//i.ibb.co/Ltf7y6y/grimdark-origins.png[/IMG]
+
+[b]PLAY ADVICE[/b]
+Edit each GRIMDARK predefined empire in order to create a clone of it (or you can just copy 'aagrim_prescripted_countries.txt' file at once to your [URL=//stellaris.paradoxwikis.com/Modding#Mod_folder_location]game data path[/URL]). [URL=//twitter.com/StellarisGame/status/1015540504845484032]Force spawn[/URL] each of those, pick one to play, set number of opposing AI empires to 12, enjoy.
+
+If vanilla predefined empires are spawning, grab a mod that removes them (e.g. [URL=//steamcommunity.com/sharedfiles/filedetails/2904177952]No Default Empires[/URL]).
+
+[b]COMPATIBILITY[/b]
+[u][b]NOTE[/b] ALL REQUIRED ITEMS are only strong RECOMMENDATIONS (aka soft required).[/u]
+
+FILES PARTIAL OVERRIDDEN:[CODE]
+./buildings/00_capital_buildings.txt
+./districts/00_urban_districts.txt
+./districts/01_arcology_districts.txt
+./districts/02_rural_districts.txt
+./pop_categories/02_other_categories.txt
+./pop_faction_types/00_traditionalist.txt (full - Machine God)
+./scripted_effects/01_start_of_game_effects.txt
+./species_rights/00_citizenship_types.txt
+./species_rights/03_slavery_types.txt
+./terraform/02_special_terraform_links.txt
+interface/frontend.gui (full - minor)
+[/CODE]
+[b]Note[/b] that the mod was originally designed to be played without other mods. Still, the latest version tries to be much more compatibility friendly.
+
+[b]LOAD ORDER[/b]
+Anywhere. But if you hit compatibility issues, try moving it to the bottom.
+
+[b]RECOMMENDATIONS[/b]
+[b]• [URL=//steamcommunity.com/workshop/filedetails/discussion/3041579530/4299320351876126588/]Warhammer 40k Collection[/URL][/b] (Discussion)
+[b]• [URL=//steamcommunity.com/sharedfiles/filedetails/2603074910]Warhammer 30/40k factions[/URL] with [URL=//steamcommunity.com/sharedfiles/filedetails/3079627064]Compat. Patch[/URL][/b]
+[b]• [URL=//www.fandomspot.com/stellaris-warhammer-40k-mods/]The Best Warhammer 40K Mods for Stellaris[/URL][/b]
+• [URL=//steamcommunity.com/sharedfiles/filedetails/3133787332]40k Planet Specialization[/URL]
+• [URL=//steamcommunity.com/sharedfiles/filedetails/3170252871]Shroud Rising Patch[/URL]
+• [URL=//steamcommunity.com/sharedfiles/filedetails/3242334575]Invasion![/URL]
+• [URL=//steamcommunity.com/sharedfiles/filedetails/3268667852]Rise and Fall[/URL]
+• Warhammer Mechanicus Music
+• Warhammer 40,000: Dawn of War 2 OST
+• UI Imperial
+• Imperium of Man Loadingscreens
+
+[b]LANGUAGES[/b]
+• 🇷🇺 [URL=//steamcommunity.com/sharedfiles/filedetails/2517039224]Russian by ☭Domynion[/URL]
+• 🇺🇸 English fallback for all other.
+
+[b]Changelog 3.9[/b]
+• Increased compatibility 
+• All factions now have lore based biographys.
+• All factions now have a custom start screen.
+• All factions now have a specific namelist.
+• All factions have new styled emblems (although some of the old ones were already very good).
+[b]Changelog 3.9.3[/b]
+• Improved Necrons with unique features:
+	⠀• Resurecting armies 
+	⠀• Legendary leader on start (probably I'll do this for more factions)
+	⠀• A hidden surprise[spoiler] the whole Necron faction can resurrect (test necron.1111)[/spoiler]
+• A small automatic economic help for Orks and Khorne faction.
+• Adaptation of individual personalities according lore.
+• Added 12th Origin "Adeptus Mechanicus"… (Omnissiah told me)
+• Added 13th Origin "Chaos Undivided" (Fallen Psionics for Black Legion)
+[b]Changelog >3.* see Change Notes tab[/b]
+
+[b]Credit[/b]
+• Warhammer 40K ® TM and/or © Copyright Games Workshop Ltd 2000-2023
+• AlphaAsh initiating this
+• Namelists from [URL=//steamcommunity.com/sharedfiles/filedetails/701641284]Xan's SciFi Mashup[/URL] (08/10/23)
+• Adeptus Mechanicus by [url=//steamcommunity.com/sharedfiles/filedetails/1657438030]Evalpenguin[/url] v2.6 (15/11/23)
+• Kamil19976 as pioneer, role model and inspiration and his huge work on a totalconversion
+• G marceau for steady feedback
+
+[b]Planned[/b]
+• Necron Relic (Celestial Orrery or Tesseract Labyrinth)
+• Implementing the "Old Ones" as Precursor.
+
+[b][i]𝔉𝔬𝔯 𝔱𝔥𝔢 𝔈𝔪𝔭𝔢𝔯𝔬𝔯![/i][/b]
+
+[img]//i.ibb.co/RSzQQDZ/grimdark-logos.png[/IMG]
+[img]//i.ibb.co/t3YzYZj/donot3.png[/IMG][img]//i.ibb.co/VJq3PKr/ratenfave.gif[/IMG]
+[URL=//discordapp.com/invite/CMjnnET][IMG]//i.imgur.com/4Und3QN.png[/IMG][/URL]
+[URL=//steamcommunity.com/profiles/76561198858429698/myworkshopfiles/?appid=281990]Check out my other mods![/URL]

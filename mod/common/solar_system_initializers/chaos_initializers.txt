@@ -1,0 +1,742 @@
+@distance = 29
+@base_moon_distance = 9
+
+# Basic System
+chaos_init_01 = {
+	class = "rl_binary_stars"
+	usage = misc_system_init
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = { min = 30 max = 35 }
+		has_ring = no
+		init_effect = {
+			# Create Ambient Object 2
+			create_ambient_object = {
+				type = "nebula_L8_entity"
+				entity_offset_height = -5				# Set to spawn far below the planets
+				location = this
+			}
+		}
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 240
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 15 max = 25 }
+		has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		change_orbit = 25
+		planet = {
+			count = { min = 2 max = 3 }
+			class = rl_unhabitable_planets
+			size = { min = 14 max = 24 }
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 25
+			satellite_naming_policy = lower_case_latin_letters
+			has_ring = no
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = rl_habitable_normal # rl_chaos_planets
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = 3
+				has_ring = no
+				init_effect = { set_planet_flag = daemon_homeworld }
+			}
+		}
+	}
+	change_orbit = -210
+	planet = {
+		count = { min = 1 max = 2 }
+		class = rl_habitable_normal # rl_chaos_planets
+		orbit_distance = 20
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		init_effect = { set_planet_flag = daemon_homeworld }
+		moon = {
+			count = { min = 0 max = 1 }
+			class = "pc_barren_cold"
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 3
+		}
+	}
+}
+
+# Trinary System
+chaos_init_02 = {
+	class = "rl_trinary_stars"
+	usage = misc_system_init
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0
+		size = { min = 30 max = 35 }
+		has_ring = no
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 220
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 20 max = 30 }
+		has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		change_orbit = 30
+		init_effect = {
+			# Create Ambient Object 2
+			create_ambient_object = {
+				type = "nebula_L8_entity"
+				entity_offset_height = -5				# Set to spawn far below the planets
+				location = this
+			}
+		}
+		planet = {
+			count = { min = 2 max = 4 }
+			class = rl_unhabitable_planets
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 25
+			satellite_naming_policy = lower_case_latin_letters
+			has_ring = no
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = "pc_barren_cold"
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = 3
+				has_ring = no
+			}
+		}
+	}
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 15 max = 30 }
+		has_ring = no
+		satellite_naming_policy = upper_case_roman_numerals
+		change_orbit = 25
+		planet = {
+			count = { min = 1 max = 3 }
+			class = rl_habitable_normal # rl_chaos_planets
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 25
+			satellite_naming_policy = lower_case_latin_letters
+			has_ring = no
+			init_effect = { set_planet_flag = daemon_homeworld }
+			change_orbit = @base_moon_distance
+			moon = {
+				count = { min = 0 max = 1 }
+				class = "pc_barren_cold"
+				orbit_angle = { min = 90 max = 270 }
+				orbit_distance = 3
+				has_ring = no
+			}
+		}
+	}
+	change_orbit = -200
+	planet = {
+		count = { min = 0 max = 2 }
+		class = rl_unhabitable_planets
+		orbit_distance = 15
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = { min = 0 max = 1 }
+			class = rl_habitable_normal # rl_chaos_planets
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 3
+			init_effect = { set_planet_flag = daemon_homeworld }
+		}
+	}
+}
+
+# Asteroid System
+chaos_init_03 = {
+	class = "rl_standard_stars"
+	asteroid_belt = { type = rocky_asteroid_belt radius = 60 }
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 120
+	}
+	asteroid_belt = { type = rocky_asteroid_belt radius = 180 }
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 240
+	}
+	usage = misc_system_init
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+		init_effect = {
+			# Create Ambient Object 2
+			create_ambient_object = {
+				type = "nebula_L8_entity"
+				entity_offset_height = -5				# Set to spawn far below the planets
+				location = this
+			}
+		}
+	}
+	change_orbit = 60
+	planet = {
+		count = 1
+		class = rl_habitable_normal # rl_chaos_planets
+		size = { min = 14 max = 20 }
+		orbit_angle = { min = 90 max = 270 }
+		orbit_distance = 25
+		satellite_naming_policy = lower_case_latin_letters
+		change_orbit = @base_moon_distance
+		init_effect = { set_planet_flag = daemon_homeworld }
+		moon = {
+			count = { min = 0 max = 1 }
+			class = rl_habitable_normal # rl_chaos_planets
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 3
+			init_effect = { set_planet_flag = daemon_homeworld }
+		}
+	}
+	change_orbit = 60
+	planet = {
+		count = { min = 2 max = 3 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+	}
+	change_orbit = 60
+	planet = {
+		count = { min = 3 max = 4 }
+		class = pc_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+	}
+	change_orbit = 60
+	planet = {
+		count = { min = 4 max = 5 }
+		class = pc_ice_asteroid
+		orbit_distance = 0
+		orbit_angle = { min = 90 max = 270 }
+	}
+}
+
+eyechaos_homeworld = {
+	name = "NAME_eyechaos"
+	class = sc_pulsar
+	prevent_anomalies = yes
+	flags = { eyechaos_homeworld abandoned_gateway empire_home_system }
+	usage = custom_empire # misc_system_init
+	asteroid_belt = { type = rocky_asteroid_belt radius = 100 }
+	usage_odds = {
+		base = 100
+		modifier = {
+			factor = 0			# We don't want gateways too close to each other
+			OR = {
+				# has_distar = no
+				any_neighbor_system = { has_megastructure = gateway_ruined }
+				has_star_flag = empire_cluster
+				closest_system = {
+					has_megastructure = gateway_ruined
+					distance = { source = prev max_distance <= 200 }
+				}
+			}
+		}
+	}
+	max_instances = 1
+	scaled_spawn_chance = 5
+	scaled_spawn_settings = num_gateways	# Scales both the spawn_chance and the max_instances based on the settings value
+
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = { set_star_flag = empire_cluster }
+		}
+		# spawn_megastructure = { # Do it later
+		# 	type = "gateway_ruined"
+		# 	random_pos = yes
+		# 	# planet = this
+		# 	# coords_from = this
+		# 	# graphical_culture =
+		# 	# orbit_distance = 20
+		# 	orbit_angle = 360			# Range of the randomization
+		# }
+		generate_home_system_resources = yes
+	}
+
+	planet = {
+		name = "PRESCRIPTED_system_name_black_legion" # Sun
+		class = "pc_g_star"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 20
+		has_ring = no
+		init_effect = {
+			prevent_anomaly = yes
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 37
+					angle = @distance
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 40
+					angle = @distance
+				}
+				save_global_event_target_as = debris_field_01
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 43
+					angle = @distance
+				}
+			}
+			while = { count = 2
+				create_ambient_object = { type = "large_debris_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 65
+						angle = random
+					}
+				}
+			}
+			while = { count = 1
+				create_ambient_object = { type = "ancient_battlefield_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 65
+						angle = random
+					}
+					save_global_event_target_as = debris_field_02
+				}
+			}
+			create_ambient_object = { type = "derelict_ship_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 80
+					angle = random
+				}
+			}
+			while = { count = 3
+				create_ambient_object = { type = "medium_debris_01_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 80
+						angle = random
+					}
+				}
+			}
+			while = { count = 4
+				create_ambient_object = { type = "small_debris_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 90
+						angle = random
+					}
+				}
+			}
+			while = { count = 3
+				create_ambient_object = { type = "large_debris_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 100
+						angle = random
+					}
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 97
+					angle = 270
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 100
+					angle = 265
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 100
+					angle = 270
+				}
+				save_global_event_target_as = debris_field_03
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 100
+					angle = 275
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 103
+					angle = 270
+				}
+			}
+			while = { count = 2
+				create_ambient_object = { type = "abandoned_ship_2_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 100
+						angle = random
+					}
+				}
+			}
+			create_ambient_object = { type = "derelict_ship_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 110
+					angle = random
+				}
+			}
+			while = { count = 4
+				create_ambient_object = { type = "medium_debris_01_object" location = solar_system }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 110
+						angle = random
+					}
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 117
+					angle = 180
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 120
+					angle = 175
+				}
+			}
+			while = { count = 4
+				create_ambient_object = { type = "large_debris_object" location = this }
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 120
+						angle = random
+					}
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 120
+					angle = 180
+				}
+				save_global_event_target_as = debris_field_04
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 120
+					angle = 185
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 123
+					angle = 180
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 115
+					angle = 0
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 117
+					angle = 350
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 117
+					angle = 0
+				}
+				save_global_event_target_as = debris_field_05
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 117
+					angle = @base_moon_distance
+				}
+			}
+			create_ambient_object = { type = "large_debris_object" location = this }
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 120
+					angle = 0
+				}
+			}
+		}
+	}
+	planet = {
+		name = "PRESCRIPTED_planet_name_black_legion"
+		class = "pc_relic" # "pc_daemon"
+		orbit_distance = 54 # 60
+		orbit_angle = 120
+		size = 20
+		starting_planet = yes
+		has_ring = no
+		modifiers = none
+		deposit_blockers = none
+		flags = { black_legion_homeplanet }
+		init_effect = {
+			prevent_anomaly = yes
+			create_ambient_object = { type = "shrine_object" location = this }
+		}
+	}
+	planet = {
+		count = { min = 3 max = 9 }
+		class = "pc_arid" # pc_daemon_forge
+		orbit_distance = 21 # 25
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = @base_moon_distance max = 25 }
+		has_ring = no
+		init_effect = {
+			prevent_anomaly = yes
+			locked_random_list = { # generate_mineral_deposit
+				1 = { add_deposit = d_minerals_2 }
+				2 = { add_deposit = d_minerals_3 }
+				1 = { add_deposit = d_minerals_4 }
+			}
+			locked_random_list = {  # generate_crystals_deposit
+				1 = { add_deposit = d_rare_crystals_1 }
+				2 = { add_deposit = d_rare_crystals_2 }
+				1 = { add_deposit = d_rare_crystals_3 }
+			}
+			locked_random_list = { # generate_motes_deposit
+				1 = { add_deposit = d_volatile_motes_1 }
+				2 = { add_deposit = d_volatile_motes_2 }
+				1 = { add_deposit = d_volatile_motes_3 }
+			}
+			add_modifier = { modifier = "terraforming_candidate" }
+		}
+		change_orbit = @base_moon_distance
+		moon = {
+			count = { min = 0 max = 1 }
+			class = random
+			size = { min = 1 max = 15 }
+			orbit_angle = { min = 45 max = 275 }
+			orbit_distance = { min = 3 max = 7 }
+			has_ring = no
+		}
+	}
+	# change_orbit = 45 # 60
+	# planet = {
+	# 	class = "pc_black_hole"
+	# 	name = "NAME_Subspace_Rupture_1"
+	# 	orbit_distance = 0
+	# 	orbit_angle = 1
+	# 	size = 18
+	# 	has_ring = no
+	# }
+	change_orbit = 45 # 60
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_2"
+		orbit_distance = 0
+		orbit_angle = 210
+		size = 18
+		has_ring = no
+		init_effect = { save_event_target_as = patrol_2 clear_deposits = yes }
+	}
+	change_orbit = 45 # 60
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_3"
+		orbit_distance = 0
+		orbit_angle = 75
+		size = @base_moon_distance
+		has_ring = no
+	}
+	change_orbit = @base_moon_distance
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_4"
+		orbit_distance = 0
+		orbit_angle = 120
+		size = 18
+		has_ring = no
+		init_effect = { clear_deposits = yes }
+	}
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_5"
+		orbit_distance = 0
+		orbit_angle = 200
+		size = 12
+		has_ring = no
+	}
+	change_orbit = 5
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_6"
+		orbit_distance = 0
+		orbit_angle = 90
+		size = 12
+		has_ring = no
+		init_effect = { save_event_target_as = patrol_3 }
+	}
+	# planet = {
+	# 	class = "pc_black_hole"
+	# 	name = "NAME_Subspace_Rupture_7"
+	# 	orbit_distance = 0
+	# 	orbit_angle = 130
+	# 	size = 18
+	# 	has_ring = no
+	# 	init_effect = { clear_deposits = yes }
+	# }
+	change_orbit = @distance
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_8"
+		orbit_distance = 0
+		orbit_angle = 245
+		size = @base_moon_distance
+		has_ring = no
+	}
+	change_orbit = @base_moon_distance
+	planet = {
+		class = "pc_black_hole"
+		name = "NAME_Subspace_Rupture_9"
+		orbit_distance = 0
+		orbit_angle = 110
+		size = 15
+		has_ring = no
+		init_effect = { clear_deposits = yes }
+	}
+	planet = {
+		# count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 0 # 1
+		size = 25 # size = { min = 20 max = @distance }
+		has_ring = no
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = { type = "extradimensional_2" location = this }
+			create_ambient_object = { # Shroud Rift
+				type = shroud_rift_object
+				# scale = 0.5
+				entity_offset_angle = @distance
+				entity_offset = @distance
+				entity_offset_height = -29
+				location = this
+			}
+			last_created_ambient_object = {
+				set_location = { target = prev distance = @distance angle = @distance }
+			}
+
+			create_ambient_object = {
+				type = ruined_quantum_catapult_object
+				location = prev
+				use_3d_location = yes
+				entity_offset_height = -12
+			}
+
+			create_ambient_object = {
+				type = "large_debris_object"
+				location = this
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 35
+					angle = 20
+				}
+			}
+			create_ambient_object = {
+				type = "large_debris_object"
+				location = this
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 35
+					angle = 95
+				}
+			}
+			create_ambient_object = {
+				type = "large_debris_object"
+				location = this
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 35
+					angle = 205
+				}
+			}
+		}
+	}
+	change_orbit = @distance
+	planet = {
+		count = { min = 1 max = 4 }
+		orbit_distance = 20
+		orbit_angle = { min = 90 max = 270 }
+		change_orbit = @base_moon_distance
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 5
+		}
+	}
+}

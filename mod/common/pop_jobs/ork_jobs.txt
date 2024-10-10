@@ -1,0 +1,485 @@
+teefdealer = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+	}
+
+	resources = {
+		category = planet_artisans
+		produces = {
+			consumer_goods = 2
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+		}
+	}
+
+	planet_modifier = {
+		trade_value_add = 10
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_thrifty
+		}
+		modifier = {
+			trade_value_add = 2.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_tradition = tr_mercantile_trickle_up_economics }
+		}
+		modifier = {
+			trade_value_add = 2.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_thrifty
+			exists = owner
+			owner = { has_tradition = tr_mercantile_trickle_up_economics }
+		}
+		modifier = {
+			trade_value_add = 1
+		}
+	}
+
+	weight = {
+		weight = @clerk_job_weight
+		modifier = {
+			factor = 1.5
+			has_trait = trait_thrifty
+		}
+		modifier = {
+			factor = 1.3
+			has_job = teefdealer
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_syncretic_proles
+		}
+	}
+}
+
+# Priest and bureaucrat equivalent
+weirdboy = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_temple
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	possible = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+		NOT = { has_trait = trait_syncretic_proles }
+	}
+
+	resources = {
+		category = planet_priests
+		produces = {
+			unity = 5
+			physics_research = 2
+			society_research = 2
+		}
+		upkeep = {
+			consumer_goods = 1
+			food = 1
+		}
+	}
+
+	country_modifier = {
+		country_admin_cap_add = 5
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 2.0
+			has_job = weirdboy
+		}
+		modifier = {
+			factor = 5
+			has_trait = trait_latent_psionic
+		}
+	}
+}
+
+# Enforcer equivalent
+bignob = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_precinct_house
+	clothes_texture_index = 5
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	possible = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+		NOT = { has_trait = trait_syncretic_proles }
+	}
+
+	resources = {
+		category = planet_enforcers
+		produces = {
+			unity = 1
+		}
+		upkeep = {
+			consumer_goods = 1
+			food = 1
+		}
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 2
+	}
+
+	planet_modifier = {
+		planet_crime_add = -10
+		pop_government_ethic_attraction = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = { has_modifier = anticrime_campaign }
+		}
+		modifier = {
+			planet_crime_add = -10
+		}
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 3
+			has_job = bignob
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_very_strong
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_strong
+		}
+	}
+}
+
+bossnob = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_precinct_house
+	clothes_texture_index = 5
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_ruler_job
+
+	possible = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+		NOT = { has_trait = trait_syncretic_proles }
+	}
+
+	resources = {
+		category = planet_enforcers
+		produces = {
+			unity = 3
+		}
+		upkeep = {
+			consumer_goods = 1
+			food = 1
+		}
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 4
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_government_ethic_attraction = 0.25
+	}
+
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			factor = 4
+			has_job = bossnob
+		}
+		modifier = {
+			factor = 3
+			has_trait = trait_very_strong
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = trait_strong
+		}
+	}
+}
+
+# Technician equivalent
+burnaboy = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_energy_grid
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		owner = {
+			has_origin = origin_barbarichorde
+		}
+	}
+
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 4
+		}
+		upkeep = {
+			food = 2
+		}
+	}
+
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 1.5
+			has_job = burnaboy
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_syncretic_proles
+		}
+		modifier = {
+			factor = 1.3
+			has_trait = trait_ingenious
+		}
+	}
+}
+
+# Farmer equivalent
+squigherder = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_squigburna
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { has_origin = origin_barbarichorde }
+	}
+
+	resources = {
+		category = planet_farmers
+		produces = {
+			food = 6
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 1
+	}
+
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 1.5
+			has_job = squigherder
+		}
+		modifier = {
+			factor = 2.0
+			has_trait = trait_syncretic_proles
+		}
+	}
+}
+
+# Metallurgist and Artisan equivalent
+mekboy = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_mekworkshop
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { has_origin = origin_barbarichorde }
+		NOT = { has_trait = trait_syncretic_proles }
+	}
+
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 2
+			consumer_goods = 2
+			engineering_research = 4
+		}
+		upkeep = {
+			minerals = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 2
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 5
+			has_job = mekboy
+		}
+	}
+}
+
+bigmek = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_mekworkshop
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_ruler_job
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { has_origin = origin_barbarichorde }
+		NOT = { has_trait = trait_syncretic_proles }
+	}
+
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 3
+			consumer_goods = 3
+			engineering_research = 5
+		}
+		upkeep = {
+			minerals = 6
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 5
+	}
+
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			factor = 6
+			has_job = bigmek
+		}
+	}
+}
+
+# Miner equivalent
+mekgrot = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { has_origin = origin_barbarichorde }
+	}
+
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 5
+		}
+	}
+
+	weight = {
+		weight = @worker_job_weight
+		modifier = {
+			factor = 1.5
+			has_job = mekgrot
+		}
+		modifier = {
+			factor = 2.0
+			has_trait = trait_syncretic_proles
+		}
+		modifier = {
+			factor = 1.3
+			has_trait = trait_industrious
+		}
+	}
+}

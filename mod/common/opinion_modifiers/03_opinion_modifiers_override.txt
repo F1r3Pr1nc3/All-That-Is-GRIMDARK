@@ -1,0 +1,53 @@
+#########################################################################
+# OPINION MODIFIERS
+##########################################################################
+
+triggered_opinion_cyborgs_fanatic = {
+	trigger = {
+		has_ethic = ethic_fanatic_spiritualist
+		is_cyborg_empire = no
+		is_mechanical_empire = no
+		has_machine_cult = no
+		from = { is_cyborg_empire = yes }
+	}
+	opinion = { base = -40 }
+}
+
+triggered_opinion_cyborgs_normal = {
+	trigger = {
+		has_ethic = ethic_spiritualist
+		is_cyborg_empire = no
+		is_mechanical_empire = no
+		has_machine_cult = no
+		from = { is_cyborg_empire = yes }
+	}
+	opinion = { base = -20 }
+}
+
+triggered_spiritualist_opinion_of_machine_empires = {
+	trigger = {
+		merg_is_default_empire = yes
+		has_ethic = ethic_spiritualist
+		has_machine_cult = no
+		from = {
+			is_machine_empire = yes
+			NOR = { is_mechanical_empire = yes is_cyborg_empire = yes has_civic = civic_machine_terminator has_civic = civic_machine_assimilator }
+		}
+	}
+	opinion = { base = -40 }
+}
+
+triggered_fanatic_spiritualist_opinion_of_machine_empires = {
+	trigger = {
+		merg_is_default_empire = yes
+		has_ethic = ethic_fanatic_spiritualist
+		has_machine_cult = no
+		is_mechanical_empire = no
+		is_cyborg_empire = no
+		from = {
+			is_machine_empire = yes
+			NOR = { has_civic = civic_machine_terminator has_civic = civic_machine_assimilator }
+		}
+	}
+	opinion = { base = -60 }
+}

@@ -1,0 +1,60 @@
+building_mekworkshop = {
+	base_buildtime = @b1_time
+	category = manufacturing
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+	}
+	destroy_trigger = {
+		NAND = {
+			exists = owner
+			owner = { has_origin = origin_barbarichorde }
+		}
+	}
+	planet_modifier = {
+		job_mekboy_add = 1
+		job_mekgrot_add = 1
+		planet_amenities_add = 2
+	}
+	resources = {
+		category = planet_buildings
+		cost = { minerals = @b1_minerals }
+		upkeep = { energy = 1 minerals = 1 }
+		produces = { alloys = 2 consumer_goods = 2 }
+	}
+	ai_resource_production = {
+		alloys = 1
+		consumer_goods = 1
+		trigger = { always = yes }
+	}
+}
+
+building_squigburna = {
+	base_buildtime = 90
+	category = resource
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_barbarichorde }
+	}
+	destroy_trigger = {
+		NAND = {
+			exists = owner
+			owner = { has_origin = origin_barbarichorde }
+		}
+	}
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 100 }
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = { has_deficit = food }
+				}
+			}
+			energy = 4
+		}
+		upkeep = { food = 2 }
+	}
+	planet_modifier = { job_squigherder_add = 1 job_burnaboy_add = 1 }
+}

@@ -1,0 +1,267 @@
+# Just adding building_hive_major_capital_sick and building_system_capital_gr
+# Vanilla scripted triggers from 01_scripted_triggers_buildings.txt
+
+has_upgraded_capital = {
+	if = {
+		limit = { has_modifier = resort_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_resort_capital"
+			OR = {
+				has_building = building_resort_capital
+				has_building = building_resort_major_capital
+			}
+		}
+	}
+	else_if = {
+		limit = { has_modifier = slave_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_slave_capital"
+			OR = {
+				has_building = building_slave_capital
+				has_building = building_slave_major_capital
+			}
+		}
+	}
+	else_if = {
+		limit = { merg_is_habitat = yes }
+		custom_tooltip = {
+			fail_text = "requires_building_hab_capital"
+			OR = {
+				has_building = building_hab_capital
+				has_building = building_hab_major_capital
+				has_building = building_hab_system_capital
+				has_building = building_imperial_capital
+				has_building = building_imperial_machine_capital
+				has_building = building_imperial_hive_capital
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_hive_capital"
+			OR = {
+				has_building = building_hive_capital
+				has_building = building_hive_major_capital
+				has_building = building_imperial_hive_capital
+				has_building = building_hive_major_capital_sick # All That Is GRIMDARK
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_capital"
+			OR = {
+				has_building = building_machine_capital
+				has_building = building_machine_major_capital
+				has_building = building_machine_system_capital
+				has_building = building_imperial_machine_capital
+			}
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_capital"
+			OR = {
+				has_building = building_capital
+				has_building = building_major_capital
+				has_building = building_system_capital
+				has_building = building_imperial_capital
+				has_building = building_system_capital_gr # All That Is GRIMDARK
+			}
+		}
+	}
+}
+
+has_major_upgraded_capital = {
+	if = {
+		limit = { has_modifier = resort_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_resort_major_capital"
+			has_building = building_resort_major_capital
+		}
+	}
+	else_if = {
+		limit = { has_modifier = slave_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_slave_major_capital"
+			has_building = building_slave_major_capital
+		}
+	}
+	else_if = {
+		limit = { merg_is_habitat = yes }
+		custom_tooltip = {
+			fail_text = "requires_building_hab_major_capital"
+			OR = {
+				has_building = building_hab_major_capital
+				has_building = building_hab_system_capital
+				has_building = building_imperial_capital
+				has_building = building_imperial_machine_capital
+				has_building = building_imperial_hive_capital
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_major_hive_capital"
+			OR = {
+				has_building = building_hive_major_capital
+				has_building = building_imperial_hive_capital
+				has_building = building_hive_major_capital_sick # All That Is GRIMDARK
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_major_capital"
+			OR = {
+				has_building = building_machine_major_capital
+				has_building = building_machine_system_capital
+				has_building = building_imperial_machine_capital
+			}
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_major_capital"
+			OR = {
+				has_building = building_major_capital
+				has_building = building_system_capital
+				has_building = building_imperial_capital
+				has_building = building_system_capital_gr # All That Is GRIMDARK
+			}
+		}
+	}
+}
+
+has_fully_upgraded_capital = {
+	if = {
+		limit = { has_modifier = resort_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_resort_major_capital"
+			has_building = building_resort_major_capital
+		}
+	}
+	else_if = {
+		limit = { has_modifier = slave_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_slave_major_capital"
+			has_building = building_slave_major_capital
+		}
+	}
+	else_if = {
+		limit = { merg_is_habitat = yes }
+		custom_tooltip = {
+			fail_text = "requires_building_hab_system_capital"
+			OR = {
+				has_building = building_hab_system_capital
+				has_building = building_imperial_capital
+				has_building = building_imperial_machine_capital
+				has_building = building_imperial_hive_capital
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_major_hive_capital"
+			OR = {
+				has_building = building_hive_major_capital
+				has_building = building_imperial_hive_capital
+				has_building = building_hive_major_capital_sick # All That Is GRIMDARK
+			}
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_major_capital"
+			OR = {
+				has_building = building_machine_major_capital
+				has_building = building_machine_system_capital
+				has_building = building_imperial_machine_capital
+			}
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_system_capital"
+			OR = {
+				has_building = building_system_capital
+				has_building = building_imperial_capital
+				has_building = building_system_capital_gr # All That Is GRIMDARK
+			}
+		}
+	}
+}
+
+# blocks_ai_synthetic_evolution = {
+# 	OR = {
+# 		has_policy_flag = ai_outlawed
+# 		has_policy_flag = robots_outlawed
+# 		has_origin = origin_necrophage
+# 		has_origin = origin_clone_army
+# 		has_origin = origin_overtuned
+# 		has_origin = origin_slavers
+# 		has_valid_civic = civic_idyllic_bloom
+# 		has_valid_civic = civic_hive_idyllic_bloom
+# 	}
+# }
+
+# has_mind_over_matter_synergy = {
+# 	OR = {
+# 		has_ascension_perk = ap_become_the_crisis
+# 		has_origin = origin_demonic_incursion
+# 		has_country_flag = knights_met_end_of_cycle
+# 	}
+# }
+
+has_engineered_evolution_synergy = {
+	OR = {
+		has_origin = origin_syncretic_evolution
+		has_origin = origin_life_seeded
+		has_origin = origin_necrophage
+		has_origin = origin_clone_army
+		is_hive_empire = yes
+		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_country_flag = tyranid_empire
+		has_origin = origin_barbarichorde # has_country_flag = ork_empire
+		has_origin = origin_paindrinkers # has_country_flag = darkeldar_empire
+		has_origin = origin_shroudsick # has_country_flag = nurgle
+		has_origin = origin_shroudsinners # has_country_flag = slaanesh
+	}
+}
+
+has_flesh_is_weak_anti_synergy = {
+	OR = {
+		is_materialist = no
+		has_tradition = tr_cybernetics_adopt
+		has_country_flag = cyborg_empire
+		has_origin = origin_godruler
+		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_country_flag = tyranid_empire
+		has_origin_soulkeepers = yes
+		has_origin = origin_shroudsick # has_country_flag = nurgle
+		has_origin = origin_shroudrage # has_country_flag = khorne
+	}
+}
+# Gets overriden by blocks_ai_synthetic_evolution
+has_synthetic_evolution_anti_synergy = {
+	OR = {
+		is_materialist = no
+		has_origin = origin_godruler
+		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_country_flag = tyranid_empire
+		has_origin_soulkeepers = yes
+		has_origin = origin_barbarichorde # has_country_flag = ork_empire
+		has_origin = origin_shroudsick # has_country_flag = nurgle
+		has_origin = origin_shroudrage # has_country_flag = khorne
+	}
+}
+# Machine
+# has_synthetic_age_anti_synergy = {
+# 	has_civic = civic_machine_assimilator
+# }

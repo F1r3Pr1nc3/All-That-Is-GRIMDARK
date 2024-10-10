@@ -1,0 +1,177 @@
+decision_extend_circuit = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	enactment_time = 720
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_zro = 50
+			rare_crystals = 100
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin_soulkeepers = yes }
+		NOT = { has_planet_flag = pf_maxed_infinity_circuit }
+		merg_is_habitat = yes
+	}
+
+	allow = {
+		has_building = building_shaper_shrine
+	}
+
+	effect = {
+		add_deposit = d_aa_infinity_circuit
+		hidden_effect = {
+			if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_3 }
+				remove_planet_flag = pf_infinity_circuit_ext_3
+				set_planet_flag = pf_maxed_infinity_circuit
+			}
+			else_if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_2 }
+				remove_planet_flag = pf_infinity_circuit_ext_2
+				set_planet_flag = pf_infinity_circuit_ext_3
+			}
+			else_if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_1 }
+				remove_planet_flag = pf_infinity_circuit_ext_1
+				set_planet_flag = pf_infinity_circuit_ext_2
+			}
+			else_if = {
+				limit = { NOT = { has_planet_flag = pf_infinity_circuit_ext_1 } }
+				set_planet_flag = pf_infinity_circuit_ext_1
+			}
+		}
+	}
+}
+
+decision_extend_circuit_alt = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	enactment_time = 1800
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_zro = 50
+			rare_crystals = 100
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin_soulkeepers = yes }
+		NOR = {
+			has_planet_flag = pf_maxed_infinity_circuit
+			merg_is_habitat = yes
+		}
+	}
+
+	allow = {
+		has_building = building_shaper_shrine
+	}
+
+	effect = {
+		add_deposit = d_aa_infinity_circuit_alt
+		hidden_effect = {
+			if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_3 }
+				remove_planet_flag = pf_infinity_circuit_ext_3
+				set_planet_flag = pf_maxed_infinity_circuit
+			}
+			else_if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_2 }
+				remove_planet_flag = pf_infinity_circuit_ext_2
+				set_planet_flag = pf_infinity_circuit_ext_3
+			}
+			else_if = {
+				limit = { has_planet_flag = pf_infinity_circuit_ext_1 }
+				remove_planet_flag = pf_infinity_circuit_ext_1
+				set_planet_flag = pf_infinity_circuit_ext_2
+			}
+			else_if = {
+				limit = { NOT = { has_planet_flag = pf_infinity_circuit_ext_1 } }
+				set_planet_flag = pf_infinity_circuit_ext_1
+			}
+		}
+	}
+}
+
+decision_reactivate_shroudgate = {
+	resources = {
+		category = decisions
+		cost = {
+			sr_zro = 100
+			rare_crystals = 250
+		}
+	}
+
+	potential = {
+		exists = space_owner
+		exists = from
+		space_owner = { is_same_empire = from }
+		from = { has_origin_soulkeepers = yes }
+		is_colonizable = yes
+		is_terraforming = no
+		is_under_colonization = no
+		is_colony = no
+		num_sapient_pops < 1
+		has_deposit = d_aa_shroudgate_inactive
+	}
+
+	allow = {
+		always = yes
+	}
+
+	effect = {
+		remove_deposit = d_aa_shroudgate_inactive
+		add_deposit = d_aa_shroudgate_active
+		create_colony = {
+			owner = space_owner
+			species = owner_main_species
+		}
+		hidden_effect = {
+			random_list = {
+				10 = {}
+				60 = {
+					add_deposit = d_aa_exodite_enclave
+					if = {
+						limit = { merg_is_habitat = yes }
+						add_deposit = d_aa_infinity_circuit
+					} else = {
+						add_deposit = d_aa_infinity_circuit_alt
+					}
+				}
+				35 = {
+					add_deposit = d_aa_exodite_enclave
+					add_deposit = d_aa_exodite_enclave
+					if = {
+						limit = { merg_is_habitat = yes }
+						add_deposit = d_aa_infinity_circuit
+					} else = {
+						add_deposit = d_aa_infinity_circuit_alt
+					}
+				}
+				5 = {
+					add_deposit = d_aa_exodite_enclave
+					add_deposit = d_aa_exodite_enclave
+					add_deposit = d_aa_exodite_enclave
+					if = {
+						limit = { merg_is_habitat = yes }
+						add_deposit = d_aa_infinity_circuit
+					} else = {
+						add_deposit = d_aa_infinity_circuit_alt
+					}
+				}
+			}
+			planet_event = { id = aagrimstarts.1200 }
+		}
+	}
+
+	ai_weight = {
+		weight = 95
+	}
+}

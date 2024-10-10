@@ -1,0 +1,198 @@
+civic_imperial_cult = {
+	# modification = no
+	# icon = "gfx/interface/icons/governments/civics/civic_imperial_cult.dds"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_dictatorial # ECC
+				value = auth_imperial
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	random_weight = {
+		base = @civic_default_random_weight
+		modifier = {
+			factor = 1000
+			is_species_class = HUM
+			is_human_species = yes
+			# is_species_class = imperium
+		}
+		# Civic has no effect after galaxy generation, disable for random generation
+		modifier = { factor = 0 has_global_flag = game_started }
+	}
+	ai_weight = {
+		base = @ai_civic_default_base_weight
+		modifier = {
+			factor = @ai_civic_personality_match_factor
+			OR = {
+				has_ai_personality = evangelising_zealots
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = decadent_hierarchy
+				has_ai_personality = fanatic_purifiers
+			}
+		}
+		modifier = {
+			factor = @ai_civic_personality_mismatch_factor
+			OR = {
+				has_ai_personality = peaceful_traders
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = erudite_explorers
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+	}
+	description = civic_imperial_cult_effects
+	modifier = {
+		country_physics_tech_research_speed = -0.05
+		country_engineering_tech_research_speed = -0.05
+		pop_ethic_xenophobe_attraction_mult = 0.2
+		pop_ethic_militarist_attraction_mult = 0.4
+		pop_ethic_spiritualist_attraction_mult = 0.2
+		country_admin_cap_mult = 0.25
+		country_naval_cap_mult = 0.1
+		starbases_upkeep_mult = -0.8
+		starbase_module_capacity_add = 10
+		country_leader_pool_size = 5
+		country_starbase_influence_cost_mult = -0.5
+		piracy_suppression_mult = 0.25
+		# Divine Mandate Modifier imperial_cult_divine_mandate:
+		country_base_unity_produces_add = 0.1
+		planet_stability_add = 10
+		# Ecclesiastical Hierarchy Modifier imperial_cult_ecclesiastical_hierarchy:
+		planet_building_build_speed_mult = 0.1
+		country_edict_fund_add = 100 # edicts_cost_mult = -0.1
+		# Zealous Devotion Modifier imperial_cult_zealous_devotion:
+		army_morale = 0.1
+		country_war_exhaustion_mult = -0.1
+		# Inquisitorial Oversight Modifier imperial_cult_inquisitorial_oversight:
+		# country_society_tech_research_speed = 0.05
+		# pop_happiness = 0.05		# biological_pop_happiness
+		pop_citizen_happiness = 0.05
+	}
+	# traits = { trait = trait_latent_psionic }
+}
+
+civic_fanatic_purifiers = {
+	modification = no
+	playable = { has_utopia = yes }
+	# ai_playable = { has_utopia = yes }
+	potential = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+		authority = {
+			NOT = { value = auth_corporate }
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			OR = {
+				value = ethic_authoritarian
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+			NOR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_barbaric_despoilers
+				value = civic_pompous_purists
+				value = civic_sovereign_guardianship
+				value = civic_corporate_sovereign_guardianship
+				value = civic_crusader_spirit
+				value = civic_selective_kinship
+			}
+			# ECC
+			NOR = {
+				text = civic_tooltip_not_guardian
+				value = civic_sovereign_guardianship
+				value = civic_corporate_sovereign_guardianship
+				value = civic_hive_sovereign_guardianship
+				value = civic_machine_sovereign_guardianship
+			}
+			NOR = {
+				text = civic_tooltip_not_guided
+				value = civic_guided_sapience
+				value = civic_corporate_guided_sapience
+				value = civic_hive_guided_sapience
+				value = civic_machine_guided_sapience
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_syncretic_evolution
+				value = origin_common_ground
+				value = origin_hegemon
+				value = origin_toxic_knights
+				value = origin_broken_shackles
+			}
+		}
+	}
+	random_weight = {
+		base = 500
+		modifier = { factor = 0 has_utopia = no }
+		modifier = { factor = 0 blocks_disruptive_gameplay = yes }
+	}
+	description = "civic_tooltip_fanatic_purifiers_effects"
+	negative_description = "BLOCKS_COUNCILOR_STATE"
+	modifier = {
+		ship_fire_rate_mult = 0.33
+		army_damage_mult = 0.33
+		starbase_shipyard_build_cost_mult = -0.15
+		country_naval_cap_mult = 0.33
+	}
+
+	swap_type = {
+		trigger = {
+			is_scope_valid = yes
+			has_country_flag = dark_forest_achievement
+		}
+		description = "civic_tooltip_fanatic_purifiers_effects"
+		modifier = {
+			country_government_civic_points_add = 1
+		}
+	}
+}
+
+origin_default = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_default.dds"
+	picture = GFX_evt_metropolis
+	potential = { always = yes }
+	possible = {  }
+	# random_weight = { base = 100 }
+	description = "origin_tooltip_default_effects"
+	swap_type = {
+		description = "origin_tooltip_default_effects_lithoid"
+		trigger = {
+			OR = {
+				AND = { is_scope_valid = no local_human_species_class = LITHOID }
+				AND = { is_scope_valid = yes is_lithoid_empire = yes }
+			}
+		}
+	}
+	advanced_start = yes
+}

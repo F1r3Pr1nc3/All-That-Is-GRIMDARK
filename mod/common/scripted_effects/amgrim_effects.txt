@@ -1,0 +1,62 @@
+# grimdark_generate_start_deposits = {
+# grimdark_nuked_deposits = {
+# grimdark_soulkeepers_habitat = {
+# grimdark_soulkeepers_circuit = {
+# grimdark_soulkeepers_bureau = {
+# grimdark_create_extra_pops = {
+# setup_barbarichorde = {
+# setup_shroudrage = {
+# setup_shroudmutated = {
+# setup_shroudsick = {
+# setup_shroudsinners = {
+# setup_soulkeepers = {
+# setup_paindrinkers = {
+# setup_greatergood = {
+# setup_bioreformers = {
+# setup_reawakened = {
+# create_remote_shroudgate_planet = {
+# create_net_shroudgate_planets = {
+# grim_extra_corvettes = {
+create_nearby_shroudgate_planet = {
+	# every_system_planet = {
+	# 	set_surveyed = { surveyed = yes surveyor = root }
+	# }
+	random_system_planet = {
+		limit = {
+			is_colonizable = yes
+			NOR = { is_colony = yes has_owner = yes has_deposit = d_aa_shroudgate_inactive }
+		}
+		add_deposit = d_aa_shroudgate_inactive
+		if = {
+			limit = { NOR = { has_deposit = d_zro_deposit_1 has_deposit = d_zro_deposit_2 has_deposit = d_zro_deposit_3 } }
+			random = { chance = 50 add_zro = yes }
+		}
+	}
+}
+create_nearby_tomb_planet = {
+	if = {
+		limit = { root = { is_ai = yes } }
+		set_surveyed = { surveyed = yes surveyor = root }
+		every_system_planet = {
+			set_surveyed = { surveyed = yes surveyor = root }
+		}
+	}
+	random_system_planet = {
+		limit = {
+			is_colonizable = yes
+			NOR = { is_colony = yes has_owner = yes has_deposit = d_aa_stasis_chambers }
+		}
+		add_deposit = d_aa_stasis_chambers
+	}
+}
+
+# TODO: transclude
+colonize_planet = {
+	random_owned_ship = {
+		orbit = {
+			start_colony = { owner = root species = prev.species }
+		}
+	}
+	log="\\[Root.GetName] starts effect auto-colonizing \\[prevprev.GetName]"
+	delete_fleet = this
+}

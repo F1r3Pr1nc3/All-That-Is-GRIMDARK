@@ -1,0 +1,37 @@
+	NGameplay = {
+
+		# ETHOS_MAX_POINTS 					= 5	# 3 Number of points which you can spend on ethos.
+		GOVERNMENT_CIVIC_POINTS_BASE		= 3	# 2 Base amount of civic points (to "pay" for government civic costs)
+
+		CUSTOM_EMPIRE_SPAWN_CHANCE			= 990	# 50 Chance that an empire will be created from an existing template instead of randomly generated (10 = 1% chance)
+		FALLEN_CUSTOM_EMPIRE_SPAWN_CHANCE	= 500	# 50 Chance that a fallen empire will be created from an existing template instead of randomly generated (10 = 1% chance)
+
+		LEADER_LIFESPAN_DEATH_CHANCE_AGE	= 800			# 80 Before this age the chance wont increase
+		# LEADER_LIFESPAN_DEATH_CHANCE_INC = 0.002			# Increase with these % for each year above CHANCE_AGE
+		LEADER_LIFESPAN_HIGH_DEATH_CHANCE_AGE = 2000		# 100 Above this age, death chance increases drastically
+		# LEADER_LIFESPAN_HIGH_DEATH_CHANCE_INC = 0.02		# Increase with these % for each year above HIGH_DEATH_CHANCE_AGE
+
+	}
+
+	# Less AI Vassalization # TODO
+	NAI = {
+
+		# VASSALIZATION_ACCEPTANCE_PROTECTORATE_MULT = 0.1	# Multiplied by number of techs potential overlord is ahead in
+		# VASSALIZATION_ACCEPTANCE_PROTECTORATE_MAX = 20
+		VASSALIZATION_ACCEPTANCE_NUM_POPS = -0.75			# -0.25 Per pop
+		# VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MIN = 1.5
+		VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MULT = 5	# 15 For each 1x over min
+		# VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MAX = 100
+		VASSALIZATION_ACCEPTANCE_ATTITUDE_ALLIANCE = -100	# 20 Except in this circumstance
+		VASSALIZATION_ACCEPTANCE_ATTITUDE_COEXIST = -1600	# 0
+		VASSALIZATION_ACCEPTANCE_ATTITUDE_ATTACK = -2400	# -1000
+		VASSALIZATION_ACCEPTANCE_OTHER_ATTITUDE = -900		# 20
+		# VASSALIZATION_ACCEPTANCE_OTHER_THREAT_MULT = 0.2
+		# VASSALIZATION_ACCEPTANCE_OTHER_THREAT_MAX = 20
+		VASSALIZATION_ACCEPTANCE_DISTANCE_MULT = -0.75		# -0.5 Per 1 border distance
+		# VASSALIZATION_ACCEPTANCE_LOYALTY_MULT = 2.0
+
+		FEDERATION_DISBAND_THRESHOLD = -30 # -45 # If leaving the federation would disband it, AI will use this threshold instead of DIPLO_BREAK_THRESHOLD.
+		FEDERATION_DISBAND_PLAYER_THRESHOLD = -45 # -60 # Used instead of FEDERATION_DISBAND_THRESHOLD if the federation has any players in it.
+
+	}

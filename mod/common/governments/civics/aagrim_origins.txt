@@ -1,0 +1,616 @@
+# Tau
+origin_greatergood = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_greatergood.dds"
+	picture = GFX_evt_greatergood
+	# max_once_global = yes
+	playable = { has_utopia = yes }
+	possible = {
+		# value = auth_tau # WH40K
+		ethics = {
+			OR = {
+				value = ethic_fanatic_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_xenophile
+				value = ethic_xenophile
+			}
+			OR = {
+				value = ethic_fanatic_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_xenophile
+				value = ethic_xenophile
+			}
+		}
+	}
+	starting_colony = pc_gaia
+	habitability_preference = pc_tropical
+	preferred_planet_class_neighbor = no
+	modifier = {
+		# pop_amenities_usage_mult = -0.1
+		# planet_pops_consumer_goods_upkeep_mult = -0.1
+		# colony_start_num_pops_add = -1
+		country_leader_pool_size = -1
+		country_subject_technology_sharing_mult = 0.75
+		external_leader_pool_add = 1
+		force_disparity_fire_rate_mult = 0.5
+		country_produces_mult = 0.1
+		country_unity_produces_mult = 0.1
+		# pop_factions_produces_mult = 0.1
+		diplo_weight_mult = 0.25
+		diplomacy_upkeep_mult = -1
+		pop_happiness = 0.1 # Compare broken_shackles_war_03
+		pop_government_ethic_attraction = 0.25
+		country_border_friction_mult = -1
+		monthly_trades_energy_produces_add = 1
+		trade_value_mult = 0.02
+		country_trade_fee = -0.01
+		country_trade_attractiveness = 1
+	}
+	# traits = { trait = trait_tau } TODO
+	has_secondary_species = {
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			# trait = trait_syncretic_proles
+			trait = trait_unruly
+		}
+	}
+	description = "origin_tooltip_greatergood_effects"
+	flags = { "custom_start_screen" "humanoid" "tau_empire" }
+	advanced_start = no
+	random_weight = { base = 0.5 }
+}
+
+# Chaos Tzeentch (Thousand Sons)
+origin_shroudmutated = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudmutated.dds"
+	picture = GFX_evt_shroudmutated
+	max_once_global = yes
+	playable = { has_necroids = yes }
+	potential = {
+		ethics = {
+			NOR = { value = ethic_pacifist value = ethic_fanatic_pacifist }
+		}
+	}
+	possible = {
+		# value = auth_chaos # WH40K
+		ethics = {
+			OR = { value = ethic_spiritualist value = ethic_fanatic_spiritualist }
+			NOR = {
+				value = ethic_authoritarian
+				# value = ethic_xenophobe
+				# value = ethic_fanatic_xenophobe
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+	}
+	modifier = { pop_government_ethic_attraction = -0.25 }
+	# traits = { trait = trait_psionic }
+	description = "origin_tooltip_shroudmutated_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		# "the_thousand_sons"
+		"tzeentch"
+	}
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# Khorne 	origin = "origin_world_eater"
+origin_shroudrage = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudrage.dds"
+	picture = GFX_evt_shroudrage
+	max_once_global = yes
+	starting_colony = pc_nuked
+	preferred_planet_class_neighbor = no
+	playable = {
+		# has_humanoids = yes
+	}
+	possible = {
+		authority = {
+			NOT = { value = auth_corporate }
+			# value = auth_chaos # WH40K
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_fanatic_xenophobe
+				value = ethic_xenophobe
+			}
+			OR = {
+				value = ethic_fanatic_militarist
+				value = ethic_militarist
+				value = ethic_authoritarian
+				value = ethic_spiritualist
+			}
+		}
+		civics = {
+			OR = {
+				value = civic_barbaric_despoilers
+				value = civic_fanatic_purifiers
+				value = civic_warrior_culture
+			}
+		}
+	}
+	modifier = {
+		country_war_exhaustion_mult = -0.25
+		army_damage_mult = 0.25
+		pop_growth_speed = -0.25
+		pop_amenities_usage_mult = -0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.25
+		planet_pops_organics_food_upkeep_mult = -0.25
+		country_pop_enslaved_mult = 0.25
+	}
+	# traits = {
+	# 	trait = trait_survivor removed in v.3.11
+	# }
+	has_secondary_species = {
+		title = civic_syncretic_evolution_secondary_species # TODO better title
+		traits = {
+			# trait = trait_syncretic_proles
+			trait = trait_very_strong
+			# trait = trait_repugnant
+		}
+	}
+	description = "origin_tooltip_shroudrage_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		# "the_world_eater"
+		"khorne"
+	}
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# Slaanesh
+origin_shroudsinners = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudsinners.dds"
+	picture = GFX_evt_shroudsinners
+	max_once_global = yes
+	playable = {
+		# has_humanoids = yes
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_dictatorial
+				value = auth_corporate
+				value = auth_imperial
+				value = auth_chaos # WH40K
+			}
+		}
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_fanatic_xenophobe
+				value = ethic_xenophobe
+			}
+			OR = {
+				value = ethic_materialist
+				value = ethic_fanatic_xenophile
+				value = ethic_xenophile
+			}
+			OR = {
+				value = ethic_fanatic_egalitarian
+				value = ethic_fanatic_authoritarian
+				value = ethic_egalitarian
+				value = ethic_authoritarian
+			}
+		}
+	}
+	modifier = { pop_amenities_usage_mult = 0.25 }
+	# traits = { trait = trait_latent_psionic }
+	description = "origin_tooltip_shroudsinners_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		# "the_emperor_children"
+		"slaanesh"
+	}
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# Nurgle
+origin_shroudsick = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudsick.dds"
+	picture = GFX_evt_shroudsick
+	max_once_global = yes
+	starting_colony = pc_infected
+	playable = { has_necroids = yes }
+	possible = {
+		authority = {
+			OR = {
+				value = auth_hive_mind
+				value = auth_imperial
+				value = auth_chaos # WH40K
+			}
+		}
+		civics = {
+			NOR = { value = civic_hive_empath value = civic_hive_devouring_swarm }
+		}
+	}
+	modifier = {
+		pop_growth_speed = -0.25		# -0.5
+		pop_housing_usage_mult = -0.25
+		leader_lifespan_add = 100
+		army_health = 0.5
+	}
+	# traits = { trait = trait_repugnant trait = trait_shroud_sick }
+	description = "origin_tooltip_shroudsick_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		# "the_death_guard"
+		"nurgle"
+	}
+	# has_secondary_species = { title = civic_necrophage_secondary_species } TODO!
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# "Ork Horde"
+origin_barbarichorde = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_barbarichorde.dds"
+	picture = GFX_evt_barbarichorde
+	# max_once_global = yes
+	playable = {
+		# has_humanoids = yes
+	}
+	possible = {
+		# auth_ork
+		ethics = {
+			OR = { value = ethic_fanatic_xenophobe value = ethic_xenophobe }
+			OR = { value = ethic_fanatic_militarist value = ethic_militarist }
+		}
+		civics = {
+			OR = { value = civic_barbaric_despoilers value = civic_fanatic_purifiers }
+		}
+	}
+	starting_colony = pc_scrapworld
+	modifier = {
+		pop_growth_speed = 0.1
+		country_war_exhaustion_mult = -0.1
+		country_claim_influence_cost_mult = -0.2
+	}
+	traits = {
+		# trait = trait_orkz TODO
+		trait = trait_self_sustained
+		# trait = trait_survivor removed in v.3.11
+	}
+	has_secondary_species = {
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			# trait = trait_syncretic_proles
+			# trait = trait_survivor removed in v.3.11
+			trait = trait_self_sustained
+		}
+	}
+	description = "origin_tooltip_barbarichorde_effects"
+	flags = { "custom_start_screen" "humanoid" "ork_empire" }
+	advanced_start = no
+	random_weight = { base = 0.5 }
+}
+
+# Aeldari - dummy origin
+# Gets replaced with origin_void_dweller, origin_galactic_doorstep and trait_eldar
+origin_soulkeepers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_soulkeepers.dds"
+	picture = GFX_evt_soulkeepers
+	initializers = { void_dweller_system custom_starting_init_06 }
+	starting_colony = pc_habitat
+	habitability_preference = pc_habitat # pc_continental
+	# max_once_global = yes
+	preferred_planet_class_neighbor = no
+	playable = {
+		# has_humanoids = yes
+		has_utopia = yes
+	}
+	possible = {
+		# auth_eldar
+		ethics = {
+			OR = { value = ethic_fanatic_spiritualist value = ethic_spiritualist }
+		}
+	}
+	modifier = {
+		pop_growth_speed = -0.5
+		planet_colony_development_speed_mult = -0.25 # TODO
+		planet_jobs_specialist_produces_mult = 0.05 # agenda_favored_society_finish
+		leader_skill_levels = 1
+		leader_lifespan_add = 400  # 200
+	}
+	# traits = {
+	# 	trait = trait_eldar TODO
+	# 	# trait = trait_latent_psionic
+	# 	# trait = trait_void_dweller_1
+	# }
+	description = "origin_tooltip_soulkeepers_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"eldarian"
+		"eldar_empire"
+	}
+	advanced_start = no
+	random_weight = { base = 0.5 }
+}
+
+# "Drukhari" Dark Eldar
+origin_paindrinkers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_paindrinkers.dds"
+	picture = GFX_evt_paindrinkers
+	starting_colony = pc_ringworld_habitable
+	habitability_preference = pc_ringworld_habitable
+	# starting_colony = pc_shattered_ring_habitable
+	# habitability_preference = pc_shattered_ring_habitable
+	initializers = { shattered_ring_start }
+	preferred_planet_class_neighbor = no
+	max_once_global = yes
+	playable = {
+		has_utopia = yes
+		has_necroids = yes
+		# host_has_dlc = Federations ?
+	}
+	potential = {
+		ethics = {
+			NOR = { value = ethic_pacifist value = ethic_fanatic_pacifist }
+		}
+	}
+	possible = {
+		# auth_darkeldar
+		ethics = {
+			OR = { value = ethic_fanatic_authoritarian value = ethic_authoritarian }
+			OR = { value = ethic_fanatic_xenophobe value = ethic_xenophobe }
+		}
+		civics = { value = civic_slaver_guilds }
+	}
+	modifier = {
+		pop_growth_speed = 0.5		# Rapid Breeders: Represents their ability to rapidly replenish their numbers.
+		leader_lifespan_add = 100
+		planet_colony_development_speed_mult = -0.5
+		country_starbase_influence_cost_mult = 1
+		empire_size_systems_mult = 1
+		empire_size_colonies_mult = 1
+	}
+	traits = {
+		# trait = trait_eldar TODO
+		trait = trait_decadent
+		trait = trait_quick_learners		# This trait represents their high intelligence and adaptability. = species_leader_exp_gain = 0.1
+	}
+	has_secondary_species = {
+		title = civic_necrophage_secondary_species
+		traits = { trait = trait_self_sustained trait = trait_strong }
+	}
+	description = "origin_tooltip_paindrinkers_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"eldarian"
+		"darkeldar_empire"
+	}
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# Genestealer Cult and Tyranid
+origin_bioreformers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_bioreformers.dds"
+	picture = GFX_evt_bioreformers
+	# max_once_global = yes
+	starting_colony = pc_hive
+	habitability_preference = pc_hive
+	preferred_planet_class_neighbor = no
+	playable = { has_utopia = yes }
+	possible = {
+		authority = { value = auth_hive_mind }
+		civics = {
+			value = civic_hive_devouring_swarm
+			NOR = { value = civic_hive_memorialist value = civic_hive_empath }
+		}
+		species_archetype = {
+			NOT = { value = LITHOID }
+		}
+	}
+	modifier = {
+		pop_growth_speed = 0.2		# 0.1
+		pop_housing_usage_mult = -0.25
+		planet_pops_organics_food_upkeep_mult = -0.5
+		pop_environment_tolerance = 0.5
+		leader_lifespan_add = 100
+		modify_species_cost_mult = -0.5
+		army_damage_mult = 0.25
+	}
+	# traits = { trait = trait_tyranid } TODO
+	description = "origin_tooltip_bioreformers_effects"
+	flags = { custom_start_screen }
+	advanced_start = no
+	random_weight = { base = 0.5 }
+}
+
+## Necrons
+# DEPRECATED Old original name - replaced for compat with "Warhammer 40K Necrons"
+# REMOVED on 3.12 - Keept for backward compat.
+# origin_reawakened = {
+# 	is_origin = yes
+# 	icon = "gfx/interface/icons/origins/origins_reawakened.dds"
+# 	picture = GFX_evt_reawakened
+# 	max_once_global = yes
+# 	starting_colony = pc_relic
+# 	preferred_planet_class_neighbor = no
+# 	playable = { always = no }
+# 	potential = { always = no }
+# 	possible = { always = no }
+# 	traits = {
+# 		# trait = trait_necrons TODO
+# 		trait = trait_machine_unit		# MACHINE
+# 		# trait_mechanical ROBOT
+# 		# trait = trait_necrons
+# 	}
+# 	modifier = { army_health = 0.5 army_damage_mult = 0.2 }
+# 	description = "origin_tooltip_reawakened_effects"
+# 	flags = { "custom_start_screen" "necron_empire" }
+# 	advanced_start = no
+# 	random_weight = { base = 0 }
+# }
+
+## Imperium
+origin_godruler = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_godruler.dds"
+	picture = GFX_evt_godruler
+	max_once_global = yes
+	potential = {
+		ethics = {
+			NOR = { value = ethic_pacifist value = ethic_fanatic_pacifist }
+		}
+	}
+	possible = {
+		# ethics = {
+		# 	OR = { value = ethic_fanatic_xenophobe value = ethic_xenophobe }
+		# }
+		authority = {
+			OR = {
+				value = auth_dictatorial
+				value = auth_imperial
+				value = auth_imp # WH40K
+				value = auth_stagnated_imperium # Great Crusade Origin 2985989479 / 40k Planet Specialization 3133787332
+			}
+		}
+	}
+	# traits = { trait = trait_functional }
+	starting_colony = pc_hive_tundra # pc_imperiumhive
+	habitability_preference = pc_continental
+	# preferred_planet_class_neighbor = no
+	initializers = { sol_holy_mars_system_initializer sol_system_initializer }
+	modifier = {
+		all_technology_research_speed = -0.4		# -0.5
+		pop_citizen_happiness = 0.05
+		council_agenda_progress_speed = 0.2
+	}
+	description = "origin_tooltip_godruler_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"human_empire"
+		"ai_no_leave_fed"
+		"the_mankind"
+	}
+	advanced_start = no
+	random_weight = { base = 0 }
+}
+
+# Could be replaced with vanilla origin_mechanists?
+# "Adeptus Mechanicus" origin_mechanicus civic_mechanicus
+origin_iforge = {
+	# Name shared with "WH:40K The Rift"
+	is_origin = yes
+	icon = "gfx/interface/icons/governments/civics/civic_mechanicus.dds"
+	# icon = "gfx/interface/icons/origins/origins_mechanist.dds"
+	picture = GFX_evt_iforge	# GFX_origin_mechanist # GFX_evt_molten
+	playable = { has_utopia = yes }
+	# starting_colony = pc_forge_world # TODO
+	max_once_global = yes
+	# starting_colony = pc_hive_tundra # pc_imperiumhive
+	habitability_preference = pc_desert	# pc_savannah
+	# initializers = { toxic_knights_sol_start custom_starting_init_05 sol_holy_mars_system_initializer } # TODO!?
+	potential = { always = yes }
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				# text = civic_tooltip_materialist
+				text = civic_tooltip_materialist_spiritualist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		# authority = { NOT = { value = auth_corporate } }
+		civics = {
+			NOR = {
+				value = civic_permanent_employment
+				value = civic_gospel_of_the_masses
+				# value = civic_syncretic_evolution
+				# value = civic_post_apocalyptic
+				value = civic_idyllic_bloom				# is_idyllic_bloom_empire
+				value = civic_hive_idyllic_bloom		# is_idyllic_bloom_empire
+				value = civic_life_seeded				# is_idyllic_bloom_empire
+			}
+		}
+	}
+	# traits = { trait = trait_cybernetic } # Used when starting a new game to give robots (see game_start.11) and techs (see game_start.8)
+	has_secondary_species = {
+		title = civic_machine_assimilator_secondary_species # civic_syncretic_evolution_secondary_species
+		traits = {
+			# OR = { trait = trait_syncretic_proles # From origin_syncretic_evolution
+			trait = trait_lobotomised_servitors
+		}
+	}
+	modifier = {
+		pop_environment_tolerance = 0.1
+		planet_pops_robotics_upkeep_mult = -0.05
+		planet_pop_assembly_mult = 0.15
+		ROBOT_species_trait_picks_add = 1
+		country_base_food_produces_add = 50 # country_base_food_produces_add = 50
+	}
+	traits = { trait = trait_adeptus_mechanicus }
+	# description = "Starting planet is a §H$pc_iforge$§! with habitable subterranean caverns."
+	description = "origin_tooltip_mechanists_effects"
+	flags = {
+		"loyallegion"
+		"humanoid"
+		"human_empire"
+	}
+	advanced_start = no
+	random_weight = { base = 0.5 }
+}
+
+# Black Legion (Chaos Undevided)
+origin_fallen_psionic = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_black_legion.dds"
+	picture = GFX_evt_fallenpsionic	# GFX_origin_remnants
+	starting_colony = pc_relic
+	initializers = { eyechaos_homeworld }
+	max_once_global = yes
+	playable = { has_ancrel = yes }
+	possible = {
+		civics = {
+			NOT = { value = civic_agrarian_idyll }
+		}
+	}
+	modifier = {
+		# all_technology_research_speed = -0.2
+		pop_citizen_happiness = 0.05
+		council_agenda_progress_speed = 0.2
+	}
+	# traits = {
+	# 	trait = trait_heretic_astartes
+	# 	trait = trait_chaos_undivided
+	# }
+	description = "origin_tooltip_fallen_psionic_effects"
+	flags = {
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"chaos_undivided_worship" # "undividedworship"
+		"eyechaos_empire"
+	}
+	random_weight = { base = 0 }
+}

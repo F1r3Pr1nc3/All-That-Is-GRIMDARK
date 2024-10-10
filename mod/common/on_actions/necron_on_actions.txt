@@ -1,0 +1,95 @@
+# No scope, like on_game_start
+on_five_year_pulse = {
+	events = {
+		necron.109
+	}
+}
+
+# No scope, like on_game_start
+on_decade_pulse = {
+	events = {
+		necron.111		# origin_necron_awakening
+	}
+}
+
+# Triggers country_event for the attacker upon victory (before controller is switched)
+# This = country, lead attacker
+# From = country, planet owner
+# fromfrom = planet
+# 'Attacker' is the side that "IsHostile" to the planet controller. For example: spawned monster armies are attackers, but if they win and the player attempts to retake the planet, the player is the attacker
+on_planet_attackers_win = {
+	events = {
+		necron.7
+	}
+}
+
+# Triggers country_event for the defender upon defeat
+# This = country, planet owner
+# From = country, attack leader
+# fromfrom = planet
+on_planet_defenders_lose = {
+	random_events = {
+		25 = 0
+		75 = necron.8
+	}
+}
+
+# Planet has reached 0 pops from orbital bombardment
+# This = Planet
+# From = Bombarder
+on_planet_zero_pops = {
+	random_events = {
+		25 = 0
+		75 = necron.9
+	}
+}
+
+# Planet has reached 0 pops from collateral damage
+# This = Planet
+# From = Army owner
+on_planet_zero_pops_ground_combat = {
+	random_events = {
+		25 = 0
+		75 = necron.9
+	}
+}
+
+# A pop has finished purging
+# This = Planet scope
+# From = Country
+# fromfrom = Pop
+on_pop_purged = {
+	random_events = {
+		65 = 0
+		35 = necron.91
+	}
+}
+
+# An army has been killed in ground combat
+# This = owner
+# From = army
+# fromfrom = opponent
+# fromfromfrom = planet
+on_army_killed_in_combat = {
+	random_events = {
+		75 = 0
+		25 = necron.110
+	}
+}
+
+# A colony has been destroyed. Called just before owner and controller is cleared
+# Scope = Planet
+on_colony_destroyed = {
+	random_events = {
+		25 = 0
+		75 = necron.107
+	}
+}
+
+# This = destroyed country
+# From = optional, destroyer (country)
+on_country_destroyed = {
+	events = {
+		necron.108
+	}
+}

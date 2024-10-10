@@ -1,0 +1,2484 @@
+### 9 Heretic Traitor Legions ###
+# 1 Black Legion (XVI Legion)	- Chaos Undivided; (Primarch: Abaddon the Despoiler) (formerly "Sons of Horus" and first "Luna Wolves"): They serve all the Chaos Gods.
+# 2 Word Bearers (XVII Legion)	- Chaos Undivided: (Primarch: Lorgar Aurelian) (formerly "Imperial Heralds"): They serve all the Chaos Gods, devoted to spreading the worship of Chaos.
+# 3 Iron Warriors (IV Legion)	- Chaos Undivided: (Primarch: Perturabo) They serve all the Chaos Gods, but they are not particularly aligned with any one of them. Known for their mastery of siege warfare
+# 4 Night Lords (VIII Legion)	- Chaos Undivided: (Primarch: Konrad Curze) They serve all the Chaos Gods, but are particularly aligned with terror and fear. They became notorious for their terror tactics and brutal methods of warfare.
+# 5 Alpha Legion (XX Legion)	- Chaos Undivided or primarily Tzeentch: (Primarch: Alpharius Omegon) They serve all the Chaos Gods, known for their enigmatic and secretive nature and for employing misinformation, subterfuge, and intricate plots, making it challenging to discern their true loyalties.
+# 6 World Eaters (XII Legion)	- Khorne: (Primarch: Angron)
+# 7 Death Guard (XIV Legion)	- Nurgle: (Primarch: Mortarion)
+# 8 Thousand Sons (XV Legion)	- Tzeentch: (Primarch: Magnus the Red)
+# 9 Emperor's Children (III Legion) - Slaanesh: (Primarch: Fulgrim)
+# "EMPIRE_DESIGN_mechanicus"=
+# "Mechanican Forge Dominion"=
+"adeptus_mechanicus"=
+{
+	key="EMPIRE_DESIGN_mechanicus"
+	ship_prefix=
+	{
+		key=""
+		literal=yes
+	}
+	species=
+	{
+		class="HUM" #  "Mechanicus"
+		portrait="human" # "tox2" "cybernetic_humans" "Adeptus_Mechanicus"
+		species_name=
+		{
+			key="trait_adeptus_mechanicus"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_mechanicus"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_mechanicus"
+					}
+				}
+
+			}
+		}
+		species_bio="Comprising of humans heavily augmented with cybernetics, they venerate technology as a form of religion. Their devotion to the Machine God, known as the Omnissiah, drives them to seek and understand ancient and powerful technologies across the galaxy."
+		name_list="HUMAN3"		# name_list_Adeptus_Mechanicus
+		gender=indeterminable
+		trait="trait_adeptus_mechanicus"
+		# trait="trait_cybernetic"
+		trait="trait_wasteful"
+		trait="trait_decadent"
+		trait="trait_natural_engineers"
+		trait="trait_quick_learners"
+		# trait="trait_intelligent"
+		# trait="trait_mankind"
+		# trait="trait_adaptive"
+		# trait="trait_solitary"
+	}
+	secondary_species=
+	{
+		class="HUM"		# "Imperium"
+		portrait="human_legacy"		# "Servitors"
+		species_name=
+		{
+			key="SPEC_Servitors"
+		}
+		species_plural=
+		{
+			key="SPEC_Servitors_pl"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="SPEC_Servitors_adj"
+					}
+				}
+
+			}
+		}
+		species_bio="This is a specialized sub-species within the Adeptus Mechanicus, created through extensive cybernetic augmentation and lobotomization. These once-human individuals have been transformed into obedient and highly specialized laborers, tasked with serving the technological needs of the Adeptus Mechanicus."
+		name_list="MACHINE1" # "Servitors"
+		gender=indeterminable
+		trait="trait_lobotomised_servitors" # trait="trait_syncretic_proles"
+		trait="trait_repugnant"
+		# trait="trait_conservational"
+		trait="trait_rapid_breeders"
+		trait="trait_communal"
+		# trait="trait_cybernetic"
+		# trait="trait_cyborg_double_jointed"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="Mechanicus"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Forge Dominion"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_mechanicus"
+	}
+	authority="auth_dictatorial"	# auth_imperial
+	flags=
+	{
+		"mankind_star_empire"
+		"loyallegion"
+		"humanoid"
+		"human_empire"
+		"ai_no_leave_fed"
+	}
+	government="gov_theocratic_dictatorship"	# gov_imperium
+	advisor_voice_type="l_materialist"	# l_machine
+	planet_name=
+	{
+		key="SPEC_Adeptus_Mechanicus_planet" # "Stryken Primus"
+	}
+	planet_class="pc_desert"	# pc_savannah
+	system_name=
+	{
+		key="SPEC_Adeptus_Mechanicus_system" # "Quintillus" "Stryken"
+	}
+	initializer="" # "custom_starting_init_05" sol_holy_mars_system_initializer
+	graphical_culture="mammalian_01" # "toxoid_01" "nemesis_01" "sto_01" # wain_01
+	city_graphical_culture="mammalian_01"	# "sto_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="mechanicus"
+			file="AdeptusMechanicus.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="flag_BG_1.dds"
+		}
+		colors=
+		{
+			"red"
+			"black"
+			"black"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=indeterminable
+		name="PRESCRIPTED_ruler_name_mechanicus"
+		portrait="Adeptus_Mechanicus" # "dmech4"		# "MECHA4" # "human_male_02"
+		texture=1
+		attachment=50
+		clothes=4
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_mechanicus" # Master of the Forge
+		}
+		heir_title=
+		{
+			key="Magos"
+			literal=yes
+		}
+		trait="trait_ruler_logistic_understanding"
+		leader_class="scientist"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=yes
+	room="personality_erudite_explorers_room"
+	spawn_enabled=yes
+	# playable=has_toxoids has_synthetic_dawn_not_machine_age
+	ethic="ethic_authoritarian"
+	ethic="ethic_spiritualist"	# ethic="ethic_materialist"
+	ethic="ethic_militarist"
+	# ethic="ethic_xenophobe"
+	civics=
+	{
+		# "civic_imperial_cult"
+		# "civic_ironhands"
+		"civic_crafters"
+		"civic_exalted_priesthood"
+		# "civic_memorialist" has_necroids = yes
+		# "civic_technocracy" is_materialist
+		# "civic_mechanists" now origin
+		# "civic_syncretic_evolution" now origin
+		# "civic_catalytic_processing" has_plantoids=yes
+		# "civic_byzantine_bureaucracy" has_megacorp=yes
+		# "civic_memory_vault" has_paragon_dlc=yes
+		# "civic_dark_consortium" has_astral_planes_dlc=yes
+	}
+	origin="origin_iforge"	# origin_syncretic_evolution
+}
+# Vol 1 "Ork Horde"
+"warhordeorks"=
+{
+	key="EMPIRE_DESIGN_ork"
+	ship_prefix=
+	{
+		key="OMGNM"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM" # Orkz
+		portrait="humanoid_hp_12" # Orkz
+		species_name=
+		{
+			key="name_list_ORK1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_ork"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_ork"
+					}
+				}
+
+			}
+		}
+		species_bio="This species epitomizes savagery, violence, and primal instincts. Their insatiable appetite for combat leads them to great crusades across the galaxy, because they are the horde, and they must fight."
+		name_list="ORK1"		# "REP4"
+		gender=not_set
+		trait="trait_self_sustained"
+		trait="trait_slow_learners"
+		trait="trait_natural_engineers"
+		trait="trait_strong"
+	}
+	secondary_species=
+	{
+		class="REP"
+		portrait="rep11"
+		species_name=
+		{
+			key="Grot"
+		}
+		species_plural=
+		{
+			key="Grot_plural"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="Grot_adj"
+					}
+				}
+
+			}
+		}
+		species_bio="Grot_desc"
+		name_list="ART1"
+		gender=not_set
+		# trait="trait_syncretic_proles"
+		trait="trait_self_sustained"
+		trait="trait_unruly"
+		trait="trait_industrious"
+		# trait="trait_incubator" has_toxoids
+		trait="trait_fleeting"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_ORK1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Horde"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_ork"
+	}
+	authority="auth_dictatorial"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"ork_empire"
+		"the_goff"
+	}
+	government="gov_purity_order"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_ork"
+	}
+	planet_class="pc_tropical"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_ork"
+	}
+	initializer=""
+	graphical_culture="pirate_01"	# "reptilian_01"
+	city_graphical_culture="arthropoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="pirate"
+			file="ork_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="flash.dds"
+		}
+		colors=
+		{
+			"dark_orange"
+			"off_white"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=male
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_ork"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="Rattsch"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="Roko_Ki"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="humanoid_hp_12" # ORK13
+		texture=0
+		attachment=0
+		clothes=2
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_ork"
+		}
+		# Max lenght only 304
+		custom_biography=
+		{
+			key="Ghazghkull Thraka, da big boss of all Orks, stomps 'round, smashin' and unitin' Ork mobs. He's from Urk, wants da biggest Waaagh! ever for da 'Great Waaagh!' prophecy. His black power klaw shows he's da boss. Ghazghkull's a real scary git, always a big, mean threat."
+			literal=yes
+		}
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="scrappy_room"
+	spawn_enabled=yes	# Yes / no / always
+	ethic="ethic_fanatic_xenophobe"
+	ethic="ethic_militarist"
+	civics=
+	{
+		"civic_fanatic_purifiers"
+		"civic_nationalistic_zeal"
+	}
+	origin="origin_barbarichorde"
+}
+# Craftworlds Asuryani (Eldar) "Soulkeeper Unity"
+"soulkeeperunity"={
+	key="EMPIRE_DESIGN_eldar"
+	ship_prefix=
+	{
+		key="AUS"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_05"
+		species_name=
+		{
+			key="name_list_ELDAR1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_eldar"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_eldar"
+					}
+				}
+
+			}
+		}
+		species_bio="The Eldar, who call themselves 'Asuryani', are an ancient and highly advanced race, probably compose the majority of the surviving 'Aeldari' species. They are graceful, agile beings with potent psychic abilities, residing on colossal starships known as 'Craftworlds'. Guided by powerful Seers, they strive to preserve their dwindling race and navigate the dangers of the galaxy."
+		name_list="ELDAR1"		# "HUM2"
+		gender=not_set
+		# trait="trait_latent_psionic" not at gamestart
+		# trait="trait_void_dweller_1" not at gamestart
+		trait="trait_solitary"
+		trait="trait_intelligent"
+		trait="trait_talented"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="Soulkeeper"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Unity"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_eldar"
+	}
+	authority="auth_oligarchic"
+	flags=
+	{
+		"custom_start_screen"
+		"eldarian"
+		"eldar_empire"
+	}
+	government="gov_citizen_stratocracy"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_eldar"
+	}
+	planet_class="pc_continental"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_eldar"
+	}
+	initializer="" # void_dweller_system
+	graphical_culture="avian_01"
+	city_graphical_culture="avian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="pirate"
+			file="asuryani_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="rounded_middle.dds"
+		}
+		colors=
+		{
+			"beige"
+			"burgundy"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		# name=
+		# {
+		# 	full_names=
+		# 	{
+		# 		key="PRESCRIPTED_ruler_name_eldar"
+		# 	}
+		# }
+		name=PRESCRIPTED_ruler_name_eldar
+		portrait="humanoid_05_female_01"
+		texture=0
+		attachment=1
+		clothes=2
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_eldar"
+		}
+		trait="trait_ruler_eye_for_talent"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_harmonious_hierarchy_room"
+	spawn_enabled=yes	# Yes / no / always
+	playable=has_utopia
+	ethic="ethic_authoritarian"
+	ethic="ethic_militarist"
+	ethic="ethic_spiritualist"
+	civics=
+	{
+		"civic_citizen_service"
+		"civic_aristocratic_elite"
+	}
+	origin="origin_soulkeepers"
+}
+
+# Vol 2
+# Chaos Space Marine "World Eaters" (XII Legion - former "War Hounds") - Khorne
+"Khornate Ravagers"=
+{
+	key="EMPIRE_DESIGN_khorne"
+	ship_prefix=
+	{
+		key="KBF"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_hp_01"
+		species_name=
+		{
+			key="PRESCRIPTED_species_name_khorne"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_khorne"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_khorne"
+					}
+				}
+
+			}
+		}
+		species_bio="Khornates, are devout followers of Khorne, the Chaos God of bloodshed and battle, within the grim and brutal universe. These warriors - including the Chaos Space Marine Legion 'World Eaters' - have forsaken the ideals of the Imperium and embraced the path of relentless combat and unbridled aggression. They revel in the glory of battle, seeking to spill the blood of their foes in the name of Khorne"
+		name_list="CHAOS1"		# "HUMAN3"
+		gender=not_set
+		trait="trait_strong"
+		trait="trait_enduring"
+		trait="trait_repugnant"
+		trait="trait_talented"
+		# trait="trait_noxious" has_toxoids
+		# trait="trait_unruly
+		trait="trait_solitary"
+		# trait="trait_intelligent"
+		# trait="trait_quick_learners"
+		# trait="trait_slow_breeders"
+	}
+	secondary_species=
+	{ # "Bloodbound Warriors" (Brutal Warriors)
+		class="HUM"
+		portrait="humanoid_02"
+		species_name=
+		{
+			key="Bloodbound"
+		}
+		species_plural=
+		{
+			key="Bloodbounds"
+		}
+		species_adjective=
+		{
+			key="Bloodbound"
+			literal=yes
+		}
+		species_bio="The Bloodbound are a fearsome warrior caste forged in the crucible of Khorne's relentless passion for bloodshed and martial prowess. Hailing from the tumultuous landscapes of their homeworld, Khornathrax, these brutish beings are the living embodiment of Khorne's insatiable thirst for combat and domination."
+		name_list="CHAOS1"		# "HUMAN3"
+		gender=not_set
+		# trait="trait_daemons"
+		# trait="trait_syncretic_proles"
+		# trait="trait_self_sustained"
+		trait="trait_very_strong"
+		trait="trait_resilient"
+		trait="trait_repugnant"
+		trait="trait_fleeting"
+		trait="trait_deviants"
+		# trait="trait_noxious" has_toxoids
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="PRESCRIPTED_species_name_khorne"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Ravagers"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="PRESCRIPTED_adjective_khorne"
+				}
+			}
+
+		}
+	}
+	authority="auth_imperial" # "auth_chaos"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_world_eater"
+		"khorne"
+	}
+	government="gov_blood_court" # gov_anarcho_tribalism gov_bandit_kingdom
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_khorne" # "Crucible"
+
+	}
+	planet_class="pc_desert"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_khorne"
+	}
+	initializer=""
+	graphical_culture="necroid_01"
+	city_graphical_culture="necroid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="khorne_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="stripes.dds"
+		}
+		colors=
+		{
+			"red"
+			"red_orange"
+			"black"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=male
+		# name=
+		# {
+		# 	full_names=
+		# 	{
+		# 		key="PRESCRIPTED_ruler_name_khorne"
+		# 	}
+		# }
+		name="PRESCRIPTED_ruler_name_khorne"
+		portrait="CHAOS_WorldEater_ruler"		# "humanoid_hp_10_female"
+		texture=2
+		attachment=0
+		clothes=2
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_khorne"
+		}
+		heir_title=
+		{
+			key="the Skullcleaver"
+			literal=yes
+		}
+		ruler_title_female=
+		{
+			key="Bloodqueen Zaraetha the Fleshrender"
+			literal=yes
+		}
+		# Max lenght only 304
+		custom_biography=
+		{
+			key="Gorthak, born in Kharnathrax, became the Bloodlord, favored by Khorne. His rule: relentless conquest. Adorned in his foes' remnants, he aims to sacrifice the galaxy to the Blood God. His reign is eternal battle, war drums and bloodshed serving as hymns to Khorne."
+			literal=yes
+		}
+		trait="trait_ruler_warlike" # "leader_trait_principled"
+		leader_class="commander"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=yes
+	room="khorne2_room" # "runic_room"
+	spawn_enabled=yes	# Yes / no / always
+	ethic="ethic_xenophobe" # ethic_fanatic_xenophobe
+	ethic="ethic_militarist"
+	ethic="ethic_spiritualist" # ethic="ethic_authoritarian" # Not with fanatic_purifiers
+	civics=
+	{
+		# "civic_fanatic_purifiers"		# Needs ethic_fanatic_xenophobe
+		"civic_warrior_culture"
+		# "civic_barbaric_despoilers" host_has_dlc="Apocalypse"
+		"civic_feudal_realm"
+	}
+	origin="origin_shroudrage"	# "origin_world_eater"
+}
+
+# Tzeentch: Thousand Sons (XV Legion) - Cursed by Tzeentch, they are powerful sorcerers and serve the Chaos God of change and manipulation.
+# Alpha Legion (XX Legion)
+"Tzeentch Fellowship"=
+{
+	key="Tzeentch Fellowship"
+	ship_prefix=
+	{
+		key="TFS"
+		literal=yes
+	}
+	species=
+	{
+		class="AVI" # "NECROID"
+		portrait="avi13" # "nec4"
+		species_name=
+		{
+			key="Tzeentick"
+		}
+		species_plural=
+		{
+			key="Tzeenticks"
+		}
+		species_adjective=
+		{
+			key="Tzeentick"
+			literal=yes
+		}
+		species_bio="The Tzeentchian are followers of the Chaos God Tzeentch, are adept at sorcery and seek power through complex schemes and arcane knowledge. They come from various species and are characterized by their ever-shifting allegiance and mastery of psychic abilities. Tzeentchians are agents of chaos, wielding unpredictable influence in the galaxy."
+		name_list="MAM2"
+		gender=not_set
+		# trait="trait_psionic"
+		trait="trait_industrious"
+		trait="trait_natural_physicists"
+		trait="trait_solitary"
+		# trait="trait_repugnant"
+		trait="trait_deviants"
+		trait="trait_conservational"
+	}
+	name=
+	{
+		key="Tzeentch Fellowship"
+	}
+	adjective=
+	{
+		key="Tzeentish"
+	}
+	authority="auth_oligarchic"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_thousand_sons"
+		"the_alpha_legion"
+		"tzeentch"
+	}
+	government="gov_grim_council"
+	planet_name=
+	{
+		key="Tapestry"
+	}
+	planet_class="pc_arctic"
+	system_name=
+	{
+		key="Fate"
+	}
+	initializer=""
+	graphical_culture="avian_01"
+	city_graphical_culture="molluscoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="tzeentch_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="flag_BG_12.dds"
+		}
+		colors=
+		{
+			"blue"
+			"satin_burgundy"
+			"teal"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="Vabrig den Telnik"
+				literal=yes
+			}
+		}
+		portrait="avi8"
+		texture=2
+		attachment=0
+		clothes=4
+		trait="leader_trait_principled"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="gilded_room"
+	spawn_enabled=yes	# Yes / no / always
+	playable=has_necroids
+	ethic="ethic_militarist"
+	ethic="ethic_fanatic_spiritualist"
+	civics=
+	{
+		"civic_death_cult"
+		"civic_exalted_priesthood"
+	}
+	origin="origin_shroudmutated"
+}
+
+# Clone with DLC
+# Slaanesh: Emperor's Children (III Legion) - Devoted to Slaanesh, the Chaos God of excess and pleasure.
+"Slaaneshi Covenant"=
+{
+	key="Slaaneshi Covenant"
+	ship_prefix=
+	{
+		key="SCS"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_hp_13"
+		species_name=
+		{
+			key="Slaaneshi"
+		}
+		species_plural=
+		{
+			key="Slaaneshi"
+		}
+		species_adjective=
+		{
+			key="Slaaneshi"
+			literal=yes
+		}
+		species_bio="The Slaaneshi are followers of the Chaos God Slaanesh, which is associated with excess, pleasure, and indulgence. They come from various species and are characterized by their pursuit of hedonistic pleasures and sensations. They seek to push the boundaries of sensation and pleasure to extremes."
+		name_list="CHAOS1"		# "HUM2"
+		gender=not_set
+		# trait="trait_latent_psionic"
+		trait="trait_charismatic"
+		trait="trait_deviants"
+		trait="trait_decadent"
+		trait="trait_natural_sociologists"
+		trait="trait_traditional"
+	}
+	name=
+	{
+		key="Slaaneshi Covenant"
+	}
+	adjective=
+	{
+		key="Slanneshee"
+	}
+	authority="auth_corporate"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_emperor_children"
+		"slaanesh"
+	}
+	government="gov_criminal_syndicate"	# government="gov_holy_tribunal"
+	planet_name=
+	{
+		key="Beauty"
+	}
+	planet_class="pc_ocean"
+	system_name=
+	{
+		key="Decadia"
+	}
+	initializer=""
+	graphical_culture="fungoid_01"
+	city_graphical_culture="avian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="slaanesh_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="rounded_middle.dds"
+		}
+		colors=
+		{
+			"pink"
+			"burgundy"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="Vimas Va"
+				literal=yes
+			}
+		}
+		portrait="humanoid_hp_13_female"
+		texture=0
+		attachment=0
+		clothes=1
+		trait="trait_ruler_eye_for_talent"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_fanatic_befrienders_room"
+	spawn_enabled=no	# Yes / no / always
+	playable=has_megacorp
+	ethic="ethic_authoritarian"	# ethic="ethic_egalitarian"
+	ethic="ethic_xenophile"
+	ethic="ethic_spiritualist"
+	# ethic="ethic_militarist"
+	civics=
+	{
+		"civic_criminal_heritage"
+		"civic_corporate_hedonism"
+	}
+	origin="origin_shroudsinners"
+}
+
+# Fallback Clone without DLC
+Slaanesh=
+{
+	key="Slaanesh"
+	ship_prefix=
+	{
+		key="SCS"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_hp_13"
+		species_name=
+		{
+			key="Slaaneshi"
+		}
+		species_plural=
+		{
+			key="Slaaneshi"
+		}
+		species_adjective=
+		{
+			key="Slaaneshi"
+			literal=yes
+		}
+		species_bio="The Slaaneshi are followers of the Chaos God Slaanesh, which is associated with excess, pleasure, and indulgence. They come from various species and are characterized by their pursuit of hedonistic pleasures and sensations. They seek to push the boundaries of sensation and pleasure to extremes."
+		name_list="CHAOS1"		# "HUM2"
+		gender=not_set
+		# trait="trait_latent_psionic"
+		trait="trait_charismatic"
+		trait="trait_deviants"
+		trait="trait_decadent"
+		trait="trait_natural_sociologists"
+		trait="trait_traditional"
+	}
+	name=
+	{
+		key="Slaaneshi Covenant"
+	}
+	adjective=
+	{
+		key="Slanneshee"
+	}
+	authority="auth_oligarchic"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_emperor_children"
+		"slaanesh"
+	}
+	government="gov_holy_tribunal" # gov_theocratic_oligarchy
+	planet_name=
+	{
+		key="Beauty"
+	}
+	planet_class="pc_ocean"
+	system_name=
+	{
+		key="Decadia"
+	}
+	initializer=""
+	graphical_culture="fungoid_01"
+	city_graphical_culture="avian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="slaanesh_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="rounded_middle.dds"
+		}
+		colors=
+		{
+			"pink"
+			"burgundy"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="Vimas Va"
+				literal=yes
+			}
+		}
+		portrait="humanoid_hp_13_female"
+		texture=0
+		attachment=0
+		clothes=1
+		trait="trait_ruler_eye_for_talent"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_fanatic_befrienders_room"
+	spawn_enabled=no	# Yes / no / always
+	playable=has_not_megacorp
+	ethic="ethic_egalitarian"
+	ethic="ethic_xenophile"
+	ethic="ethic_spiritualist"
+	# ethic="ethic_militarist"
+	civics=
+	{
+		# "civic_exalted_priesthood"
+		"civic_shadow_council"
+		"civic_cutthroat_politics"
+	}
+	origin="origin_shroudsinners"
+}
+
+# TODO infected jobs do not work?
+# Nurgle: Death Guard (XIV Legion) - Devoted to Nurgle, the Chaos God of decay and pestilence.
+# "Nurglen Clique"
+"nurglenclique"=
+{
+	key="nurglenclique"
+	ship_prefix=
+	{
+		key="NDS"
+		literal=yes
+	}
+	species=
+	{
+		class="TOX" # "NECROID"
+		portrait="tox14" # "nec3"
+		species_name=
+		{
+			key="Nurglen"
+		}
+		species_plural=
+		{
+			key="Nurglens"
+		}
+		species_adjective=
+		{
+			key="Nurglen"
+			literal=yes
+		}
+		species_bio="The Nurglen Rot, a malevolent affliction, embodies the corrupting touch of the foul Shroud God. This insidious force not only spreads mutation and disease, but also grants a twisted form of vitality, allowing its victims to persist in a state of perpetual decay. Under its sinister influence, life and death intertwine, with the deceased reanimated and the living succumbing to a relentless cycle of deterioration. This wretched species is ensnared in the Shroud God's perverse machinations, bound to a existence characterized by unending decay."
+		name_list="MOL3"
+		gender=not_set
+		trait="trait_hive_mind"
+		# trait="trait_shroud_sick"
+		trait="trait_repugnant"
+		trait="trait_strong"
+		trait="trait_adaptive"
+		trait="trait_resilient"
+	}
+	name=
+	{
+		key="Nurglen Clique"
+	}
+	adjective=
+	{
+		key="Nurgly"
+	}
+	authority="auth_hive_mind"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_death_guard"
+		"nurgle"
+	}
+	government="gov_hive_mind"
+	planet_name=
+	{
+		key="Rot"
+	}
+	planet_class="pc_tropical"
+	system_name=
+	{
+		key="Decay"
+	}
+	initializer=""
+	graphical_culture="molluscoid_01"
+	city_graphical_culture="fungoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="nurgle_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="planet_fract.dds"
+		}
+		colors=
+		{
+			"sick_green"
+			"shadow_green"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="Nuvace"
+				literal=yes
+			}
+		}
+		portrait="tox14" # "nec3"
+		texture=1
+		attachment=0
+		clothes=0
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_spiritual_seekers_room"
+	spawn_enabled=yes
+	playable=has_toxoids
+	ethic="ethic_gestalt_consciousness"
+	civics=
+	{
+		"civic_hive_ascetic"
+		"civic_hive_memorialist"
+	}
+	origin="origin_shroudsick"
+}
+# Fallback Clone without DLC
+"nurglenclique"=
+{
+	key="nurglenclique"
+	ship_prefix=
+	{
+		key="NDS"
+		literal=yes
+	}
+	species=
+	{
+		class="NECROID"
+		portrait="nec3"
+		species_name=
+		{
+			key="Nurglen"
+		}
+		species_plural=
+		{
+			key="Nurglens"
+		}
+		species_adjective=
+		{
+			key="Nurglen"
+			literal=yes
+		}
+		species_bio="The Nurglen Rot, a malevolent affliction, embodies the corrupting touch of the foul Shroud God. This insidious force not only spreads mutation and disease, but also grants a twisted form of vitality, allowing its victims to persist in a state of perpetual decay. Under its sinister influence, life and death intertwine, with the deceased reanimated and the living succumbing to a relentless cycle of deterioration. This wretched species is ensnared in the Shroud God's perverse machinations, bound to a existence characterized by unending decay."
+		name_list="MOL3"
+		gender=not_set
+		trait="trait_hive_mind"
+		# trait="trait_shroud_sick"
+		trait="trait_repugnant"
+		trait="trait_strong"
+		trait="trait_adaptive"
+		trait="trait_resilient"
+	}
+	name=
+	{
+		key="Nurglen Clique"
+	}
+	adjective=
+	{
+		key="Nurgly"
+	}
+	authority="auth_hive_mind"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"the_death_guard"
+		"nurgle"
+	}
+	government="gov_hive_mind"
+	planet_name=
+	{
+		key="Rot"
+	}
+	planet_class="pc_tropical"
+	system_name=
+	{
+		key="Decay"
+	}
+	initializer=""
+	graphical_culture="molluscoid_01"
+	city_graphical_culture="fungoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="nurgle_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="planet_fract.dds"
+		}
+		colors=
+		{
+			"sick_green"
+			"shadow_green"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="Nuvace"
+				literal=yes
+			}
+		}
+		portrait="tox14" # "nec3"
+		texture=1
+		attachment=0
+		clothes=0
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_spiritual_seekers_room"
+	spawn_enabled=yes
+	playable=has_not_toxoids
+	ethic="ethic_gestalt_consciousness"
+	civics=
+	{
+		"civic_hive_ascetic"
+		"civic_hive_memorialist"
+	}
+	origin="origin_shroudsick"
+}
+
+# Vol 3
+"necronresurge"=
+{
+	key="necronresurge"
+	ship_prefix=
+	{
+		key="NRS"
+		literal=yes
+	}
+	species=
+	{
+		class="MACHINE" # Necrons
+		portrait="sd_hum_robot" # Szarekhan_Dynasty
+		species_name=
+		{
+			key="name_list_NECRON1" # "name_list_NECRON1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_necron"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_necron"
+					}
+				}
+
+			}
+		}
+		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
+		name_list="NECRON1"
+		gender=not_set
+		trait="trait_machine_unit"
+		trait="trait_robot_high_bandwidth"
+		trait="trait_robot_recycled"
+		trait="trait_robot_mass_produced"
+		trait="trait_robot_repurposed_hardware"
+		trait="trait_robot_durable"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_NECRON1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Resurgency"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_necron"
+	}
+	authority="auth_machine_intelligence"
+	flags=
+	{
+		"custom_start_screen"
+		"necron_empire"
+	}
+	government="gov_machine_terminator"
+	advisor_voice_type="l_necroid_vir"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_necron"
+	}
+	planet_class="pc_desert"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_necron"
+	}
+	initializer=""
+	graphical_culture="steelribs_01" # "humanoid_01"
+	city_graphical_culture="steelribs_01" # "mammalian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="necrons"
+			file="necron_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="stripe.dds"
+		}
+		colors=
+		{
+			"orange"
+			"dark_purple"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_necron"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="Varagon"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="Drakvir"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="sd_hum_robot"		# "Szarekhan13"
+		texture=3
+		attachment=0
+		clothes=0
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_necron"
+		}
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="necron2_room"	# "machine_room"
+	spawn_enabled=yes	# Yes / no / always
+	# playable=has_synthetic_dawn
+	ethic="ethic_gestalt_consciousness"
+	civics=
+	{
+		"civic_machine_terminator"
+		"civic_machine_warbots"
+	}
+	origin="origin_necron_awakening"
+}
+
+# Dark Eldar "Drukhari Regime"
+"drukravagers"=
+{
+	key="EMPIRE_DESIGN_darkeldar"
+	ship_prefix=
+	{
+		key="DPB"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_03"
+		species_name=
+		{
+			key="name_list_DARKELDAR1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_darkeldar"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_darkeldar"
+					}
+				}
+
+			}
+		}
+		species_bio="The Drukhari, also known as the Dark Eldar, are a sinister faction in the universe. They are the twisted descendants of the ancient Eldar race, embracing sadistic and malevolent practices. The Drukhari thrive on pain and suffering, raiding the galaxy from their dark city-communes in the Webway. Masters of speed and stealth, they are feared for their ruthless and cunning tactics."
+		name_list="DARKELDAR1"		# "NECROID4"
+		gender=not_set
+		trait="trait_decadent"		# -1
+		trait="trait_enduring"		# +1
+		trait="trait_quick_learners"		# +1
+		trait="trait_talented"		# +1
+		# trait="trait_wasteful" # -1
+		# trait="trait_thrifty"		# +2
+	}
+	secondary_species=
+	{
+		class="HUM"
+		portrait="humanoid_hp_12"
+		species_name=
+		{
+			key="name_list_ORK1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_ork"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_ork"
+					}
+				}
+
+			}
+		}
+		species_bio="Orks' robust physiology and natural resilience also make them suitable for various forms of forced labor and servitude. Their raw physical power can be harnessed for tasks that might be too demanding for other species."
+		name_list="REP4"
+		gender=not_set
+		trait="trait_self_sustained"
+		trait="trait_strong"
+		trait="trait_deviants"
+		trait="trait_sedentary"
+		trait="trait_humanoid_existential_iteroparity"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_DARKELDAR1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Regime"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_darkeldar"
+	}
+	authority="auth_imperial"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"eldarian"
+		"darkeldar_empire"
+	}
+	government="gov_star_empire" # gov_bandit_kingdom
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_darkeldar"
+	}
+	planet_class="pc_tundra" # pc_continental
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_darkeldar"
+	}
+	initializer="" # shattered_ring_start
+	graphical_culture="molluscoid_01"
+	city_graphical_culture="necroid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="pirate"
+			file="drukhari_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="triangle_split.dds"
+		}
+		colors=
+		{
+			"red"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_darkeldar"
+			}
+		}
+		portrait="humanoid_03_female_01"
+		texture=3
+		attachment=0
+		clothes=0
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_darkeldar"
+		}
+		trait="trait_ruler_industrialist"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="commorragh_room" # "personality_slaving_despots_room"
+	spawn_enabled=yes	# Yes / no / always
+	playable=has_utopia
+	ethic="ethic_xenophobe"		# Reflecting the Drukhari's disdain for other races and their penchant for raiding and enslaving alien populations, a xenophobe ethic would be suitable. It would fuel their desire to dominate and exploit weaker civilizations.
+	ethic="ethic_militarist"	# Embracing the ethos of conflict and aggression, a militarist ethic would align well with the Drukhari's ruthless pursuit of power and conquest. It would provide bonuses to military strength and allow for aggressive expansion through raiding and conquest.
+	ethic="ethic_authoritarian"	# Represent the strict hierarchy and oppressive rule within their society.
+	# ethic="ethic_materialist"	# Reflect their obsession with technology and the pursuit of personal power and pleasure
+	civics=
+	{
+		# "civic_barbaric_despoilers" host_has_dlc="Apocalypse"
+		"civic_slaver_guilds"
+		"civic_distinguished_admiralty"
+		# civic_cutthroat_politics
+	}
+	origin="origin_paindrinkers"
+}
+
+# Vol 4
+# "Tyranid Swarm"
+"tryanidswarmalp"=
+{
+	key="EMPIRE_DESIGN_tyranid"
+	ship_prefix=
+	{
+		key="TSS"
+		literal=yes
+	}
+	species=
+	{
+		class="ART"
+		portrait="art17"
+		species_name=
+		{
+			key="name_list_TYRANID1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_tyranid"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_tyranid"
+					}
+				}
+
+			}
+		}
+		species_bio="The Tyranid Swarm is an extragalactic species. They are a terrifying and all-consuming hive mind, driven by a singular purpose: to consume all biological matter in their path. Comprising a myriad of bioengineered organisms, the Tyranid Swarm is an unstoppable force of nature, capable of adapting and evolving rapidly to overcome any opposition. Their vast numbers and relentless hunger for biomass make them a formidable threat in the galaxy. The Tyranids' unrelenting pursuit of consumption and their ability to adapt to any environment make them a nightmarish adversary for all who face them."
+		name_list="TYRANID1"		# "HIVE2"
+		gender=not_set
+		trait="trait_hive_mind"
+		# trait="trait_tyranid" # trait="trait_extremely_adaptive"
+		trait="trait_repugnant"
+		trait="trait_fleeting"
+		# trait="trait_noxious" has_toxoids
+		# trait="trait_incubator" has_toxoids
+		trait="trait_industrious"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_TYRANID1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Swarm"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_tyranid"
+	}
+	authority="auth_hive_mind"
+	flags=
+	{
+		"custom_start_screen"
+		"tyranid_empire"
+	}
+	government="gov_devouring_swarm"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_tyranid"
+	}
+	planet_class="pc_tropical"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_tyranid"
+	}
+	initializer=""
+	graphical_culture="fungoid_01"
+	city_graphical_culture="molluscoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="tyranids"
+			file="tyranid_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="bong_h.dds"
+		}
+		colors=
+		{
+			"dark_purple"
+			"red"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_tyranid"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="First"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="Jormungandr"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="art17"
+		texture=3
+		attachment=0
+		clothes=0
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_tyranid"
+		}
+		trait="trait_ruler_industrialist"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="organic_room"
+	spawn_enabled=yes	# Yes / no / always
+	playable=has_utopia
+	ethic="ethic_gestalt_consciousness"
+	civics=
+	{
+		"civic_hive_subsumed_will"
+		"civic_hive_devouring_swarm"
+	}
+	origin="origin_bioreformers"
+}
+
+# "Tau Empire"
+"tauunityalp"=
+{
+	key="EMPIRE_DESIGN_tau"
+	ship_prefix=
+	{
+		key="TGS"
+		literal=yes
+	}
+	species=
+	{
+		class="MAM" # "REP"
+		portrait="mam5"
+		species_name=
+		{
+			key="name_list_TAU1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_tau"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_tau"
+					}
+				}
+
+			}
+		}
+		species_bio="The Tau are a technologically advanced species known for their innovative engineering and diplomatic approach to interstellar relations. United under the Greater Good philosophy, they seek harmony and cooperation among diverse species. The Tau Empire, guided by their Ethereals, strives for progress, expansion, and a brighter future for all."
+		name_list="TAU1"		# "HUM3"
+		gender=not_set
+		trait="trait_thrifty"
+		trait="trait_intelligent"
+		trait="trait_weak"
+		trait="trait_sedentary"
+	}
+	secondary_species=
+	{
+		class="AVI"
+		portrait="avi14"
+		species_name=
+		{
+			key="Kroot"
+		}
+		species_plural=
+		{
+			key="Kroot_plural"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="Kroot_adj"
+					}
+				}
+
+			}
+		}
+		species_bio="Kroot_desc"
+		name_list="AVI2"
+		gender=not_set
+		# trait="trait_syncretic_proles" # +1
+		trait="trait_conformists"
+		trait="trait_strong"		# +1
+		trait="trait_resilient"		# +1
+		trait="trait_fleeting"		# -1
+		trait="trait_unruly"		# -2
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_TAU1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Empire"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_tau"
+	}
+	authority="auth_oligarchic"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"tau_empire"
+	}
+	government="gov_executive_committee"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_tau"
+	}
+	planet_class="pc_continental"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_tau"
+	}
+	initializer=""
+	graphical_culture="mammalian_01"
+	city_graphical_culture="reptilian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="tau"
+			file="tau_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="circle.dds"
+		}
+		colors=
+		{
+			"light_blue"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_tau"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="Irva"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="naTilpen"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="mam5" # rep2
+		texture=0
+		attachment=0
+		clothes=2
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_tau"
+		}
+		trait="trait_ruler_charismatic"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_peaceful_traders_room"
+	spawn_enabled=yes	# Yes / no / always
+	playable=has_utopia
+	ethic="ethic_egalitarian"
+	ethic="ethic_xenophile"
+	ethic="ethic_materialist"
+	# ethic="ethic_militarist"
+	civics=
+	{
+		"civic_idealistic_foundation"
+		"civic_shadow_council"
+		# "civic_efficient_bureaucracy" # Reflecting their organized society
+		# "civic_meritocracy" # Emphasizing skill and ability
+		# "civic_merchant_guilds" # has_megacorp=yes
+		# "civic_technocracy" # Highlighting their advanced technological governance
+		# "civic_diplomatic_corps" has_federations_dlc=yes # Demonstrating their diplomatic efforts
+		# "civic_philosopher_king" # Representing Ethereal leadership; collides authority
+		# "civic_citizen_service" # Reflecting societal contribution; collides ethic_fanatic_xenophile
+	}
+	origin="origin_greatergood"
+}
+
+# O God Ruler "Terran Imperium"
+imp=
+{
+	key="EMPIRE_DESIGN_imp"
+	ship_prefix=
+	{
+		key="GIS"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM" # Imperium
+		portrait="human" # "Astra_Militarum"
+		species_name=
+		{
+			key="PRESCRIPTED_species_name_mankind"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_mankind"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_mankind"
+					}
+				}
+
+			}
+		}
+		species_bio="The Posthumans are highly augmented beings, surpassing normal human capabilities through advanced technology and genetic enhancements. They are elite warriors and leaders, embodying humanity's relentless pursuit of advancement."
+		name_list="IMPERIUM1"		# "HUMAN3"
+		gender=not_set
+		# trait="trait_functional"
+		trait="trait_traditional"
+		trait="trait_natural_engineers"
+		trait="trait_communal"
+		trait="trait_weak"
+	}
+	name=
+	{
+		key="EMPIRE_DESIGN_imp"
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_mankind"
+	}
+	authority="auth_imperial"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"human_empire"
+		"ai_no_leave_fed"
+		"the_mankind"
+	}
+	government="gov_feudal_empire"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_mankind"
+	}
+	planet_class="pc_continental" # Holy Terra
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_mankind"
+	}
+	initializer="" # sol_holy_mars_system_initializer sol_system_initializer
+	graphical_culture="humanoid_01" # "mammalian_01"
+	city_graphical_culture="humanoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="imperium"
+			file="imperium_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="v.dds"
+		}
+		colors=
+		{
+			"black"
+			"ochre_brown" # "yellow"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=male
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_mankind"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="Wolvus"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="Burnus"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="IMP_Emperor_ruler" # "Custodes12" "human_male_03"
+		texture=0
+		attachment=14
+		clothes=5
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_mankind"
+		}
+		custom_biography=
+		{
+			key="A legendary leader, ascended in a turbulent era. With unmatched charisma and strategic brilliance, he united warring factions and forged the Imperium. His reign brought unprecedented unity, strength, and hope to humanity, forever shaping its destiny."
+			literal=yes
+		}
+		trait="trait_ruler_eye_for_talent"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=yes
+	room="personality_democratic_crusaders_room" # "Imperium2_room"
+	spawn_enabled=yes	# Yes / no / always
+	# ethic="ethic_xenophobe"
+	ethic="ethic_authoritarian"	# Reflecting the centralized control and hierarchical structure of the empire, an authoritarian ethic would be suitable for a God Imperator Empire. It would ensure that power remains firmly in the hands of the ruler or ruling family, allowing for greater centralization of authority.
+	ethic="ethic_militarist"	#
+	ethic="ethic_spiritualist"	# Embracing the belief in the divine right of the ruler and the worship of the God-Emperor, a spiritualist ethic would align well with the religious fervor and devotion of the populace. It would provide bonuses to unity and stability, reflecting the unwavering loyalty to the divine ruler.
+	civics=
+	{
+		# "civic_imperial_cult"
+		"civic_police_state"
+		"civic_feudal_realm"
+	}
+	origin="origin_godruler"
+}
+"blacklegion"=
+{
+	key="EMPIRE_DESIGN_black_legion"
+	ship_prefix=
+	{
+		key="BL"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"		# "Chaos_Daemons" "Legiones_Astartes" "heretics&xenos"
+		portrait="human"		# "XVI_Legion" "sonsofhorus"
+		species_name=
+		{
+			key="PRESCRIPTED_species_name_black_legion"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_black_legion"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_black_legion"
+					}
+				}
+
+			}
+		}
+		# species_bio="The Black Legion, formerly known as the Luna Wolves, is a formidable Chaos Space Marine faction led by the Warmaster Abaddon. Driven by the pursuit of power and ascension, they seek to unleash the full might of Chaos upon the galaxy. Abaddon, the favored son of all four Chaos Gods, commands this malevolent force with the singular goal of the Imperium of Man's destruction."
+		species_bio="Chaos Space Marines, once noble warriors of the Imperium, have succumbed to the seductive call of Chaos. They are now twisted, malevolent beings devoted to the service of the dark powers that inhabit the Warp. These corrupted humans have forsaken their former allegiances and are now formidable champions of Chaos."
+		name_list="CHAOS1"		# "grand_crusade_luna_wolves"
+		# trait="trait_heretic_astartes"
+		trait="trait_strong"		# +1
+		trait="trait_solitary"		# -1
+		trait="trait_slow_breeders"		# -2
+		trait="trait_talented"
+		trait="trait_quick_learners"		# +1
+	}
+	name=
+	{
+		key="name_list_Black_legion"
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_black_legion"
+	}
+	authority="auth_dictatorial"
+	flags=
+	{
+		"custom_start_screen"
+		"humanoid"
+		"chaos_empire"
+		"chaos_undivided_worship" # "undividedworship"
+		# "chaos_undivided"
+		"the_black_legion"
+		"eyechaos_empire"
+	}
+	government="gov_theocratic_dictatorship"	# gov_anarcho_tribalism
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_black_legion"
+	}
+	planet_class="pc_arid"	# "pc_daemon"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_black_legion"
+	}
+	initializer="eyechaos_homeworld"
+	graphical_culture="mammalian_01" # "nemesis_01"	# "chaos_01"	# "gothic_01"
+	city_graphical_culture="mammalian_01"	# "humanoid_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="chaos"
+			file="black_legion.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="star_eight.dds"
+		}
+		colors=
+		{
+			"black"
+			"red"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=male
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_black_legion"
+			}
+		}
+		portrait="Black_legion" # "CHAOS_BlackLegion_ruler"		# "human_male_04"
+		texture=1
+		attachment=30
+		clothes=5
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_black_legion"
+		}
+		heir_title=
+		{
+			key="PRESCRIPTED_ruler_title_black_legion"
+		}
+		ruler_title_female=
+		{
+			key="Harbinger of Shadows"
+			literal=yes
+		}
+		custom_biography=
+		{
+			key="The Chaos Warmaster, leader of the Black Legion, rose in the Horus Heresy. With the dreaded Talon of Horus, he's a strategic genius. Unyielding hatred for the Imperium drives his pursuit of chaos, inspiring unwavering devotion in followers."
+			literal=yes
+		}
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="personality_evangelizing_zealots_room"	# chaos_room
+	spawn_enabled=yes
+	playable=has_ancrel # has_crisis_stage_1
+	# ethic="ethic_xenophobe"	# The Black Legion is fiercely devoted to Chaos and is known for its hostility towards other factions, especially those aligned with the Imperium. They may view other civilizations as enemies or potential targets for their Black Crusades.
+	ethic="ethic_authoritarian"	# Reflecting the strict hierarchy and centralized control within the Black Legion or Chaos Undivided Empire, ensuring that power remains firmly in the hands of those who are willing to seize it by any means necessary.
+	ethic="ethic_militarist"	# The Black Legion is a formidable military force that launches large-scale campaigns of war and destruction. This ethic reflects their emphasis on martial prowess and conquest.
+	ethic="ethic_spiritualist"	# The Black Legion has a strong connection to the Chaos Gods and the Warp. They are deeply entrenched in the dark, chaotic powers of the universe. This ethic reflects their devotion to the chaotic and otherworldly forces that guide their actions.
+	civics=
+	{
+		"civic_warrior_culture"
+		"civic_shadow_council"
+	}
+	# civic_distinguished_admiralty "civic_feudal_society"
+	# civics={ "civic_black_legion" "civic_soh" "civic_immaterium" }
+	# civics={ "civic_xvi" "civic_chaos_undivided" "civic_barbaric_despoilers" }
+	origin="origin_fallen_psionic"	# origin_black_legion
+}

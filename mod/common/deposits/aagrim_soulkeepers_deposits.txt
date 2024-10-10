@@ -1,0 +1,193 @@
+d_aa_exodite_enclave = {
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare_blocker
+
+	potential = { always = no }
+
+	on_cleared = {
+		if = {
+			limit = { exists = owner }
+			if = {
+				limit = { owner = { has_origin_soulkeepers = yes } }
+				create_pop = { species = owner }
+				random = { chance = 50 create_pop = { species = owner } }
+			}
+			else = {
+				owner = { add_resource = { minerals = 250 } }
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			trigger = {
+				owner = { has_origin_soulkeepers = no }
+			}
+			energy = 1000
+		}
+		cost = {
+			trigger = {
+				owner = { has_origin_soulkeepers = yes }
+			}
+			influence = 100
+		}
+		produces = {
+			trigger = {
+				owner = { has_origin_soulkeepers = yes }
+			}
+			food = 5
+			minerals = 3
+			society_research = 3
+		}
+	}
+
+	planet_modifier = { planet_max_districts_add = -1 planet_max_buildings_add = 1 }
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin_soulkeepers = yes }
+		}
+		modifier = { trade_value_add = 2 planet_amenities_add = 2 job_exodite_add = 1 }
+	}
+
+	ai_weight = { weight = 0 }
+}
+
+d_aa_infinity_circuit = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { merg_is_habitat = yes }
+
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_zro has_origin_soulkeepers = yes }
+			}
+			sr_zro = 1
+			energy = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin_soulkeepers = yes }
+		}
+		modifier = {
+			planet_stability_add = 1
+			job_bonesinger_add = 1
+			planet_max_buildings_add = 2
+			planet_amenities_add = 10
+			planet_crime_add = -10
+		}
+	}
+
+	country_modifier = {
+		species_leader_exp_gain = 0.05
+		leaders_upkeep_mult = -0.01
+		leader_lifespan_add = 5
+	}
+
+	drop_weight = { weight = 0 }
+}
+
+d_aa_infinity_circuit_alt = {
+	icon = d_aa_infinity_circuit
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		merg_is_habitat = no
+	}
+
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_zro has_origin_soulkeepers = yes }
+			}
+			sr_zro = 1
+			energy = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin_soulkeepers = yes }
+		}
+		modifier = {
+			planet_stability_add = 2
+			job_bonesinger_add = 1
+			planet_max_buildings_add = 2
+			planet_amenities_add = 10
+			planet_crime_add = -10
+		}
+	}
+
+	country_modifier = { leader_lifespan_add = 5 }
+
+	drop_weight = { weight = 0 }
+}
+
+d_aa_shroudgate_inactive = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { can_have_habitable_deposits = yes }
+
+	resources = { category = orbital_mining_deposits }
+
+	drop_weight = { weight = 0 }
+}
+
+d_aa_shroudgate_active = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { can_have_habitable_deposits = yes }
+
+	resources = {
+		category = orbital_mining_deposits
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_origin_soulkeepers = yes }
+			}
+			sr_zro = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_origin_soulkeepers = yes
+					has_origin = origin_paindrinkers
+					has_origin = origin_shroudmutated
+				}
+			}
+		}
+		modifier = { trade_value_add = 5 planet_amenities_add = 5 pop_growth_from_immigration = 0.75 }
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin_soulkeepers = yes }
+		}
+		modifier = { job_seer_add = 1 job_bonesinger_add = 1 planet_max_buildings_add = 2 }
+	}
+
+	drop_weight = { weight = 0 }
+}

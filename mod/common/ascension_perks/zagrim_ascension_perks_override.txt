@@ -1,0 +1,148 @@
+@ascension_path_base_weight = 50 # 100
+@ascension_path_synergy_weight = 2
+@ascension_path_anti_synergy_weight = 0.5
+# Just patch trigger ap_the_flesh_is_weak
+# Genetic Ascension  (regular empires & Hive Minds)
+ap_engineered_evolution = {
+	on_enabled = {
+		custom_tooltip = "engineered_evolution_tooltip"
+		if = {
+			limit = {
+				has_origin = origin_clone_army
+				OR = {
+					has_trait = trait_clone_soldier_infertile
+					has_trait = trait_clone_soldier_infertile_full_potential
+				}
+			}
+			custom_tooltip = clone_soldier_locked_genes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_biological_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_the_flesh_is_weak"
+			NOR = {
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_tradition = tr_cybernetics_adopt
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_organo_machine_interfacing"
+			NOT = { has_ascension_perk = ap_organo_machine_interfacing }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_over_matter"
+			NOT = { has_ascension_perk = ap_mind_over_matter }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_synthetic_evolution"
+			NOT = { has_ascension_perk = ap_synthetic_evolution }
+		}
+		custom_tooltip = {
+			fail_text = "requires_free_tradition_tree"
+			num_tradition_categories < @max_tradition_trees
+		}
+	}
+
+	potential = {
+		has_utopia = yes
+		NOR = {
+			has_genetic_ascension = yes
+			is_machine_empire = yes
+			has_origin = origin_shroudwalker_apprentice
+			has_origin = origin_cybernetic_creed
+			has_origin = origin_synthetic_fertility
+			is_mechanical_empire = yes
+			is_individual_machine = yes
+			is_cyborg_empire = yes
+			is_natural_design_empire = yes
+			has_valid_civic = civic_augmentation_bazaars
+		}
+	}
+
+	ai_weight = {
+		factor = @ascension_path_base_weight
+		modifier = {
+			factor = @ascension_path_synergy_weight
+			OR = {
+				has_engineered_evolution_synergy = yes
+				is_hive_empire = yes
+			}
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 6
+		}
+	}
+}
+# Cyborg Ascension (regular empires)
+ap_the_flesh_is_weak = {
+	on_enabled = {
+		custom_tooltip = "flesh_is_weak_tooltip"
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			OR = {
+				num_ascension_perks > 1
+				has_origin = origin_cybernetic_creed
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_engineered_evolution"
+			has_genetic_ascension = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_mind_over_matter"
+			NOT = { has_ascension_perk = ap_mind_over_matter }
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_ap_synthetic_evolution"
+			NOT = { has_ascension_perk = ap_synthetic_evolution }
+		}
+		custom_tooltip = {
+			fail_text = "requires_free_tradition_tree"
+			num_tradition_categories < @max_tradition_trees
+		}
+	}
+
+	potential = {
+		OR = {
+			has_utopia = yes
+			has_machine_age_dlc = yes
+		}
+		NOR = {
+			has_ascension_perk = ap_the_flesh_is_weak
+			has_origin = origin_shroudwalker_apprentice
+			has_origin = origin_cybernetic_creed
+			has_origin = origin_synthetic_fertility
+			has_origin = origin_godruler
+			is_gestalt = yes
+			is_individual_machine = yes
+			is_natural_design_empire = yes
+		}
+	}
+
+	ai_weight = {
+		factor = @ascension_path_base_weight
+		modifier = {
+			factor = @ascension_path_anti_synergy_weight
+			has_flesh_is_weak_anti_synergy = yes
+		}
+		modifier = {
+			factor = 0
+			num_owned_planets < 6
+		}
+	}
+}

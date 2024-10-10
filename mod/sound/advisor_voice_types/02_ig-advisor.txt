@@ -1,0 +1,11 @@
+# "DOW Imperial Guard Advisor"
+advisor_ig = {
+	name = "SETTINGS_VOICE_TYPE_ig-advisor" # Imperial Guard
+	icon = "gfx/interface/icons/governments/civics/civic_imperialcult.dds"
+	# icon = "gfx/interface/icons/ig.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = { add = 9999 has_country_flag = the_mankind }
+	}
+}

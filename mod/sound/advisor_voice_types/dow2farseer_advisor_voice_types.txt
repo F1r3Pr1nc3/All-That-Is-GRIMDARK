@@ -1,0 +1,13 @@
+dow2_advisor_farseer = {
+	name = "dow2_farseer_advisor"
+	# icon =  gfx/interface/icons/governments/civics/dow2farseer.dds
+	icon = "gfx/interface/icons/traits/trait_eldar.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = {
+			add = 9999
+			has_country_flag = eldar_empire
+		}
+	}
+}

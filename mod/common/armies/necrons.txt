@@ -1,0 +1,77 @@
+# Necron Warriors
+necron_warriors = {
+	damage = 1.5
+	health = 3
+	morale = 3 # has_morale = no
+	morale_damage = 1.5
+	collateral_damage = 1
+	war_exhaustion = 0 # 0.5
+	time = 110
+	has_species = yes
+	# icon = GFX_army_type_lucent_brood TODO
+	icon = GFX_army_type_machine_assault # GFX_army_type_assault
+	pop_limited = no
+	disband_if_species_lacks_rights = no
+	resources = {
+		category = armies
+		cost = { minerals = 200 energy = 10 }
+		upkeep = { energy = 1 }
+	}
+	allow = {
+		planet = {
+			has_building = building_monolith_complex
+		}
+	}
+	prerequisites = { "tech_centralized_command" }
+	potential = {
+		exists = owner
+		owner = {
+			OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+			has_technology = tech_advanced_metallurgy_1
+		}
+	}
+	ai_weight = { weight = 500 }
+}
+
+### 'Defense'
+lychguard_defense = {
+	defensive = yes
+	is_pop_spawned = yes
+	damage = 5 # 6.8
+	health = 8 # 10.8
+	morale = 7
+	# has_morale = no
+	collateral_damage = 1
+	war_exhaustion = 0
+	icon = GFX_army_type_mech_defence
+	potential = {
+		planet = {
+			merg_is_relic_world = yes
+			has_building = building_monolith_complex
+		}
+		exists = owner
+		owner = {
+			OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+			has_technology = tech_advanced_metallurgy_1
+		}
+	}
+}
+
+necron_warriors_defense = {
+	defensive = yes
+	is_pop_spawned = yes
+	damage = 3 # 5.55
+	health = 6 # 8.55
+	morale = 5
+	# has_morale = no
+	collateral_damage = 1
+	war_exhaustion = 0
+	icon = GFX_army_type_machine_defensive
+	potential = {
+		exists = owner
+		owner = {
+			OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+			has_technology = tech_advanced_metallurgy_1
+		}
+	}
+}

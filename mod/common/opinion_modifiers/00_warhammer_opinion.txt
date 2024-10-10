@@ -1,0 +1,64 @@
+opinion_both_human = {
+	opinion = { base = 400 }
+}
+
+opinion_traitor_human = {
+	opinion = { base = -200 }
+}
+
+opinion_both_chaos = {
+	opinion = { base = 300 }
+}
+
+opinion_traitor_chaos = {
+	opinion = { base = -200 }
+}
+opinion_both_eldar = {
+	opinion = { base = 200 }
+}
+
+opinion_both_ork = {
+	opinion = { base = 200 }
+}
+
+opinion_both_necron = {
+	opinion = { base = 200 }
+}
+
+# opinion_both_darkeldar = {
+# 	opinion = { base = 200 }
+# }
+
+opinion_both_xenos = {
+	opinion = { base = 200 }
+}
+
+opinion_both_tyranid = {
+	opinion = { base = 200 }
+}
+
+# opinion_human_hate_xenos = {
+# 	opinion = { base = -50 }
+# }
+
+# opinion_chaos_hate_xenos = {
+# 	opinion = { base = -50 }
+# }
+
+opinion_necron_hate_everyone = {
+	opinion = { base = -50 }
+}
+
+# opinion_senatorum = {
+# 	opinion = { base = 1000 }
+# }
+
+# opinion_wanted_to_leave_confederation = {
+# 	opinion = { base = -200 }
+# 	decay = { base = 1 }
+# }
+
+# opinion_denied_to_leave_confederation = {
+# 	opinion = { base = -300 }
+# 	decay = { base = 1 }
+# }

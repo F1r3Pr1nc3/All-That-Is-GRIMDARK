@@ -1,0 +1,20 @@
+# Patch for Astartes Voice Over mod
+chaos_advisor = {
+	name = "origin_fallen_psionic" # "SETTINGS_VOICE_TYPE_chaos_advisor"
+	icon = "gfx/interface/icons/traits/trait_primordial_touch.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = {
+			add = 899
+			has_country_flag = chaos_empire
+		}
+		modifier = {
+			add = 8999
+			OR = {
+				has_country_flag = chaos_undivided_worship # undividedworship
+				has_country_flag = eyechaos_empire
+			}
+		}
+	}
+}

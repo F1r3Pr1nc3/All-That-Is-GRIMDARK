@@ -1,0 +1,79 @@
+# SUPPORT WH40k Planets Renewed: Introduced in v.3.11
+is_imperium_hive_planet = {
+	OR = {
+		# is_planet_class = pc_imperiumhive
+		# # Tier I Hive Worlds
+		is_planet_class = pc_hive_tundra
+		# is_planet_class = pc_hive_continental_01
+		# is_planet_class = pc_hive_continental_02
+		# is_planet_class = pc_hive_ocean
+		# # Tier II Hive Worlds
+		# is_planet_class = pc_hive_medium
+		# is_planet_class = pc_hive_industrial
+		# # Tier III Hive Worlds
+		# is_planet_class = pc_super_hive
+		# is_planet_class = pc_mega_hive
+	}
+}
+is_forge_planet = {
+	always = no
+	# OR = {
+	# 	is_planet_class = pc_forge
+	# 	is_planet_class = pc_forgee
+	# 	is_planet_class = pc_forgeee
+	# 	is_planet_class = pc_forge_ring
+	# 	is_planet_class = pc_forge_ring2
+	# 	is_planet_class = pc_forge_ring3
+	# }
+}
+
+has_not_toxoids = {
+	optimize_memory
+	has_toxoids = no
+}
+
+uses_district_industrial = {
+	OR = {
+		uses_district_set = standard
+		uses_district_set = hive_world
+		uses_district_set = machine_world
+		uses_district_set = infected_world
+		uses_district_set = shattered_ring_world
+	}
+}
+
+# For most compatibility
+has_origin_soulkeepers = {
+	OR = {
+		AND = { has_void_dweller_origin = yes has_country_flag = eldar_empire }
+		has_origin = origin_soulkeepers
+		has_country_flag = origin_soulkeepers
+	}
+}
+# For most compatibility
+has_machine_cult = {
+	OR = {
+		has_origin = origin_iforge
+		has_valid_civic = civic_machine_cult
+		has_ai_personality = adpt_mec
+	}
+}
+# is_void_dweller_empire = {
+# 	OR = {
+# 		has_ascension_perk = ap_voidborn
+# 		has_void_dweller_origin = yes
+# 		has_origin = origin_soulkeepers
+# 	}
+# }
+# Merger of Rules
+MECR_trigger_1_can_be_part_of_galactic_community = {
+	NOT = {
+		has_origin = origin_necron_awakening
+	}
+	NAND = {
+		is_ai = yes
+		has_country_flag = chaos_empire
+	}
+}
+
+uses_grimdark_infected_world_district = { uses_district_set = infected_world }

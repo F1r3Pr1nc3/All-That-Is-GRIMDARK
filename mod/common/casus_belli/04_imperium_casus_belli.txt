@@ -1,0 +1,54 @@
+cb_crusade = {
+	show_in_diplomacy = yes
+	show_notification = yes
+	potential = {
+		is_ai = no # merg_is_default_empire = yes
+		has_valid_civic = civic_imperial_cult
+	}
+	is_valid = {
+		is_neighbor_of = from
+		has_total_war_cb = no
+		from = { merg_is_default_empire = yes }
+		NOR = { is_overlord_to = from is_subject = yes }
+		# OR = { is_subject = no overlord = { NOT = { is_same_empire = from } } }
+	}
+}
+
+# Vanilla overwrite
+cb_containment = {
+	show_in_diplomacy = no
+	show_notification = no
+	potential = {
+		merg_is_default_empire = yes
+		from = {
+			OR = {
+				merg_is_awakened_fe = yes
+				is_country_type = synth_queen
+				is_homicidal = yes
+				has_valid_civic = civic_machine_assimilator
+			}
+		}
+		NOR = {
+			is_homicidal = yes
+			has_valid_civic = civic_machine_assimilator
+			has_valid_civic = civic_imperial_cult
+		}
+	}
+	is_valid = {
+		has_total_war_cb = yes
+		OR = {
+			is_subject = no
+			overlord = { NOT = { is_same_empire = from } }
+		}
+		NOT = { is_overlord_to = from }
+		from = {
+			OR = {
+				merg_is_awakened_fe = yes
+				is_country_type = synth_queen
+				is_homicidal = yes
+				has_valid_civic = civic_machine_assimilator
+				has_valid_civic = civic_imperial_cult
+			}
+		}
+	}
+}

@@ -1,0 +1,302 @@
+cultist = {
+	category = worker
+	is_capped_by_modifier = no
+	building_icon = building_luxury_residence
+	clothes_texture_index = 2
+	icon = death_priest
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		can_take_servant_job = no
+		hidden_trigger = { exists = owner }
+		owner = {
+			OR = {
+				has_origin = origin_shroudsinners
+				has_origin = origin_shroudmutated
+				has_origin = origin_paindrinkers
+			}
+		}
+		OR = {
+			has_job = cultist
+			is_unemployed = yes
+		}
+	}
+
+	resources = {
+		category = planet_culture_workers
+		produces = {
+			unity = 1
+		}
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			is_organic_species = yes
+		}
+		pop_housing_usage_add = -0.5
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 1
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_trait = trait_robot_domestic_protocols
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_add = 0.25
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_repugnant
+		}
+		modifier = {
+			planet_amenities_add = -0.25
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+	}
+}
+
+cultist_master = {
+	category = worker
+	is_capped_by_modifier = no
+	building_icon = building_luxury_residence
+	clothes_texture_index = 2
+	icon = death_priest
+
+	possible_precalc = can_fill_worker_job
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+	}
+
+	possible = {
+		can_take_servant_job = no
+		hidden_trigger = { exists = owner }
+		owner = {
+			has_origin = origin_shroudsinners
+		}
+		OR = {
+			has_job = cultist_master
+			is_unemployed = yes
+		}
+	}
+
+	resources = {
+		category = planet_culture_workers
+		produces = {
+			unity = 2
+			energy = 1
+			# sr_wealth = 0.5
+			consumer_goods = 2
+		}
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			is_organic_species = yes
+		}
+		pop_housing_usage_add = -0.5
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 2
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_trait = trait_robot_domestic_protocols
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_add = 0.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_repugnant
+		}
+		modifier = {
+			planet_amenities_add = -0.5
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+	}
+}
+
+conscript = {
+	category = worker
+	is_capped_by_modifier = no
+	building_icon = building_stronghold
+	clothes_texture_index = 4
+	icon = duelist
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	possible = {
+		# can_take_servant_job = no
+		# is_enslaved = no
+		hidden_trigger = { exists = owner }
+		owner = {
+			OR = {
+				has_origin = origin_shroudrage
+				has_origin = origin_barbarichorde
+			}
+		}
+		OR = {
+			has_job = conscript
+			is_unemployed = yes
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 2
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				exists = owner
+				owner = { has_technology = "tech_ground_defense_planning" }
+			}
+		}
+		modifier = {
+			country_naval_cap_add = 1
+		}
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			is_organic_species = yes
+		}
+		pop_housing_usage_add = -0.5
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+
+	resources = {
+		category = planet_soldiers
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_valid_civic = civic_citizen_service }
+			}
+			unity = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_modifier = martial_law
+			}
+		}
+		modifier = {
+			planet_stability_add = 2
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+	}
+}
+
+nameless = {
+	category = simple_drone
+	building_icon = building_maintenance_depot
+	is_capped_by_modifier = no
+	icon = primitive_laborer
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	resources = {
+		category = planet_jobs
+		produces = {
+			minerals = 1
+			energy = 1
+			food = 1
+		}
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { has_origin = origin_shroudsick }
+		OR = {
+			has_job = nameless
+			is_unemployed = yes
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_no_happiness_add = 2
+		planet_crime_no_happiness_add = -1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_trait = trait_robot_emotion_emulators
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			planet_amenities_no_happiness_add = 0.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_trait = trait_robot_uncanny
+				has_trait = trait_repugnant
+			}
+		}
+		modifier = {
+			planet_amenities_no_happiness_add = -0.5
+		}
+	}
+
+	weight = {
+		weight = @special_job_weight
+	}
+}

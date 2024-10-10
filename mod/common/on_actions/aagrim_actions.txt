@@ -1,0 +1,174 @@
+
+# on_game_start = {
+# 	events = {
+# 		aagrimstarts.0
+# 	}
+# }
+
+on_game_start_country = {
+	events = {
+		aagrimstarts.2000
+	}
+}
+
+# on_press_begin = {
+# 	events = {
+# 		aagrimstarts.1
+# 	}
+# }
+
+# No scope, like on_game_start
+# Does not run when loading MP saves due to OOS concerns
+on_single_player_save_game_load = {
+	events = {
+		aagrimstarts.99			# Backward fixes
+	}
+}
+
+# A planet has been colonized.
+# Scope = Planet
+on_colonized = {
+	events = {
+		necron.1110
+		aagrimstarts.1200
+		aagrimstarts.1400		# origin_shroudsick
+	}
+}
+
+on_planet_transfer = {
+	events = {
+		aagrimstarts.1400		# origin_shroudsick
+	}
+}
+
+on_planet_occupied = {
+	events = {
+		aagrimstarts.1400		# origin_shroudsick
+	}
+}
+
+on_monthly_pulse = {
+	events = {
+		aagrimstarts.1001
+	}
+}
+
+# on_monthly_pulse_country = {
+# 	events = {
+# 		aagrimstarts.100
+# 		aagrimstarts.1300
+# 	}
+# }
+
+# on_yearly_pulse = {
+# 	events = {
+# 		lessgalcom.1
+# 	}
+# }
+
+on_bi_yearly_pulse = {
+	events = {
+		lessgalcom.1
+	}
+}
+
+on_five_year_pulse_country = {
+	events = {
+		aagrimstarts.2003		# Upd Relations
+	}
+}
+
+on_decade_pulse = {
+	events = {
+		lessgalcom.2 # Human ally
+		lessgalcom.3 # Chaos ally
+	}
+	random_events = {
+		50 = lessgalcom.7 # Ork war
+		50 = lessgalcom.8 # Tyranid war
+	}
+}
+
+on_entering_war = {
+	events = {
+		aagrimstarts.100
+	}
+}
+
+on_war_beginning = {
+	events = {
+		aagrimstarts.100
+	}
+}
+
+# A war has been won
+# Root = Winner Warleader
+# From = Loser Warleader
+# fromfrom = War
+on_war_won = {
+	events = {
+		aagrimstarts.2003		# Upd Relations
+	}
+}
+
+# This = Federation leader
+# From = Joining member
+on_join_federation = {
+	events = {
+		aagrimstarts.2010
+	}
+}
+
+on_galactic_council_established = {
+	events = {
+		# galcom.50
+		aagrimstarts.2010
+	}
+}
+# Bad naming
+# on_join_alliance = {
+# 	events = {
+# 		aagrimstarts.2010
+# 	}
+# }
+
+on_remove_community_member = {
+	events = {
+		emperor.498
+	}
+}
+
+# THIS = Country: Emperor
+# FROM = Country added to council
+on_add_to_imperial_council = {
+	events = {
+		aagrimstarts.2010
+	}
+}
+
+# A country is created via create_country or create_rebels
+# This = created country
+# From = root of context where create_country/create_rebels happens
+on_country_created = {
+	events = {
+		aagrimstarts.2003		# Upd Relations
+	}
+}
+
+# # This = destroyed country
+# # From = optional, destroyer (country)
+# on_country_destroyed = {
+# 	events = {
+# 	}
+# }
+
+# A pop has finished purging
+# This = Planet scope
+# From = Country
+# fromfrom = Pop
+on_pop_purged = {
+	random_events = {
+		50 = 0
+		50 = aagrimstarts.2025
+	}
+}

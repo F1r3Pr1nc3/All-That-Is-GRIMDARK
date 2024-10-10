@@ -1,0 +1,236 @@
+namespace = endboss
+# https://steamcommunity.com/sharedfiles/filedetails/?id=1771007724 by Persepheus
+event = {
+	id = endboss.0
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { is_multiplayer = no }
+	fire_only_once = yes
+	immediate = {
+		random_playable_country = {
+			limit = { is_ai = no }
+			remove_global_flag = endboss_one_country_eligible
+			# List eligible countries by going from most restricted to less restricted to ensure at least one is listed
+			# endboss_list_eligible_country
+			every_playable_country = {
+				limit = {
+					is_ai = yes
+					exists = capital_star
+					# is_allowed_to_be_advanced_empire = yes
+					NOR = {
+						has_country_flag = is_advanced_start_AI
+						has_country_flag = lost_colony_parent
+						has_country_flag = MSI
+						has_country_flag = chosen_empire
+						is_pacifist = yes
+						has_origin = origin_common_ground
+						has_origin = origin_common_ground_npc
+						has_origin = origin_doomsday
+						has_origin = origin_hegemon
+						has_origin = origin_hegemon_npc
+						has_origin = origin_imperial_vassal_overlord
+						has_origin = origin_imperial_vassal
+						has_origin = origin_life_seeded
+						has_origin = origin_lost_colony
+					}
+				}
+				# endboss_handle_eligible_country
+				set_global_flag = endboss_one_country_eligible
+				capital_star.solar_system = {
+					export_trigger_value_to_variable = {
+						trigger = distance_to_empire
+						parameters = {
+							who = prevprev
+							type = hyperlane
+							use_bypasses = no
+							# bypass_empire = root
+						}
+						variable = eb_distance_to_player
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				every_playable_country = {
+					limit = {
+						is_ai = yes
+						exists = capital_star
+						NOR = {
+							is_pacifist = yes
+							has_origin = origin_common_ground_npc
+							has_origin = origin_hegemon_npc
+							has_origin = origin_imperial_vassal_overlord
+							has_origin = origin_imperial_vassal
+						}
+					}
+					# endboss_handle_eligible_country
+					set_global_flag = endboss_one_country_eligible
+					capital_star.solar_system = {
+						export_trigger_value_to_variable = {
+							trigger = distance_to_empire
+							parameters = {
+								who = prevprev
+								type = hyperlane
+								use_bypasses = no
+								# bypass_empire = root
+							}
+							variable = eb_distance_to_player
+						}
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				every_playable_country = {
+					limit = {
+						is_ai = yes
+						exists = capital_star
+						NOR = {
+							has_origin = origin_common_ground_npc
+							has_origin = origin_hegemon_npc
+							has_origin = origin_imperial_vassal_overlord
+							has_origin = origin_imperial_vassal
+						}
+					}
+					# endboss_handle_eligible_country
+					set_global_flag = endboss_one_country_eligible
+					capital_star.solar_system = {
+						export_trigger_value_to_variable = {
+							trigger = distance_to_empire
+							parameters = {
+								who = prevprev
+								type = hyperlane
+								use_bypasses = no
+								# bypass_empire = root
+							}
+							variable = eb_distance_to_player
+						}
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				every_playable_country = {
+					limit = { is_ai = yes exists = capital_star }
+					# endboss_handle_eligible_country
+					set_global_flag = endboss_one_country_eligible
+					capital_star.solar_system = {
+						export_trigger_value_to_variable = {
+							trigger = distance_to_empire
+							parameters = {
+								who = prevprev
+								type = hyperlane
+								use_bypasses = no
+								# bypass_empire = root
+							}
+							variable = eb_distance_to_player
+						}
+					}
+				}
+			}
+			# If there is at least one
+			if = {
+				limit = { has_global_flag = endboss_one_country_eligible }
+				remove_global_flag = endboss_one_country_eligible
+				## Then find the furthest one and store it in event_target:endboss_endboss
+				# endboss_find_furthest_eligible_country
+				ordered_playable_country = {
+					limit = {
+						is_ai = yes
+						exists = capital_scope
+						capital_star.solar_system = { is_variable_set = eb_distance_to_player }
+					}
+					position = 0
+					order_by = capital_star.solar_system.eb_distance_to_player
+					fire_on_action = { on_action = on_become_advanced_empire } # Advanced start init # country_event = { id = game_start.6 }
+					# add_modifier = { modifier = endboss } do it later (it's not a startboss)
+					give_technology = { tech = tech_destroyers }
+					give_technology = { tech = tech_lasers_2 }
+					give_technology = { tech = tech_afterburners_1 }
+					give_technology = { tech = tech_fusion_power }
+					give_technology = { tech = tech_shields_2 }
+					give_technology = { tech = tech_ship_armor_2 }
+					add_basic_resources_effect = { VALUE = 1000 }
+					add_manufactured_resources_effect = { VALUE = 1000 }
+					add_resource = { unity = 1000 influence = 1000 }
+					capital_scope = {
+						fire_on_action = { on_action = on_initialize_advanced_colony }
+					}
+					country_event = { id = game_start.9 }						# Create starter set of ships
+					country_event = { id = game_start.33 days = 2 }				# Needs delay for system ownership to settle
+					set_variable = { which = eb_distance_to_player value = capital_star.solar_system.eb_distance_to_player }
+					log = "Empire \\[This.GetName] is Final Opponent."
+				}
+			}
+		}
+	}
+	after = {
+		# Remove variables endboss_cleanup_eligible_country
+		every_playable_country = {
+			limit = {
+				is_ai = yes
+				exists = capital_scope
+				capital_star.solar_system = { is_variable_set = eb_distance_to_player }
+			}
+			capital_star.solar_system = { clear_variable = eb_distance_to_player }
+		}
+	}
+}
+
+event = {
+	id = endboss.1
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		random_playable_country = {
+			limit = { is_ai = yes is_variable_set = eb_distance_to_player }
+			add_modifier = { modifier = endboss }
+			clear_variable = eb_distance_to_player
+		}
+		# TODO relative_power?
+		# Do balance empire
+		random_playable_country = {
+			limit = { is_ai = no }
+			ordered_playable_country = {
+				limit = {
+					is_ai = yes
+					NOR = {
+						is_subject = yes
+						is_overlord = yes
+						is_pacifist = yes
+						has_country_flag = is_advanced_start_AI
+						has_country_flag = lost_colony_parent
+						has_country_flag = MSI
+						has_country_flag = chosen_empire
+						has_origin = origin_common_ground
+						has_origin = origin_common_ground_npc
+						has_origin = origin_doomsday
+						has_origin = origin_hegemon
+						has_origin = origin_hegemon_npc
+						has_origin = origin_imperial_vassal_overlord
+						has_origin = origin_imperial_vassal
+						has_origin = origin_life_seeded
+						has_origin = origin_lost_colony
+					}
+					opinion_level = { who = prev level < neutral }
+					used_naval_capacity_percent < 0.7
+				}
+				position = 0
+				order_by = trigger:fleet_power
+				inverse = yes
+				add_modifier = { modifier = endboss }
+				ordered_playable_country = {
+					limit = {
+						relative_power = { who = prev category = technology value > equivalent }
+						relative_power = { who = prev category = technology value < overwhelming }
+					}
+					position = 0
+					order_by = trigger:num_researched_techs
+					prev = { copy_techs_from = { target = prev } }
+				}
+				create_fleet_from_naval_cap = 0.35
+			}
+		}
+	}
+}

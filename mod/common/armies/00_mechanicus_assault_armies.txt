@@ -1,0 +1,43 @@
+# Maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
+# morale_damage = 1		# Average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
+#
+machine_assault_10 = {
+	damage = 4
+	health = 6
+	has_morale = no
+	morale_damage = 1.5
+	collateral_damage = 4
+	war_exhaustion = 4
+	time = 500
+	icon = GFX_army_type_medium_mech # GFX_army_type_machine_assault
+	resources = {
+		category = armies
+		cost = { alloys = 800 }
+		upkeep = { energy = 8 }
+	}
+	show_tech_unlock_if = {
+		OR = { has_ascension_perk = ap_the_flesh_is_weak has_country_flag = cyborg_empire }
+	}
+	prerequisites = { "tech_mega_engineering" }
+	allow = {
+		OR = {
+			has_building = "building_manufactorums"
+			has_holding = { holding = building_machine_temple owner = planet.owner.overlord	}
+		}
+	}
+	potential_country = {
+		is_gestalt = no
+	}
+	potential = {
+		# OR = {
+		# 	has_building = "building_manufactorums"
+		# 	has_holding = { holding = building_machine_temple owner = planet.owner.overlord	}
+		# }
+		from = {
+			OR = { has_utopia = no has_trait = trait_cybernetic }
+			is_sapient = yes
+			NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+		}
+		# owner = { is_gestalt = no }
+	}
+}

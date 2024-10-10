@@ -1,0 +1,78 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_aa_army_icons"
+		textureFile = "gfx/interface/planetview/aa_army_icon.dds"
+		noOfFrames = 14
+	}
+
+	spriteType = {
+		name = "GFX_army_type_gene_elite"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 1
+	}
+	spriteType = {
+		name = "GFX_army_type_crusader"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 2
+	}
+	spriteType = {
+		name = "GFX_army_type_heavy_defence"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 3
+	}
+	spriteType = {
+		name = "GFX_army_type_medium_mech"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 4
+	}
+	spriteType = {
+		name = "GFX_army_type_heavy_mech"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 5
+	}
+	spriteType = {
+		name = "GFX_army_type_psi_elite"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 6
+	}
+	spriteType = {
+		name = "GFX_army_type_light_mech"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 7
+	}
+	spriteType = {
+		name = "GFX_army_type_robot_aero"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 8
+	}
+	spriteType = {
+		name = "GFX_army_type_mech_defence"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 9
+	}
+	spriteType = {
+		name = "GFX_army_type_kaiju"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 10
+	}
+	spriteType = {
+		name = "GFX_army_type_drukhari"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 11
+	}
+	spriteType = {
+		name = "GFX_army_type_guardian"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 12
+	}
+	spriteType = {
+		name = "GFX_army_type_aspect"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 13
+	}
+	spriteType = {
+		name = "GFX_army_type_aero"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 14
+	}
+}

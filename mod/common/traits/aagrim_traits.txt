@@ -1,0 +1,268 @@
+##################
+# W40K Traits
+##################
+trait_self_sustained = {
+	cost = 1
+	potential_crossbreeding_chance = 0.1
+	sorting_priority = 20
+	# initial = no
+	randomized = no
+	advanced_trait = yes
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = no
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	modifier = {
+		pop_amenities_usage_mult = -0.1
+		planet_pops_consumer_goods_upkeep_mult = -0.25
+		planet_pops_organics_food_upkeep_mult = -0.5
+		pc_scrapworld_habitability = 0.5
+		pop_environment_tolerance = 0.3
+	}
+	opposites = {
+		"trait_adaptive"
+		"trait_adaptive_lithoid"
+		"trait_extremely_adaptive"
+		"trait_charismatic"
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_functional = {
+	cost = 0
+	potential_crossbreeding_chance = 1
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	species_potential_add = {
+		# custom_tooltip = { text = cannot_add_this_trait }
+		always = no
+	}
+	species_possible_remove = {
+		always = no
+	}
+	species_possible_merge_remove = {
+		always = yes
+	}
+	species_possible_merge_add = {
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = no
+	opposites = {
+		"trait_unruly"
+		"trait_sedentary"
+		"trait_deviants"
+		"trait_decadent"
+		"trait_conservational"
+		"trait_wasteful"
+		"trait_heretic_astartes"
+		"trait_adeptus_custodes"
+		"trait_latent_psionic"
+		"trait_psionic"
+	}
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	modifier = {
+		pop_amenities_usage_mult = -0.1
+		planet_pops_consumer_goods_upkeep_mult = -0.5
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_lobotomised_servitors = {
+	cost = 1 # 2
+	host_has_dlc = "Utopia"
+	# icon = "gfx/interface/icons/traits/trait_mechanical.dds"
+	sorting_priority = 20
+	# initial = yes
+	randomized = no
+	advanced_trait = yes
+	forced_happiness = yes
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	# icon = "GFX_leader_trait_cyborg"
+	# icon = {
+	# 	layer = {
+	# 		icon = "GFX_trait_bg"
+	# 		color = "trait_bg_machine"
+	# 		visible = { always = yes }
+	# 	}
+	# 	layer = {
+	# 		icon = "GFX_leader_trait_cyborg"
+	# 		color = "trait_icon_default"
+	# 		visible = { always = yes }
+	# 	}
+	# }
+	opposites = {
+		"trait_unruly"
+		"trait_sedentary"
+		"trait_deviants"
+		"trait_decadent"
+		"trait_conservational"
+		"trait_wasteful"
+		"trait_syncretic_proles"
+		"trait_erudite"
+		"trait_natural_machinist"
+		"trait_natural_engineers"
+		"trait_natural_physicists"
+		"trait_natural_sociologists"
+	}
+	allowed_origins = { origin_iforge }
+	species_potential_add = {
+		exists = from
+		from = { has_machine_cult = yes }
+	}
+	species_possible_merge_remove = { always = yes }
+	species_possible_merge_add = { always = no }
+	custom_tooltip = TRAIT_LOBOTOMISED_SERVITORS_EFFECT # Partial from TRAIT_SYNCRETIC_PROLES_EFFECT
+	modifier = {
+		# NOTE: changes needs also be done at the custom_tooltip
+		# planet_jobs_ruler_produces_mult = -0.2
+		planet_jobs_specialist_produces_mult = -0.3
+		planet_jobs_worker_produces_mult = 0.1
+		pop_amenities_usage_mult = -0.5
+		pop_housing_usage_mult = -0.5
+		planet_pops_consumer_goods_upkeep_mult = -0.75
+		leader_skill_levels = -2
+	}
+	slave_cost = { energy = 300 } # 150
+}
+trait_war_bot = {
+	cost = 3
+	# icon = "gfx/interface/icons/traits/trait_war_bot.dds"
+
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = { army_damage_mult = 0.4 planet_jobs_worker_produces_mult = 0.05 }
+	slave_cost = { energy = 150 }
+}
+trait_cute_AI = {
+	cost = 1
+	allowed_archetypes = { MACHINE }
+	advanced_trait = no
+	species_potential_add = {
+		exists = from
+		from = {
+			has_valid_civic = civic_machine_servitor
+			# NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+	forced_happiness = yes
+	custom_tooltip = TRAIT_CUTE_AI_EFFECT
+}
+
+trait_shroud_sick = {
+	cost = 0
+	potential_crossbreeding_chance = 0.5
+	sorting_priority = 20
+	initial = no
+	randomized = no
+	advanced_trait = no
+	species_potential_add = {
+		always = no
+	}
+	species_possible_remove = {
+		# custom_tooltip = {
+		# 	text = cannot_remove_this_trait
+		# }
+		always = no
+	}
+	species_possible_merge_add = {
+		# custom_tooltip = {
+		# 	text = cannot_add_this_trait
+		# }
+		always = no
+	}
+	forced_happiness = no
+	immortal_leaders = no
+	allowed_archetypes = {
+		BIOLOGICAL
+	}
+	modifier = {
+		planet_pops_organics_food_upkeep_mult = -0.5
+		planet_jobs_produces_mult = -0.1
+		# pop_growth_speed = -0.2		# -0.5 replaced by trait_necrophage
+		pop_housing_usage_mult = -0.25
+		leader_lifespan_add = 100
+		army_health = 0.5
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_infected_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		PRESAPIENT
+	}
+	sorting_priority = 30
+	modifier = {
+		pc_infected_habitability = 1
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# DEPRECATED on v3.12
+# trait_pc_imperiumhive_preference = {
+# 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+# 	allowed_archetypes = {
+# 		BIOLOGICAL
+# 		PRESAPIENT
+# 	}
+# 	sorting_priority = 30
+# 	modifier = {
+# 		pc_imperiumhive_habitability = 1
+# 	}
+# 	ai_weight = {
+# 		weight = 0
+# 	}
+# }
+
+trait_pc_hive_tundra_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		PRESAPIENT
+	}
+	sorting_priority = 30
+	modifier = {
+		pc_hive_tundra_habitability = 1
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_pc_scrapworld_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		PRESAPIENT
+	}
+	sorting_priority = 30
+	modifier = {
+		pc_scrapworld_habitability = 1
+	}
+	ai_weight = {
+		weight = 0
+	}
+}

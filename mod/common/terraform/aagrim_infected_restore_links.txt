@@ -1,0 +1,22 @@
+terraform_link = {
+	from = "pc_infected"
+	to = "pc_nuked"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = 10000
+		}
+	}
+	duration = 3600
+
+	condition = {
+		has_technology = "tech_climate_restoration"
+		NOT = { has_origin = origin_shroudsick }
+	}
+
+	ai_weight = {
+		weight = 2
+	}
+}

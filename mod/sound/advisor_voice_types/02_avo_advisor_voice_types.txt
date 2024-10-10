@@ -1,0 +1,16 @@
+# Patch for Astartes Voice Over mod
+"l_astartes" = {
+	name = "Astartes"
+	icon = "gfx/interface/icons/traits/trait_adeptus_astartes.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = {
+			add = 999
+			OR = {
+				has_country_flag = human_empire
+				has_country_flag = chaos_empire
+			}
+		}
+	}
+}

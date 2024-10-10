@@ -1,0 +1,11 @@
+### Disable The Chosen
+namespace = ancrel
+# Spawn event
+event = {
+	id = ancrel.12050
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = {
+		random = { chance = 33 random_rim_system = { system_event = { id = ancrel.12055 } } }
+	}
+}

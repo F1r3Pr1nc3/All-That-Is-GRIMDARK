@@ -1,0 +1,13 @@
+# Patch for Grot Advisor - Warhammer 40k mod
+advisor_grot = {
+	name = "Grot"
+	icon = "gfx/interface/icons/origins/origins_barbarichorde.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = {
+			add = 9999
+			has_country_flag = ork_empire
+		}
+	}
+}

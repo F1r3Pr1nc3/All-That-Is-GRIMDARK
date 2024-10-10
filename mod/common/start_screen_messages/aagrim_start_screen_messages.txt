@@ -1,0 +1,27 @@
+# Start Screen Messages
+#	location, decides where this chunk of text is located in the description, cannot be negative.
+part = { location = 1 localization = "START_SCREEN_PART_ONE_NECRON_ORIGIN"		trigger = { OR = { has_country_flag = necron_empire has_origin = origin_necron_awakening } } }
+part = { location = 1 localization = "START_SCREEN_IMPERIUM"	trigger = { OR = { has_country_flag = human_empire has_country_flag = imperium has_origin = origin_godruler } } } # Imperium of Man
+part = { location = 1 localization = "START_SCREEN_ORK"			trigger = { OR = { has_country_flag = ork_empire has_origin = origin_barbarichorde } } }
+part = { location = 1 localization = "START_SCREEN_TAU"			trigger = { OR = { has_country_flag = tau_empire has_origin = origin_greatergood } } }
+part = { location = 1 localization = "START_SCREEN_ELDAR"		trigger = { OR = { has_country_flag = eldar_empire has_origin = origin_soulkeepers } } }
+part = { location = 1 localization = "START_SCREEN_DARKELDAR"	trigger = { OR = { has_country_flag = darkeldar_empire has_origin = origin_paindrinkers } } }
+part = { location = 1 localization = "START_SCREEN_TYRANID"		trigger = { OR = { has_country_flag = tyranid_empire has_origin = origin_bioreformers } } }
+part = {
+	location = 0
+	localization = "START_SCREEN_CHAOS"
+	trigger = {
+		OR = {
+			has_country_flag = chaos_empire
+			has_origin = origin_shroudrage
+			has_origin = origin_shroudmutated
+			has_origin = origin_shroudsinners
+			has_origin = origin_shroudsick
+		}
+	}
+}
+part = { location = 1 localization = "START_SCREEN_CHAOS_UNDIVIDED"	trigger = { OR = { has_country_flag = eyechaos_empire has_origin = origin_fallen_psionic } } }
+part = { location = 1 localization = "START_SCREEN_CHAOS_KHORNE"	trigger = { OR = { has_country_flag = khorne has_origin = origin_shroudrage } } }
+part = { location = 1 localization = "START_SCREEN_CHAOS_NURGLE"	trigger = { OR = { has_country_flag = nurgle has_origin = origin_shroudsick } } }
+part = { location = 1 localization = "START_SCREEN_CHAOS_TZEENTCH"	trigger = { OR = { has_country_flag = tzeentch has_origin = origin_shroudmutated } } }
+part = { location = 1 localization = "START_SCREEN_CHAOS_SLAANESH"	trigger = { OR = { has_country_flag = slaanesh has_origin = origin_shroudsinners } } }

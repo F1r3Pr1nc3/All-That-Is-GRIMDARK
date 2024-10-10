@@ -1,0 +1,10 @@
+# DoW SS Missionary Advisor
+dowssmissionary_advisor = {
+	name = "advisor_voice_dowssmissionary" # "Imperium Missionary"
+	icon = "gfx/interface/icons/governments/civics/civic_imperialcult_fanatics.dds"
+	playable = { always = yes }
+	weight = {
+		base = 0
+		modifier = { add = 999 has_country_flag = the_mankind }
+	}
+}

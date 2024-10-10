@@ -1,0 +1,37 @@
+# Maiden World
+col_maidenworld = {
+	icon = GFX_colony_type_resort
+
+	potential = {
+		exists = owner
+		owner = { has_origin_soulkeepers = yes }
+		NOR = {
+			is_special_colony_type = yes
+			has_ringworld_output_boost = yes
+			merg_is_arcology = yes
+			merg_is_machine_world = yes
+			is_artificial = yes
+			merg_is_habitat = yes
+			is_planet_class = pc_nuked
+		}
+		has_deposit = d_aa_exodite_enclave
+	}
+
+	planet_modifier = {
+		trade_value_mult = 0.1
+		pop_government_ethic_attraction = -0.1
+		job_exodite_per_pop = 0.5
+		planet_jobs_specialist_produces_mult = -0.1
+		planet_jobs_ruler_produces_mult = -0.1
+		pop_growth_speed = 0.1
+		pop_happiness = 0.1
+		pop_environment_tolerance = 0.1
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = { add = 5 has_designation = col_maidenworld }
+		modifier = { add = 10 num_sapient_pops > 0 }
+		modifier = { add = 5 num_sapient_pops > 5 }
+	}
+}

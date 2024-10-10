@@ -1,0 +1,108 @@
+##############################################################
+###	PORTRAITS SETTINGS
+###
+### Which portraits are used is set in
+### common\species_classes\00_species_classes.txt
+###
+### This file configures how portraits and planet backgrounds are built.
+###	Default position orientation is lower left.
+##############################################################
+############################
+portraits = {
+	####################################
+	# Leaders Arts
+	####################################
+	# IMP
+	# IMP_WhiteScars_ruler = { texturefile = "gfx/portraits/warhammer/IMP_WhiteScars_ruler.dds" }
+	# IMP_Ultramarines_ruler = { texturefile = "gfx/portraits/warhammer/IMP_Ultramarines_ruler.dds" }
+	# IMP_SpaceWolves_ruler = { texturefile = "gfx/portraits/warhammer/IMP_SpaceWolves_ruler.dds" }
+	# IMP_Salamanders_ruler = { texturefile = "gfx/portraits/warhammer/IMP_Salamanders_ruler.dds" }
+	# IMP_RavenGuard_ruler = { texturefile = "gfx/portraits/warhammer/IMP_RavenGuard_ruler.dds" }
+	# IMP_IronHand_ruler = { texturefile = "gfx/portraits/warhammer/IMP_IronHand_ruler.dds" }
+	# IMP_ImperialFist_ruler = { texturefile = "gfx/portraits/warhammer/IMP_ImperialFist_ruler.dds" }
+	# IMP_DarkAngels_ruler = { texturefile = "gfx/portraits/warhammer/IMP_DarkAngels_ruler.dds" }
+	# IMP_BloodAngels_ruler = { texturefile = "gfx/portraits/warhammer/IMP_BloodAngels_ruler.dds" }
+	IMP_Emperor_ruler = { texturefile = "gfx/models/portraits/warhammer/IMP_Emperor_ruler.dds" }
+	# #
+	# IMP_Navy_ruler1 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler1.dds" }
+	# IMP_Navy_ruler2 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler2.dds" }
+	# IMP_Navy_ruler3 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler3.dds" }
+	# IMP_Navy_ruler4 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler4.dds" }
+	# IMP_Navy_ruler5 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler5.dds" }
+	# IMP_Navy_ruler6 = { texturefile = "gfx/portraits/warhammer/IMP_Navy_ruler6.dds" }
+	# #
+	# IMP_Mechanicus_ruler1 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler1.dds" }
+	# IMP_Mechanicus_ruler2 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler2.dds" }
+	# IMP_Mechanicus_ruler3 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler3.dds" }
+	# IMP_Mechanicus_ruler4 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler4.dds" }
+	# IMP_Mechanicus_ruler5 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler5.dds" }
+	# IMP_Mechanicus_ruler6 = { texturefile = "gfx/portraits/warhammer/IMP_Mechanicus_ruler6.dds" }
+	# CHA
+	# CHAOS_AlphaLegion_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_AlphaLegion_ruler.dds" }
+	CHAOS_BlackLegion_ruler = { texturefile = "gfx/models/portraits/warhammer/CHAOS_BlackLegion_ruler.dds" }
+	# CHAOS_DeathGuard_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_DeathGuard_ruler.dds" }
+	# CHAOS_EmperorChildren_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_EmperorChildren_ruler.dds" }
+	# CHAOS_IronWarrior_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_IronWarrior_ruler.dds" }
+	# CHAOS_NightLords_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_NightLords_ruler.dds" }
+	# CHAOS_RedCorsairs_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_RedCorsairs_ruler.dds" }
+	# CHAOS_ThousandSons_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_ThousandSons_ruler.dds" }
+	CHAOS_WordBearer_ruler = { texturefile = "gfx/models/portraits/warhammer/CHAOS_WordBearer_ruler.dds" }
+	CHAOS_WorldEater_ruler = { texturefile = "gfx/models/portraits/warhammer/CHAOS_WorldEater_ruler.dds" }
+	# CHAOS_SonsOfMalice_ruler = { texturefile = "gfx/portraits/warhammer/CHAOS_SonsOfMalice_ruler.dds" }
+	dmech4 = { texturefile = "gfx/models/portraits/warhammer/dmech4.dds" }
+	# dmech4 = {
+	# 	entity = "portrait_reptilian_14_dontmove_entity"
+	# 	clothes_selector = "no_texture"
+	# 	attachment_selector = "no_texture"
+	# 	greeting_sound = "arthropoid_01_greetings"
+	# 	character_textures = { "gfx/models/portraits/warhammer/dmech4.dds" }
+	# }
+}
+
+# portrait_groups = {
+# 	imperium = {
+# 		default = IMP_Emperor_ruler
+# 		game_setup = {
+# 			set = {
+# 				portraits = { IMP_Emperor_ruler }
+# 			}
+# 		}
+# 		ruler = {
+# 			add = {
+# 				portraits = { IMP_Emperor_ruler }
+# 			}
+# 		}
+# 	}
+# }
+portrait_groups = {
+	Black_legion = {
+		default = CHAOS_BlackLegion_ruler
+		game_setup = {
+			set = {
+				portraits = { CHAOS_BlackLegion_ruler }
+			}
+		}
+		# ruler = {
+		# 	add = {
+		# 		portraits = { CHAOS_BlackLegion_ruler }
+		# 	}
+		# }
+	}
+}
+portrait_groups = {
+	Adeptus_Mechanicus = {
+		default = dmech4
+		game_setup = {
+			set = {
+				portraits = { dmech4 }
+			}
+		}
+		# ruler = {
+		# 	add = {
+		# 		portraits = {
+		# 			dmech4
+		# 		}
+		# 	}
+		# }
+	}
+}

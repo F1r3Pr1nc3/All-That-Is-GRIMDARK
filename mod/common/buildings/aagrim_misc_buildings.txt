@@ -1,0 +1,105 @@
+building_gladiatorarena = {
+	base_buildtime = @b1_time
+	category = amenity
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				has_origin = origin_paindrinkers
+				has_origin = origin_shroudrage
+				has_origin = origin_barbarichorde
+			}
+		}
+	}
+	allow = {
+		# buildings_simple_allow = yes
+	}
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			NOR = {
+				has_origin = origin_paindrinkers
+				has_origin = origin_shroudrage
+				has_origin = origin_barbarichorde
+			}
+		}
+	}
+	planet_modifier = { job_duelist_add = 3 }
+	resources = {
+		category = planet_buildings
+		cost = { minerals = @b1_minerals }
+		upkeep = { energy = @b1_upkeep }
+		produces = { unity = 1 }
+	}
+	# ai_weight = {
+	# 	weight = 0
+	# 	modifier = {
+	# 		weight = 75
+	# 		num_sapient_pops > 5
+	# 		free_jobs < 3
+	# 		free_amenities < 5
+	# 	}
+	# 	modifier = { factor = 0 free_amenities > 10 }
+	# }
+}
+
+building_monolith_complex = {
+	base_buildtime = 400
+	base_cap_amount = 1
+	can_be_ruined = no
+	category = army
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_necron_awakening }
+		merg_is_relic_world = yes
+	}
+	# allow = {  }
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			NOT = { has_origin = origin_necron_awakening }
+		}
+	}
+	army_modifier = { army_starting_experience_add = 500 }
+	triggered_planet_modifier = {
+		modifier = { job_soldier_add = 4 }
+	}
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 400 }
+		upkeep = { energy = 40 }
+	}
+	# prerequisites = {  }
+	# ai_weight = { base = 500 }
+}
+
+# building_forrbiden_archive = {
+# 	base_buildtime = 300
+# 	base_cap_amount = 6
+#	category = research
+# 	potential = {
+# 		exists = owner
+# 		owner = { has_origin = origin_necron_awakening }
+# 	}
+# 	destroy_trigger = {
+# 		exists = owner
+# 		owner = {
+# 			NOT = { has_origin = origin_necron_awakening }
+# 		}
+# 	}
+# 	allow = { }
+# 	resources = {
+# 		category = planet_buildings
+# 		cost = { alloys = 500 }
+# 		upkeep = { energy = 60 consumer_goods = 30 }
+# 		produces = {
+# 			physics_research = 30
+# 			society_research = 30
+# 			engineering_research = 30
+# 		}
+# 	}
+# 	planet_modifier = { planet_researchers_produces_mult = 0.15 job_head_researcher_add = 2 }
+# 	# prerequisites = { }
+# 	# triggered_desc = { }
+# 	ai_weight = { base = 500 }
+# }

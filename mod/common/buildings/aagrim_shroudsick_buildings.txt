@@ -1,0 +1,184 @@
+# FIXME:
+# Makes you unable to upgrade your other buildings that relies on the Hive building chain, I don't know if it's intended or an oversight.
+building_hive_major_capital_sick = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	category = government
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_shroudsick
+		}
+		is_planet_class = pc_infected
+	}
+	convert_to = {
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_hive_major_capital
+	}
+	planet_modifier = {
+		planet_housing_add = 10
+		planet_amenities_no_happiness_add = 5
+		job_tallier_add = 2
+		job_tallier_drone_add = 2
+		job_maintenance_drone_add = 5
+		job_sickneophyte_add = 3
+		job_sickneophyte_drone_add = 3
+		planet_max_buildings_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_1
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_2
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_capital_productivity_3
+			}
+		}
+		modifier = {
+			planet_jobs_productive_upkeep_mult = 0.1
+			planet_jobs_productive_produces_mult = 0.1
+		}
+	}
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 2
+		}
+	}
+}
+
+building_hive_node_sick = {
+	base_buildtime = @b1_time
+	category = unity
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_shroudsick
+		}
+		is_planet_class = pc_infected
+	}
+	destroy_trigger = {
+		NAND = {
+			exists = owner
+			owner = {
+				has_origin = origin_shroudsick
+			}
+			is_planet_class = pc_infected
+		}
+	}
+	convert_to = {
+		building_temple
+		building_simulation_1
+		building_autochthon_monument
+		building_corporate_monument
+		building_hive_node
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 250
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			unity = 2
+		}
+	}
+	planet_modifier = {
+		job_tallier_add = 3
+		job_tallier_drone_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_domination_synaptic_extensions
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	on_queued = {
+		planet = {
+			set_timed_planet_flag = {
+				flag = recent_admin_building_built
+				years = 2
+			}
+		}
+	}
+}
+
+building_hive_warren_sick = {
+	base_buildtime = @b1_time
+	category = amenity
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_shroudsick
+		}
+		is_planet_class = pc_infected
+	}
+	destroy_trigger = {
+		NAND = {
+			exists = owner
+			owner = {
+				has_origin = origin_shroudsick
+			}
+			is_planet_class = pc_infected
+		}
+	}
+	convert_to = {
+		building_luxury_residence
+		building_drone_storage
+		building_communal_housing
+		building_hive_warren
+	}
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_amenities_no_happiness_add = 5
+	}
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			# sr_biomass = 2
+			food = 1
+			exotic_gases = 1
+		}
+	}
+}
