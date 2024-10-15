@@ -224,7 +224,7 @@ citizenship_assimilation = {
 		factor = 100
 		modifier = {
 			factor = 5
-			from = { has_origin = origin_shroudsick }
+			from = { has_shroudsick_origin = yes }
 		}
 		modifier = {
 			factor = 0

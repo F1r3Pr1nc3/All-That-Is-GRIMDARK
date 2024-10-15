@@ -165,7 +165,7 @@ trait_cute_AI = {
 	forced_happiness = yes
 	custom_tooltip = TRAIT_CUTE_AI_EFFECT
 }
-
+# Nurgle
 trait_shroud_sick = {
 	cost = 0
 	potential_crossbreeding_chance = 0.5
@@ -200,12 +200,29 @@ trait_shroud_sick = {
 		pop_housing_usage_mult = -0.25
 		leader_lifespan_add = 100
 		army_health = 0.5
+		pc_infested_habitability = 0.65
 	}
 	ai_weight = {
 		weight = 0
 	}
 }
 
+trait_pc_infested_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+	allowed_archetypes = {
+		BIOLOGICAL
+		PRESAPIENT
+	}
+	sorting_priority = 30
+	modifier = {
+		pc_infested_habitability = 1
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# DEPRECATED on v3.13
 trait_pc_infected_preference = {
 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
 	allowed_archetypes = {

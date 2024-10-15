@@ -6,13 +6,13 @@ building_aspect_shrine = {
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 	}
 
 	destroy_trigger = {
 		NAND = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 	}
 
@@ -47,13 +47,13 @@ building_shaper_shrine = {
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 	}
 
 	destroy_trigger = {
 		NAND = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 	}
 
@@ -83,13 +83,13 @@ building_seer_shrine = {
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 	}
 
 	destroy_trigger = {
 		NAND = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 	}
 

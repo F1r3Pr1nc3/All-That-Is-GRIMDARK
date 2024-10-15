@@ -91,7 +91,7 @@ building_colony_shelter = {
 		job_warden_add = 1
 		job_colonist_add = -1
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -111,7 +111,7 @@ building_colony_shelter = {
 		}
 		job_roboticist_add = 1
 		job_colonist_add = -1
-		}
+	}
 
 	resources = {
 		category = planet_buildings
@@ -165,7 +165,7 @@ building_colony_shelter = {
 		}
 		text = job_unifier_effect_desc
 	}
-	
+
 	triggered_desc = {
 		trigger = {
 			exists = owner

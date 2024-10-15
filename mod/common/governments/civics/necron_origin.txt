@@ -28,7 +28,11 @@ origin_necron_awakening = {
 	playable = { host_has_dlc = "Synthetic Dawn Story Pack" has_ancrel = yes }
 	possible = {
 		authority = {
-			OR = { value = auth_machine_intelligence value = auth_necron_authority }
+			OR = {
+				value = auth_machine_intelligence
+				value = auth_imperial
+				value = auth_necron_authority
+			}
 		}
 		civics = {
 			# OR = { value = civic_machine_terminator value = civic_machine_servitor }

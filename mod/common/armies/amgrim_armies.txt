@@ -1,3 +1,7 @@
+# Defensive armies can't transport of the planet
+# Garrison armies are created by pops
+# Maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
+# morale_damage = 1		# Average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
 # Assault Armies
 assault_army_ae_guardians = {
 	damage = 1.1
@@ -13,15 +17,13 @@ assault_army_ae_guardians = {
 		cost = { rare_crystals = 25 }
 		upkeep = { rare_crystals = 1 }
 	}
+	potential_country = { has_soulkeepers_origin = yes }
 	potential = {
 		from = {
-			NOR = {
-				has_trait = "trait_mechanical"
-				has_trait = "trait_machine_unit"
-				is_sapient = no
-			}
+			is_sapient = yes
+			is_robotic = no
+			# NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
 		}
-		owner = { has_origin_soulkeepers = yes }
 	}
 }
 
@@ -39,15 +41,13 @@ assault_army_ae_aspect = {
 		cost = { rare_crystals = 50 sr_zro = 20 }
 		upkeep = { rare_crystals = 1 }
 	}
+	potential_country = { has_soulkeepers_origin = yes }
 	potential = {
 		from = {
-			NOR = {
-				has_trait = "trait_mechanical"
-				has_trait = "trait_machine_unit"
-				is_sapient = no
-			}
+			is_sapient = yes
+			is_robotic = no
+			# NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
 		}
-		owner = { has_origin_soulkeepers = yes }
 		planet = { has_building = building_aspect_shrine }
 	}
 }
@@ -66,14 +66,125 @@ assault_army_dr_raiders = {
 		cost = { minerals = 50 }
 		upkeep = { energy = 1 }
 	}
+	potential_country = { has_origin = origin_paindrinkers }
 	potential = {
 		from = {
-			NOR = {
-				has_trait = "trait_mechanical"
-				has_trait = "trait_machine_unit"
-				is_sapient = no
-			}
+			is_sapient = yes
+			is_robotic = no
+			# NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
 		}
-		owner = { has_origin = origin_paindrinkers }
 	}
+}
+
+# Imperium
+adeptus_astartes = {
+	damage = 3
+	health = 8
+	morale = 3
+	collateral_damage = 1
+	war_exhaustion = 1
+	time = 360
+	icon = GFX_army_type_adeptus_astartes
+	resources = {
+		category = armies
+		cost = { minerals = 550 }
+		upkeep = { energy = 3 }
+	}
+	allow = {
+		has_building = building_chapel_barracks
+		owner = {
+			check_variable = { which = "adeptus_astartes_count" value != 6 }
+		}
+	}
+	on_queued = {
+		owner = {
+			change_variable = { which = "adeptus_astartes_count" value = 1 }
+		}
+	}
+	on_unqueued = {
+		owner = {
+			change_variable = { which = "adeptus_astartes_count" value = -1 }
+		}
+	}
+	potential_country = { has_country_flag = human_empire }
+	potential = {
+		OR = {
+			owner = { has_origin = origin_godruler }
+			planet = { is_planet_class = pc_hive_tundra }
+		}
+	}
+}
+
+# Nurgle
+death_guard = {
+	damage = 3
+	health = 8
+	morale = 3
+	collateral_damage = 1
+	war_exhaustion = 0
+	time = 360
+	icon = GFX_army_type_dead_guard
+	resources = {
+		category = armies
+		cost = { minerals = 550 }
+		upkeep = { energy = 5 }
+	}
+	allow = {
+		has_building = building_chaos_temple
+		owner = {
+			check_variable = { which = "death_guard_count" value != 3 }
+		}
+	}
+	on_queued = {
+		owner = {
+			change_variable = { which = "death_guard_count" value = 1 }
+		}
+	}
+	on_unqueued = {
+		owner = {
+			change_variable = { which = "death_guard_count" value = -1 }
+		}
+	}
+	potential_country = { has_country_flag = chaos_empire }
+	potential = {
+		OR = {
+			owner = { has_country_flag = the_death_guard }
+			# planet = { has_planet_flag = plague_planet } # TODO
+			planet = { is_planet_class = pc_infected }
+		}
+	}
+}
+# Choas Heretic Astartes
+chaos_marines = {
+	damage = 3
+	health = 8
+	morale = 3
+	collateral_damage = 1
+	war_exhaustion = 1
+	time = 360
+	icon = GFX_army_type_chaos_marines
+	resources = {
+		category = armies
+		cost = { minerals = 550 }
+		upkeep = { energy = 5 }
+	}
+	allow = {
+		has_building = building_chaos_temple
+		owner = {
+			check_variable = { which = "chaos_marines_count" value != 6 }
+		}
+	}
+	on_queued = {
+		owner = {
+			change_variable = { which = "chaos_marines_count" value = 1 }
+		}
+	}
+	on_unqueued = {
+		owner = {
+			change_variable = { which = "chaos_marines_count" value = -1 }
+		}
+	}
+	potential_country = { has_country_flag = chaos_empire }
+	# potential = {
+	# }
 }

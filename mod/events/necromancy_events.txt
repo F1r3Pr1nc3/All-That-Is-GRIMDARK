@@ -1,0 +1,753 @@
+# Recycled Mod file from Reanimated Armies (id=2273587346 by Flying Scorpion)
+# v3.13: Completely overhauled by FirePrince
+# v3.13: Removed special trait requirement by FirePrince
+
+namespace = necromancy
+#########################################
+@reanimation_ratio = 50 # Chance in %
+# necromancy.10 counts defending armies
+# necromancy.11 flags the attacking leader for regeneration
+# necromancy.20 counts attacking armies
+# necromancy.21 flags the defending leader for regeneration
+# necromancy.30 gives rewards to attackers
+# necromancy.40 gives rewards to defenders
+# necromancy.50 and onwards deals with regenerating leaders
+#########################################
+#
+# Counting potentiel Nurgle armies (on_ground_combat_started)
+#
+#########################################
+# Nurgle: set vars (as attacker and defender)
+# From = attacking country
+planet_event = {
+	id = necromancy.10
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			controller = { has_origin = origin_shroudsick }
+			from = { has_origin = origin_shroudsick }
+		}
+		count_ground_combat_defender = { count > 0 }
+		any_planet_army = {
+			exists = leader
+			leader.species = { has_trait = trait_shroud_sick }
+			# leader = { has_trait = leader_trait_necromancer }
+		}
+		# from = {
+		# 	is_civilian = no
+		# 	# is_ship_class = shipclass_transport
+		# 	is_ship_size = transport
+		# 	exists = leader
+		# 	leader = { has_trait = leader_trait_necromancer }
+		# }
+		# exists = fromfrom
+		# fromfrom = { has_ground_combat = no has_army = yes }
+		# any_ground_combat_defender = {
+		# 	exists = leader
+		# 	leader = { has_trait = leader_trait_necromancer }
+		# }
+		# any_ground_combat_defender = {
+		# 	exists = species
+		# 	species = { is_robotic = no }
+		# }
+	}
+	immediate = {
+		# log = "Potential necromancy event detected..."
+		random_planet_army = {
+			limit = {
+				exists = leader
+				leader.species = { has_trait = trait_shroud_sick }
+				# leader = { has_trait = leader_trait_necromancer }
+			}
+			leader = { set_timed_leader_flag = { flag = "necro_can_die" years = 1 } } # To prevent firing generals from your leader pool.
+		}
+		# log = "counting defending armies on [This.GetName]"
+		export_trigger_value_to_variable = {
+			trigger = count_planet_army
+			parameters = {
+				limit = {
+					exists = species
+					NOR = {
+						species = { is_robotic = yes }
+						army_type = undead_army
+						army_type = undead_defense_army
+						army_type = giant_undead_army
+						army_type = plague_zombies
+					}
+				}
+			}
+			variable = stored_armies_necro
+		}
+		# log = "Planet [This.GetName] has been counted. It has [This.defenders_necro] defending armies."
+	}
+}
+
+# Necrons: set vars (as attacker and defender)
+# From = attacking country
+planet_event = {
+	id = necromancy.12
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			controller = { has_origin = origin_necron_awakening }
+			from = { has_origin = origin_necron_awakening }
+		}
+		count_ground_combat_defender = { count > 0 }
+		any_planet_army = {
+			exists = leader
+			leader.species = { is_robotic = yes has_trait = trait_necrons }
+		}
+	}
+	immediate = {
+		# log = "Potential necromancy event detected..."
+		if = { # Attacker
+			limit = { from = { has_origin = origin_necron_awakening } }
+			random_ground_combat_attacker = {
+				limit = {
+					exists = leader
+					leader.species = { is_robotic = yes has_trait = trait_necrons }
+				}
+				leader = { set_timed_leader_flag = { flag = "necro_can_die" years = 1 } } # To prevent firing generals from your leader pool.
+			}
+			export_trigger_value_to_variable = {
+				trigger = count_ground_combat_attacker
+				parameters = {
+					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+				}
+				variable = attackers_necro
+			}
+			# log = "Planet [This.GetName] has been counted. It has [This.attackers_necro] attacking armies."
+		}
+		else_if = { # Defender
+			limit = {
+				any_ground_combat_defender = {
+					exists = species
+					species = { is_robotic = yes has_trait = trait_necrons }
+				}
+			}
+			# log = "counting defending armies on [This.GetName]"
+			random_ground_combat_defender = {
+				limit = {
+					exists = leader
+					leader.species = { is_robotic = yes has_trait = trait_necrons }
+				}
+				leader = { set_timed_leader_flag = { flag = "necro_can_die" years = 1 } } # To prevent firing generals from your leader pool.
+			}
+			export_trigger_value_to_variable = {
+				trigger = count_ground_combat_defender
+				parameters = {
+					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+				}
+				variable = defenders_necro
+			}
+			# log = "Planet [This.GetName] has been counted. It has [This.defenders_necro] defending armies."
+		}
+	}
+}
+
+#########################################
+# OBSOLETE: replacd with on_ground_combat_started
+# Flagging the attacking army leader
+#
+#########################################
+# Called from on_fleet_auto_move_arrival
+# This = owner of fleet
+# From = fleet
+# fromfrom = planet (if any)
+# country_event = {
+# 	id = necromancy.11
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		can_reanimated_armies = yes
+# 		from = {
+# 			is_civilian = no
+# 			is_ship_size = transport
+# 			exists = leader
+# 			leader = { leader_class = commander }
+# 		}
+# 	}
+# 	immediate = {
+# 		# log = "Flagging [From.Leader.GetName] for potential death..."
+# 		from = {
+# 			leader = {
+# 				set_timed_leader_flag = { flag = "necro_can_die" years = 1 }
+# 				# log = "[This.GetName] has been flagged"
+# 			}
+# 		}
+# 	}
+# }
+
+#########################################
+# OBSOLETE: merged with necromancy.10
+# Counting the Necromancers attackers (on_ground_combat_started)
+#
+#########################################
+# From = attacking country
+# planet_event = {
+# 	id = necromancy.20
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		from = { can_reanimated_armies = yes }
+# 		any_ground_combat_attacker = {
+# 			exists = leader
+# 			leader.species = { OR = { has_trait = trait_necrons has_trait = trait_shroud_sick } }
+# 			# leader = { has_trait = leader_trait_necromancer }
+# 		}
+# 		any_ground_combat_attacker = {
+# 			exists = species
+# 			species = { is_robotic = no }
+# 		}
+# 	}
+# 	immediate = {
+# 		random_ground_combat_attacker = {
+# 			limit = {
+# 				exists = leader
+# 				leader.species = { OR = { has_trait = trait_necrons has_trait = trait_shroud_sick } }
+# 				# leader = { has_trait = leader_trait_necromancer }
+# 			}
+# 			leader = { set_timed_leader_flag = { flag = "necro_can_die" years = 1 } } # To prevent firing generals from your leader pool.
+# 		}
+# 		# log = "Counting hostile armies approaching planet [This.GetName]."
+# 		export_trigger_value_to_variable = {
+# 			trigger = count_ground_combat_attacker
+# 			parameters = {
+# 				limit = { exists = species species = { is_robotic = no } }
+# 			}
+# 			variable = attackers_necro
+# 		}
+# 		# log = "Planet [This.GetName] has [This.attackers_necro] hostile armies."
+# 	}
+# }
+
+#########################################
+# OBSOLETE: replacd with on_ground_combat_started
+# Flagging the defending army leader
+#
+#########################################
+# This = owner of fleet
+# From = fleet
+# fromfrom = planet (if any)
+# Called from on_fleet_auto_move_arrival
+# country_event = {
+# 	id = necromancy.21
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		fromfrom = {
+# 			exists = owner
+# 			owner = { can_reanimated_armies = yes }
+# 			any_planet_army = { exists = leader }
+# 		}
+# 	}
+# 	immediate = {
+# 		log = "Flagging defending leader for potential death..."
+# 		fromfrom = {
+# 			random_planet_army = {
+# 				limit = {
+# 					leader = { NOT = { has_leader_flag = "necro_can_die" } }
+# 				}
+# 				leader = {
+# 					set_timed_leader_flag = { flag = "necro_can_die" years = 1 }
+# 					# To prevent firing generals from your leader pool.
+# 				}
+# 			}
+# 			log = "Defending leader has been flagged on [This.GetName]."
+# 		}
+# 	}
+# }
+
+#########################################
+#
+# Necromancy attackers reward (on_planet_attackers_win)
+#
+#########################################
+# v3.13.2: fixed conflict with much more accurate vanilla event necroids.15
+## Nurgle: Create zombie armies if the attacking necromancer wins
+# (Before controller is switched)
+# This = country, leader attacker
+# From = country, planet defender (controller)
+# fromfrom = planet
+country_event = {
+	id = necromancy.30
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_shroudsick # can_reanimated_armies = yes
+		fromfrom = {
+			is_variable_set = stored_armies_necro
+			check_variable = { which = stored_armies_necro value > 0 }
+			any_ground_combat_attacker = {
+				exists = leader
+				leader = { has_leader_flag = "necro_can_die" }
+				leader.species = { has_trait = trait_shroud_sick } # Maybe too much?
+			}
+		}
+	}
+	immediate = {
+		fromfrom = {
+			# Calculate all possible died armies
+			export_trigger_value_to_variable = {
+				trigger = count_planet_army
+				parameters = {
+					limit = {
+						exists = species
+						NOR = {
+							species = { is_robotic = yes }
+							army_type = undead_army
+							army_type = undead_defense_army
+							army_type = giant_undead_army
+							army_type = plague_zombies
+						}
+					}
+				}
+				variable = stored_armies_necro_tmp
+			}
+			subtract_variable = { which = stored_armies_necro value = stored_armies_necro_tmp }
+			if = {
+				limit = { check_variable = { which = stored_armies_necro value > 0 } }
+				random_ground_combat_attacker = {
+					limit = {
+						exists = leader
+						leader = { has_leader_flag = "necro_can_die" }
+					}
+					leader = { remove_leader_flag = "necro_can_die" }
+				}
+				while = { count = stored_armies_necro
+					random = { chance = @reanimation_ratio
+						create_army = {
+							owner = root
+							species = root.from.species # Same species of the defender
+							type = "plague_zombies"
+						}
+					}
+				}
+				log = "Defending armies have been reanimated. Enjoy the goodies from [This.GetName]"
+			}
+			clear_variable = stored_armies_necro
+			clear_variable = stored_armies_necro_tmp
+		}
+	}
+}
+
+# Necron: Copy of necromancy.30 (on_planet_attackers_win)
+# fromfrom = planet
+country_event = {
+	id = necromancy.32
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_necron_awakening # can_reanimated_armies = yes
+		fromfrom = {
+			is_variable_set = attackers_necro
+			check_variable = { which = attackers_necro value > 0 }
+			any_ground_combat_attacker = {
+				exists = leader
+				leader = { has_leader_flag = "necro_can_die" }
+				leader.species = { has_trait = trait_necrons } # Maybe too much?
+			}
+		}
+	}
+	immediate = {
+		fromfrom = {
+			# Calculate possible died Necrons
+			export_trigger_value_to_variable = {
+				trigger = count_ground_combat_attacker
+				parameters = {
+					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+				}
+				variable = attackers_necro_tmp
+			}
+			subtract_variable = { which = attackers_necro value = attackers_necro_tmp }
+			if = {
+				limit = { check_variable = { which = attackers_necro value > 0 } }
+				random_ground_combat_attacker = {
+					limit = {
+						exists = leader
+						leader = { has_leader_flag = "necro_can_die" }
+					}
+					leader = { remove_leader_flag = "necro_can_die" }
+				}
+				while = { count = attackers_necro
+					random = { chance = @reanimation_ratio
+						create_army = {
+							owner = root
+							species = root.from.species # Same species of the defender
+							type = "necron_warriors"
+						}
+					}
+				}
+				log = "Attacking Necron armies have been reanimated. Enjoy the goodies from [This.GetName]"
+			}
+			clear_variable = attackers_necro
+			clear_variable = attackers_necro_tmp
+		}
+	}
+}
+
+#########################################
+#
+# Necromancy defenders reward (on_planet_defenders_win)
+#
+#########################################
+# v3.13.2: fixed conflict with much more accurate vanilla event necroids.15
+# If Nurgle defending necromancer wins, create zombie armies
+# Root = country, planet defender (controller)
+# From = country, attack leader
+# fromfrom = planet
+country_event = {
+	id = necromancy.40
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_shroudsick # can_reanimated_armies = yes
+		fromfrom = {
+			# is_variable_set = attackers_necro
+			# check_variable = { which = attackers_necro value > 0 }
+			is_variable_set = stored_armies_necro
+			check_variable = { which = stored_armies_necro value > 0 }
+			any_ground_combat_defender = {
+				exists = leader
+				leader = { has_leader_flag = "necro_can_die" } # leader.species = { has_trait = trait_shroud_sick }
+			}
+		}
+	}
+	immediate = {
+		fromfrom = {
+			# Calculate all possible died armies
+			export_trigger_value_to_variable = {
+				trigger = count_planet_army
+				parameters = {
+					limit = {
+						exists = species
+						NOR = {
+							species = { is_robotic = yes }
+							army_type = undead_army
+							army_type = undead_defense_army
+							army_type = giant_undead_army
+							army_type = plague_zombies
+						}
+					}
+				}
+				variable = stored_armies_necro_tmp
+			}
+			subtract_variable = { which = stored_armies_necro value = stored_armies_necro_tmp }
+			if = {
+				limit = { check_variable = { which = stored_armies_necro value > 0 } }
+				random_ground_combat_defender = {
+					limit = {
+						exists = leader
+						leader = { has_leader_flag = "necro_can_die" }
+					}
+					leader = { remove_leader_flag = "necro_can_die" }
+				}
+				while = { count = stored_armies_necro
+					random = { chance = @reanimation_ratio
+						create_army = {
+							owner = root
+							species = root.species # Same species of the defender
+							type = "plague_zombies"
+						}
+					}
+				}
+				log = "Attacking armies have been reanimated. Enjoy the goodies from [This.GetName]"
+			}
+			clear_variable = stored_armies_necro
+			clear_variable = stored_armies_necro_tmp
+		}
+	}
+}
+# Copy of necromancy.40
+# If Necrons defending leader wins, restore Necron armies
+country_event = {
+	id = necromancy.42
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_origin = origin_necron_awakening # can_reanimated_armies = yes
+		fromfrom = {
+			is_variable_set = defenders_necro
+			check_variable = { which = defenders_necro value > 0 }
+			any_ground_combat_defender = {
+				exists = leader
+				leader = { has_leader_flag = "necro_can_die" } # leader.species = { is_robotic = yes has_trait = trait_necrons }
+			}
+		}
+	}
+	immediate = {
+		fromfrom = {
+			# Calculate possible died Necrons
+			export_trigger_value_to_variable = {
+				trigger = count_ground_combat_defender
+				parameters = {
+					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+				}
+				variable = defenders_necro_tmp
+			}
+			subtract_variable = { which = defenders_necro value = defenders_necro_tmp }
+			if = {
+				limit = { check_variable = { which = defenders_necro value > 0 } }
+				random_ground_combat_defender = {
+					limit = {
+						exists = leader
+						leader = { has_leader_flag = "necro_can_die" }
+					}
+					leader = { remove_leader_flag = "necro_can_die" }
+				}
+				while = { count = defenders_necro
+					random = { chance = @reanimation_ratio
+						create_army = {
+							owner = root
+							species = root.species # Same species of the defender
+							type = "necron_warriors"
+						}
+					}
+				}
+				log = "Defending Necron armies have been reanimated. Enjoy the goodies from [This.GetName]"
+			}
+			clear_variable = defenders_necro
+			clear_variable = defenders_necro_tmp
+		}
+	}
+}
+
+#########################################
+#
+# Necromancer regenerates (on_leader_death)
+#
+#########################################
+# Necromancers come back to life with delay
+# From = Leader
+country_event = {
+	id = necromancy.50
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		can_reanimated_armies = yes
+		exists = from # needed?
+		from = {
+			leader_class = commander
+			has_leader_flag = "necro_can_die"
+			species = {
+				OR = {
+					has_trait = trait_shroud_sick
+					has_trait = trait_necrons
+				}
+			}
+			exists = planet
+			planet = {
+				has_owner = yes
+				OR = {
+					has_ground_combat = yes
+					has_orbital_bombardment = yes
+				}
+			}
+		}
+	}
+	immediate = {
+		# TODO
+		# create_saved_leader = {
+		# 	creator = this
+		# 	name = from
+		# 	key = "dead_necromancer_reg"
+		# 	species = from.species
+		# }
+		clone_leader = {
+			target = from
+			effect = {
+				# save_event_target_as = necromancer_reg
+				exile_leader_as = necromancer_reg
+				set_leader_flag = necromancer_reg
+			}
+		}
+		# Possible just one in 100 days
+	}
+	after = {
+		country_event = { id = necromancy.52 days = 100 }
+	}
+}
+
+# Notify Popup when a general dies first time
+country_event = {
+	id = necromancy.51
+	title = monkeys.paw.name
+	desc = monkeys.paw.desc
+	picture = GFX_evt_conclave
+	show_sound = event_conversation
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		can_reanimated_armies = yes
+		from = {
+			leader_class = commander
+			has_leader_flag = "necro_can_die"
+			exists = planet
+			planet = {
+				has_owner = yes
+				OR = {
+					has_ground_combat = yes
+					has_orbital_bombardment = yes
+				}
+			}
+		}
+	}
+	option = { name = monkeys.paw.a }
+	option = { name = monkeys.paw.b }
+}
+
+# Create the "regenerated" necromancer.
+country_event = {
+	id = necromancy.52
+	title = monkeys.paw2.name
+	desc = monkeys.paw2.desc
+	picture = GFX_evt_necrophage
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+	option = { name = monkeys.paw.c }
+	immediate = {
+		log = "Running necromancy.52" # TODO TEST
+		return_leader_from_exile = necromancer_reg
+		# TODO maybe find better method!? Seems odd
+		if = {
+			limit = {
+				any_owned_leader = {
+					leader_class = commander
+					is_idle = yes
+					has_leader_flag = necromancer_reg
+				}
+			}
+			random_owned_leader = {
+				limit = {
+					leader_class = commander
+					is_idle = yes
+					has_leader_flag = necromancer_reg
+				}
+				remove_leader_flag = necromancer_reg
+			}
+		}
+		else = { # Very cheap fallback - Old way
+			# Reinstates a previously-exiled leader to the scoped country/fleet/army/pop faction
+			# set_leader - necromancer_reg
+			create_leader = {
+				event_leader = no
+				class = commander
+				species = owner_species
+				name = random
+				skill = 1
+				# traits = { trait = leader_trait_necromancer }
+			}
+		}
+	}
+}
+
+#########################################
+#
+# Help AI empires using this civic (on_game_start)
+#
+#########################################
+# Give AI empires a little boost because it's hard to program AI to intentionally hire and then kill their leaders
+# country_event = {
+# 	id = necromancy.60
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = { is_ai = yes can_reanimated_armies = yes }
+# 	immediate = {
+# 		while = { count = 5
+# 			create_leader = {
+# 				event_leader = no
+# 				class = commander
+# 				species = owner_species
+# 				name = random
+# 				skill = 1
+# 				traits = { trait = leader_trait_necromancer }
+# 			}
+# 		}
+# 	}
+# }
+
+### Nurgle
+# vanilla
+# country_event = {
+# 	id = necroids.15
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		exists = from.species
+# 		exists = fromfrom
+# 		fromfrom = { can_reanimated_armies = yes }
+# 		NOR = {
+# 			is_country_type = gate_builders
+# 			from.species = { is_robotic = yes }
+# 		}
+# 	}
+# 	immediate = {
+# 		random = { chance = 33
+# 			fromfromfrom = { create_army = { owner = root.fromfrom type = undead_army species = root.from.species } }
+# 		}
+# 	}
+# }
+
+# Reanimated Nurgle Armies: Reanimating all armies as your own
+# An Nurgle army has been killed in ground combat (on_army_killed_in_combat)
+# This = owner
+# From = army
+# fromfrom = opponent
+# fromfromfrom = planet
+country_event = {
+	id = necromancy.210	# Compare V. necroids.15 and necron.110
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		# exists = from
+		exists = fromfrom
+		# exists = fromfromfrom
+		OR = {
+			has_shroudsick_origin = yes # Also own
+			fromfrom = { has_shroudsick_origin = yes }
+		}
+		from = {
+			exists = species
+			species = { is_robotic = no }
+		}
+	}
+	immediate = {
+		if = { # Own
+			limit = { has_shroudsick_origin = yes }
+			random = { chance = @reanimation_ratio
+				from = {
+					switch = { trigger = army_type
+						# infected_army			= { fromfrom = { create_army = { owner = root species = root.species type = infected_army } } }
+						plague_zombies			= { fromfrom = { create_army = { owner = root species = root.species type = plague_zombies } } }
+						giant_undead_army		= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
+						titanic_guardian_army	= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
+						titanic_assault_army	= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
+						# mutant_army			= { fromfrom = { create_army = { owner = root species = root.species type = mutant_army } } } no species
+						# infected_defense_army	= { fromfrom = { create_army = { owner = root species = root.species type = infected_defense_army } } }
+						undead_defense_army		= { fromfrom = { create_army = { owner = root species = root.species type = undead_defense_army } } }
+						undead_army				= { fromfrom = { create_army = { owner = root species = root.species type = undead_army } } }
+						default					= { fromfrom = { create_army = { owner = root species = root.species type = plague_zombies } } }
+					}
+				}
+			}
+		}
+		# if = { limit = { is_defensive_army = yes }
+		else = { # Opponent (no infected_army but more likely)
+			from = {
+				switch = { trigger = army_type
+					# infected_army			= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = infected_army } } }
+					plague_zombies			= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = plague_zombies } } }
+					giant_undead_army		= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
+					titanic_guardian_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
+					titanic_assault_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
+					# infected_defense_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = infected_defense_army } } }
+					undead_defense_army		= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = undead_defense_army } } }
+					undead_army				= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = undead_army } } }
+					default					= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = plague_zombies } } }
+				}
+			}
+		}
+	}
+}

@@ -5,7 +5,7 @@ country_event = {
 	id = aagrimstarts.2000
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { is_country_type = default }
+	trigger = { merg_is_default_empire = yes }
 	immediate = {
 		set_global_flag = allthatisgrimdark_mod
 		# set_update_modifiers_batch = begin
@@ -170,11 +170,11 @@ country_event = {
 		else_if = { # 4 Setup Shroud Sick
 			limit = {
 				OR = {
-					has_origin = origin_shroudsick
-					has_country_flag = nurgle
+					has_shroudsick_origin = yes # has_country_flag = nurgle
 					is_species = "Nurglen"
 				}
 			}
+
 			give_technology = { tech = tech_genome_mapping message = yes }				# Tier 1
 			# give_tech_no_error_effect = { tech = tech_society_1 MESSAGE = yes }		# Tier 2
 			# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3
@@ -182,29 +182,53 @@ country_event = {
 			give_technology = { message = no tech = tech_glandular_acclimation }
 			give_technology = { message = no tech = tech_gene_seed_purification }
 			give_technology = { message = no tech = tech_exotic_gases }
+
+			# if = {
+			# 	limit = { is_gestalt = no  }
+			if = {
+				limit = { has_necroids = yes } # is_reanimator = no
+				if = {
+					limit = {
+						# is_ai = yes
+						owner_main_species = {
+							NOR = {
+								has_trait = trait_necrophage
+								has_trait = trait_plantoid_budding
+								has_trait = trait_lithoid_budding
+								has_trait = trait_advanced_buddingtrait_tiyanki
+							}
+						}
+						NOR = {
+							is_xenophile = yes
+							has_ethic = ethic_fanatic_egalitarian
+							# is_death_cult_empire = yes
+							has_civic = civic_hive_empath
+							has_civic = civic_permanent_employment
+						}
+					}
+					owner_main_species = {
+						change_species_characteristics = { add_trait = trait_necrophage can_change_leader = yes }
+					}
+				}
+				if = {
+					limit = {
+						NOR = {
+							is_reanimator = yes
+							is_pacifist = yes
+						}
+					}
+					force_add_civic = civic_reanimated_armies
+				}
+				set_origin = origin_necrophage
+			}
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_shroud_sick } }
 					change_species_characteristics = { add_trait = trait_shroud_sick add_traits_at_start_of_list = yes }
 				}
-				if = {
-					limit = {
-						NOT = { has_trait = trait_necrophage }
-						root = {
-							is_ai = yes
-							has_necroids = yes
-							NOR = {
-								is_xenophile = yes
-								has_ethic = ethic_fanatic_egalitarian
-								is_death_cult_empire = yes
-								has_civic = civic_hive_empath
-								has_civic = civic_permanent_employment
-							}
-						}
-					}
-					change_species_characteristics = { add_trait = trait_necrophage add_traits_at_start_of_list = yes can_change_leader = yes }
-				}
 			}
+			# }
+
 			event_target:capital_planet = {
 				add_building = building_hive_major_capital_sick
 				add_building = building_hive_node_sick
@@ -234,12 +258,7 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = { is_gestalt = no }
-				give_technology = { tech = tech_subdermal_stimulation message = yes } # Tier 2
-				# log="4 Give empire \\[This.GetName] $tech_subdermal_stimulation$"
-			}
-			# set_origin = origin_necrophage TODO
+
 			set_country_flag = chaos_empire
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
@@ -265,8 +284,8 @@ country_event = {
 			give_technology = { message = no tech = tech_rare_crystals }
 			give_technology = { message = no tech = tech_hyper_entertainment_forum }
 			give_technology = { message = no tech = tech_paradise_dome }
-			give_technology = { message = no tech = tech_subdermal_stimulation }
 			# log="Give shroudsinners empire \\[This.GetName] $tech_subdermal_stimulation$"
+			give_technology = { message = no tech = tech_subdermal_stimulation }
 			set_country_flag = breached_shroud
 			event_target:capital_planet = {
 				while = { count = 7
@@ -309,7 +328,7 @@ country_event = {
 				}
 			}
 			if = { # Compat
-				limit = { NOR = { has_origin = origin_soulkeepers has_origin_soulkeepers = yes } }
+				limit = { NOR = { has_origin = origin_soulkeepers has_soulkeepers_origin = yes } }
 				set_origin = origin_soulkeepers
 			}
 			if = { # Do it "later" (for compatibility)
@@ -688,6 +707,7 @@ country_event = {
 				if = {
 					limit = { graphical_culture = mammalian_01 }
 					set_graphical_culture = toxoid_01
+					set_city_graphical_culture = toxoid_01
 				}
 				if = {
 					limit = {
@@ -919,6 +939,7 @@ country_event = {
 					OR = { is_ai = yes has_paragon_dlc = yes }
 				}
 				set_graphical_culture = nemesis_01
+				set_city_graphical_culture = nemesis_01
 			}
 			set_country_flag = eyechaos_empire
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
@@ -1228,7 +1249,7 @@ country_event = {
 			shift_ethic = ethic_authoritarian
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_imperial_cult } }
+			limit = { is_spiritualist = yes is_authoritarian = yes NOR = { is_gestalt = yes has_civic = civic_imperial_cult } }
 			force_add_civic = "civic_imperial_cult"
 		}
 
@@ -1302,7 +1323,7 @@ country_event = {
 	is_triggered_only = yes
 	# trigger = { has_origin = origin_soulkeepers }
 	immediate = {
-		# v.3.9.2 For most compatibility (using has_origin_soulkeepers)
+		# v.3.9.2 For most compatibility (using has_soulkeepers_origin)
 		if = {
 			limit = { OR = { is_ai = yes has_federations_dlc = yes } }
 			set_origin = origin_void_dwellers
@@ -2956,6 +2977,59 @@ country_event = {
 			# custom_catch_phrase = root.ruler
 			# background_job = root.ruler
 		}
+		if = {
+			limit = { is_gestalt = no }
+			if = {
+				limit = { merg_has_ethics_classic = yes }
+				if = {
+					limit = { is_authoritarian = no }
+					shift_ethic = ethic_authoritarian
+				}
+				else_if = {
+					limit = { is_materialist = no is_militarist = no }
+					shift_ethic = ethic_materialist
+				}
+				else_if = {
+					limit = { is_militarist = no }
+					shift_ethic = ethic_militarist
+				}
+				else_if = {
+					limit = { NOT = { has_ethic = ethic_fanatic_authoritarian } }
+					shift_ethic = ethic_fanatic_authoritarian
+				}
+				else_if = {
+					limit = { is_xenophobe = no }
+					shift_ethic = ethic_xenophobe
+				}
+			}
+			if = {
+				limit = { is_spiritualist = yes is_authoritarian = yes NOT = { has_civic = civic_imperial_cult } }
+				force_add_civic = "civic_imperial_cult"
+			}
+			if = {
+				limit = { NOR = { is_egalitarian = yes has_civic = civic_technocracy has_civic = civic_aristocratic_elite has_civic = civic_exalted_priesthood } }
+				force_add_civic = "civic_aristocratic_elite"
+			}
+			else_if = {
+				limit = { is_materialist = yes NOR = { has_civic = civic_technocracy has_civic = civic_aristocratic_elite } }
+				force_add_civic = "civic_technocracy"
+			}
+			if = {
+				limit = { is_militarist = yes }
+				if = {
+					limit = { NOT = { has_civic = civic_warrior_culture } }
+					force_add_civic = "civic_warrior_culture"
+				}
+				else_if = {
+					limit = { NOT = { has_civic = civic_distinguished_admiralty } }
+					force_add_civic = "civic_distinguished_admiralty"
+				}
+				else_if = {
+					limit = { NOT = { has_civic = civic_nationalistic_zeal } }
+					force_add_civic = "civic_nationalistic_zeal"
+				}
+			}
+		}
 
 		last_created_leader = {
 			species = {
@@ -3327,7 +3401,7 @@ country_event = {
 			add_trait_no_notify = leader_trait_the_cybernetic_luminary
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_imperial_cult } }
+			limit = { is_spiritualist = yes is_authoritarian = yes NOR = { is_gestalt = yes has_civic = civic_imperial_cult } }
 			force_add_civic = "civic_imperial_cult"
 		}
 		country_event = { id = aagrimstarts.222 days = 1 } # Set Servile Species
@@ -3465,7 +3539,7 @@ event = {
 		# any_playable_country = {
 		# 	OR = {
 		# 		# has_origin = origin_soulkeepers
-		# 		has_origin_soulkeepers = yes
+		# 		has_soulkeepers_origin = yes
 		# 		has_origin = origin_necron_awakening
 		# 		has_origin = origin_reawakened # Keept for backward compat.
 		# 	}
@@ -3569,10 +3643,10 @@ event = {
 		# 	limit = {
 		# 		OR = {
 		# 			has_origin = origin_soulkeepers
-		# 			AND = { has_origin_soulkeepers = yes has_country_flag = chaos_empire }
+		# 			AND = { has_soulkeepers_origin = yes has_country_flag = chaos_empire }
 		# 		}
 		# 	}
-		# 	# v.3.9.2 For most compatibility (using has_origin_soulkeepers)
+		# 	# v.3.9.2 For most compatibility (using has_soulkeepers_origin)
 		# 	set_origin = origin_void_dwellers
 		# 	set_country_flag = origin_soulkeepers
 		# 	set_country_flag = eldar_empire
@@ -3777,7 +3851,7 @@ event = {
 				is_ai = yes
 				num_communications > 1
 				OR = {
-					has_origin = origin_shroudsick		# Chaos Nurglen (Death Guard)
+					has_shroudsick_origin = yes		# Chaos Nurglen (Death Guard)
 					has_origin = origin_shroudrage		# Chaos Khornate (World Eaters)
 					has_origin = origin_shroudsinners	# Chaos Slaaneshi (Emperor's Children)
 					has_origin = origin_shroudmutated	# Chaos Tzeentch (Thousand Sons)
@@ -4065,7 +4139,7 @@ planet_event = {
 	trigger = {
 		is_colony = yes
 		exists = owner
-		owner = { is_ai = no has_origin_soulkeepers = yes }
+		owner = { is_ai = no has_soulkeepers_origin = yes }
 		has_deposit = d_aa_exodite_enclave
 		NOT = { has_planet_flag = pf_told_about_exodites }
 	}
@@ -4368,7 +4442,7 @@ country_event = {
 	hide_window = yes
 	trigger = {
 		# OR = {
-		# 	has_origin = origin_shroudsick
+		# 	has_shroudsick_origin = yes
 		# 	has_origin = origin_shroudrage
 		# 	has_origin = origin_shroudsinners
 		# 	has_origin = origin_shroudmutated
@@ -4477,11 +4551,11 @@ planet_event = {
 		OR = {
 			AND = {
 				exists = owner
-				owner = { has_origin = origin_shroudsick }
+				owner = { has_shroudsick_origin = yes }
 			}
 			AND = {
 				exists = controller
-				controller = { has_origin = origin_shroudsick }
+				controller = { has_shroudsick_origin = yes }
 			}
 		}
 		NOR = { has_planet_flag = pf_infected_begun has_modifier = shroudinfection_begins has_modifier = shroudinfection_progression }
@@ -4503,14 +4577,18 @@ planet_event = {
 		OR = {
 			AND = {
 				exists = owner
-				owner = { has_origin = origin_shroudsick }
+				owner = { has_shroudsick_origin = yes }
 			}
 			AND = {
 				exists = controller
-				controller = { has_origin = origin_shroudsick }
+				controller = { has_shroudsick_origin = yes }
 			}
 		}
-		NOR = { has_modifier = shroudinfection_begins has_modifier = shroudinfection_progression is_planet_class = pc_infected }
+		NOR = {
+			has_modifier = shroudinfection_begins
+			has_modifier = shroudinfection_progression
+			is_planet_class = pc_infested # pc_infected
+		}
 		uses_district_set = standard
 		has_planet_flag = pf_infected_begun
 	}
@@ -4536,14 +4614,18 @@ planet_event = {
 		OR = {
 			AND = {
 				exists = owner
-				owner = { has_origin = origin_shroudsick }
+				owner = { has_shroudsick_origin = yes }
 			}
 			AND = {
 				exists = controller
-				controller = { has_origin = origin_shroudsick }
+				controller = { has_shroudsick_origin = yes }
 			}
 		}
-		NOR = { has_modifier = shroudinfection_begins has_modifier = shroudinfection_progression is_planet_class = pc_infected }
+		NOR = {
+			has_modifier = shroudinfection_begins
+			has_modifier = shroudinfection_progression
+			is_planet_class = pc_infested # pc_infected
+		}
 	}
 	immediate = {
 		if = {
@@ -4569,18 +4651,20 @@ planet_event = {
 		OR = {
 			AND = {
 				exists = owner
-				owner = { has_origin = origin_shroudsick }
+				owner = { has_shroudsick_origin = yes }
 			}
 			AND = {
 				exists = controller
-				controller = { has_origin = origin_shroudsick }
+				controller = { has_shroudsick_origin = yes }
 			}
 		}
 		num_sapient_pops > 1
-		NOT = { is_planet_class = pc_infected }
+		NOT = {
+			is_planet_class = pc_infested # pc_infected
+		}
 	}
 	immediate = {
-		change_pc = pc_infected
+		change_pc = pc_infested # pc_infected
 		# TODO !?
 		set_planet_flag = pf_hide_city
 		set_planet_flag = pf_hide_generator

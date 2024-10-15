@@ -13,7 +13,7 @@ decision_extend_circuit = {
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 		NOT = { has_planet_flag = pf_maxed_infinity_circuit }
 		merg_is_habitat = yes
 	}
@@ -63,7 +63,7 @@ decision_extend_circuit_alt = {
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 		NOR = {
 			has_planet_flag = pf_maxed_infinity_circuit
 			merg_is_habitat = yes
@@ -113,7 +113,7 @@ decision_reactivate_shroudgate = {
 		exists = space_owner
 		exists = from
 		space_owner = { is_same_empire = from }
-		from = { has_origin_soulkeepers = yes }
+		from = { has_soulkeepers_origin = yes }
 		is_colonizable = yes
 		is_terraforming = no
 		is_under_colonization = no

@@ -72,8 +72,9 @@ on_pop_purged = {
 # fromfromfrom = planet
 on_army_killed_in_combat = {
 	random_events = {
-		75 = 0
-		25 = necron.110
+		45 = 0
+		31 = necron.110
+		24 = necromancy.210
 	}
 }
 

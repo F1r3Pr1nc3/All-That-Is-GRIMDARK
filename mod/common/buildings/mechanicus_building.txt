@@ -7,6 +7,7 @@ building_machine_temple = {
 	base_cap_amount = 1
 	icon = building_titan_manufactorum
 	owner_type = corporate
+
 	category = resource
 	potential = {
 		has_branch_office = yes
@@ -36,6 +37,7 @@ building_manufactorums = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	icon = building_titan_manufactorum
+
 	category = resource
 	potential = {
 		exists = owner

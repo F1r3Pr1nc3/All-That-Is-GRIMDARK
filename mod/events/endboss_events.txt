@@ -159,7 +159,7 @@ event = {
 					country_event = { id = game_start.9 }						# Create starter set of ships
 					country_event = { id = game_start.33 days = 2 }				# Needs delay for system ownership to settle
 					set_variable = { which = eb_distance_to_player value = capital_star.solar_system.eb_distance_to_player }
-					log = "Empire \\[This.GetName] is Final Opponent."
+					# log = "Empire \\[This.GetName] is Final Opponent."
 				}
 			}
 		}

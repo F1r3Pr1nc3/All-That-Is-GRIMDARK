@@ -703,7 +703,7 @@ generate_start_buildings_and_districts = {
 				# grimdark_is_vanilla_hive
 				owner = {
 					is_hive_empire = yes
-					NOT = { has_origin = origin_shroudsick }
+					has_shroudsick_origin = no
 				}
 			}
 			# 9 jobs
@@ -1276,4 +1276,233 @@ generate_start_buildings_and_districts = {
 	}
 	# Additional resources based on empire type and possible subspecies
 	owner = { give_starting_resources_effect = yes }
+}
+
+# This = released_empire vassal
+# From = overlord if action.229
+# From = target country if on_status_quo
+set_origin_effect = {
+	country_event = { id = game_start.8 }
+	give_starting_resources_effect = yes
+	# Necrophages
+	if = {
+		limit = {
+			OR = {
+				has_trait = trait_necrophage
+				from = { has_origin = origin_necrophage }
+			}
+		}
+		set_origin = origin_necrophage
+	}
+	# Subterranean
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = trait_cave_dweller
+				from = { is_subterranean_empire = yes }
+			}
+		}
+		set_origin = origin_subterranean
+	}
+	# Subterranean Machines
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = trait_robot_cave_dweller
+				from = { has_origin = origin_subterranean_machines }
+			}
+		}
+		set_origin = origin_subterranean_machines
+	}
+	# Void Dwellers
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = trait_void_dweller_1
+				from = { has_void_dweller_origin = yes }
+				from = { has_soulkeepers_origin = yes }
+			}
+		}
+		set_origin = origin_void_dwellers
+		if = {
+			limit = { from = { has_country_flag = eldar_empire } }
+			set_country_flag = eldar_empire
+		}
+	}
+	# Void Machines
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = trait_void_dweller_2
+				from = { has_origin = origin_void_machines }
+			}
+		}
+		set_origin = origin_void_machines
+	}
+	# Calamitous Birth
+	else_if = {
+		limit = {
+			has_trait = trait_lithoid
+			from = { has_origin = origin_lithoid }
+		}
+		set_origin = origin_lithoid
+	}
+	# Chaos
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = chaos_empire
+				from = { has_country_flag = chaos_empire }
+			}
+		}
+		set_choas_origin = yes
+	}
+	# Necron
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = necron_empire
+				from = { has_country_flag = necron_empire }
+				from = { has_origin = origin_necron_awakening }
+			}
+		}
+		set_origin = origin_necron_awakening
+		set_country_flag = necron_empire
+		if = {
+			limit = { has_global_flag = WHspecies_installed }
+			randomize_flag_symbol = necrons
+		}
+		else = {
+			change_country_flag = {
+				icon = { category="necrons" file="necron_emblem.dds" }
+				background = { category="backgrounds" file="stripe.dds" }
+				colors = { "orange" "dark_purple" "null" "null" }
+			}
+		}
+	}
+	# Ork
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = ork_empire
+				from = { has_country_flag = ork_empire }
+			}
+		}
+		set_origin = origin_barbarichorde
+		set_country_flag = ork_empire
+	}
+	# Tau
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = tau_empire
+				from = { has_country_flag = tau_empire }
+			}
+		}
+		set_origin = origin_greatergood
+		set_country_flag = tau_empire
+	}
+	# Eldar
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = eldar_empire
+				from = { has_country_flag = eldar_empire }
+			}
+		}
+		set_origin = origin_soulkeepers
+		set_country_flag = eldar_empire
+	}
+	# Darkeldar
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = darkeldar_empire
+				from = { has_country_flag = darkeldar_empire }
+			}
+		}
+		set_origin = origin_paindrinkers
+		set_country_flag = darkeldar_empire
+	}
+	# Tyranid
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = tyranid_empire
+				from = { has_country_flag = tyranid_empire }
+			}
+		}
+		set_origin = origin_bioreformers
+		set_country_flag = tyranid_empire
+	}
+	# Liberated
+	else_if = {
+		limit = {
+			has_country_flag = released_empire # Hard-coded somewhere
+		}
+		set_origin = origin_liberated
+	}
+	else = {
+		set_origin = origin_default
+	}
+
+	# Fix hive/machine
+	if = {
+		limit = {
+			is_machine_empire = yes
+			NOT = { has_trait = trait_machine_unit }
+		}
+		country_remove_ethic = ethic_gestalt_consciousness
+		shift_ethic = ethic_xenophobe
+		change_government = random
+	}
+	else_if = {
+		limit = {
+			is_hive_empire = yes
+			NOT = { has_trait = trait_hive_mind }
+		}
+		country_remove_ethic = ethic_gestalt_consciousness
+		shift_ethic = ethic_xenophobe
+		change_government = random
+	}
+	else_if = {
+		limit = {
+			is_machine_empire = no
+			from = {
+				is_machine_empire = yes
+			}
+			has_trait = trait_machine_unit
+		}
+		shift_ethic = ethic_gestalt_consciousness
+		change_government = {
+			authority = auth_machine_intelligence
+			cooldown = no
+			remove_invalid_civics = yes
+		}
+	}
+	else_if = {
+		limit = {
+			is_hive_empire = no
+			has_trait = trait_hive_mind
+		}
+		shift_ethic = ethic_gestalt_consciousness
+		change_government = {
+			authority = auth_hive_mind
+			cooldown = no
+			remove_invalid_civics = yes
+		}
+	}
+	# Human
+	else_if = {
+		limit = {
+			owner_species = { is_human_species = yes }
+			OR = {
+				has_country_flag = human_empire
+				from = { has_country_flag = human_empire }
+			}
+		}
+		set_country_flag = human_empire
+	}
+	country_event = { id = game_start.70 }
+	country_event = { id = game_start.72 }
 }

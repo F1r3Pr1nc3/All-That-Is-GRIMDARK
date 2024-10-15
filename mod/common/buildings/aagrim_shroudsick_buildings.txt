@@ -6,13 +6,15 @@ building_hive_major_capital_sick = {
 	can_demolish = no
 	can_be_ruined = no
 	can_be_disabled = no
+	building_sets = { infected_world }
+
 	category = government
 	potential = {
+		uses_district_set = infected_world
 		exists = owner
 		owner = {
-			has_origin = origin_shroudsick
+			has_shroudsick_origin = yes
 		}
-		is_planet_class = pc_infected
 	}
 	convert_to = {
 		building_machine_major_capital
@@ -77,21 +79,22 @@ building_hive_major_capital_sick = {
 
 building_hive_node_sick = {
 	base_buildtime = @b1_time
+	building_sets = { infected_world }
+
 	category = unity
 	potential = {
+		uses_district_set = infected_world
 		exists = owner
 		owner = {
-			has_origin = origin_shroudsick
+			has_shroudsick_origin = yes
 		}
-		is_planet_class = pc_infected
 	}
 	destroy_trigger = {
 		NAND = {
 			exists = owner
 			owner = {
-				has_origin = origin_shroudsick
+				has_shroudsick_origin = yes
 			}
-			is_planet_class = pc_infected
 		}
 	}
 	convert_to = {
@@ -140,21 +143,22 @@ building_hive_node_sick = {
 
 building_hive_warren_sick = {
 	base_buildtime = @b1_time
+	building_sets = { infected_world }
+
 	category = amenity
 	potential = {
+		uses_district_set = infected_world
 		exists = owner
 		owner = {
-			has_origin = origin_shroudsick
+			has_shroudsick_origin = yes
 		}
-		is_planet_class = pc_infected
 	}
 	destroy_trigger = {
 		NAND = {
 			exists = owner
 			owner = {
-				has_origin = origin_shroudsick
+				has_shroudsick_origin = yes
 			}
-			is_planet_class = pc_infected
 		}
 	}
 	convert_to = {

@@ -8,6 +8,8 @@
 # 7 Death Guard (XIV Legion)	- Nurgle: (Primarch: Mortarion)
 # 8 Thousand Sons (XV Legion)	- Tzeentch: (Primarch: Magnus the Red)
 # 9 Emperor's Children (III Legion) - Slaanesh: (Primarch: Fulgrim)
+# 10 Sons of Malice				- Malice (Malal): (Renegade Chapter, Leader: Unknown) a mysterious and obscure Chaos God. He represents a unique and paradoxical aspect of Chaos—self-destruction, rebellion, and the endless cycle of Chaos feeding on itself
+# 11 Red Corsairs				- Lose Chaos Undivided: (Renegade Chapter, Leader: Huron Blackheart) are characterized by their pragmatic approach to piracy and war, often salvaging ships and equipment from their enemies. They are known for incorporating renegade Space Marines from other Chapters, offering them refuge and a place in their ranks, which has led to the Red Corsairs becoming a large and varied warband.
 # "EMPIRE_DESIGN_mechanicus"=
 # "Mechanican Forge Dominion"=
 "adeptus_mechanicus"=
@@ -522,7 +524,7 @@
 	{
 		key="PRESCRIPTED_system_name_eldar"
 	}
-	initializer="" # void_dweller_system
+	initializer=""
 	graphical_culture="avian_01"
 	city_graphical_culture="avian_01"
 	empire_flag=
@@ -548,14 +550,13 @@
 	ruler=
 	{
 		gender=female
-		# name=
-		# {
-		# 	full_names=
-		# 	{
-		# 		key="PRESCRIPTED_ruler_name_eldar"
-		# 	}
-		# }
-		name=PRESCRIPTED_ruler_name_eldar
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_eldar"
+			}
+		}
 		portrait="humanoid_05_female_01"
 		texture=0
 		attachment=1
@@ -1033,7 +1034,7 @@
 	spawn_as_fallen=no
 	ignore_portrait_duplication=no
 	room="personality_fanatic_befrienders_room"
-	spawn_enabled=no	# Yes / no / always
+	spawn_enabled=yes	# Yes / no / always
 	playable=has_megacorp
 	ethic="ethic_authoritarian"	# ethic="ethic_egalitarian"
 	ethic="ethic_xenophile"
@@ -1154,7 +1155,7 @@ Slaanesh=
 	spawn_as_fallen=no
 	ignore_portrait_duplication=no
 	room="personality_fanatic_befrienders_room"
-	spawn_enabled=no	# Yes / no / always
+	spawn_enabled=yes	# Yes / no / always
 	playable=has_not_megacorp
 	ethic="ethic_egalitarian"
 	ethic="ethic_xenophile"
@@ -1570,12 +1571,191 @@ Slaanesh=
 	ignore_portrait_duplication=no
 	room="necron2_room"	# "machine_room"
 	spawn_enabled=yes	# Yes / no / always
-	# playable=has_synthetic_dawn
+	playable = has_synthetic_dawn_not_machine_age
 	ethic="ethic_gestalt_consciousness"
 	civics=
 	{
 		"civic_machine_terminator"
 		"civic_machine_warbots"
+	}
+	origin="origin_necron_awakening"
+}
+# Copy with DLC
+"EMPIRE_DESIGN_necron"=
+{
+	key="EMPIRE_DESIGN_necron"
+	ship_prefix=
+	{
+		key="NRS"
+		literal=yes
+	}
+	species=
+	{
+		class="MACHINE" # Necrons
+		portrait="sd_hum_robot" # Szarekhan_Dynasty
+		species_name=
+		{
+			key="name_list_NECRON1" # "name_list_NECRON1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_necron"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_necron"
+					}
+				}
+
+			}
+		}
+		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
+		name_list="NECRON1"
+		gender=not_set
+		trait="trait_machine_unit"
+		trait="trait_robot_high_bandwidth"
+		trait="trait_robot_recycled"
+		trait="trait_robot_mass_produced"
+		trait="trait_robot_repurposed_hardware"
+		trait="trait_robot_durable"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_NECRON1"
+				}
+			}
+
+			{
+				key="1"
+				value=
+				{
+					key="Resurgency"
+				}
+			}
+
+		}
+	}
+	adjective=
+	{
+		key="PRESCRIPTED_adjective_necron"
+	}
+	authority="auth_imperial"
+	flags=
+	{
+		"custom_start_screen"
+		"necron_empire"
+	}
+	government = "gov_machine_terminator"
+	advisor_voice_type="l_necroid_vir"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_necron"
+	}
+	planet_class="pc_desert"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_necron"
+	}
+	initializer=""
+	graphical_culture="steelribs_01" # "humanoid_01"
+	city_graphical_culture="steelribs_01" # "mammalian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="necrons"
+			file="necron_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="stripe.dds"
+		}
+		colors=
+		{
+			"orange"
+			"dark_purple"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_necron"
+				key="%LEADER_2%"
+				variables=
+				{
+
+					{
+						key="1"
+						value=
+						{
+							key="Varagon"
+							literal=yes
+						}
+					}
+
+					{
+						key="2"
+						value=
+						{
+							key="Drakvir"
+							literal=yes
+						}
+					}
+
+				}
+			}
+			# use_full_regnal_name=yes
+		}
+		portrait="sd_hum_robot"		# "Szarekhan13"
+		texture=3
+		attachment=0
+		clothes=0
+		ruler_title=
+		{
+			key="PRESCRIPTED_ruler_title_necron"
+		}
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_enabled=yes	# Yes / no / always
+	playable = has_machine_age_dlc
+	ignore_portrait_duplication=no
+	room="necron2_room"	# "machine_room"
+	ethic="ethic_fanatic_authoritarian"
+	# ethic="ethic_materialist"
+	ethic="ethic_militarist"
+	# ethic="ethic_xenophobe"
+	civics=
+	{
+		# "civic_imperial_cult"			# is_spiritualist Necrons have a godlike reverence for their rulers, especially the Silent King or their Phaeron, who is seen as an immortal, divine figure. While the Necrons don’t worship in the traditional sense, their supreme ruler commands unquestioned loyalty and is the literal embodiment of their empire’s will.
+		# "civic_technocracy"				# is_materialist This civic could work well for the Necrons due to their focus on technology and science. The Necrons are driven by a mastery of advanced technologies, such as stasis fields, necrodermis bodies, and gauss weaponry. Their leadership is often scientifically driven, with the Crypteks being the architects of their technological might.
+		"civic_distinguished_admiralty" # is_militarist This civic would represent the Necrons’ highly disciplined and militarized nature. The Necrons' military is ancient, meticulously organized, and terrifyingly efficient. A civic focused on enhancing their military command structure fits perfectly with their warlike tendencies and the endless legions of Necron warriors and war machines.
+		# "civic_warrior_culture"		# is_militarist Necrons are ancient warriors with a culture built on military prowess and conquest. This civic can represent their strong emphasis on combat and their historical dominance through force.
+		"civic_efficient_bureaucracy"	# Necron society is ancient and hyper-organized, with millennia of meticulous bureaucratic control over their vast legions and conquered worlds. This civic reflects the unrelenting efficiency of their empire and the robotic precision with which they manage their domains.
+		"civic_functional_architecture"	# Necron structures are known for their cold, efficient, and indestructible architecture. This civic reflects the Necron empire’s focus on perfect, functional designs, where nothing is wasted, and every structure is built for eternity.
 	}
 	origin="origin_necron_awakening"
 }
@@ -2230,6 +2410,7 @@ imp=
 		"human_empire"
 		"ai_no_leave_fed"
 		"the_mankind"
+		"imperium" # For whom?
 	}
 	government="gov_feudal_empire"
 	planet_name=

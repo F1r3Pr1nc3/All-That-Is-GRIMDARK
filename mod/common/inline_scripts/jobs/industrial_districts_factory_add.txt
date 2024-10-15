@@ -205,7 +205,7 @@ triggered_planet_modifier = {
 triggered_planet_modifier = {
 	potential = {
 		NOT = { uses_district_set = city_world }
-		is_planet_class = pc_machine
+		merg_is_machine_world = yes
 		has_factory_designation = yes
 		exists = owner
 		owner = {

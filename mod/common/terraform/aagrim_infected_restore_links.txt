@@ -1,22 +1,425 @@
+@gaiaCost = 7500
+@gaiaTime = 3600
+
+@hiveCost = 10000
+@hiveTime = 7200
+
+@lClusterCost = 1000
+
+# Potential is pre check
+# Condition is concrete deep check
+
+####################
+## Infested World ##
+####################
+
 terraform_link = {
-	from = "pc_infected"
+	from = "pc_infested"
 	to = "pc_nuked"
 
 	resources = {
 		category = terraforming
 
 		cost = {
-			energy = 10000
+			energy = @hiveCost
 		}
 	}
-	duration = 3600
+	duration = @gaiaTime
+
+	potential = {
+		has_policy_flag = relentless_industrialists_study
+		has_country_flag = relentless_industrialists_study_completed
+	}
 
 	condition = {
-		has_technology = "tech_climate_restoration"
-		NOT = { has_origin = origin_shroudsick }
+		has_technology = tech_climate_restoration
+		has_shroudsick_origin = no
 	}
 
 	ai_weight = {
-		weight = 2
+		weight = 2 modifier = { factor = 0 has_shroudsick_origin = yes }
+	}
+}
+
+## Infectworlding
+
+terraform_link = {
+	from = "pc_nuked"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @hiveCost
+		}
+	}
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+	}
+
+	condition = {
+		has_shroudsick_origin = yes
+		has_technology = tech_climate_restoration
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = { factor = 0 from = { is_colony = no } }
+	}
+}
+
+terraform_link = {
+	from = "pc_hive"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+terraform_link = {
+	from = "pc_hive_tundra"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_desert"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_savannah"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_arid"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_tropical"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_ocean"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_continental"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_alpine"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_tundra"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_arctic"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @lClusterCost
+			exotic_gases = 100
+			volatile_motes = 100
+		}
+	}
+
+	duration = @gaiaTime
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_gaia"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = { # It takes real effort to destroy something so perfect
+			energy = 2500
+			exotic_gases = 200
+			volatile_motes = 200
+		}
+	}
+
+	duration = 5400
+
+	potential = {
+		from = { has_owner = yes }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+terraform_link = {
+	from = "pc_barren"
+	to = "pc_infested"
+
+	resources = {
+		category = terraforming
+
+		cost = {
+			energy = @hiveCost
+		}
+	}
+
+	duration = @hiveTime
+
+	potential = {
+		from = { has_owner = yes has_modifier = terraforming_candidate  }
+		has_shroudsick_origin = yes
+	}
+	condition = { has_technology = tech_climate_restoration }
+
+	effect = {
+		from = { cure_hangover = yes }
+	}
+
+	ai_weight = {
+		weight = 11
+		modifier = { factor = 0 from = { is_colony = no } }
 	}
 }

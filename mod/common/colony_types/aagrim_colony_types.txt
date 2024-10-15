@@ -1,10 +1,11 @@
+# root = planet
 # Maiden World
 col_maidenworld = {
 	icon = GFX_colony_type_resort
 
 	potential = {
 		exists = owner
-		owner = { has_origin_soulkeepers = yes }
+		owner = { has_soulkeepers_origin = yes }
 		NOR = {
 			is_special_colony_type = yes
 			has_ringworld_output_boost = yes
@@ -33,5 +34,53 @@ col_maidenworld = {
 		modifier = { add = 5 has_designation = col_maidenworld }
 		modifier = { add = 10 num_sapient_pops > 0 }
 		modifier = { add = 5 num_sapient_pops > 5 }
+	}
+}
+
+
+# col_infested = {
+# 	icon = GFX_colony_type_dying
+# 	potential = {
+# 		exists = owner
+# 		is_capital = no
+# 		owner = {
+# 			OR = {
+# 				is_country_type = swarm
+# 				has_origin = origin_bioreformers
+# 			}
+# 		}
+# 	}
+# 	weight_modifier = {
+# 		base = 1000
+# 	}
+# }
+
+# Infested/Infected World
+col_infected_world = {
+	icon = GFX_wg_declared_crisis # GFX_colony_type_dying
+
+	potential = {
+		OR = {
+			is_planet_class = pc_infected # DEPRECATED
+			is_planet_class = pc_infested
+		}
+		exists = owner
+		owner = {
+			OR = {
+				has_origin = origin_bioreformers # Nurgle
+				has_origin = origin_bioreformers # tyranid
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.15
+		planet_jobs_upkeep_mult = -0.05
+		pop_purge_speed = -0.05
+		pop_housing_usage_mult = -0.1
+	}
+
+	weight_modifier = {
+		base = 1000
 	}
 }

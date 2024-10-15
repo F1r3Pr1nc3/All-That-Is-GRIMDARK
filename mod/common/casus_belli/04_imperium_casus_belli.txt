@@ -2,7 +2,11 @@ cb_crusade = {
 	show_in_diplomacy = yes
 	show_notification = yes
 	potential = {
-		is_ai = no # merg_is_default_empire = yes
+		OR = {
+			is_ai = no
+			has_origin = origin_godruler
+			# merg_is_default_empire = yes
+		}
 		has_valid_civic = civic_imperial_cult
 	}
 	is_valid = {

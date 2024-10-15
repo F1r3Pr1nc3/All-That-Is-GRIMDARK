@@ -10,7 +10,7 @@ d_aa_exodite_enclave = {
 		if = {
 			limit = { exists = owner }
 			if = {
-				limit = { owner = { has_origin_soulkeepers = yes } }
+				limit = { owner = { has_soulkeepers_origin = yes } }
 				create_pop = { species = owner }
 				random = { chance = 50 create_pop = { species = owner } }
 			}
@@ -24,19 +24,19 @@ d_aa_exodite_enclave = {
 		category = deposit_blockers
 		cost = {
 			trigger = {
-				owner = { has_origin_soulkeepers = no }
+				owner = { has_soulkeepers_origin = no }
 			}
 			energy = 1000
 		}
 		cost = {
 			trigger = {
-				owner = { has_origin_soulkeepers = yes }
+				owner = { has_soulkeepers_origin = yes }
 			}
 			influence = 100
 		}
 		produces = {
 			trigger = {
-				owner = { has_origin_soulkeepers = yes }
+				owner = { has_soulkeepers_origin = yes }
 			}
 			food = 5
 			minerals = 3
@@ -49,7 +49,7 @@ d_aa_exodite_enclave = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = { trade_value_add = 2 planet_amenities_add = 2 job_exodite_add = 1 }
 	}
@@ -68,7 +68,7 @@ d_aa_infinity_circuit = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { has_technology = tech_mine_zro has_origin_soulkeepers = yes }
+				owner = { has_technology = tech_mine_zro has_soulkeepers_origin = yes }
 			}
 			sr_zro = 1
 			energy = 5
@@ -78,7 +78,7 @@ d_aa_infinity_circuit = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = {
 			planet_stability_add = 1
@@ -113,7 +113,7 @@ d_aa_infinity_circuit_alt = {
 		produces = {
 			trigger = {
 				exists = owner
-				owner = { has_technology = tech_mine_zro has_origin_soulkeepers = yes }
+				owner = { has_technology = tech_mine_zro has_soulkeepers_origin = yes }
 			}
 			sr_zro = 1
 			energy = 3
@@ -123,7 +123,7 @@ d_aa_infinity_circuit_alt = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = {
 			planet_stability_add = 2
@@ -161,7 +161,7 @@ d_aa_shroudgate_active = {
 		upkeep = {
 			trigger = {
 				exists = owner
-				owner = { has_origin_soulkeepers = yes }
+				owner = { has_soulkeepers_origin = yes }
 			}
 			sr_zro = 1
 		}
@@ -172,7 +172,7 @@ d_aa_shroudgate_active = {
 			exists = owner
 			owner = {
 				OR = {
-					has_origin_soulkeepers = yes
+					has_soulkeepers_origin = yes
 					has_origin = origin_paindrinkers
 					has_origin = origin_shroudmutated
 				}
@@ -184,7 +184,7 @@ d_aa_shroudgate_active = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = { job_seer_add = 1 job_bonesinger_add = 1 planet_max_buildings_add = 2 }
 	}

@@ -90,8 +90,9 @@ on_decade_pulse = {
 		lessgalcom.3 # Chaos ally
 	}
 	random_events = {
+		20 = 0
 		20 = lessgalcom.7 # Ork war
-		80 = lessgalcom.8 # Tyranid war
+		60 = lessgalcom.8 # Tyranid war
 	}
 }
 

@@ -262,7 +262,7 @@ nameless = {
 
 	possible = {
 		hidden_trigger = { exists = owner }
-		owner = { has_origin = origin_shroudsick }
+		owner = { has_shroudsick_origin = yes }
 		OR = {
 			has_job = nameless
 			is_unemployed = yes

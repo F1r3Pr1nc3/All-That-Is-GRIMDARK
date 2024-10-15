@@ -1,0 +1,69 @@
+# This file contains all the triggers for the necromancy events.
+
+# Help AI empires using reanimated armies
+# on_game_start_country = {
+# 	events = {
+# 		necromancy.60
+# 	}
+# }
+
+# This = owner of fleet
+# From = fleet
+# fromfrom = planet (if any)
+# on_fleet_auto_move_arrival = {
+# 	events = {
+# 		necromancy.10
+# 		necromancy.11
+# 		necromancy.20
+# 		necromancy.21
+# 	}
+# }
+
+# Triggers when ground combat starts
+# This = planet
+# From = attacking country
+on_ground_combat_started = {
+	events = {
+		necromancy.10 # Nurgle
+		necromancy.12 # Necron
+		# necromancy.20
+		# paragon_2.2085 Vanilla commander with trait chainbreaker
+	}
+}
+
+# This triggers country_event for the attacker upon victory
+# (Before controller is switched)
+# This = country, leader attacker
+# From = country, planet owner
+# fromfrom = planet
+# IDENTITIES: attacker is the side that "IsHostile" to
+# The planet controller; e.g. spawned monster armies
+# Are attackers, but if they win and the player attempts
+# To retake the planet, the player is the attacker
+on_planet_attackers_win = {
+	events = {
+		necromancy.30 # Rewards Nurgle players with reanimated armies
+		necromancy.32 # Rewards Necron players with reanimated armies
+	}
+}
+
+# Triggers country_event for the defender upon victory
+# This = country, planet owner
+# From = country, attack leader
+# fromfrom = planet
+on_planet_defenders_win = {
+	events = {
+		necromancy.40 # Nurgle
+		necromancy.42 # Necron
+	}
+}
+
+# Executed as a leader has died
+# This = Country
+# From = Leader
+on_leader_death = {
+	events = {
+		necromancy.50
+		# necromancy.51
+	}
+}

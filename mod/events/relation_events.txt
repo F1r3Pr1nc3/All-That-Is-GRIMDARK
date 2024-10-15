@@ -69,7 +69,7 @@ country_event = {
 					OR = { has_country_flag = human_empire has_country_flag = loyallegion }
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_both_human } }
 				}
-				establish_communications_no_message = root
+				# establish_communications_no_message = root
 				add_opinion_modifier = { who = root modifier = opinion_both_human }
 				add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 				add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
@@ -217,10 +217,7 @@ country_event = {
 				limit = {
 					is_sapient = yes
 					NOT = { is_same_species = root.owner_main_species }
-					OR = {
-						is_human_species = yes
-						species_portrait = "Servitors"
-					}
+					OR = { is_human_species = yes species_portrait = "Servitors" }
 				}
 				random_galaxy_species = {
 					limit = {
@@ -238,10 +235,7 @@ country_event = {
 							has_trait = trait_eldar
 							has_trait = trait_orkz
 						}
-						OR = {
-							is_human_species = yes
-							species_portrait = "Servitors"
-						}
+						OR = { is_human_species = yes species_portrait = "Servitors" }
 					}
 					prev = { set_species_identity = prev }
 				}
@@ -691,7 +685,7 @@ country_event = {
 					}
 					OR = { has_country_flag = chaos_undivided_worship has_origin = origin_fallen_psionic }
 				}
-				establish_communications_no_message = root
+				# establish_communications_no_message = root
 				add_trust = { amount = 90 who = prev }
 				if = {
 					limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } } }
@@ -735,7 +729,7 @@ country_event = {
 					has_country_flag = chaos_empire
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } }
 				}
-				establish_communications_no_message = root
+				# establish_communications_no_message = root
 				add_opinion_modifier = { who = root modifier = opinion_both_chaos }
 				# add_opinion_modifier = { who = root modifier = opinion_common_ground }
 				# add_opinion_modifier = { who = root modifier = opinion_flavors_up }
@@ -779,8 +773,8 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOR = { is_gestalt = yes has_technology = tech_subdermal_stimulation }
-				OR = { has_origin = origin_shroudsick has_origin = origin_necrophage has_origin = origin_shroudsinners }
+				NOR = { is_gestalt = yes has_technology = tech_subdermal_stimulation is_individual_machine = yes }
+				OR = { has_shroudsick_origin = yes has_origin = origin_necrophage has_origin = origin_shroudsinners }
 			}
 			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_subdermal_stimulation }		# Tier 2
 			# log="Give empire \\[This.GetName] $tech_subdermal_stimulation$ 2002"
@@ -841,7 +835,7 @@ country_event = {
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 4 setup_shroudsick
-			limit = { OR = { has_origin = origin_shroudsick has_country_flag = nurgle } }
+			limit = { has_shroudsick_origin = yes }
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_shroud_sick } }
@@ -875,7 +869,7 @@ country_event = {
 		else_if = { # 6 Setup Soulkeepers
 			limit = {
 				OR = {
-					has_origin_soulkeepers = yes
+					has_soulkeepers_origin = yes
 					founder_species = { has_trait = trait_eldar } # Compat Mod "WH species"
 				}
 			}
@@ -1093,7 +1087,7 @@ country_event = {
 				OR = {
 					has_machine_cult = yes
 					AND = { has_country_flag = mankind_star_empire has_origin = origin_syncretic_evolution }
-					AND = { exists = founder_species founder_species = { is_species_class = "Mechanicus" }  } # Compat Mod "WH species"
+					AND = { exists = founder_species founder_species = { is_species_class = "Mechanicus" } } # Compat Mod "WH species"
 				}
 			}
 			if = {
@@ -1306,10 +1300,7 @@ country_event = {
 				limit = { event_target:godruler = { is_ai = yes } }
 				random_member = {
 					limit = {
-						OR = {
-							has_machine_cult = yes
-							has_valid_civic = civic_imperial_cult
-						}
+						OR = { has_machine_cult = yes has_valid_civic = civic_imperial_cult }
 						NAND = { is_at_war = yes is_at_war_with = event_target:godruler }
 					}
 					event_target:godruler = {
@@ -1491,7 +1482,7 @@ country_event = {
 					has_opinion_modifier = { who = root modifier = opinion_both_eldar }
 				}
 			}
-			establish_communications_no_message = root
+			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
@@ -1528,7 +1519,7 @@ country_event = {
 				}
 
 			}
-			establish_communications_no_message = root
+			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
 			if = {
@@ -1742,7 +1733,7 @@ country_event = {
 					has_opinion_modifier = { who = root modifier = opinion_flavors_up }
 				}
 			}
-			establish_communications_no_message = root
+			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_tyranid }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 			add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
@@ -1751,7 +1742,55 @@ country_event = {
 	after = { get_capital_planet = yes event_target:capital_planet = { check_planet_employment = yes } }
 }
 
-# Assimilating Purge
+
+# on_pop_purged
+# From = Country
+# fromfrom = Pop
+# Mechromancy - CyberZombies
+# planet_event = {
+# 	id = necroids.25
+# 	is_triggered_only = yes
+# 	hide_window = yes
+# 	trigger = {
+# 		from = { has_ascension_perk = ap_mechromancy }
+# 		exists = fromfrom # crisis.202 can remove the last pop
+# 		fromfrom = {
+# 			NOR = {
+# 				has_purge_type = { type = purge_displacement }
+# 				has_purge_type = { type = purge_cosmogenesis }
+# 				has_purge_type = { type = purge_cosmogenesis_lathe_resettle }
+# 			}
+# 			is_robotic_species = no
+# 			species = {
+# 				NOT = { is_archetype = PRESAPIENT }
+# 			}
+# 			NOR = { has_trait = trait_cybernetic has_trait = trait_zombie }
+# 		}
+# 	}
+# 	immediate = {
+# 		random = { chance = 33 # Create a cyber-zombie per pop.
+# 			create_pop = { species = fromfrom.species }
+# 			last_created_pop = {
+# 				modify_species = {
+# 					species = this
+# 					add_trait = trait_cybernetic
+# 					add_trait = trait_zombie
+# 					add_traits_at_start_of_list = yes
+# 					remove_trait = trait_self_modified
+# 					remove_trait = trait_latent_psionic
+# 					remove_trait = trait_psionic
+# 				}
+# 				set_citizenship_type = { country = root.owner type = citizenship_full_machine }
+# 				if = { # Assimilator empire
+# 					limit = { root.owner = { is_machine_empire = yes has_civic = civic_machine_assimilator } }
+# 					root.owner = { generate_cyborg_treats = yes } # Scripted effect
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+# Assimilating Purge (compare necroids.25 Mechromancy - CyberZombies)
 # on_pop_purged
 # From = Country
 # fromfrom = Pop
@@ -1768,6 +1807,8 @@ planet_event = {
 				NOR = {
 					has_purge_type = { type = purge_necrophage }
 					has_purge_type = { type = purge_displacement }
+					has_purge_type = { type = purge_cosmogenesis }
+					has_purge_type = { type = purge_cosmogenesis_lathe_resettle }
 					has_trait = trait_cyborg
 					has_trait = trait_adeptus_mechanicus
 					# has_trait = trait_adeptus_custodes
@@ -2026,7 +2067,7 @@ planet_event = {
 	}
 }
 
-## FIXME
+## FIXME - Vanilla bug of ordered_playable_country with position = 1
 ## Balance - Strengthen weak empires
 # From = aagrimstarts.2003
 country_event = {
@@ -2035,8 +2076,9 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		is_scope_valid = yes
-		exists = owner # Real exists workaround
-		merg_is_default_empire = yes
+		# exists = owner # Real exists workaround
+		# merg_is_default_empire = yes
+		can_generate_trade_value = yes
 	}
 	immediate = {
 		save_event_target_as = contact_country
@@ -2115,4 +2157,65 @@ country_event = {
 		}
 	}
 	# after = { clear_variable = tmp_var_buff_countries }
+}
+
+# De-increment variable for counting Space Marines (on_army_killed_in_combat / on_army_killed_no_combat)
+### 9 Heretic Traitor Legions ###
+country_event = {
+	id = aagrimstarts.2450
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = chaos_empire
+		from = {
+			OR = {
+				army_type = chaos_marines
+				# army_type = alpha_legion		# chaos_undivided	the_alpha_legion
+				# army_type = black_legion		# chaos_undivided	the_black_legion
+				# army_type = iron_warriors		# chaos_undivided	the_iron_warriors
+				# army_type = night_lords			# chaos_undivided	the_night_lords
+				# army_type = word_bearer			# chaos_undivided	the_word_bearer
+				# army_type = emperors_children	# slaanesh			the_emperors_children
+				# army_type = world_eaters		# khorne			the_world_eater
+				army_type = death_guard			# nurgle			the_death_guard
+				# army_type = thousand_sons		# tzeentch			the_thousand_sons
+				## army_type = red_corsairs		# chaos_undivided	the_red_corsairs
+				## army_type = sons_of_malice	# malice			the_sons_of_malice  Pirate renegade force: Their leader, Huron Blackheart, was once known as Lufgt Huron, Chapter Master of the Astral Claws Space Marine Chapter.
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			switch = { trigger = army_type
+				chaos_marines		= { prev = { change_variable = { which = chaos_marines_count value = -1 } } }
+				# alpha_legion		= { prev = { change_variable = { which = alpha_legion_count value = -1 } } }
+				# black_legion		= { prev = { change_variable = { which = black_legion_count value = -1 } } }
+				death_guard			= { prev = { change_variable = { which = death_guard_count value = -1 } } }
+				# emperors_children	= { prev = { change_variable = { which = emperors_children_count value = -1 } } }
+				# iron_warriors		= { prev = { change_variable = { which = iron_warriors_count value = -1 } } }
+				# night_lords			= { prev = { change_variable = { which = night_lords_count value = -1 } } }
+				# thousand_sons		= { prev = { change_variable = { which = thousand_sons_count value = -1 } } }
+				# word_bearer			= { prev = { change_variable = { which = word_bearer_count value = -1 } } }
+				# world_eaters		= { prev = { change_variable = { which = world_eaters_count value = -1 } } }
+				## red_corsairs		= { prev = { change_variable = { which = red_corsairs_count value = -1 } } }
+				## sons_of_malice		= { prev = { change_variable = { which = sons_of_malice_count value = -1 } } }
+			}
+		}
+	}
+}
+
+# De-increment variable for counting imperial legion armies - compare emperor.450
+country_event = {
+	id = aagrimstarts.2451
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = human_empire
+		from = { army_type = adeptus_astartes }
+	}
+	immediate = {
+		change_variable = { which = adeptus_astartes_count value = -1 }
+	}
 }

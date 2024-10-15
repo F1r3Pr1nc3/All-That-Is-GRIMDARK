@@ -1,3 +1,4 @@
+# Gets overriden by the Merger of Rules
 # This = country
 can_be_part_of_galactic_community = {
 	custom_tooltip = {
@@ -49,7 +50,7 @@ can_be_part_of_galactic_community = {
 		NAND = {
 			exists = overlord
 			overlord = { has_been_declared_crisis = yes }
-			# has_country_flag = wgfm_quit_community # Warship Girls R And MIST Species
+			has_country_flag = wgfm_quit_community # Warship Girls R And MIST Species
 		}
 	}
 	# Playable Katzenartig Imperium
@@ -77,10 +78,47 @@ can_be_part_of_galactic_community = {
 	# }
 	# More Emperor & Custodian Resolutions, and Galactic Unification
 	MECR_trigger_1_can_be_part_of_galactic_community = yes
+	# Expel them!
 	custom_tooltip = {
 		fail_text = "community_expelled_failtext"
-		NOT = {
-			has_country_flag = expelled_from_community
+		NOT = { has_country_flag = expelled_from_community }
+	}
+}
+
+# This = country
+can_be_part_of_galactic_empire = {
+	custom_tooltip = {
+		fail_text = "community_default_failtext"
+		merg_is_default_empire = yes
+		# OR = {
+		# 	# More Emperor & Custodian Resolutions, and Galactic Unification
+		# 	MECR_trigger_0_community_country_type = yes
+		# 	# ZOFE
+		# 	is_zofe_oe = yes
+		# }
+	}
+	custom_tooltip = {
+		fail_text = "community_homicidal_failtext"
+		is_homicidal = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		has_been_declared_crisis = no
+	}
+	custom_tooltip = {
+		fail_text = "community_declared_crisis_failtext"
+		OR = {
+			NOT = { exists = overlord }
+			overlord = { has_been_declared_crisis = no }
+			# Warship Girls R And MIST Species
+			NOT = { has_country_flag = wgfm_quit_community }
 		}
+	}
+	# More Emperor & Custodian Resolutions, and Galactic Unification
+	MECR_trigger_2_can_be_part_of_galactic_empire = yes
+	# Expel them!
+	custom_tooltip = {
+		fail_text = "community_emperor_expelled_failtext"
+		NOT = { has_country_flag = expelled_from_community }
 	}
 }

@@ -149,3 +149,34 @@ necron_tomb = {
 		# trigger = { always = yes }
 	}
 }
+
+# building_forrbiden_archive = {
+# 	base_buildtime = 300
+# 	base_cap_amount = 6
+#	category = research
+# 	potential = {
+# 		exists = owner
+# 		owner = { has_origin = origin_necron_awakening }
+# 	}
+# 	destroy_trigger = {
+# 		exists = owner
+# 		owner = {
+# 			NOT = { has_origin = origin_necron_awakening }
+# 		}
+# 	}
+# 	allow = { }
+# 	resources = {
+# 		category = planet_buildings
+# 		cost = { alloys = 500 }
+# 		upkeep = { energy = 60 consumer_goods = 30 }
+# 		produces = {
+# 			physics_research = 30
+# 			society_research = 30
+# 			engineering_research = 30
+# 		}
+# 	}
+# 	planet_modifier = { planet_researchers_produces_mult = 0.15 job_head_researcher_add = 2 }
+# 	# prerequisites = { }
+# 	# triggered_desc = { }
+# 	ai_weight = { base = 500 }
+# }

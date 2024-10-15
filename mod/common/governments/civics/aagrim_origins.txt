@@ -226,7 +226,7 @@ origin_shroudsick = {
 	icon = "gfx/interface/icons/origins/origins_shroudsick.dds"
 	picture = GFX_evt_shroudsick
 	max_once_global = yes
-	starting_colony = pc_infected
+	starting_colony = pc_infested # pc_infected
 	playable = { has_necroids = yes }
 	possible = {
 		authority = {
@@ -252,7 +252,7 @@ origin_shroudsick = {
 		"custom_start_screen"
 		"humanoid"
 		"chaos_empire"
-		# "the_death_guard"
+		"the_death_guard"
 		"nurgle"
 	}
 	# has_secondary_species = { title = civic_necrophage_secondary_species } TODO!
@@ -509,6 +509,7 @@ origin_godruler = {
 		"human_empire"
 		"ai_no_leave_fed"
 		"the_mankind"
+		"imperium" # For whom?
 	}
 	advanced_start = yes
 	random_weight = { base = 0 }

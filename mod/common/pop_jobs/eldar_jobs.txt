@@ -379,7 +379,7 @@ exodite = {
 	triggered_pop_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = { pop_housing_usage_add = -0.5 pop_environment_tolerance = 0.5 }
 	}
@@ -394,7 +394,7 @@ exodite = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 		}
 		modifier = { planet_amenities_add = 2 }
 	}
@@ -417,7 +417,7 @@ exodite = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 			OR = { has_trait = trait_robot_domestic_protocols has_trait = trait_charismatic }
 		}
 		modifier = { planet_amenities_add = 0.4 }
@@ -425,7 +425,7 @@ exodite = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_origin_soulkeepers = yes }
+			owner = { has_soulkeepers_origin = yes }
 			has_trait = trait_repugnant
 		}
 		modifier = { planet_amenities_add = -0.4 }

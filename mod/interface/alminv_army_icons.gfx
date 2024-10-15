@@ -75,4 +75,25 @@ spriteTypes = {
 		sprite_sheet_sprite_type = "GFX_aa_army_icons"
 		default_frame = 14
 	}
+	spriteType = {
+		name = "GFX_army_type_aero"
+		sprite_sheet_sprite_type = "GFX_aa_army_icons"
+		default_frame = 14
+	}
+	spriteType = {
+		name = "GFX_army_type_dead_guard"
+		textureFile = "gfx/interface/planetview/dead_guard_army_icon.dds"
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_army_type_chaos_marines"
+		textureFile = "gfx/interface/planetview/chaos_marines_army_icon.dds"
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_army_type_adeptus_astartes"
+		textureFile = "gfx/interface/planetview/adeptus_astartes_army_icon.dds"
+		noOfFrames = 1
+	}
+
 }
