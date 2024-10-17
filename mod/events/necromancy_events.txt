@@ -161,7 +161,7 @@ planet_event = {
 # 	hide_window = yes
 # 	is_triggered_only = yes
 # 	trigger = {
-# 		can_reanimated_armies = yes
+# 		can_reanimate_armies = yes
 # 		from = {
 # 			is_civilian = no
 # 			is_ship_size = transport
@@ -191,7 +191,7 @@ planet_event = {
 # 	hide_window = yes
 # 	is_triggered_only = yes
 # 	trigger = {
-# 		from = { can_reanimated_armies = yes }
+# 		from = { can_reanimate_armies = yes }
 # 		any_ground_combat_attacker = {
 # 			exists = leader
 # 			leader.species = { OR = { has_trait = trait_necrons has_trait = trait_shroud_sick } }
@@ -239,7 +239,7 @@ planet_event = {
 # 	trigger = {
 # 		fromfrom = {
 # 			exists = owner
-# 			owner = { can_reanimated_armies = yes }
+# 			owner = { can_reanimate_armies = yes }
 # 			any_planet_army = { exists = leader }
 # 		}
 # 	}
@@ -276,7 +276,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_origin = origin_shroudsick # can_reanimated_armies = yes
+		has_origin = origin_shroudsick
 		fromfrom = {
 			is_variable_set = stored_armies_necro
 			check_variable = { which = stored_armies_necro value > 0 }
@@ -340,7 +340,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_origin = origin_necron_awakening # can_reanimated_armies = yes
+		has_origin = origin_necron_awakening
 		fromfrom = {
 			is_variable_set = attackers_necro
 			check_variable = { which = attackers_necro value > 0 }
@@ -403,7 +403,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_origin = origin_shroudsick # can_reanimated_armies = yes
+		has_origin = origin_shroudsick
 		fromfrom = {
 			# is_variable_set = attackers_necro
 			# check_variable = { which = attackers_necro value > 0 }
@@ -467,7 +467,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_origin = origin_necron_awakening # can_reanimated_armies = yes
+		has_origin = origin_necron_awakening
 		fromfrom = {
 			is_variable_set = defenders_necro
 			check_variable = { which = defenders_necro value > 0 }
@@ -526,7 +526,10 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		can_reanimated_armies = yes
+		OR = { # can_reanimate_armies = yes
+			has_origin = origin_necron_awakening
+			has_origin = origin_shroudsick
+		}
 		exists = from # needed?
 		from = {
 			leader_class = commander
@@ -559,11 +562,11 @@ country_event = {
 			target = from
 			effect = {
 				# save_event_target_as = necromancer_reg
-				exile_leader_as = necromancer_reg
 				set_leader_flag = necromancer_reg
+				exile_leader_as = necromancer_reg
 			}
 		}
-		# Possible just one in 100 days
+		# Possible just once at 100 days
 	}
 	after = {
 		country_event = { id = necromancy.52 days = 100 }
@@ -571,32 +574,35 @@ country_event = {
 }
 
 # Notify Popup when a general dies first time
-country_event = {
-	id = necromancy.51
-	title = monkeys.paw.name
-	desc = monkeys.paw.desc
-	picture = GFX_evt_conclave
-	show_sound = event_conversation
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-		can_reanimated_armies = yes
-		from = {
-			leader_class = commander
-			has_leader_flag = "necro_can_die"
-			exists = planet
-			planet = {
-				has_owner = yes
-				OR = {
-					has_ground_combat = yes
-					has_orbital_bombardment = yes
-				}
-			}
-		}
-	}
-	option = { name = monkeys.paw.a }
-	option = { name = monkeys.paw.b }
-}
+# country_event = {
+# 	id = necromancy.51
+# 	title = monkeys.paw.name
+# 	desc = monkeys.paw.desc
+# 	picture = GFX_evt_conclave
+# 	show_sound = event_conversation
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 		OR = { # can_reanimate_armies = yes
+# 			has_origin = origin_necron_awakening
+# 			has_origin = origin_shroudsick
+# 		}
+# 		from = {
+# 			leader_class = commander
+# 			has_leader_flag = "necro_can_die"
+# 			exists = planet
+# 			planet = {
+# 				has_owner = yes
+# 				OR = {
+# 					has_ground_combat = yes
+# 					has_orbital_bombardment = yes
+# 				}
+# 			}
+# 		}
+# 	}
+# 	option = { name = monkeys.paw.a }
+# 	option = { name = monkeys.paw.b }
+# }
 
 # Create the "regenerated" necromancer.
 country_event = {
@@ -653,7 +659,7 @@ country_event = {
 # 	id = necromancy.60
 # 	hide_window = yes
 # 	is_triggered_only = yes
-# 	trigger = { is_ai = yes can_reanimated_armies = yes }
+# 	trigger = { is_ai = yes can_reanimate_armies = yes }
 # 	immediate = {
 # 		while = { count = 5
 # 			create_leader = {
@@ -669,27 +675,6 @@ country_event = {
 # }
 
 ### Nurgle
-# vanilla
-# country_event = {
-# 	id = necroids.15
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	trigger = {
-# 		exists = from.species
-# 		exists = fromfrom
-# 		fromfrom = { can_reanimated_armies = yes }
-# 		NOR = {
-# 			is_country_type = gate_builders
-# 			from.species = { is_robotic = yes }
-# 		}
-# 	}
-# 	immediate = {
-# 		random = { chance = 33
-# 			fromfromfrom = { create_army = { owner = root.fromfrom type = undead_army species = root.from.species } }
-# 		}
-# 	}
-# }
-
 # Reanimated Nurgle Armies: Reanimating all armies as your own
 # An Nurgle army has been killed in ground combat (on_army_killed_in_combat)
 # This = owner

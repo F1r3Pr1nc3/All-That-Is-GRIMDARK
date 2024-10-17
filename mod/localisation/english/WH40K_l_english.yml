@@ -151,19 +151,19 @@
  # tech_vomit:0 "Vomit"
  # tech_vomit_desc:0 ""
 
- WAAAGH!:0 "WAAAGH!"
+ WAAAGH:0 "WAAAGH!"
 
  ####################################
  # Tech Categories "Warhammer 40K MOD"
  ####################################
- chaos:0 "Chaos Manipulation"
- chaos_desc:0 "The power to create and cause chaos."
- lost_knowledge:0 "Lost Knowledge"
- lost_knowledge_desc:0 "Things related to the search of knowledge which was lost even before The Horus Heresy."
- armor:0 "Power Armor"
- armor_desc:0 "This armor is an advanced form of powered combat armor."
- weapon:0 "Weapons"
- weapon_desc:0 "Things designed or used for inflicting bodily harm or physical damage."
+ # chaos:0 "Chaos Manipulation"
+ # chaos_desc:0 "The power to create and cause chaos."
+ # lost_knowledge:0 "Lost Knowledge"
+ # lost_knowledge_desc:0 "Things related to the search of knowledge which was lost even before The Horus Heresy."
+ # armor:0 "Power Armor"
+ # armor_desc:0 "This armor is an advanced form of powered combat armor."
+ # weapon:0 "Weapons"
+ # weapon_desc:0 "Things designed or used for inflicting bodily harm or physical damage."
 
 # Just for the logs
  pc_cosmogenesis_world_adj:0 "$pc_machine_adj$"

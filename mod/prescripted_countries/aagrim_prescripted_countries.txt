@@ -1290,9 +1290,9 @@ Slaanesh=
 	origin="origin_shroudsick"
 }
 # Fallback Clone without DLC
-"nurglenclique"=
+"Nurglen Clique"=
 {
-	key="nurglenclique"
+	key="Nurglen Clique"
 	ship_prefix=
 	{
 		key="NDS"

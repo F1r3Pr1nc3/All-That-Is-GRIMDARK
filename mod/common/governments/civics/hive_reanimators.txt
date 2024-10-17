@@ -1,0 +1,11 @@
+civic_hive_reanimated_armies = {
+	playable = { has_necroids = yes }
+	ai_playable = { has_necroids = yes }
+	potential = {
+		authority = { value = auth_hive_mind }
+	}
+	random_weight = {
+		base = 3
+	}
+	description = "civic_tooltip_hive_reanimated_armies_effects"
+}

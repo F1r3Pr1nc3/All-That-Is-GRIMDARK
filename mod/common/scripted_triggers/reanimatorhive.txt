@@ -1,0 +1,10 @@
+is_reanimator = {
+	OR = {
+		has_valid_civic = civic_reanimated_armies
+		has_valid_civic = civic_permanent_employment
+		has_valid_civic = civic_hive_cordyceptic_drones
+		has_ascension_perk = ap_mechromancy
+		has_valid_civic = civic_hive_reanimated_armies
+		has_origin = origin_bioreformers
+	}
+}

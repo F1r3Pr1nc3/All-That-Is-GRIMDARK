@@ -22,7 +22,7 @@ necron_warriors = {
 			has_building = building_monolith_complex
 		}
 	}
-	prerequisites = { "tech_centralized_command" }
+	prerequisites = { "tech_centralized_command" "tech_assault_armies" }
 	potential_country = {
 		OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
 		has_technology = tech_advanced_metallurgy_1
@@ -166,8 +166,7 @@ plague_zombies = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no
-			# NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
 		}
 		planet = {
 			has_active_building = building_dread_encampment

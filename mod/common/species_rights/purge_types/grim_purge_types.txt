@@ -23,12 +23,22 @@ purge_normal = {
 		else_if = {
 			limit = {
 				from = {
+					NOT = { has_country_flag = necron_empire }
+				}
+				has_trait = trait_necrons
+			}
+			always = yes
+		}
+		else_if = {
+			limit = {
+				from = {
 					NOT = { has_country_flag = chaos_empire }
 					# has_country_flag = human_empire
 				}
 				OR = {
 					has_trait = trait_daemons
 					has_trait = trait_heretic_astartes
+					has_trait = trait_shroud_sick
 				}
 			}
 			always = yes
@@ -39,6 +49,7 @@ purge_normal = {
 				OR = {
 					has_trait = trait_adeptus_custodes
 					has_trait = trait_adeptus_astartes
+					has_trait = trait_adeptus_mechanicus
 				}
 			}
 			always = yes
@@ -73,11 +84,18 @@ purge_normal = {
 			OR = {
 				AND = {
 					from = {
+						NOT = { has_country_flag = necron_empire }
+					}
+					has_trait = trait_necrons
+				}
+				AND = {
+					from = {
 						NOT = { has_country_flag = chaos_empire }
 					}
 					OR = {
 						has_trait = trait_daemons
 						has_trait = trait_heretic_astartes
+						has_trait = trait_shroud_sick
 					}
 				}
 				AND = {
@@ -87,6 +105,7 @@ purge_normal = {
 					OR = {
 						has_trait = trait_adeptus_custodes
 						has_trait = trait_adeptus_astartes
+						has_trait = trait_adeptus_mechanicus
 					}
 				}
 			}
@@ -127,11 +146,16 @@ purge_labor_camps = {
 					has_policy_flag = purge_allowed
 				}
 				AND = {
+					NOT = { has_country_flag = necron_empire }
+					prev = { has_trait = trait_necrons }
+				}
+				AND = {
 					NOT = { has_country_flag = chaos_empire }
 					prev = {
 						OR = {
 							has_trait = trait_daemons
 							has_trait = trait_heretic_astartes
+							has_trait = trait_shroud_sick
 						}
 					}
 				}
@@ -141,6 +165,7 @@ purge_labor_camps = {
 						OR = {
 							has_trait = trait_adeptus_custodes
 							has_trait = trait_adeptus_astartes
+							has_trait = trait_adeptus_mechanicus
 						}
 					}
 				}
@@ -168,12 +193,19 @@ purge_labor_camps = {
 			OR = {
 				AND = {
 					from = {
+						NOT = { has_country_flag = necron_empire }
+					}
+					prev = { has_trait = trait_necrons }
+				}
+				AND = {
+					from = {
 						NOT = { has_country_flag = chaos_empire }
 						# has_country_flag = human_empire
 					}
 					OR = {
 						has_trait = trait_daemons
 						has_trait = trait_heretic_astartes
+						has_trait = trait_shroud_sick
 					}
 				}
 				AND = {
@@ -183,6 +215,7 @@ purge_labor_camps = {
 					OR = {
 						has_trait = trait_adeptus_custodes
 						has_trait = trait_adeptus_astartes
+						has_trait = trait_adeptus_mechanicus
 					}
 				}
 			}

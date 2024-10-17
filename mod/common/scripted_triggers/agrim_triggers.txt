@@ -91,8 +91,10 @@ MECR_trigger_2_can_be_part_of_galactic_empire = {
 
 uses_grimdark_infected_world_district = { uses_district_set = infected_world }
 
-can_reanimated_armies  = {
-	has_origin = origin_necron_awakening
+can_reanimate_armies  = {
+	# has_origin = origin_necron_awakening machines
 	has_origin = origin_shroudsick
 	has_valid_civic = civic_reanimated_armies
+	has_valid_civic = civic_hive_reanimated_armies
+	has_technology = tech_plague_zombies # tech_army_assimilation
 }
