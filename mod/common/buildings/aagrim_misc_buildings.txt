@@ -50,14 +50,14 @@ building_monolith_complex = {
 	category = army
 	potential = {
 		exists = owner
-		owner = { has_origin = origin_necron_awakening }
+		owner = { has_necron_origin = yes }
 		merg_is_relic_world = yes
 	}
 	# allow = {  }
 	destroy_trigger = {
 		exists = owner
 		owner = {
-			NOT = { has_origin = origin_necron_awakening }
+			has_necron_origin = no
 		}
 	}
 	army_modifier = { army_starting_experience_add = 500 }

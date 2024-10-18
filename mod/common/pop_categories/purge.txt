@@ -11,10 +11,13 @@ purge = {
 				planet = {
 					exists = controller
 					controller = {
-						has_origin = origin_barbarichorde
+						OR = {
+							AND = { has_origin = origin_necron_awakening 	root = { NOT = { has_trait = trait_necrons } } } # Necron are fanatic xenophobe and vice versa
+							AND = { has_origin = origin_bioreformers		root = { NOT = { has_trait = trait_tyranid } } } # Tyranid are fanatic xenophobe and vice versa
+							AND = { has_origin = origin_barbarichorde		root = { NOT = { has_trait = trait_self_sustained } } } # Orkz are fanatic xenophobe and vice versa
+						}
 					}
 				}
-				NOT = { has_trait = trait_self_sustained }
 			}
 			AND = { # Controlled by crisis
 				has_global_flag = galactic_crisis_happened
@@ -29,10 +32,9 @@ purge = {
 					}
 				}
 				OR = { # Contingency won't purge itself
-					NOT = { exists = event_target:custodian_bot }
-					AND = {
+					NAND = {
 						exists = event_target:custodian_bot
-						NOT = { species = { is_same_value = event_target:custodian_bot } }
+						species = { is_same_species = event_target:custodian_bot }
 					}
 				}
 			}

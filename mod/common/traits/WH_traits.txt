@@ -56,9 +56,23 @@ trait_adeptus_astartes = {
 		BIOLOGICAL
 	}
 	species_class = {
-		Astartes
-		Legiones_Astartes
+		# Astartes  enable via Patch
+		# Legiones_Astartes enable via Patch
 		HUM
+	}
+	opposites = {
+		trait_heretic_astartes
+		trait_shroud_sick
+		# trait_adeptus_custodes
+		trait_orkz
+		trait_cyborg
+		trait_tyranid
+		trait_daemons
+		trait_tau
+		trait_eldar
+		trait_drukhari
+		trait_cute_AI
+		trait_necrons
 	}
 	initial = no
 	randomized = no
@@ -156,6 +170,7 @@ trait_heretic_astartes = {
 		"trait_conservational"
 		"trait_wasteful"
 		"trait_functional"
+		"trait_adeptus_astartes"
 	}
 	modifier = {
 		army_damage_mult = 0.2			# Reflecting their formidable combat abilities, give a bonus to army damage. This represents the enhanced martial prowess of the Warp-touched warriors.
@@ -252,7 +267,7 @@ trait_necrons = {
 	}
 	potential_crossbreeding_chance = 0
 	species_class = {
-		Necrons
+		# Necrons enable via Patch
 		MACHINE
 		PARAGON # Not really
 	}
@@ -266,6 +281,7 @@ trait_necrons = {
 	leader_age_max = 100000
 	opposites = {
 		trait_heretic_astartes
+		trait_shroud_sick
 		trait_adeptus_custodes
 		trait_orkz
 		trait_cyborg
@@ -303,7 +319,7 @@ trait_orkz = {
 		BIOLOGICAL
 	}
 	species_class = {
-		Orkz
+		# Orkz enable via Patch
 		HUM
 	}
 	# initial = no
@@ -344,7 +360,7 @@ trait_tyranid = {
 		BIOLOGICAL
 	}
 	species_class = {
-		Tyranids
+		# Tyranids enable via Patch
 		ART
 	}
 	# initial = no
@@ -470,7 +486,7 @@ trait_tau = {
 		HUM
 		MAM
 		REP
-		Tau
+		# Tau  enable via Patch
 	}
 	# initial = no
 	randomized = no
@@ -513,7 +529,7 @@ trait_eldar = {
 		energy = 1500
 	}
 	species_class = {
-		Eldars
+		# Eldars  enable via Patch
 		HUM
 	}
 	# initial = no
@@ -555,7 +571,7 @@ trait_adeptus_custodes = {
 		BIOLOGICAL
 	}
 	species_class = {
-		Imperium
+		# Imperium  enable via Patch
 		HUM
 	}
 	# initial = no
@@ -600,7 +616,7 @@ trait_drukhari = {
 		BIOLOGICAL
 	}
 	species_class = {
-		Drukhari
+		# Drukhari enable via Patch
 		HUM
 	}
 	# initial = no

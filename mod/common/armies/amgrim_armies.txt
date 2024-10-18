@@ -90,7 +90,7 @@ adeptus_astartes = {
 	allow = {
 		has_building = building_chapel_barracks
 		owner = {
-			check_variable = { which = "adeptus_astartes_count" value != 6 }
+			check_variable = { which = "adeptus_astartes_count" value < 8 }
 		}
 	}
 	on_queued = {
@@ -108,6 +108,13 @@ adeptus_astartes = {
 		OR = {
 			owner = { has_origin = origin_godruler }
 			planet = { is_planet_class = pc_hive_tundra }
+		}
+	}
+	ai_weight = {
+		base = 500
+		modifier = {
+			set = 0
+			check_variable = { which = "adeptus_astartes_count" value > 7 }
 		}
 	}
 }
@@ -129,7 +136,7 @@ death_guard = {
 	allow = {
 		has_building = building_chaos_temple
 		owner = {
-			check_variable = { which = "death_guard_count" value != 3 }
+			check_variable = { which = "death_guard_count" value < 3 }
 		}
 	}
 	on_queued = {
@@ -142,12 +149,19 @@ death_guard = {
 			change_variable = { which = "death_guard_count" value = -1 }
 		}
 	}
-	potential_country = { has_country_flag = chaos_empire }
+	potential_country = { has_country_flag = chaos_empire has_shroudsick_origin = yes }
 	potential = {
 		OR = {
 			owner = { has_country_flag = the_death_guard }
 			# planet = { has_planet_flag = plague_planet } # TODO
 			planet = { is_planet_class = pc_infected }
+		}
+	}
+	ai_weight = {
+		base = 500
+		modifier = {
+			set = 0
+			check_variable = { which = "death_guard_count" value > 2 }
 		}
 	}
 }
@@ -165,10 +179,13 @@ chaos_marines = {
 		cost = { minerals = 550 }
 		upkeep = { energy = 5 }
 	}
-	allow = {
+	potential_country = { has_country_flag = chaos_empire has_shroudsick_origin = no }
+	potential = {
 		has_building = building_chaos_temple
+	}
+	allow = {
 		owner = {
-			check_variable = { which = "chaos_marines_count" value != 6 }
+			check_variable = { which = "chaos_marines_count" value < 8 }
 		}
 	}
 	on_queued = {
@@ -181,7 +198,11 @@ chaos_marines = {
 			change_variable = { which = "chaos_marines_count" value = -1 }
 		}
 	}
-	potential_country = { has_country_flag = chaos_empire }
-	# potential = {
-	# }
+	ai_weight = {
+		base = 500
+		modifier = {
+			set = 0
+			check_variable = { which = "chaos_marines_count" value > 7 }
+		}
+	}
 }

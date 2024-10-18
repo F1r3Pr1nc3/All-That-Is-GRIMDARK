@@ -56,14 +56,25 @@ has_soulkeepers_origin = {
 		has_country_flag = origin_soulkeepers
 	}
 }
+
 # For most compatibility
 has_shroudsick_origin = {
 	OR = {
 		has_origin = origin_shroudsick
-		has_country_flag = nurgle
 		has_origin = origin_necrophage # Normally as hive not possible
 	}
+	has_country_flag = nurgle
 }
+
+# For most compatibility
+has_necron_origin = {
+	OR = {
+		has_origin = origin_necron_awakening
+		# has_origin = origin_reawakened # Keept for backward compat.
+		has_country_flag = necron_empire
+	}
+}
+
 # For most compatibility
 has_machine_cult = {
 	OR = {
@@ -74,9 +85,7 @@ has_machine_cult = {
 }
 # Merger of Rules
 MECR_trigger_1_can_be_part_of_galactic_community = {
-	NOT = {
-		has_origin = origin_necron_awakening
-	}
+	has_necron_origin = no
 	NAND = {
 		is_ai = yes
 		has_country_flag = chaos_empire
@@ -84,7 +93,7 @@ MECR_trigger_1_can_be_part_of_galactic_community = {
 }
 MECR_trigger_2_can_be_part_of_galactic_empire = {
 	NOR = {
-		has_origin = origin_necron_awakening
+		has_necron_origin = yes
 		has_origin = origin_bioreformers
 	}
 }
@@ -92,7 +101,7 @@ MECR_trigger_2_can_be_part_of_galactic_empire = {
 uses_grimdark_infected_world_district = { uses_district_set = infected_world }
 
 can_reanimate_armies  = {
-	# has_origin = origin_necron_awakening machines
+	# has_necron_origin = yes machines
 	has_origin = origin_shroudsick
 	has_valid_civic = civic_reanimated_armies
 	has_valid_civic = civic_hive_reanimated_armies

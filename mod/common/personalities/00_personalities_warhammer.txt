@@ -358,7 +358,7 @@ necron = {
 
 	allow = {
 		merg_is_default_empire = yes
-		has_country_flag = necron_empire
+		has_necron_origin = yes
 	}
 	weight_modifier = { weight = 1000 }
 }

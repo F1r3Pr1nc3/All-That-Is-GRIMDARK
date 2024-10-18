@@ -699,18 +699,50 @@ country_event = {
 		}
 	}
 	immediate = {
+		# TODO Call with delay - needs test should be more fun :-)
+		# if = { # Own
+		# 	limit = { has_shroudsick_origin = yes }
+		# 	random = { chance = @reanimation_ratio
+		# 		from = {
+		# 			switch = { trigger = army_type
+		# 				plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+		# 				giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
+		# 				titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
+		# 				titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
+		# 				undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = undead_defense_army	value = 1 } } }
+		# 				undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = undead_army			value = 1 } } }
+		# 				default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# # if = { limit = { is_defensive_army = yes }
+		# else = { # Opponent (no infected_army but more likely)
+		# 	from = {
+		# 		switch = { trigger = army_type
+		# 		plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+		# 		giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
+		# 		titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
+		# 		titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
+		# 		undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = undead_defense_army	value = 1 } } }
+		# 		undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = undead_army			value = 1 } } }
+		# 		default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+		# 		}
+		# 	}
+		# }
+		# Without delay
 		if = { # Own
 			limit = { has_shroudsick_origin = yes }
 			random = { chance = @reanimation_ratio
 				from = {
 					switch = { trigger = army_type
 						# infected_army			= { fromfrom = { create_army = { owner = root species = root.species type = infected_army } } }
+						# infected_defense_army	= { fromfrom = { create_army = { owner = root species = root.species type = infected_defense_army } } }
 						plague_zombies			= { fromfrom = { create_army = { owner = root species = root.species type = plague_zombies } } }
 						giant_undead_army		= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
 						titanic_guardian_army	= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
 						titanic_assault_army	= { fromfrom = { create_army = { owner = root species = root.species type = giant_undead_army } } }
 						# mutant_army			= { fromfrom = { create_army = { owner = root species = root.species type = mutant_army } } } no species
-						# infected_defense_army	= { fromfrom = { create_army = { owner = root species = root.species type = infected_defense_army } } }
 						undead_defense_army		= { fromfrom = { create_army = { owner = root species = root.species type = undead_defense_army } } }
 						undead_army				= { fromfrom = { create_army = { owner = root species = root.species type = undead_army } } }
 						default					= { fromfrom = { create_army = { owner = root species = root.species type = plague_zombies } } }
@@ -722,12 +754,10 @@ country_event = {
 		else = { # Opponent (no infected_army but more likely)
 			from = {
 				switch = { trigger = army_type
-					# infected_army			= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = infected_army } } }
 					plague_zombies			= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = plague_zombies } } }
 					giant_undead_army		= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
 					titanic_guardian_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
 					titanic_assault_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = giant_undead_army } } }
-					# infected_defense_army	= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = infected_defense_army } } }
 					undead_defense_army		= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = undead_defense_army } } }
 					undead_army				= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = undead_army } } }
 					default					= { fromfrom = { create_army = { owner = root.fromfrom species = root.from.species type = plague_zombies } } }
@@ -736,3 +766,25 @@ country_event = {
 		}
 	}
 }
+
+# # Re-animate army with delay
+# # from = owner
+# # fromfrom = species
+# planet_event = {
+# 	id = necromancy.211
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		exists = from
+# 		exists = fromfrom
+# 	}
+# 	immediate = {
+# 		if = {		limit = { is_variable_set = giant_undead_army	check_variable = { which = giant_undead_army	value > 0 } } create_army = { owner = from species = fromfrom type = undead_defense_army }	if = { limit = { check_variable = { which = giant_undead_army	value = 1 } } clear_variable = giant_undead_army	} else = { change_variable = { which = giant_undead_army	value = -1 } } }
+# 		else_if = { limit = { is_variable_set = plague_zombies		check_variable = { which = plague_zombies		value > 0 } } create_army = { owner = from species = fromfrom type = plague_zombies }		if = { limit = { check_variable = { which = plague_zombies		value = 1 } } clear_variable = plague_zombies		} else = { change_variable = { which = plague_zombies		value = -1 } } }
+# 		else_if = { limit = { is_variable_set = undead_defense_army	check_variable = { which = undead_defense_army	value > 0 } } create_army = { owner = from species = fromfrom type = giant_undead_army }	if = { limit = { check_variable = { which = undead_defense_army	value = 1 } } clear_variable = undead_defense_army	} else = { change_variable = { which = undead_defense_army	value = -1 } } }
+# 		else_if = { limit = { is_variable_set = giant_undead_army	check_variable = { which = giant_undead_army	value > 0 } } create_army = { owner = from species = fromfrom type = giant_undead_army }	if = { limit = { check_variable = { which = giant_undead_army	value = 1 } } clear_variable = giant_undead_army	} else = { change_variable = { which = giant_undead_army	value = -1 } } }
+# 		else_if = { limit = { is_variable_set = giant_undead_army	check_variable = { which = giant_undead_army	value > 0 } } create_army = { owner = from species = fromfrom type = giant_undead_army }	if = { limit = { check_variable = { which = giant_undead_army	value = 1 } } clear_variable = giant_undead_army	} else = { change_variable = { which = giant_undead_army	value = -1 } } }
+# 		else_if = { limit = { is_variable_set = undead_army			check_variable = { which = undead_army			value > 0 } } create_army = { owner = from species = fromfrom type = undead_army }			if = { limit = { check_variable = { which = undead_army			value = 1 } } clear_variable = undead_army			} else = { change_variable = { which = undead_army			value = -1 } } }
+# 		else_if = { limit = { is_variable_set = plague_zombies		check_variable = { which = plague_zombies		value > 0 } } create_army = { owner = from species = fromfrom type = plague_zombies }		if = { limit = { check_variable = { which = plague_zombies		value = 1 } } clear_variable = plague_zombies		} else = { change_variable = { which = plague_zombies		value = -1 } } }
+# 	}
+# }

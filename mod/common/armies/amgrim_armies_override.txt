@@ -19,10 +19,7 @@ imperial_legion = {
 
 	potential_country = {
 		OR = {
-			AND = {
-				is_galactic_emperor = yes
-				is_active_resolution = "resolution_emperor_imperial_legions"
-			}
+			AND = { is_galactic_emperor = yes is_active_resolution = "resolution_emperor_imperial_legions" }
 			AND = {
 				has_origin = origin_godruler
 				# TODO?
@@ -62,7 +59,7 @@ imperial_legion = {
 		base = 500
 		modifier = {
 			set = 0
-			check_variable = { which = "imperial_legion_soldier_count" value >= 12 }
+			check_variable = { which = "imperial_legion_soldier_count" value > 11 }
 		}
 	}
 }
@@ -83,18 +80,12 @@ undead_army = {
 
 	resources = {
 		category = armies
-		cost = {
-			energy = 100
-		}
+		cost = { energy = 100 }
 
-		upkeep = {
-			energy = 0.75
-		}
+		upkeep = { energy = 0.75 }
 	}
 
-	show_tech_unlock_if = {
-		can_reanimate_armies = yes
-	}
+	show_tech_unlock_if = { can_reanimate_armies = yes }
 	potential_country = { can_reanimate_armies = yes }
 	potential = {
 		from = {
@@ -106,20 +97,12 @@ undead_army = {
 		planet = {
 			has_active_building = building_dread_encampment
 			OR = {
-				num_assigned_jobs = {
-					job = necromancer
-					value >= 1
-				}
-				num_assigned_jobs = {
-					job = hive_necromancer
-					value >= 1
-				}
+				num_assigned_jobs = { job = necromancer value > 0 }
+				num_assigned_jobs = { job = hive_necromancer value > 0 }
 			}
 		}
 	}
-	ai_weight = {
-		base = 100
-	}
+	ai_weight = { base = 100 }
 }
 
 # Undead Armies
@@ -145,8 +128,8 @@ undead_defense_army = {
 				AND = {
 					has_active_building = building_dread_encampment
 					OR = {
-						num_assigned_jobs = { job = necromancer value >= 1 }
-						num_assigned_jobs = { job = hive_necromancer value >= 1 }
+						num_assigned_jobs = { job = necromancer value > 0 }
+						num_assigned_jobs = { job = hive_necromancer value > 0 }
 					}
 				}
 				has_planet_flag = active_dread_outpost
@@ -166,7 +149,5 @@ undead_defense_army = {
 		}
 	}
 
-	spawn_chance = {
-		factor = 100
-	}
+	spawn_chance = { factor = 100 }
 }

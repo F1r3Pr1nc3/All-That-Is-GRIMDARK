@@ -10,7 +10,7 @@ country_event = {
 	trigger = {
 		exists = fromfrom
 		OR = {
-			has_origin = origin_necron_awakening # has_country_flag = necron_empire
+			has_origin = origin_necron_awakening # has_necron_origin = yes
 			has_shroudsick_origin = yes
 		}
 	}
@@ -41,7 +41,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		exists = fromfrom
-		OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+		has_necron_origin = yes
 	}
 	immediate = {
 		fromfrom = { add_deposit = d_aa_stasis_chambers }
@@ -66,7 +66,7 @@ planet_event = {
 				controller = { has_origin = origin_necron_awakening }
 			}
 		}
-		# owner = { has_country_flag = necron_empire }
+		# owner = { has_necron_origin = yes }
 		# any_playable_country = { has_origin = origin_necron_awakening }
 	}
 	immediate = {
@@ -87,7 +87,7 @@ planet_event = {
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
 	trigger = {
-		has_global_flag = necron_empire_created
+		# has_global_flag = necron_empire_created
 		# any_playable_country = { has_origin = origin_necron_awakening }
 		exists = fromfrom
 		fromfrom = { is_sapient = yes pop_has_trait = trait_machine_unit pop_has_trait = trait_necrons }
@@ -107,7 +107,7 @@ planet_event = {
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes has_ground_combat = no }
 	trigger = {
-		has_global_flag = necron_empire_created
+		# has_global_flag = necron_empire_created
 		NOT = { has_global_flag = necron_empire_destroyed }
 		exists = owner
 		exists = space_owner
@@ -147,19 +147,21 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		is_country_type_with_subjects = yes
-		OR = {
-			has_origin = origin_necron_awakening
-			has_country_flag = necron_empire
-			NOT = { has_global_flag = necron_empire_created }
-		}
+		# OR = { NOT = { has_global_flag = necron_empire_created }
+		has_necron_origin = yes
 	}
 	immediate = {
 		if = {
-			limit = { NOR = { has_global_flag = necron_empire_created has_global_flag = necron_empire_destroyed } }
-			country_event = { id = necron.1111 days = 90 }
+			limit = {
+				NOR = {
+					# has_global_flag = necron_empire_created
+					has_global_flag = necron_empire_destroyed
+				}
+			}
+			country_event = { id = necron.1111 days = 180 }
 		}
 		set_global_flag = necron_empire_destroyed
-		set_global_flag = necron_empire_created
+		# set_global_flag = necron_empire_created
 	}
 }
 # Necrons not anymore recent destroyed (on_five_year_pulse)
@@ -167,7 +169,10 @@ event = {
 	id = necron.109
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { has_global_flag = necron_empire_created has_global_flag = necron_empire_destroyed }
+	trigger = {
+		# has_global_flag = necron_empire_created
+		has_global_flag = necron_empire_destroyed
+	}
 	immediate = { remove_global_flag = necron_empire_destroyed }
 }
 # Reanimated only own Necron Armies:
@@ -181,33 +186,27 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		exists = from
+		# exists = from
 		# exists = fromfrom
 		# exists = fromfromfrom
-		OR = {
-			has_origin = origin_necron_awakening
-			has_country_flag = necron_empire
-			# fromfrom = {
-			# 	OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
-			# }
-		}
+		has_necron_origin = yes
 		from = { # TODO extend
 			OR = {
 				army_type = necron_warriors
-				# army_type = lychguard_defense
+				army_type = lychguard_defense
 				army_type = necron_warriors_defense
 			}
 		}
 	}
 	immediate = {
 		# if = { # Own army
-		# 	limit = { OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire } }
+		# 	limit = { has_necron_origin = yes }
 		# 	save_event_target_as = necron_empire
 		from = {
 			switch = { trigger = army_type
 				necron_warriors = { fromfrom = { create_army = { owner = root type = necron_warriors } } }
 				necron_warriors_defense = { fromfrom = { create_army = { owner = root type = necron_warriors_defense } } }
-				# lychguard_defense = { fromfrom = { create_army = { owner = event_target:necron_empire type = lychguard_defense } }
+				lychguard_defense = { fromfrom = { random = { chance = 50 create_army = { owner = event_target:necron_empire type = lychguard_defense } } } }
 			}
 		}
 		# }
@@ -221,7 +220,7 @@ country_event = {
 		# }
 	}
 }
-# Necron Awakening (Console Test)
+# Necron Awakening (Also Console Test)
 country_event = {
 	id = necron.1111
 	hide_window = yes
@@ -231,9 +230,7 @@ country_event = {
 		if = {
 			limit = {
 				has_global_flag = necron_empire_destroyed
-				# NOT = {
-				# 	any_playable_country = { has_origin = origin_necron_awakening }
-				# }
+				# NOT = { any_playable_country = { has_origin = origin_necron_awakening } }
 			}
 			remove_global_flag = necron_empire_destroyed
 		}
@@ -312,11 +309,11 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		has_global_flag = necron_empire_created
-		NOR = {
-			has_global_flag = necron_empire_destroyed # Not recent destroyed
-			any_playable_country = { has_origin = origin_necron_awakening }
-		}
+		# has_global_flag = necron_empire_created
+		# NOR = {
+		# 	has_global_flag = necron_empire_destroyed # Not recent destroyed
+		# 	any_playable_country = { has_origin = origin_necron_awakening }
+		# }
 	}
 	immediate = {
 		if = {
@@ -423,43 +420,6 @@ event = {
 					# }
 				}
 			}
-			# restore_country_backup_data = <yes/no> - Restores backed up data to the scoped country. See store_country_backup_data for what data can be backed up.
-			create_country = {
-				name = EMPIRE_DESIGN_necron
-				adjective = PRESCRIPTED_adjective_necron
-				species = event_target:necron_species
-				name_list = NECRON1
-				type = default
-				# type = mechanocalibrator
-				# auto_delete = no
-				ship_prefix = "NRS"
-				authority = auth_machine_intelligence
-				ethos = { ethic = ethic_gestalt_consciousness }
-				civics = { civic = civic_machine_terminator civic = civic_machine_warbots }
-				origin = "origin_default"
-				flag = {
-					icon = { category="necrons" file="necron_emblem.dds" }
-					background = { category="backgrounds" file="stripe.dds" }
-					colors = { "shadow_green" "dark_teal" "orange" "dark_purple" }
-					# colors = { "orange" "dark_purple" "null" "null" }
-				}
-				ignore_initial_colony_error = yes
-				day_zero_contact = no
-				# exclude_day_zero_contact = event_target:first_neighbor
-				effect = {
-					set_country_flag = synthetic_empire
-					set_country_flag = limbo_country
-					set_country_flag = first_alien_life
-					set_country_flag = has_encountered_other_empire
-					save_event_target_as = necron_empire
-					set_origin = origin_necron_awakening
-					if = {
-						limit = { has_global_flag = WHspecies_installed }
-						randomize_flag_symbol = necrons
-					}
-				}
-			}
-			# First only one
 			random_galaxy_planet = {
 				limit = {
 					is_star = no
@@ -471,8 +431,48 @@ event = {
 					event_target:necron_species = { can_live_on_planet = prev }
 				}
 				log="\\[necron_species.GetName] are awakened on \\[This.GetName]"
-				event_target:necron_empire = {
-					log="The Awakening of [This.GetName] has begun"
+				save_event_target_as = necron_planet
+			}
+			# CREATE_NECRON_DYNASTY
+			# restore_country_backup_data = yes - Restores backed up data to the scoped country. See store_country_backup_data for what data can be backed up.
+			event_target:necron_planet = {
+				create_country = {
+					name = EMPIRE_DESIGN_necron
+					adjective = PRESCRIPTED_adjective_necron
+					species = event_target:necron_species
+					name_list = NECRON1
+					type = default
+					# type = mechanocalibrator
+					# auto_delete = no
+					ship_prefix = "NRS"
+					authority = auth_machine_intelligence
+					ethos = { ethic = ethic_gestalt_consciousness }
+					civics = { civic = civic_machine_terminator civic = civic_machine_warbots }
+					origin = "origin_default"
+					flag = {
+						icon = { category="necrons" file="necron_emblem.dds" }
+						background = { category="backgrounds" file="stripe.dds" }
+						colors = { "shadow_green" "dark_teal" "orange" "dark_purple" }
+						# colors = { "orange" "dark_purple" "null" "null" }
+					}
+					ignore_initial_colony_error = yes
+					day_zero_contact = no
+					# exclude_day_zero_contact = event_target:first_neighbor
+					effect = {
+						set_country_flag = synthetic_empire
+						set_country_flag = limbo_country
+						set_country_flag = first_alien_life
+						set_country_flag = has_encountered_other_empire
+						save_event_target_as = necron_empire
+						set_origin = origin_necron_awakening
+						if = {
+							limit = { has_global_flag = WHspecies_installed }
+							randomize_flag_symbol = necrons
+						}
+					}
+				}
+				# First only one
+				last_created_country = {
 					create_leader = {
 						class = random_ruler
 						species = event_target:necron_species
@@ -486,6 +486,7 @@ event = {
 						background_ethic = ethic_fanatic_xenophobe # ethic_gestalt_consciousness # ethic_fanatic_militarist
 					}
 					set_country_type = awakened_marauders # gray_goo awakened_marauders
+					log="The Awakening of [This.GetName] has begun"
 				}
 				if = { # create_colony
 					limit = { has_owner = no }
@@ -560,7 +561,7 @@ planet_event = {
 		if = {
 			limit = { NOT = { exists = event_target:necron_empire } }
 			random_country = {
-				limit = { OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire } }
+				limit = { has_necron_origin = yes }
 				save_event_target_as = necron_empire
 			}
 		}
@@ -589,7 +590,12 @@ planet_event = {
 						starbase.fleet = { set_owner = owner }
 					}
 				}
-				event_target:necron_empire = { destroy_country = yes }
+				event_target:necron_empire = {
+					if = {
+						limit = { is_ai = yes }
+						destroy_country = yes
+					}
+				}
 				break = yes
 			}
 		}
@@ -642,25 +648,28 @@ planet_event = {
 		fire_on_action = { on_action = on_initialize_advanced_colony }
 		owner = {
 			set_country_type = default
-			if = {
-				limit = { is_gestalt = no }
-				shift_ethic = ethic_gestalt_consciousness
-			}
+			# if = {
+			# 	limit = { is_gestalt = no }
+			# 	shift_ethic = ethic_gestalt_consciousness
+			# }
 			# Somehow not working on init!?
-			change_government = {
-				authority = auth_machine_intelligence
-				civics = { civic = civic_machine_terminator civic = civic_machine_warbots }
-				cooldown = no
-				remove_invalid_civics = yes
-			}
+			# change_government = {
+			# 	authority = auth_machine_intelligence
+			# 	civics = { civic = civic_machine_terminator civic = civic_machine_warbots }
+			# 	cooldown = no
+			# 	remove_invalid_civics = yes
+			# }
 			set_origin = origin_necron_awakening
 			if = {
-				limit = { NOT = { has_civic = civic_machine_terminator } }
-				force_add_civic = civic_machine_terminator
-			}
-			if = {
-				limit = { NOT = { has_civic = civic_machine_warbots } }
-				force_add_civic = civic_machine_warbots
+				limit = { is_gestalt = yes }
+				if = {
+					limit = { NOT = { has_civic = civic_machine_terminator } }
+					force_add_civic = civic_machine_terminator
+				}
+				if = {
+					limit = { NOT = { has_civic = civic_machine_warbots } }
+					force_add_civic = civic_machine_warbots
+				}
 			}
 			add_tradition = tr_adaptability_recycling
 			add_tradition = tr_adaptability_survival_fittest
@@ -852,75 +861,92 @@ planet_event = {
 		}
 		owner = {
 			# Awake all!?
-			every_galaxy_planet = {
+			# every_galaxy_planet = {
+			# Only one
+			closest_system = {
 				limit = {
-					is_star = no
-					is_asteroid = no
-					is_artificial = no
-					has_ground_combat = no
-					OR = { has_planet_flag = pf_guarenteed_stasis_tombs has_planet_flag = pf_generated_stasis_tombs has_deposit = d_aa_stasis_chambers }
-					is_under_crisis_bombardment = no
-					solar_system = {
-						OR = {
-							is_within_borders_of = root.owner
-							is_neighbor_of = root.owner
-							AND = {
-								exists = event_target:necron_enemy
-								OR = { is_within_borders_of = event_target:necron_enemy is_neighbor_of = event_target:necron_enemy }
-							}
+					OR = {
+						is_within_borders_of = root.owner
+						is_neighbor_of = root.owner
+						AND = {
+							exists = event_target:necron_enemy
+							OR = { is_within_borders_of = event_target:necron_enemy is_neighbor_of = event_target:necron_enemy }
 						}
 					}
-					event_target:necron_species = { can_live_on_planet = prev }
+					any_system_planet = {
+						NOR = {
+							is_star = yes
+							is_asteroid = yes
+							is_artificial = yes
+							has_ground_combat = yes
+							is_under_crisis_bombardment = yes
+						}
+						OR = { has_planet_flag = pf_guarenteed_stasis_tombs has_planet_flag = pf_generated_stasis_tombs has_deposit = d_aa_stasis_chambers }
+						event_target:necron_species = { can_live_on_planet = prev }
+					}
 				}
-				if = { # create_colony
+				random_system_planet = {
 					limit = {
-						has_owner = no
-						can_colonize = { who = root.owner status = yes }
+						NOR = {
+							is_star = yes
+							is_asteroid = yes
+							is_artificial = yes
+							has_ground_combat = yes
+							is_under_crisis_bombardment = yes
+						}
+						OR = { has_planet_flag = pf_guarenteed_stasis_tombs has_planet_flag = pf_generated_stasis_tombs has_deposit = d_aa_stasis_chambers }
+						event_target:necron_species = { can_live_on_planet = prev }
 					}
-					create_colony = { owner = root.owner species = event_target:necron_species }
-					while = { count = 2
-						create_pop = { species = event_target:necron_species }
+					if = { # create_colony
+						limit = {
+							has_owner = no
+							can_colonize = { who = root.owner status = yes }
+						}
+						create_colony = { owner = root.owner species = event_target:necron_species }
+						while = { count = 2
+							create_pop = { species = event_target:necron_species }
+						}
 					}
-				}
-				else = {
-					# set_planet_flag = colony_event
-					set_variable = { which = tomb_armies value = trigger:num_armies }
-					multiply_variable = { which = tomb_armies value = 0.45 }
-					round_variable = tomb_armies
-					if = {
-						limit = { check_variable = { which = tomb_armies value < 5 } }
-						set_variable = { which = tomb_armies value = 5 }
-					}
-					while = { count = tomb_armies
-						random_list = {
-							1 = {
-								create_army = {
-									name = random
-									owner = root.owner
-									species = event_target:necron_species
-									type = necron_warriors
+					else = {
+						# set_planet_flag = colony_event
+						set_variable = { which = tomb_armies value = trigger:num_armies }
+						multiply_variable = { which = tomb_armies value = 0.45 }
+						round_variable = tomb_armies
+						if = {
+							limit = { check_variable = { which = tomb_armies value < 5 } }
+							set_variable = { which = tomb_armies value = 5 }
+						}
+						while = { count = tomb_armies
+							random_list = {
+								1 = {
+									create_army = {
+										name = random
+										owner = root.owner
+										species = event_target:necron_species
+										type = necron_warriors
+									}
 								}
-							}
-							1 = {
-								create_army = {
-									name = random
-									owner = root.owner
-									species = event_target:necron_species
-									type = occupation_army
+								1 = {
+									create_army = {
+										name = random
+										owner = root.owner
+										species = event_target:necron_species
+										type = occupation_army
+									}
 								}
 							}
 						}
+						clear_variable = tomb_armies
 					}
-					clear_variable = tomb_armies
-				}
-				# last_created_army = { set_leader = last_created_leader }
-				solar_system = {
-					if = {
-						limit = { exists = starbase }
-						starbase.fleet = { set_owner = root.owner }
+					# last_created_army = { set_leader = last_created_leader }
+					solar_system = {
+						if = {
+							limit = { exists = starbase }
+							starbase.fleet = { set_owner = root.owner }
+						}
 					}
+					planet_event = { id = necron.113 days = 30 }
 				}
-				planet_event = { id = necron.113 days = 30 }
 			}
 			every_owned_planet = {
 				# Merge species
@@ -1058,13 +1084,15 @@ planet_event = {
 	id = necron.113
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { }
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {}
 	immediate = {
 		if = {
 			limit = {
-				exists = owner
+				exists = controller
 				NOT = {
-					# owner = { has_origin = origin_necron_awakening }
 					controller = { has_origin = origin_necron_awakening }
 				}
 			}
@@ -1080,7 +1108,7 @@ planet_event = {
 					}
 				}
 			}
-			break = yes
+			break = yes # Try again later
 		}
 		if = {
 			limit = { NOT = { exists = event_target:necron_empire } }
@@ -1091,6 +1119,8 @@ planet_event = {
 		}
 		if = {
 			limit = { NOT = { exists = event_target:necron_empire } }
+			# save_event_target_as = necron_planet
+			# create_necron_dynasty = yes?
 			break = yes
 		}
 		if = {

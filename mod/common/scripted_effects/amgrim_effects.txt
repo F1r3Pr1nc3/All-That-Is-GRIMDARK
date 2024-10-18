@@ -83,7 +83,7 @@ set_choas_origin = {
 				has_origin = origin_shroudrage		# has_country_flag = khorne
 				has_origin = origin_shroudmutated	# has_country_flag = tzeentch
 				has_origin = origin_shroudsinners	# has_country_flag = slaanesh
-				has_shroudsick_origin = yes			# has_country_flag = nurgle
+				has_origin = origin_shroudsick		# has_country_flag = nurgle
 			}
 		}
 		# randomize_flag_symbol = chaos
@@ -106,3 +106,5 @@ cure_hangover = {
 		add_modifier = { modifier = toxic_terraforming_candidate }
 	}
 }
+# This = necron_planet
+# create_necron_dynasty = {  }

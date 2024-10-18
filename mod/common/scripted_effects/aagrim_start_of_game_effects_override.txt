@@ -1361,9 +1361,8 @@ set_origin_effect = {
 	else_if = {
 		limit = {
 			OR = {
-				has_country_flag = necron_empire
-				from = { has_country_flag = necron_empire }
-				from = { has_origin = origin_necron_awakening }
+				has_necron_origin = yes
+				from = { has_necron_origin = yes }
 			}
 		}
 		set_origin = origin_necron_awakening

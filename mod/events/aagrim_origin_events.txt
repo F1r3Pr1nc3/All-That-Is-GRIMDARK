@@ -7,11 +7,19 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { merg_is_default_empire = yes }
 	immediate = {
-		set_global_flag = allthatisgrimdark_mod
-		# set_update_modifiers_batch = begin
-		get_capital_planet = yes
-		give_tech_no_error_effect = { tech = tech_planetary_defenses MESSAGE = no }		# Tier 0
-		give_tech_no_error_effect = { tech = tech_assault_armies MESSAGE = no }			# Tier 0
+		if = {
+			limit = { NOR = { is_ai = yes has_global_flag = allthatisgrimdark_mod } }
+			set_global_flag = allthatisgrimdark_mod
+		}
+
+		set_update_modifiers_batch = begin
+		if = {
+			limit = { NOT = { has_origin = origin_default } }
+			get_capital_planet = yes
+			give_tech_no_error_effect = { TECH = tech_planetary_defenses MESSAGE = no }		# Tier 0
+			give_tech_no_error_effect = { TECH = tech_assault_armies MESSAGE = no }			# Tier 0
+		}
+
 		if = { # 1 Setup Barbaric Horde "Ork Horde"
 			limit = {
 				OR = {
@@ -112,13 +120,7 @@ country_event = {
 			country_event = { id = aagrimstarts.2007 days = 2 } # relations
 		}
 		else_if = { # 2 Setup Shroud Rage
-			limit = {
-				OR = {
-					has_origin = origin_shroudrage
-					has_country_flag = khorne
-					is_species = PRESCRIPTED_species_name_khorne
-				}
-			}
+			limit = { OR = { has_origin = origin_shroudrage has_country_flag = khorne is_species = PRESCRIPTED_species_name_khorne } }
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_pc_nuked_preference } }
@@ -143,13 +145,7 @@ country_event = {
 			country_event = { id = aagrimstarts.3 }
 		}
 		else_if = { # 3 Setup Shroud Mutated
-			limit = {
-				OR = {
-					has_origin = origin_shroudmutated
-					has_country_flag = tzeentch
-					is_species = "Tzeentick"
-				}
-			}
+			limit = { OR = { has_origin = origin_shroudmutated has_country_flag = tzeentch is_species = "Tzeentick" } }
 			give_technology = { message = yes tech = tech_psionic_theory }		# Tier 3
 			give_technology = { message = no tech = tech_telepathy }
 			set_country_flag = breached_shroud
@@ -176,15 +172,15 @@ country_event = {
 			}
 
 			give_technology = { tech = tech_genome_mapping message = yes }				# Tier 1
-			# give_tech_no_error_effect = { tech = tech_society_1 MESSAGE = yes }		# Tier 2
-			# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3
+			# give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
+			# give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3
 			give_technology = { message = no tech = tech_gene_tailoring }				# Tier 3
 			give_technology = { message = no tech = tech_glandular_acclimation }
 			give_technology = { message = no tech = tech_gene_seed_purification }
 			give_technology = { message = no tech = tech_exotic_gases }
 
 			# if = {
-			# 	limit = { is_gestalt = no  }
+			# 	limit = { is_gestalt = no }
 			if = {
 				limit = { has_necroids = yes } # is_reanimator = no
 				if = {
@@ -211,12 +207,7 @@ country_event = {
 					}
 				}
 				if = {
-					limit = {
-						NOR = {
-							is_reanimator = yes
-							is_pacifist = yes
-						}
-					}
+					limit = { NOR = { is_reanimator = yes is_pacifist = yes } }
 					force_add_civic = civic_reanimated_armies
 				}
 				set_origin = origin_necrophage
@@ -533,15 +524,8 @@ country_event = {
 				limit = {
 					host_has_dlc = "Apocalypse"
 					is_militarist = yes
-					NOR = {
-						has_civic = civic_barbaric_despoilers
-						has_valid_civic = civic_fanatic_purifiers
-						is_xenophile = yes
-					}
-					OR = {
-						is_authoritarian = yes
-						is_xenophobe = yes
-					}
+					NOR = { has_civic = civic_barbaric_despoilers has_valid_civic = civic_fanatic_purifiers is_xenophile = yes }
+					OR = { is_authoritarian = yes is_xenophobe = yes }
 				}
 				force_add_civic = civic_barbaric_despoilers
 				# Effect failed to calculate configuration
@@ -606,10 +590,8 @@ country_event = {
 		else_if = { # 10 setup_reawakened
 			limit = {
 				OR = {
-					has_origin = origin_necron_awakening
-					# has_origin = origin_reawakened # Keept for backward compat.
+					has_necron_origin = yes # has_origin = origin_necron_awakening # has_country_flag = necron_empire
 					owner_main_species = { has_trait = trait_necrons }
-					has_country_flag = necron_empire
 					is_species = name_list_NECRON1
 				}
 			}
@@ -701,9 +683,7 @@ country_event = {
 				change_dominant_species = { species = event_target:mirror_species change_all = yes }
 			}
 			if = {
-				limit = {
-					OR = { is_ai = yes has_toxoids = yes }
-				}
+				limit = { OR = { is_ai = yes has_toxoids = yes } }
 				if = {
 					limit = { graphical_culture = mammalian_01 }
 					set_graphical_culture = toxoid_01
@@ -716,9 +696,7 @@ country_event = {
 							NOT = { species_portrait = tox2 }
 						}
 					}
-					owner_main_species = {
-						change_species_portrait = tox2
-					}
+					owner_main_species = { change_species_portrait = tox2 }
 				}
 			}
 
@@ -1014,6 +992,27 @@ country_event = {
 				country_event = { id = aagrimstarts.2001 days = 2 } # relations
 			}
 		}
+		else = { # non_grimdark_empire
+			set_timed_country_flag = { flag = non_grimdark_empire days = 1 }
+		}
+		if = { # All Grimdark empires should be aware of alien life
+			limit = { NOT = { has_country_flag = non_grimdark_empire } }
+			set_country_flag = has_encountered_other_empire
+			set_country_flag = encountered_first_primitive
+			set_country_flag = first_contact_event
+			set_country_flag = first_alien_life
+			set_country_flag = Story1
+			set_country_flag = Story2 # Already encountered spacefarers
+			set_country_flag = Story3
+			set_country_flag = Story4
+			set_country_flag = Story5
+			set_country_flag = Story6
+			set_country_flag = Story7
+		}
+		else = {
+			remove_country_flag = non_grimdark_empire
+		}
+		set_update_modifiers_batch = end
 	}
 }
 
@@ -1570,8 +1569,8 @@ country_event = {
 		give_tech_no_error_effect = { MESSAGE = no TECH = tech_hyper_drive_2 }	# Tier 2
 		# give_technology = { message = no tech = tech_physics_1 }			# Tier 2
 		give_technology = { message = no tech = tech_sensors_2 }			# Tier 2
-		# give_tech_no_error_effect = { tech = tech_society_1 MESSAGE = yes }		# Tier 2
-		# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3			# Tier 3
+		# give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
+		# give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3			# Tier 3
 		give_tech_no_error_effect = { MESSAGE = no TECH = tech_space_mining_1 }
 		give_technology = { tech = "tech_mine_zro" message = yes }
 		give_technology = { message = no tech = "tech_rare_crystals" }
@@ -1881,7 +1880,7 @@ country_event = {
 					has_psionic_species_trait = yes
 				}
 				# OR = { is_species_class = "Imperium"	# Dropped backward Compat Mod "WH species"
-				is_species_class = "HUM" # AND = {  }
+				is_species_class = "HUM" # AND = { }
 				is_human_species = yes
 				num_positive_traits > 1
 			}
@@ -2222,10 +2221,7 @@ country_event = {
 						has_psionic_species_trait = yes
 					}
 					is_species_class = HUM
-					OR = {
-						species_portrait = humanoid_hp_12
-						is_species = PRESCRIPTED_species_name_mankind
-					}
+					OR = { species_portrait = humanoid_hp_12 is_species = PRESCRIPTED_species_name_mankind }
 					num_positive_traits > 1
 				}
 				# prev = { set_species_identity = prev } do it in aagrimstarts.222
@@ -2556,8 +2552,8 @@ country_event = {
 		give_technology = { message = no tech = tech_terrestrial_sculpting }
 		give_technology = { tech = tech_genome_mapping message = yes }	# Tier 1
 		give_technology = { message = no tech = tech_cloning }
-		# give_tech_no_error_effect = { tech = tech_society_1 MESSAGE = yes }		# Tier 2
-		# give_tech_no_error_effect = { tech = tech_society_2 MESSAGE = yes }		# Tier 3
+		# give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
+		# give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3
 		give_technology = { message = no tech = tech_gene_tailoring }	# Tier 3
 		give_technology = { message = no tech = tech_morphogenetic_field_mastery }
 		give_technology = { message = no tech = tech_climate_restoration }
@@ -2656,15 +2652,10 @@ country_event = {
 				}
 			}
 			if = {
-				limit = {
-					is_megacorp = no
-				}
+				limit = { is_megacorp = no }
 				change_government = {
 					authority = auth_corporate
-					civics = {
-						civic = civic_selective_kinship
-						civic = civic_criminal_heritage
-					}
+					civics = { civic = civic_selective_kinship civic = civic_criminal_heritage }
 					remove_invalid_civics = yes
 				}
 			}
@@ -2701,15 +2692,9 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_country_flag = first_contact_event
-		set_country_flag = Story2 # Already encountered spacefarers
-
 		if = {
 			limit = {
-				OR = {
-					is_ai = yes
-					has_astral_planes_dlc = yes
-				}
+				OR = { is_ai = yes has_astral_planes_dlc = yes }
 				NOR = { is_gestalt = yes has_civic = civic_dark_consortium }
 			}
 			change_government = {
@@ -3159,12 +3144,7 @@ country_event = {
 		get_capital_planet = yes
 		event_target:capital_planet = {
 			if = {
-				limit = {
-					NOR = {
-						is_imperium_hive_planet = yes
-						is_forge_planet = yes
-					}
-				}
+				limit = { NOR = { is_imperium_hive_planet = yes is_forge_planet = yes } }
 				change_pc = pc_hive_tundra # pc_imperiumhive
 			}
 			if = {
@@ -3541,7 +3521,6 @@ event = {
 		# 		# has_origin = origin_soulkeepers
 		# 		has_soulkeepers_origin = yes
 		# 		has_origin = origin_necron_awakening
-		# 		has_origin = origin_reawakened # Keept for backward compat.
 		# 	}
 		# }
 	}
@@ -3679,46 +3658,47 @@ event = {
 		# 	}
 		# 	save_event_target_as = necron_empire
 		# }
-		if = {
-			limit = {
-				NOT = { has_global_flag = necron_empire_created }
-				any_playable_country = { has_origin = origin_necron_awakening }
-			}
-			set_global_flag = necron_empire_created
-			random_playable_country = {
-				limit = { has_origin = origin_necron_awakening }
-				save_event_target_as = necron_empire
-			}
-		}
-		if = {
-			limit = { has_global_flag = necron_empire_created exists = event_target:necron_empire }
-			event_target:necron_empire = {
-				if = {
-					limit = { is_ai = yes }
-					random_owned_species = {
-						limit = {
-							is_sapient = yes
-							has_trait = trait_machine_unit
-							has_trait = trait_necrons
-							OR = {
-								has_species_flag = machine_god
-								any_species_pop = { has_modifier = machine_god }
-								species_portrait = par_renown_03
-							}
-							count_species_pop = { count > 0 }
-						}
-						every_species_pop = {
-							# limit = { NOT = { has_modifier = machine_god } }
-							kill_pop = yes
-						}
-					}
-				}
-				else_if = {
-					limit = { exists = ruler has_leader_flag = paragon_origin_legendary_leader }
-					ruler = { remove_leader_flag = paragon_origin_legendary_leader }
-				}
-			}
-		}
+		# Removed in v3.13
+		# if = {
+		# 	limit = {
+		# 		NOT = { has_global_flag = necron_empire_created }
+		# 		any_playable_country = { has_origin = origin_necron_awakening }
+		# 	}
+		# 	set_global_flag = necron_empire_created
+		# 	random_playable_country = {
+		# 		limit = { has_origin = origin_necron_awakening }
+		# 		save_event_target_as = necron_empire
+		# 	}
+		# }
+		# if = {
+		# 	limit = { has_global_flag = necron_empire_created exists = event_target:necron_empire }
+		# 	event_target:necron_empire = {
+		# 		if = {
+		# 			limit = { is_ai = yes }
+		# 			random_owned_species = {
+		# 				limit = {
+		# 					is_sapient = yes
+		# 					has_trait = trait_machine_unit
+		# 					has_trait = trait_necrons
+		# 					OR = {
+		# 						has_species_flag = machine_god
+		# 						any_species_pop = { has_modifier = machine_god }
+		# 						species_portrait = par_renown_03
+		# 					}
+		# 					count_species_pop = { count > 0 }
+		# 				}
+		# 				every_species_pop = {
+		# 					# limit = { NOT = { has_modifier = machine_god } }
+		# 					kill_pop = yes
+		# 				}
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = { exists = ruler has_leader_flag = paragon_origin_legendary_leader }
+		# 			ruler = { remove_leader_flag = paragon_origin_legendary_leader }
+		# 		}
+		# 	}
+		# }
 	}
 }
 
@@ -3729,11 +3709,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		is_ai = yes
-		OR = {
-			has_origin = origin_shroudrage
-			has_origin = origin_barbarichorde
-			has_origin = origin_bioreformers
-		}
+		OR = { has_origin = origin_shroudrage has_origin = origin_barbarichorde has_origin = origin_bioreformers }
 		years_passed > 30 # num_communications > 1
 	}
 	immediate = {
@@ -3842,9 +3818,7 @@ event = {
 	id = aagrimstarts.1001
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		years_passed > 24
-	}
+	trigger = { years_passed > 24 }
 	immediate = {
 		random_playable_country = {
 			limit = {

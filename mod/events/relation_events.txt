@@ -1053,10 +1053,8 @@ country_event = {
 		else_if = { # 10 setup_reawakened
 			limit = {
 				OR = {
-					has_origin = origin_necron_awakening
-					# has_origin = origin_reawakened # Keept for backward compat.
+					has_necron_origin = yes # has_necron_origin = yes
 					founder_species = { has_trait = trait_necrons }
-					has_country_flag = necron_empire
 				}
 			}
 			owner_main_species = {
@@ -1367,7 +1365,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_same_empire = root
-					has_country_flag = necron_empire
+					has_necron_origin = yes
 					is_synthetic_empire = yes
 					has_opinion_modifier = { who = root modifier = opinion_necron_hate_everyone }
 				}
@@ -1376,7 +1374,7 @@ country_event = {
 		}
 		random_playable_country = {
 			limit = {
-				has_country_flag = necron_empire
+				has_necron_origin = yes
 				NOR = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_necron }

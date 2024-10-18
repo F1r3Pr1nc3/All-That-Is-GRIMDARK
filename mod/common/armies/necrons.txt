@@ -22,9 +22,9 @@ necron_warriors = {
 			has_building = building_monolith_complex
 		}
 	}
-	prerequisites = { "tech_centralized_command" "tech_assault_armies" }
+	prerequisites = { "tech_centralized_command" } # "tech_assault_armies"
 	potential_country = {
-		OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+		has_necron_origin = yes
 		has_technology = tech_advanced_metallurgy_1
 	}
 	potential = {
@@ -44,7 +44,7 @@ lychguard_defense = {
 	war_exhaustion = 0.5
 	icon = GFX_army_type_mech_defence
 	potential_country = {
-		OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+		has_necron_origin = yes
 		has_technology = tech_advanced_metallurgy_1
 	}
 	potential = {
@@ -66,7 +66,7 @@ necron_warriors_defense = {
 	war_exhaustion = 0
 	icon = GFX_army_type_machine_defensive
 	potential_country = {
-		OR = { has_origin = origin_necron_awakening has_country_flag = necron_empire }
+		has_necron_origin = yes
 		has_technology = tech_advanced_metallurgy_1
 	}
 	potential = {

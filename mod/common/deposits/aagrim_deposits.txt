@@ -21,7 +21,7 @@ d_aa_stasis_chambers = {
 				exists = owner
 				owner = {
 					OR = {
-						has_origin = origin_necron_awakening
+						has_necron_origin = yes
 						AND = {
 							has_technology = tech_global_defense_grid # tier = 2
 							has_technology = tech_tomb_world_adaption # tier = 3
@@ -36,7 +36,7 @@ d_aa_stasis_chambers = {
 		if = {
 			limit = { exists = owner }
 			if = {
-				limit = { owner = { has_origin = origin_necron_awakening } }
+				limit = { owner = { has_necron_origin = yes } }
 				create_pop = { species = owner }
 				random = { chance = 35 create_pop = { species = owner } }
 			}
@@ -54,14 +54,14 @@ d_aa_stasis_chambers = {
 		cost = {
 			trigger = {
 				exists = owner
-				NOT = { owner = { has_origin = origin_necron_awakening } }
+				owner = { has_necron_origin = no }
 			}
 			energy = 1000
 		}
 		cost = {
 			trigger = {
 				exists = owner
-				owner = { has_origin = origin_necron_awakening }
+				owner = { has_necron_origin = yes }
 			}
 			energy = 500
 		}
@@ -72,7 +72,7 @@ d_aa_stasis_chambers = {
 		modifier = {
 			factor = 2
 			exists = owner
-			owner = { has_origin = origin_necron_awakening }
+			owner = { has_necron_origin = yes }
 		}
 	}
 

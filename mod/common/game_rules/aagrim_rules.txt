@@ -20,7 +20,7 @@ can_be_part_of_galactic_community = {
 		# 	is_homicidal = yes
 		# 	# Galactic Imperium Origin
 		# 	has_origin = origin_chosen_of_the_shroud
-		# 	has_origin = origin_necron_awakening
+		# 	has_necron_origin = yes
 		# }
 		NAND = {
 			is_ai = yes

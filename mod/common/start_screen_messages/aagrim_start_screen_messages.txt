@@ -1,6 +1,6 @@
 # Start Screen Messages
 #	location, decides where this chunk of text is located in the description, cannot be negative.
-part = { location = 1 localization = "START_SCREEN_PART_ONE_NECRON_ORIGIN" trigger = { OR = { has_country_flag = necron_empire has_origin = origin_necron_awakening } } }
+part = { location = 1 localization = "START_SCREEN_PART_ONE_NECRON_ORIGIN" trigger = { has_necron_origin = yes } }
 part = { location = 1 localization = "START_SCREEN_IMPERIUM"	trigger = { OR = { has_country_flag = human_empire has_country_flag = imperium has_origin = origin_godruler } } } # Imperium of Man
 part = { location = 1 localization = "START_SCREEN_ORK"			trigger = { OR = { has_country_flag = ork_empire has_origin = origin_barbarichorde } } }
 part = { location = 1 localization = "START_SCREEN_TAU"			trigger = { OR = { has_country_flag = tau_empire has_origin = origin_greatergood } } }

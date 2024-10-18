@@ -19,7 +19,7 @@ necron_tomb = {
 
 	potential = {
 		exists = owner
-		owner = { has_country_flag = necron_empire }
+		owner = { has_necron_origin = yes }
 		custom_tooltip = {
 			text = EMPIRE_UNIQUE_BUILDING
 			owner = {
@@ -39,7 +39,7 @@ necron_tomb = {
 		OR = {
 			owner = {
 				NOR = {
-					has_country_flag = necron_empire
+					has_necron_origin = yes
 					check_variable = { which = built_necron_tomb value < 5 }
 				}
 			}
@@ -156,12 +156,12 @@ necron_tomb = {
 #	category = research
 # 	potential = {
 # 		exists = owner
-# 		owner = { has_origin = origin_necron_awakening }
+# 		owner = { has_necron_origin = yes }
 # 	}
 # 	destroy_trigger = {
 # 		exists = owner
 # 		owner = {
-# 			NOT = { has_origin = origin_necron_awakening }
+# 			has_necron_origin = no
 # 		}
 # 	}
 # 	allow = { }

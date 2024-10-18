@@ -23,7 +23,7 @@ purge_normal = {
 		else_if = {
 			limit = {
 				from = {
-					NOT = { has_country_flag = necron_empire }
+					has_necron_origin = no
 				}
 				has_trait = trait_necrons
 			}
@@ -84,7 +84,7 @@ purge_normal = {
 			OR = {
 				AND = {
 					from = {
-						NOT = { has_country_flag = necron_empire }
+						has_necron_origin = no
 					}
 					has_trait = trait_necrons
 				}
@@ -146,7 +146,7 @@ purge_labor_camps = {
 					has_policy_flag = purge_allowed
 				}
 				AND = {
-					NOT = { has_country_flag = necron_empire }
+					has_necron_origin = no
 					prev = { has_trait = trait_necrons }
 				}
 				AND = {
@@ -193,7 +193,7 @@ purge_labor_camps = {
 			OR = {
 				AND = {
 					from = {
-						NOT = { has_country_flag = necron_empire }
+						has_necron_origin = no
 					}
 					prev = { has_trait = trait_necrons }
 				}
