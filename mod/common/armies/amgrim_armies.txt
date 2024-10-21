@@ -90,7 +90,7 @@ adeptus_astartes = {
 	allow = {
 		has_building = building_chapel_barracks
 		owner = {
-			check_variable = { which = "adeptus_astartes_count" value < 8 }
+			check_variable = { which = "adeptus_astartes_count" value < 6 }
 		}
 	}
 	on_queued = {
@@ -114,7 +114,7 @@ adeptus_astartes = {
 		base = 500
 		modifier = {
 			set = 0
-			check_variable = { which = "adeptus_astartes_count" value > 7 }
+			check_variable = { which = "adeptus_astartes_count"  value < 5 }
 		}
 	}
 }
@@ -185,7 +185,7 @@ chaos_marines = {
 	}
 	allow = {
 		owner = {
-			check_variable = { which = "chaos_marines_count" value < 8 }
+			check_variable = { which = "chaos_marines_count" value < 6 }
 		}
 	}
 	on_queued = {
@@ -202,7 +202,7 @@ chaos_marines = {
 		base = 500
 		modifier = {
 			set = 0
-			check_variable = { which = "chaos_marines_count" value > 7 }
+			check_variable = { which = "chaos_marines_count"  value < 5 }
 		}
 	}
 }

@@ -586,7 +586,7 @@ building_chapel_barracks = {
 	}
 
 	ai_weight = {
-		weight = 10
+		weight = 20
 		modifier = { factor = 0 has_building = building_chapel_barracks }
 	}
 }

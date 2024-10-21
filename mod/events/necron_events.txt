@@ -692,10 +692,7 @@ planet_event = {
 					prev = { can_copy_random_tech_from = { who = prev } }
 				}
 				# weights = { base = 1
-				# 	modifier = { add = 50
-				# 		is_synthetic_empire = yes
-				# 		NOT = { has_technology = tech_dyson_sphere }
-				# 	}
+					# modifier = { add = 50 is_synthetic_empire = yes NOT = { has_technology = tech_dyson_sphere } }
 				# }
 				log="Copy techs from [This.GetName]"
 				prev = {

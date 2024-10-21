@@ -53,6 +53,8 @@ pc_infested = {
 		job_spawning_drone_add = 1
 		planet_resettlement_unemployed_destination_mult = 0.5
 		planet_orbital_bombardment_damage = -0.2
+		planet_crime_add = -25
+		planet_crime_no_happiness_add = -25
 	}
 
 	spawn_odds = 0

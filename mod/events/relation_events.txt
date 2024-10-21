@@ -68,8 +68,8 @@ country_event = {
 				limit = {
 					OR = { has_country_flag = human_empire has_country_flag = loyallegion }
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_both_human } }
+					has_communications = root # not into the blue
 				}
-				# establish_communications_no_message = root
 				add_opinion_modifier = { who = root modifier = opinion_both_human }
 				add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 				add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
@@ -126,11 +126,14 @@ country_event = {
 					if = { # If member is_ai = no the federation still not exists
 						limit = { has_federation = yes root = { has_federation = yes } }
 						federation = {
-							set_federation_type = military_federation # hegemony_federation
+							set_federation_type = hegemony_federation # military_federation
 							set_federation_leader = root
 							set_name = "EMPIRE_DESIGN_imp"
-							set_federation_law = succession_term_years_20
-							add_federation_experience = 600
+							add_federation_experience = 4600
+							# set_federation_law = succession_term_years_20
+							set_federation_law = succession_term_status_change
+							set_federation_law = succession_type_strongest
+							set_federation_law = centralization_medium
 							add_cohesion = 100
 						}
 					}
@@ -147,6 +150,7 @@ country_event = {
 				limit = {
 					has_country_flag = chaos_empire
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_traitor_human } }
+					has_communications = root # not into the blue
 				}
 				add_opinion_modifier = { who = root modifier = opinion_traitor_human }
 				add_opinion_modifier = { who = root modifier = opinion_flavors_down }
@@ -684,8 +688,8 @@ country_event = {
 						has_opinion_modifier = { who = root modifier = opinion_flavors_up }
 					}
 					OR = { has_country_flag = chaos_undivided_worship has_origin = origin_fallen_psionic }
+					has_communications = root # not into the blue
 				}
-				# establish_communications_no_message = root
 				add_trust = { amount = 90 who = prev }
 				if = {
 					limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } } }
@@ -723,13 +727,13 @@ country_event = {
 			limit = {
 				NOT = { is_same_empire = root }
 				OR = { has_country_flag = chaos_empire has_country_flag = human_empire }
+				has_communications = root # not into the blue
 			}
 			if = {
 				limit = {
 					has_country_flag = chaos_empire
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } }
 				}
-				# establish_communications_no_message = root
 				add_opinion_modifier = { who = root modifier = opinion_both_chaos }
 				# add_opinion_modifier = { who = root modifier = opinion_common_ground }
 				# add_opinion_modifier = { who = root modifier = opinion_flavors_up }
@@ -1255,10 +1259,10 @@ country_event = {
 						prev = { set_federation_leader = prev }
 					}
 				}
-				if = {
-					limit = { NOT = { has_federation_type = military_federation } }
-					set_federation_type = military_federation
-				}
+				# if = {
+				# 	limit = { NOT = { has_federation_type = hegemony_federation } }
+				# 	set_federation_type = hegemony_federation # military_federation
+				# }
 				if = {
 					limit = {
 						count_member = { limit = { has_machine_cult = yes } count = 0 }
@@ -1479,8 +1483,8 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_eldar }
 				}
+				has_communications = root # not into the blue
 			}
-			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
@@ -1515,9 +1519,8 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_eldar }
 				}
-
+				has_communications = root # not into the blue
 			}
-			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
 			if = {
@@ -1636,6 +1639,7 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_ork }
 				}
+				has_communications = root # not into the blue
 				owner_main_species = {
 					is_same_species_class = root.owner_main_species
 					NOT = { is_same_species = root.owner_main_species }
@@ -1649,7 +1653,6 @@ country_event = {
 					}
 				}
 			}
-			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_ork }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 			add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
@@ -1730,8 +1733,8 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_flavors_up }
 				}
+				has_communications = root # not into the blue
 			}
-			# establish_communications_no_message = root
 			add_opinion_modifier = { who = root modifier = opinion_both_tyranid }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 			add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }

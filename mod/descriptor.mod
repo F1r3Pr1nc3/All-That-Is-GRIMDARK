@@ -1,4 +1,4 @@
-version="3.13.2.6"
+version="3.13.2.7"
 tags={
 	"Empires"
 	"Gameplay"
