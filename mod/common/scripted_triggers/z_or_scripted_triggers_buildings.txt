@@ -198,18 +198,20 @@ has_fully_upgraded_capital = {
 	}
 }
 
-# blocks_ai_synthetic_evolution = {
-# 	OR = {
-# 		has_policy_flag = ai_outlawed
-# 		has_policy_flag = robots_outlawed
-# 		has_origin = origin_necrophage
-# 		has_origin = origin_clone_army
-# 		has_origin = origin_overtuned
-# 		has_origin = origin_slavers
-# 		has_valid_civic = civic_idyllic_bloom
-# 		has_valid_civic = civic_hive_idyllic_bloom
-# 	}
-# }
+blocks_ai_synthetic_evolution = {
+	OR = {
+		has_policy_flag = ai_outlawed
+		has_policy_flag = robots_outlawed
+		has_origin = origin_necrophage
+		has_origin = origin_clone_army
+		has_origin = origin_overtuned
+		has_origin = origin_slavers
+		has_origin = origin_godruler
+		has_origin = origin_bioreformers
+		has_valid_civic = civic_idyllic_bloom
+		has_valid_civic = civic_hive_idyllic_bloom
+	}
+}
 
 # has_mind_over_matter_synergy = {
 # 	OR = {
@@ -226,12 +228,13 @@ has_engineered_evolution_synergy = {
 		has_origin = origin_necrophage
 		has_origin = origin_clone_army
 		is_hive_empire = yes
-		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_origin = origin_bioreformers		# has_country_flag = tyranid_empire
+		has_origin = origin_barbarichorde		# has_country_flag = ork_empire
+		has_origin = origin_paindrinkers		# has_country_flag = darkeldar_empire
+		has_shroudsick_origin = yes				# has_country_flag = nurgle
+		has_origin = origin_shroudsinners		# has_country_flag = slaanesh
+		has_origin = origin_godruler			# has_country_flag = the_mankind
 		has_country_flag = tyranid_empire
-		has_origin = origin_barbarichorde # has_country_flag = ork_empire
-		has_origin = origin_paindrinkers # has_country_flag = darkeldar_empire
-		has_shroudsick_origin = yes # has_country_flag = nurgle
-		has_origin = origin_shroudsinners # has_country_flag = slaanesh
 	}
 }
 
@@ -240,25 +243,25 @@ has_flesh_is_weak_anti_synergy = {
 		is_materialist = no
 		has_tradition = tr_cybernetics_adopt
 		has_country_flag = cyborg_empire
-		has_origin = origin_godruler
-		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_origin = origin_godruler		# has_country_flag = the_mankind
+		has_origin = origin_bioreformers	# has_country_flag = tyranid_empire
 		has_country_flag = tyranid_empire
 		has_soulkeepers_origin = yes
-		has_shroudsick_origin = yes # has_country_flag = nurgle
-		has_origin = origin_shroudrage # has_country_flag = khorne
+		has_shroudsick_origin = yes			# has_country_flag = nurgle
+		has_origin = origin_shroudrage		# has_country_flag = khorne
 	}
 }
 # Gets overriden by blocks_ai_synthetic_evolution
 has_synthetic_evolution_anti_synergy = {
 	OR = {
 		is_materialist = no
-		has_origin = origin_godruler
-		has_origin = origin_bioreformers # has_country_flag = tyranid_empire
+		has_origin = origin_godruler		# has_country_flag = the_mankind
+		has_origin = origin_bioreformers	# has_country_flag = tyranid_empire
 		has_country_flag = tyranid_empire
 		has_soulkeepers_origin = yes
-		has_origin = origin_barbarichorde # has_country_flag = ork_empire
-		has_shroudsick_origin = yes # has_country_flag = nurgle
-		has_origin = origin_shroudrage # has_country_flag = khorne
+		has_origin = origin_barbarichorde	# has_country_flag = ork_empire
+		has_shroudsick_origin = yes			# has_country_flag = nurgle
+		has_origin = origin_shroudrage		# has_country_flag = khorne
 	}
 }
 # Machine

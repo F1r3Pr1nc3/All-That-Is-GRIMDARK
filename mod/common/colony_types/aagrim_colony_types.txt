@@ -67,8 +67,8 @@ col_infected_world = {
 		exists = owner
 		owner = {
 			OR = {
-				has_origin = origin_bioreformers # Nurgle
-				has_origin = origin_bioreformers # tyranid
+				has_origin = origin_shroudsick		# Nurgle
+				has_origin = origin_bioreformers	# tyranid
 			}
 		}
 	}

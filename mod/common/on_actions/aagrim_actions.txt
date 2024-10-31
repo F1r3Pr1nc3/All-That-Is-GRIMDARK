@@ -87,12 +87,19 @@ on_five_year_pulse_country = {
 on_decade_pulse = {
 	events = {
 		lessgalcom.2 # Human ally
-		lessgalcom.3 # Chaos ally
+		# lessgalcom.3 # Chaos ally
 	}
 	random_events = {
 		20 = 0
 		20 = lessgalcom.7 # Ork war
 		60 = lessgalcom.8 # Tyranid war
+	}
+}
+
+# No scope, like on_game_start
+on_mid_game_pulse = {
+	events = {
+		lessgalcom.3 # Chaos ally
 	}
 }
 

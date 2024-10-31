@@ -1,49 +1,52 @@
-# # Gene Warrior Armies (Space Marine)
-# gene_warrior_army = {
-# 	damage = 2.0
-# 	health = 2.5
-# 	morale = 2.5
-# 	morale_damage = 1.0
-# 	collateral_damage = 0.75
-# 	war_exhaustion = 3.0
-# 	time = 150
-# 	icon = GFX_army_type_gene_warrior
+## Gene Warrior Armies (Space Marine)
+gene_warrior_army = {
+	damage = 2.0
+	health = 2.5
+	morale = 2.5
+	morale_damage = 1.0
+	collateral_damage = 0.75
+	war_exhaustion = 3.0
+	time = 150
+	icon = GFX_army_type_gene_warrior
 
-# 	resources = {
-# 		category = armies
-# 		cost = {
-# 			minerals = 300
-# 		}
+	resources = {
+		category = armies
+		cost = {
+			minerals = 300
+		}
 
-# 		upkeep = {
-# 			energy = 3
-# 		}
-# 	}
+		upkeep = {
+			energy = 3
+		}
+	}
 
-# 	prerequisites = { "tech_gene_seed_purification" }
-# 	potential_country = {
-# 		is_machine_empire = no
-# 	}
-# 	potential = {
-# 		from = {
-# 			NOR = {
-# 				has_trait = "trait_mechanical"
-# 				has_trait = "trait_machine_unit"
-# 				has_trait = "trait_limited_cybernetic"
-# 				is_sapient = no
-# 			}
-# 		}
-# 	}
+	prerequisites = { "tech_gene_tailoring" } # tech_gene_seed_purification
+	potential_country = {
+		is_machine_empire = no
+	}
+	potential = {
+		from = {
+			NOR = {
+				is_robotic = yes # has_trait = "trait_mechanical" # has_trait = "trait_machine_unit"
+				has_trait = "trait_tyranid"
+				has_trait = "trait_limited_cybernetic"
+				has_trait = "trait_robot_synthetic_dawn"
+				has_virtual_species_trait = yes
+				is_sapient = no
 
-# 	ai_weight = {
-# 		base = 100
-# 		modifier = {
-# 			set = 0
-# 			is_fallen_empire = yes
-# 			NOT = { has_ethic = ethic_fanatic_xenophile }
-# 		}
-# 	}
-# }
+			}
+		}
+	}
+
+	ai_weight = {
+		base = 100
+		modifier = {
+			set = 0
+			is_fallen_empire = yes
+			NOT = { has_ethic = ethic_fanatic_xenophile }
+		}
+	}
+}
 
 # Imperial Legions Override for the God Emperor
 imperial_legion = {

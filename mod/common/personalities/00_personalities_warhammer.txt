@@ -93,7 +93,7 @@ ork = {
 		propagator = no
 		multispecies = no
 		crisis_fighter = no
-		attack_neutrals = yes
+		attack_neutrals = no
 		sneak_attacker = yes
 	}
 
@@ -145,7 +145,7 @@ chaos = {
 		propagator = no
 		multispecies = yes
 		crisis_fighter = no
-		attack_neutrals = yes
+		attack_neutrals = no
 		sneak_attacker = no
 	}
 
@@ -183,18 +183,18 @@ eldar = {
 
 	behaviour = {
 		conqueror = yes
-		subjugator = no
-		liberator = no
+		subjugator = yes # no
+		liberator = yes # no
 		opportunist = yes
 		slaver = no
 		uplifter = no
 		purger = no
 		displacer = no
-		infiltrator = no
+		infiltrator = yes
 		dominator = yes
 		robot_exploiter = no
 		robot_liberator = no
-		propagator = no
+		propagator = yes
 		multispecies = yes
 		crisis_fighter = yes
 		sneak_attacker = yes
@@ -234,19 +234,19 @@ darkeldar = {
 
 	behaviour = {
 		conqueror = yes
-		subjugator = no
+		subjugator = yes # no
 		liberator = no
 		opportunist = yes
 		slaver = yes
 		uplifter = no
 		purger = yes
-		displacer = no
-		infiltrator = no
+		displacer = yes
+		infiltrator = yes
 		dominator = yes
 		robot_exploiter = no
 		robot_liberator = no
 		propagator = no
-		multispecies = no
+		multispecies = yes # no
 		crisis_fighter = yes
 		sneak_attacker = yes
 	}
@@ -287,19 +287,20 @@ imp = {
 
 	behaviour = {
 		conqueror = yes
-		subjugator = no
-		liberator = no
+		subjugator = yes # no
+		liberator = no # yes
 		opportunist = yes
 		slaver = yes
-		uplifter = no
-		purger = no
+		uplifter = yes # no
+		purger = yes # no
 		displacer = no
 		infiltrator = no
 		dominator = yes
-		robot_exploiter = yes
+		robot_exploiter = no
 		robot_liberator = no
 		propagator = no
 		multispecies = yes
+		crisis_leader = yes
 		crisis_fighter = yes
 		sneak_attacker = no
 	}
@@ -344,14 +345,14 @@ necron = {
 		slaver = yes
 		uplifter = no
 		purger = yes
-		displacer = no
+		displacer = yes
 		dominator = yes
 		infiltrator = no
 		robot_exploiter = yes
 		robot_liberator = yes
 		propagator = no
 		multispecies = no # lol
-		crisis_fighter = no
+		crisis_fighter = yes
 		attack_neutrals = yes
 		sneak_attacker = yes
 	}
@@ -393,7 +394,7 @@ tau = {
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
-		liberator = no
+		liberator = yes # no
 		opportunist = yes
 		slaver = no
 		uplifter = yes
@@ -406,7 +407,7 @@ tau = {
 		propagator = no
 		multispecies = yes
 		crisis_fighter = yes
-		attack_neutrals = yes
+		attack_neutrals = no
 		sneak_attacker = yes
 	}
 

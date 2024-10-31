@@ -22,7 +22,7 @@ necron_warriors = {
 			has_building = building_monolith_complex
 		}
 	}
-	prerequisites = { "tech_centralized_command" } # "tech_assault_armies"
+	prerequisites = { "tech_centralized_command" }
 	potential_country = {
 		has_necron_origin = yes
 		has_technology = tech_advanced_metallurgy_1
@@ -122,23 +122,23 @@ necron_warriors_defense = {
 # 	spawn_chance = { factor = 100 }
 # }
 
-# Mutant Horror Armies
-mutant_army = {
-	defensive = yes
-	damage = 1.5
-	morale_damage = 1.5
-	health = 2
-	has_morale = no
-	icon = GFX_army_type_xenomorph
-	has_species = no
-	potential_country = {
-		OR = {
-			has_origin = origin_bioreformers
-			has_shroudsick_origin = yes
-		}
-	}
-	# spawn_chance = { factor = 2 }
-}
+# Mutant Horror Armies TODO costs, requirememts
+# mutant_army = {
+# 	defensive = yes
+# 	damage = 1.5
+# 	morale_damage = 1.5
+# 	health = 2
+# 	has_morale = no
+# 	icon = GFX_army_type_xenomorph
+# 	has_species = no
+# 	potential_country = {
+# 		OR = {
+# 			has_origin = origin_bioreformers
+# 			has_shroudsick_origin = yes
+# 		}
+# 	}
+# 	# spawn_chance = { factor = 2 }
+# }
 
 # Compare undead_army
 plague_zombies = {

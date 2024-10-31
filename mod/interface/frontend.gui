@@ -38,7 +38,7 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "buttons"
-			position = { x = 17 y=0 }
+			position = { x = 17 y = 0 }
 			orientation = lower_left
 			origo = lower_left
 
@@ -176,7 +176,7 @@ guiTypes = {
 		# }
 
 		containerWindowType = {
-			name ="menu"
+			name = "menu"
 			position = { x = 17 y = 0 }
 			size = { width = 1280 height = 720 }
 			orientation = center_down
@@ -551,7 +551,7 @@ guiTypes = {
 
 					instantTextBoxType = {
 						name = "title"
-						position = { x = 0 y = 0 }
+						# position = { x = 0 y = 0 }
 						maxWidth = 250
 						format = right
 						font = "large_title_font"
@@ -561,7 +561,7 @@ guiTypes = {
 					gridBoxType = {
 						name = "items"
 						position = { x = 0 y = 45 }
-						size = { width = 100% }
+						size = { width = 100% height = 100% }
 						slotSize = { width = 250 height = 155 }
 						max_slots_horizontal = 1
 						format = "UPPER_LEFT"
@@ -600,55 +600,55 @@ guiTypes = {
 			}
 		}
 
-		### load save
-		containerWindowType = {
-			name ="load_save"
-			position = { x = 0 y = 0 }
-			size = { width=1024 height=720 }
-			orientation = upper_left
-			origo = center
+		### load save (removed in v3.14?)
+		# containerWindowType = {
+		# 	name ="load_save"
+		# 	position = { x = 0 y = 0 }
+		# 	size = { width=1024 height=720 }
+		# 	orientation = upper_left
+		# 	origo = center
 
-			instantTextBoxType = {
-				name ="title"
-				position = { x = 180 y = 40 }
-				# textureFile = ""
-				font = "cg_16b"
-				borderSize = {x = 4 y = 4}
-				text = "FRONT_SAVE_GAMES"
-				Orientation = "UPPER_LEFT"
-				format = left
-				maxWidth = 200
-				maxHeight = 100
-			}
+		# 	instantTextBoxType = {
+		# 		name ="title"
+		# 		position = { x = 180 y = 40 }
+		# 		# textureFile = ""
+		# 		font = "cg_16b"
+		# 		borderSize = {x = 4 y = 4}
+		# 		text = "FRONT_SAVE_GAMES"
+		# 		Orientation = "UPPER_LEFT"
+		# 		format = left
+		# 		maxWidth = 200
+		# 		maxHeight = 100
+		# 	}
 
-			buttonType = {
-				name = "launch"
-				quadTextureSprite = "GFX_button"
-				position = { x = -200 y = -200 }
-				Orientation = "LOWER_RIGHT"
-				buttonText = "FRONT_LAUNCH"
-				buttonFont = "cg_16b"
-			}
+		# 	buttonType = {
+		# 		name = "launch"
+		# 		quadTextureSprite = "GFX_button"
+		# 		position = { x = -200 y = -200 }
+		# 		Orientation = "LOWER_RIGHT"
+		# 		buttonText = "FRONT_LAUNCH"
+		# 		buttonFont = "cg_16b"
+		# 	}
 
-			buttonType = {
-				name = "back"
-				quadTextureSprite = "GFX_button"
-				position = { x = -400 y = -200 }
-				Orientation = "LOWER_RIGHT"
-				buttonText = "FRONT_BACK"
-				buttonFont = "cg_16b"
-			}
+		# 	buttonType = {
+		# 		name = "back"
+		# 		quadTextureSprite = "GFX_button"
+		# 		position = { x = -400 y = -200 }
+		# 		Orientation = "LOWER_RIGHT"
+		# 		buttonText = "FRONT_BACK"
+		# 		buttonFont = "cg_16b"
+		# 	}
 
-			listboxType = {
-				name ="list"
-				position = { x = 100 y = 80}
-				size = { x = 220 y = 260}
-				horizontal = 0
-				scrollbartype = "standardlistbox_slider"
-				borderSize = {x = 20 y = 20}
-				Orientation = "UPPER_LEFT"
-			}
-		}
+		# 	listboxType = {
+		# 		name ="list"
+		# 		position = { x = 100 y = 80}
+		# 		size = { x = 220 y = 260}
+		# 		horizontal = 0
+		# 		scrollbartype = "standardlistbox_slider"
+		# 		borderSize = {x = 20 y = 20}
+		# 		Orientation = "UPPER_LEFT"
+		# 	}
+		# }
 
 		### DEBUG
 		buttonType = {
@@ -695,7 +695,7 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "blocker"
-			position = { x = 0 y = 0 }
+			# position = { x = 0 y = 0 }
 			size = { width = 100% height = 100% }
 
 			background = {
@@ -707,15 +707,15 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "save_item"
-		position = { x = 0 y = 0 }
+		# position = { x = 0 y = 0 }
 		size = { width=64 height=48 }
 
 		buttonType = {
 			name = "button"
 			quadTextureSprite = "GFX_button"
-			position = { x = 0 y = 0 }
+			# position = { x = 0 y = 0 }
 			Orientation = "UPPER_LEFT"
-			buttonText = ""
+			# buttonText = ""
 			buttonFont = "cg_16b"
 		}
 	}

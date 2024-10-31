@@ -68,7 +68,7 @@ country_event = {
 				limit = {
 					OR = { has_country_flag = human_empire has_country_flag = loyallegion }
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_both_human } }
-					has_communications = root # not into the blue
+					has_communications = root # Not into the blue
 				}
 				add_opinion_modifier = { who = root modifier = opinion_both_human }
 				add_opinion_modifier = { who = root modifier = opinion_flavors_up }
@@ -150,7 +150,7 @@ country_event = {
 				limit = {
 					has_country_flag = chaos_empire
 					NOT = { has_opinion_modifier = { who = root modifier = opinion_traitor_human } }
-					has_communications = root # not into the blue
+					has_communications = root # Not into the blue
 				}
 				add_opinion_modifier = { who = root modifier = opinion_traitor_human }
 				add_opinion_modifier = { who = root modifier = opinion_flavors_down }
@@ -688,7 +688,7 @@ country_event = {
 						has_opinion_modifier = { who = root modifier = opinion_flavors_up }
 					}
 					OR = { has_country_flag = chaos_undivided_worship has_origin = origin_fallen_psionic }
-					has_communications = root # not into the blue
+					has_communications = root # Not into the blue
 				}
 				add_trust = { amount = 90 who = prev }
 				if = {
@@ -727,7 +727,7 @@ country_event = {
 			limit = {
 				NOT = { is_same_empire = root }
 				OR = { has_country_flag = chaos_empire has_country_flag = human_empire }
-				has_communications = root # not into the blue
+				has_communications = root # Not into the blue
 			}
 			if = {
 				limit = {
@@ -1483,7 +1483,7 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_eldar }
 				}
-				has_communications = root # not into the blue
+				has_communications = root # Not into the blue
 			}
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
@@ -1519,7 +1519,7 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_eldar }
 				}
-				has_communications = root # not into the blue
+				has_communications = root # Not into the blue
 			}
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
@@ -1639,7 +1639,7 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_both_ork }
 				}
-				has_communications = root # not into the blue
+				has_communications = root # Not into the blue
 				owner_main_species = {
 					is_same_species_class = root.owner_main_species
 					NOT = { is_same_species = root.owner_main_species }
@@ -1733,7 +1733,7 @@ country_event = {
 					is_same_empire = root
 					has_opinion_modifier = { who = root modifier = opinion_flavors_up }
 				}
-				has_communications = root # not into the blue
+				has_communications = root # Not into the blue
 			}
 			add_opinion_modifier = { who = root modifier = opinion_both_tyranid }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }

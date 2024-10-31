@@ -60,6 +60,7 @@ country_event = {
 				}
 			}
 			owner_main_species = {
+				while = { count = 3 random_species_pop = { kill_pop = yes } }
 				if = {
 					limit = { NOT = { has_trait = trait_pc_nuked_preference } }
 					change_species_characteristics = { add_trait = trait_pc_nuked_preference }
@@ -1248,17 +1249,33 @@ country_event = {
 			shift_ethic = ethic_authoritarian
 		}
 		if = {
+			limit = { is_spiritualist = no } # Needed for setting policy
+			shift_ethic = ethic_spiritualist
+		}
+		if = {
 			limit = { is_spiritualist = yes is_authoritarian = yes NOR = { is_gestalt = yes has_civic = civic_imperial_cult } }
-			force_add_civic = "civic_imperial_cult"
+			force_add_civic = civic_imperial_cult
+		}
+
+		# remove_country_flag = synth_physical
+		# remove_country_flag = synth_virtual
+
+		if = {
+			limit = { NOT = { has_policy_flag = robots_outlawed } can_set_policy = { policy = robot_pop_policy option = robot_pops_outlawed } }
+			set_policy = { policy = robot_pop_policy option = robot_pops_outlawed cooldown = yes }
 		}
 
 		if = {
-			limit = { can_set_ai_policy = yes NOT = { has_policy_flag = ai_outlawed } can_set_policy = { policy = artificial_intelligence_policy option = ai_outlawed } }
+			limit = { NOT = { has_policy_flag = ai_outlawed } can_set_ai_policy = yes can_set_policy = { policy = artificial_intelligence_policy option = ai_outlawed } }
 			set_policy = { policy = artificial_intelligence_policy option = ai_outlawed cooldown = yes }
 		}
-		else_if = {
-			limit = { NOT = { has_policy_flag = robots_outlawed } can_set_policy = { policy = robot_pop_policy option = robot_pops_outlawed } }
-			set_policy = { policy = robot_pop_policy option = robot_pops_outlawed cooldown = yes }
+		else = {
+			set_country_flag = synthetic_empire
+			if = {
+				limit = { NOT = { has_policy_flag = ai_servitude } can_set_ai_policy = yes can_set_policy = { policy = artificial_intelligence_policy option = ai_servitude } }
+				set_policy = { policy = artificial_intelligence_policy option = ai_servitude cooldown = yes }
+			}
+			remove_country_flag = synthetic_empire
 		}
 
 		set_country_flag = human_empire
@@ -1847,6 +1864,7 @@ country_event = {
 		give_technology = { message = no tech = tech_penal_colonies }
 		get_capital_planet = yes
 		owner_main_species = {
+			while = { count = 3 random_species_pop = { kill_pop = yes } }
 			if = {
 				limit = { NOT = { has_trait = trait_drukhari } }
 				change_species_characteristics = { add_trait = trait_drukhari add_traits_at_start_of_list = yes can_change_leader = yes }
@@ -2711,7 +2729,7 @@ country_event = {
 		if = {
 			limit = {
 				NOT = { has_tradition = tr_synthetics_adopt }
-				OR = { is_ai = yes host_has_dlc = "Synthetic Dawn Story Pack" }
+				OR = { is_ai = yes has_synthetic_dawn = yes }
 			}
 			# set_country_flag = synthetic_empire # i.e. Has completed "SYNTHETIC_EVOLUTION_PROJECT"
 			add_tradition = tr_synthetics_adopt
@@ -3306,7 +3324,7 @@ country_event = {
 		else_if = { # NOT compatible - needs AA's Cyborg Ascendance (3.4)
 			limit = {
 				NOT = { has_tradition = tr_synthetics_adopt }
-				OR = { is_ai = yes host_has_dlc = "Synthetic Dawn Story Pack" }
+				OR = { is_ai = yes has_synthetic_dawn = yes }
 			}
 			give_technology = { message = yes tech = tech_synthetic_workers }
 			give_technology = { message = no tech = tech_synthetic_leaders }
@@ -3320,16 +3338,19 @@ country_event = {
 			complete_special_project = { type = "SYNTHETIC_EVOLUTION_PROJECT" } # set_country_flag = synthetic_empire # i.e. Has completed "SYNTHETIC_EVOLUTION_PROJECT"
 		}
 		## Species
-		owner_main_species = {
-			while = { count = 16 random_species_pop = { kill_pop = yes } } # Debuff
+		owner_main_species = {  # Debuff
+			while = { count = 20
+				limit = { count_species_pop = { count > 2 } }
+				random_species_pop = { kill_pop = yes }
+			}
 			if = {
 				limit = { NOT = { has_trait = trait_adeptus_mechanicus } }
 				change_species_characteristics = { add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes can_change_leader = yes }
 			}
 		}
 		every_owned_species = {
-			limit = { NOT = { has_trait = trait_functional } }
-			while = { count = 1 random_species_pop = { kill_pop = yes } } # Debuff
+			limit = { NOT = { has_trait = trait_functional } }  # Debuff
+			while = { count = 1 random_species_pop = { kill_pop = yes } }
 			change_species_characteristics = { add_trait = trait_functional add_traits_at_start_of_list = yes }
 			if = {
 				limit = { NOT = { has_trait = trait_cyborg } }
@@ -3337,8 +3358,8 @@ country_event = {
 			}
 		}
 		every_owned_species = {
-			limit = { NOT = { has_trait = trait_cybernetic } }
-			while = { count = 1 random_species_pop = { kill_pop = yes } } # Debuff
+			limit = { NOT = { has_trait = trait_cybernetic } } # Debuff
+			while = { count = 1 random_species_pop = { kill_pop = yes } }
 			change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
 			if = {
 				limit = { NOT = { has_trait = trait_cyborg } }
@@ -3357,6 +3378,7 @@ country_event = {
 				change_species_characteristics = { add_trait = trait_lobotomised_servitors }
 			}
 			modify_species = {
+				base = this
 				add_trait = trait_syncretic_proles
 				add_trait = trait_cyborg_double_jointed
 				add_traits_at_start_of_list = yes
@@ -3993,7 +4015,7 @@ country_event = {
 				modify_species = {
 					add_trait = trait_syncretic_proles
 					add_traits_at_start_of_list = yes
-					effect = { save_event_target_as = servile_species set_species_flag = syncretic_species@root }
+					effect = { save_event_target_as = servile_species }
 				}
 			}
 		}
@@ -4083,7 +4105,7 @@ country_event = {
 			}
 		}
 		event_target:capital_planet = {
-			while = { count = 9
+			while = { count = 12
 				create_pop = { species = event_target:servile_species ethos = random }
 			}
 		}

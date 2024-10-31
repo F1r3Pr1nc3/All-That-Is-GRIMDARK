@@ -212,17 +212,17 @@ event = {
 	}
 }
 
-# Chaos Undivided alliance on_decade_pulse
+# Chaos Undivided alliance - on_mid_game_pulse (old on_decade_pulse)
 event = {
 	id = lessgalcom.3
 	hide_window = yes
 	is_triggered_only = yes
-	# fire_only_once = yes
+	fire_only_once = yes
 	trigger = {
-		OR = {
-			has_global_flag = small_tear_active # Shroud Rising
-			years_passed > 42
-		}
+		# OR = {
+		# 	has_global_flag = small_tear_active # Shroud Rising
+		# 	years_passed > 42
+		# }
 		count_playable_country = {
 			count > 1
 			limit = { has_country_flag = chaos_empire }
@@ -439,8 +439,8 @@ event = {
 								has_country_flag = tau_empire
 								has_necron_origin = yes
 								is_synthetic_empire = yes # Very last fallback ally?
+								is_at_war_with = prev # is_at_war = yes
 							}
-							is_at_war = no
 							has_communications = prev
 							OR = {
 								is_hostile_to = prev
@@ -554,7 +554,7 @@ event = {
 						limit = {
 							is_ai = yes
 							OR = { has_origin = origin_bioreformers has_country_flag = tyranid_empire }
-							# is_at_war = no
+							NOT = { is_at_war_with = prev }
 							# has_communications = prev
 							# OR = {
 							# 	is_hostile_to = prev

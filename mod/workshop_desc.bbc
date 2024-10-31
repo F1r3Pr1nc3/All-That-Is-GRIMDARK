@@ -7,7 +7,7 @@ This mod combines God Ruler and all four volumes of GRIMDARK, providing an exten
 
 [b][i]'Similarities'[/i] of all the major factions from Games Workshop's Warhammer 40K are included.[/b]
 
-[img]//i.ibb.co/Ltf7y6y/grimdark-origins.png[/IMG]
+[img]//i.ibb.co/ZSRDqMY/grimdark-origins5.jpg[/IMG]
 
 [b]PLAY ADVICE[/b]
 Edit each GRIMDARK predefined empire in order to create a clone of it (or you can just copy 'aagrim_prescripted_countries.txt' file at once to your [URL=//stellaris.paradoxwikis.com/Modding#Mod_folder_location]game data path[/URL]). [URL=//twitter.com/StellarisGame/status/1015540504845484032]Force spawn[/URL] each of those, pick one to play, set number of opposing AI empires to 12, enjoy.
@@ -54,17 +54,17 @@ Anywhere. But if you hit compatibility issues, try moving it to the bottom.
 
 [b]Changelog 3.9[/b]
 • Increased compatibility 
-• All factions now have lore based biographys.
+• All factions now have lore based biographies.
 • All factions now have a custom start screen.
 • All factions now have a specific namelist.
 • All factions have new styled emblems (although some of the old ones were already very good).
 [b]Changelog 3.9.3[/b]
 • Improved Necrons with unique features:
-	⠀• Resurecting armies 
+	⠀• Resurrecting armies 
 	⠀• Legendary leader on start (probably I'll do this for more factions)
 	⠀• A hidden surprise[spoiler] the whole Necron faction can resurrect (test necron.1111)[/spoiler]
 • A small automatic economic help for Orks and Khorne faction.
-• Adaptation of individual personalities according lore.
+• Adaptation of individual personalities according to lore.
 • Added 12th Origin "Adeptus Mechanicus"… (Omnissiah told me)
 • Added 13th Origin "Chaos Undivided" (Fallen Psionics for Black Legion)
 [b]Changelog >3.* see Change Notes tab[/b]

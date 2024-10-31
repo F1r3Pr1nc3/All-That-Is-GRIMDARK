@@ -36,7 +36,7 @@ country_event = {
 # From = country, attack leader
 # fromfrom = planet
 country_event = {
-	id = necron.8	# Compare V. necroids.15
+	id = necron.8 # Compare necroids.15
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
@@ -182,7 +182,7 @@ event = {
 # fromfrom = opponent
 # fromfromfrom = planet
 country_event = {
-	id = necron.110	# Compare V. necroids.15
+	id = necron.110	# Compare necromancy.210 necroids.15
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
@@ -230,7 +230,7 @@ country_event = {
 		if = {
 			limit = {
 				has_global_flag = necron_empire_destroyed
-				# NOT = { any_playable_country = { has_origin = origin_necron_awakening } }
+				# count_playable_country = { limit = { has_origin = origin_necron_awakening } count = 0 }
 			}
 			remove_global_flag = necron_empire_destroyed
 		}
@@ -344,58 +344,58 @@ event = {
 						count = 0
 					}
 				}
-				if = {
-					limit = { has_global_flag = WHspecies_installed }
-					# "Szarekhan Dynasty":	Let's start with the ancient ones, the Szarekhan. They're like the grandparents of the Necron party, setting the stage for the others to strut their metallic stuff.
-					# "Thokt Dynasty":		Next up, the Thokt Dynasty. Think of them as the rebellious teenagers of the Necron family, carving their own path in the cosmos.
-					# "Nihilakh Dynasty":	Now, we step into the grandeur of the Nihilakh Dynasty. Picture them as the opulent aristocrats of the Necron realms, flaunting their regal vibes.
-					# "Novokh Dynasty":		It's time for a bit of action-packed drama with the Novokh Dynasty. These guys are like the gladiators of the Necron arena, bringing a whole lot of close combat chaos.
-					# "Mephrit Dynasty":	Moving on, we have the Mephrit Dynasty. These Necrons are all about that hot, scorching energy, like the cosmic equivalent of spicy salsa at a space party.
-					# "Nephrekh Dynasty":	Glide into the scene with the Nephrekh Dynasty. These are the speedsters, zooming across the galaxy like they're on some interstellar joyride.
-					# "Sautekh Dynasty":	Last but certainly not least, we have the Sautekh Dynasty, led by the infamous Silent King. They're like the Necron overlords, orchestrating the symphony of destruction.
-					create_species = {
-						name = Necrons
-						class = Necrons
-						portrait = "Sautekh_Dynasty"
-						species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
-						traits = {
-							trait = "trait_machine_unit"
-							trait = "trait_necrons"
-							trait = "trait_robot_high_bandwidth"
-							trait = "trait_robot_recycled"
-							trait = "trait_robot_mass_produced"
-							trait = "trait_robot_repurposed_hardware"
-							trait = "trait_robot_durable"
-							# trait = random_traits
-						}
-						namelist = Necrons
-						gender = indeterminable
-						extra_trait_points = 2
-						effect = { save_event_target_as = necron_species }
+				# if = {
+				# 	limit = { has_global_flag = WHspecies_installed }
+				# 	# "Szarekhan Dynasty":	Let's start with the ancient ones, the Szarekhan. They're like the grandparents of the Necron party, setting the stage for the others to strut their metallic stuff.
+				# 	# "Thokt Dynasty":		Next up, the Thokt Dynasty. Think of them as the rebellious teenagers of the Necron family, carving their own path in the cosmos.
+				# 	# "Nihilakh Dynasty":	Now, we step into the grandeur of the Nihilakh Dynasty. Picture them as the opulent aristocrats of the Necron realms, flaunting their regal vibes.
+				# 	# "Novokh Dynasty":		It's time for a bit of action-packed drama with the Novokh Dynasty. These guys are like the gladiators of the Necron arena, bringing a whole lot of close combat chaos.
+				# 	# "Mephrit Dynasty":	Moving on, we have the Mephrit Dynasty. These Necrons are all about that hot, scorching energy, like the cosmic equivalent of spicy salsa at a space party.
+				# 	# "Nephrekh Dynasty":	Glide into the scene with the Nephrekh Dynasty. These are the speedsters, zooming across the galaxy like they're on some interstellar joyride.
+				# 	# "Sautekh Dynasty":	Last but certainly not least, we have the Sautekh Dynasty, led by the infamous Silent King. They're like the Necron overlords, orchestrating the symphony of destruction.
+				# 	create_species = {
+				# 		name = Necrons
+				# 		class = Necrons
+				# 		portrait = "Sautekh_Dynasty"
+				# 		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
+				# 		traits = {
+				# 			trait = "trait_machine_unit"
+				# 			trait = "trait_necrons"
+				# 			trait = "trait_robot_high_bandwidth"
+				# 			trait = "trait_robot_recycled"
+				# 			trait = "trait_robot_mass_produced"
+				# 			trait = "trait_robot_repurposed_hardware"
+				# 			trait = "trait_robot_durable"
+				# 			# trait = random_traits
+				# 		}
+				# 		namelist = Necrons
+				# 		gender = indeterminable
+				# 		extra_trait_points = 2
+				# 		effect = { save_event_target_as = necron_species }
+				# 	}
+				# }
+				# else = {
+				create_species = {
+					name = name_list_NECRON1
+					class = MACHINE
+					portrait = sd_hum_robot
+					species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
+					traits = {
+						trait = "trait_machine_unit"
+						trait = "trait_necrons"
+						trait = "trait_robot_high_bandwidth"
+						trait = "trait_robot_recycled"
+						trait = "trait_robot_mass_produced"
+						trait = "trait_robot_repurposed_hardware"
+						trait = "trait_robot_durable"
+						# trait = random_traits
 					}
+					namelist = NECRON1
+					gender = indeterminable
+					extra_trait_points = 2
+					effect = { save_event_target_as = necron_species }
 				}
-				else = {
-					create_species = {
-						name = name_list_NECRON1
-						class = MACHINE
-						portrait = sd_hum_robot
-						species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
-						traits = {
-							trait = "trait_machine_unit"
-							trait = "trait_necrons"
-							trait = "trait_robot_high_bandwidth"
-							trait = "trait_robot_recycled"
-							trait = "trait_robot_mass_produced"
-							trait = "trait_robot_repurposed_hardware"
-							trait = "trait_robot_durable"
-							# trait = random_traits
-						}
-						namelist = NECRON1
-						gender = indeterminable
-						extra_trait_points = 2
-						effect = { save_event_target_as = necron_species }
-					}
-				}
+				# }
 			}
 			else = {
 				random_galaxy_species = {

@@ -103,6 +103,7 @@ adeptus_astartes = {
 			change_variable = { which = "adeptus_astartes_count" value = -1 }
 		}
 	}
+	prerequisites = { "tech_gene_seed_purification" }
 	potential_country = { has_country_flag = human_empire }
 	potential = {
 		OR = {
@@ -149,12 +150,13 @@ death_guard = {
 			change_variable = { which = "death_guard_count" value = -1 }
 		}
 	}
+	prerequisites = { "tech_gene_seed_purification" "tech_psionic_theory" }
 	potential_country = { has_country_flag = chaos_empire has_shroudsick_origin = yes }
 	potential = {
 		OR = {
 			owner = { has_country_flag = the_death_guard }
 			# planet = { has_planet_flag = plague_planet } # TODO
-			planet = { is_planet_class = pc_infected }
+			planet = { is_planet_class = pc_infested }
 		}
 	}
 	ai_weight = {
@@ -179,6 +181,7 @@ chaos_marines = {
 		cost = { minerals = 550 }
 		upkeep = { energy = 5 }
 	}
+	prerequisites = { "tech_gene_seed_purification" "tech_psionic_theory" } #
 	potential_country = { has_country_flag = chaos_empire has_shroudsick_origin = no }
 	potential = {
 		has_building = building_chaos_temple

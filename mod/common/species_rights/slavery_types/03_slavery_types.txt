@@ -221,7 +221,7 @@ slavery_matrix = {
 	pop_tooltip = MATRIX_LIVESTOCK
 	pop_status_frame = 6
 	potential = {
-		host_has_dlc = "Synthetic Dawn Story Pack"
+		has_synthetic_dawn = yes
 		exists = from
 		from = { is_machine_empire = yes }
 	}

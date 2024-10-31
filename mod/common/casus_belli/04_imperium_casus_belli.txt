@@ -2,7 +2,7 @@ cb_crusade = {
 	show_in_diplomacy = yes
 	show_notification = yes
 	potential = {
-		# merg_is_default_empire = yes
+		merg_is_default_empire = yes
 		OR = {
 			is_ai = no
 			has_origin = origin_godruler
@@ -11,18 +11,24 @@ cb_crusade = {
 		has_valid_civic = civic_imperial_cult
 	}
 	is_valid = {
-		is_neighbor_of = from
-		# has_total_war_cb = no
-		from = { merg_is_default_empire = yes }
-		NOR = {
-			is_overlord_to = from
-			is_subject = yes
-			has_country_flag = empire_rebel
+		from = {
+			merg_is_default_empire = yes
+			NOT = { has_country_flag = empire_rebel }
 		}
-		# OR = { is_subject = no overlord = { NOT = { is_same_empire = from } } }
+		NOR = {
+			is_subject = yes
+			has_total_war_cb = yes
+			is_overlord_to = from
+		}
+		OR = {
+			is_neighbor_of = from
+			AND = { is_overlord = yes any_subject = { is_neighbor_of = from } }
+			AND = { has_federation = yes any_federation_ally = { is_neighbor_of = from } }
+		}
 	}
 }
 
+# Threat "Imperial Cult"?
 # Vanilla overwrite
 cb_containment = {
 	show_in_diplomacy = no
@@ -40,14 +46,13 @@ cb_containment = {
 		NOR = {
 			is_homicidal = yes
 			has_valid_civic = civic_machine_assimilator
-			has_valid_civic = civic_imperial_cult
 		}
 	}
 	is_valid = {
 		has_total_war_cb = yes
-		OR = {
-			is_subject = no
-			overlord = { NOT = { is_same_empire = from } }
+		NAND = {
+			is_subject = yes
+			overlord = { is_same_empire = from }
 		}
 		NOT = { is_overlord_to = from }
 		from = {
@@ -56,7 +61,7 @@ cb_containment = {
 				is_country_type = synth_queen
 				is_homicidal = yes
 				has_valid_civic = civic_machine_assimilator
-				has_valid_civic = civic_imperial_cult
+				AND = { has_valid_civic = civic_imperial_cult prev = { has_country_flag = chaos_empire } }	# Grim
 			}
 		}
 	}

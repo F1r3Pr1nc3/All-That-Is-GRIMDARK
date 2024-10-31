@@ -113,8 +113,7 @@ trait_heretic_astartes = {
 		origin_shroudmutated
 		origin_shroudsinners
 		origin_shroudsick
-		origin_fallen_psionic
-		origin_black_legion
+		origin_fallen_psionic # origin_black_legion
 	}
 	# TODO more
 	forbidden_origins = {
@@ -401,8 +400,7 @@ trait_daemons = {
 		origin_shroudmutated
 		origin_shroudsinners
 		origin_shroudsick
-		origin_fallen_psionic
-		origin_black_legion
+		origin_fallen_psionic # origin_black_legion
 	}
 	# TODO more
 	forbidden_origins = {

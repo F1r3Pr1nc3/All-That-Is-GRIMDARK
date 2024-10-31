@@ -25,7 +25,7 @@ origin_necron_awakening = {
 	# 	pop_amenities_usage_base = -2
 	# 	pop_job_amenities_mult = 0.1
 	# }
-	playable = { host_has_dlc = "Synthetic Dawn Story Pack" has_ancrel = yes }
+	playable = { has_synthetic_dawn = yes has_ancrel = yes }
 	possible = {
 		authority = {
 			OR = {
