@@ -1,4 +1,7 @@
-# Defensive armies can't transport of the planet
+@adeptus_astartes_maximum = 6
+@chaos_marines_maximum = 6
+@death_guard_maximum = 3
+
 # Garrison armies are created by pops
 # Maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
 # morale_damage = 1		# Average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
@@ -88,9 +91,9 @@ adeptus_astartes = {
 		upkeep = { energy = 3 }
 	}
 	allow = {
-		has_building = building_chapel_barracks
-		owner = {
-			check_variable = { which = "adeptus_astartes_count" value < 6 }
+		custom_tooltip = {
+			fail_text = troop_limit_tooltip
+			owner = { check_variable = { which = adeptus_astartes_count value < @adeptus_astartes_maximum } }
 		}
 	}
 	on_queued = {
@@ -106,6 +109,7 @@ adeptus_astartes = {
 	prerequisites = { "tech_gene_seed_purification" }
 	potential_country = { has_country_flag = human_empire }
 	potential = {
+		has_building = building_chapel_barracks
 		OR = {
 			owner = { has_origin = origin_godruler }
 			planet = { is_planet_class = pc_hive_tundra }
@@ -115,58 +119,11 @@ adeptus_astartes = {
 		base = 500
 		modifier = {
 			set = 0
-			check_variable = { which = "adeptus_astartes_count"  value < 5 }
+			check_variable = { which = adeptus_astartes_count value >= @adeptus_astartes_maximum }
 		}
 	}
 }
 
-# Nurgle
-death_guard = {
-	damage = 3
-	health = 8
-	morale = 3
-	collateral_damage = 1
-	war_exhaustion = 0
-	time = 360
-	icon = GFX_army_type_dead_guard
-	resources = {
-		category = armies
-		cost = { minerals = 550 }
-		upkeep = { energy = 5 }
-	}
-	allow = {
-		has_building = building_chaos_temple
-		owner = {
-			check_variable = { which = "death_guard_count" value < 3 }
-		}
-	}
-	on_queued = {
-		owner = {
-			change_variable = { which = "death_guard_count" value = 1 }
-		}
-	}
-	on_unqueued = {
-		owner = {
-			change_variable = { which = "death_guard_count" value = -1 }
-		}
-	}
-	prerequisites = { "tech_gene_seed_purification" "tech_psionic_theory" }
-	potential_country = { has_country_flag = chaos_empire has_shroudsick_origin = yes }
-	potential = {
-		OR = {
-			owner = { has_country_flag = the_death_guard }
-			# planet = { has_planet_flag = plague_planet } # TODO
-			planet = { is_planet_class = pc_infested }
-		}
-	}
-	ai_weight = {
-		base = 500
-		modifier = {
-			set = 0
-			check_variable = { which = "death_guard_count" value > 2 }
-		}
-	}
-}
 # Choas Heretic Astartes
 chaos_marines = {
 	damage = 3
@@ -187,8 +144,9 @@ chaos_marines = {
 		has_building = building_chaos_temple
 	}
 	allow = {
-		owner = {
-			check_variable = { which = "chaos_marines_count" value < 6 }
+		custom_tooltip = {
+			fail_text = troop_limit_tooltip
+			owner = { check_variable = { which = chaos_marines_count value < @chaos_marines_maximum } }
 		}
 	}
 	on_queued = {
@@ -203,9 +161,52 @@ chaos_marines = {
 	}
 	ai_weight = {
 		base = 500
-		modifier = {
-			set = 0
-			check_variable = { which = "chaos_marines_count"  value < 5 }
+		modifier = { set = 0 check_variable = { which = "chaos_marines_count"  value >= @chaos_marines_maximum } }
+	}
+}
+
+# Nurgle
+death_guard = {
+	damage = 3
+	health = 8
+	morale = 3
+	collateral_damage = 1
+	war_exhaustion = 0
+	time = 360
+	icon = GFX_army_type_dead_guard
+	resources = {
+		category = armies
+		cost = { minerals = 550 }
+		upkeep = { energy = 5 }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = troop_limit_tooltip
+			owner = { check_variable = { which = death_guard_count value < @death_guard_maximum } }
 		}
+	}
+	on_queued = {
+		owner = {
+			change_variable = { which = "death_guard_count" value = 1 }
+		}
+	}
+	on_unqueued = {
+		owner = {
+			change_variable = { which = "death_guard_count" value = -1 }
+		}
+	}
+	prerequisites = { "tech_gene_seed_purification" "tech_psionic_theory" }
+	potential_country = { has_shroudsick_origin = yes }
+	potential = {
+		has_building = building_chaos_temple
+		OR = {
+			owner = { has_country_flag = the_death_guard }
+			# planet = { has_planet_flag = plague_planet } # TODO
+			planet = { is_planet_class = pc_infested }
+		}
+	}
+	ai_weight = {
+		base = 500
+		modifier = { set = 0 check_variable = { which = death_guard_count value >= @death_guard_maximum } }
 	}
 }

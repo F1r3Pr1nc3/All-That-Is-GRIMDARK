@@ -74,8 +74,8 @@
  building_chapel_barracks_desc:0 "This barracks is the where the Space Marines are "
  building_chaos_temple:0 "Chaos Temple"
  building_chaos_temple_desc:0 "This barracks is the where the Traitor Marines are transported to from their orbiting Battle Barge, so that they don't land into enemy lines or crash land elsewhere. This structure is the primary way of obtaining renforcement from traitor legions and warbands"
- necron_tomb: "Necron Tomb"
- necron_tomb_desc: "Within the eerie depths of the Necron Tomb, ancient technology hums to life, surrounded by the cold embrace of blackened metal. This sprawling edifice, a testament to the unmatched mastery of the Necrontyr race, exudes an air of timeless power. Its labyrinthine corridors lead to crypt-like chambers where titanic war constructs slumber, awaiting the call to defend their long-forgotten realm. Arcane hieroglyphs adorn the walls, whispering the secrets of a civilisation that once ruled the stars. The air is permeated with an otherworldly chill, hinting at the unfathomable energies harnessed within. A sense of foreboding lingers, for this is the heart of the Necron Empire, where the undying reign supreme."
+ building_necron_tomb: "Necron Tomb"
+ building_necron_tomb_desc: "Within the eerie depths of the Necron Tomb, ancient technology hums to life, surrounded by the cold embrace of blackened metal. This sprawling edifice, a testament to the unmatched mastery of the Necrontyr race, exudes an air of timeless power. Its labyrinthine corridors lead to crypt-like chambers where titanic war constructs slumber, awaiting the call to defend their long-forgotten realm. Arcane hieroglyphs adorn the walls, whispering the secrets of a civilisation that once ruled the stars. The air is permeated with an otherworldly chill, hinting at the unfathomable energies harnessed within. A sense of foreboding lingers, for this is the heart of the Necron Empire, where the undying reign supreme."
 
 ####################################
  # TRAITS

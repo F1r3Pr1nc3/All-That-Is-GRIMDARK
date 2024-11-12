@@ -9,9 +9,7 @@ building_system_capital_gr = {
 	can_be_disabled = no
 	position_priority = 0
 	# building_sets = { imperial_world }
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -29,9 +27,7 @@ building_system_capital_gr = {
 			uses_district_set = cosmogenesis_world
 		}
 	}
-
 	convert_to = { building_capital }
-
 	planet_modifier = {
 		job_imperium_agent_add = 1
 		job_high_priest_add = 1
@@ -42,7 +38,6 @@ building_system_capital_gr = {
 		planet_amenities_add = 8
 		planet_max_buildings_add = 11
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -50,7 +45,6 @@ building_system_capital_gr = {
 		}
 		modifier = { planet_housing_add = 1 }
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -58,7 +52,6 @@ building_system_capital_gr = {
 		}
 		job_roboticist_add = 3
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -79,7 +72,6 @@ building_system_capital_gr = {
 			planet_amenities_add = 8
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -87,7 +79,6 @@ building_system_capital_gr = {
 		}
 		modifier = { job_noble_add = 4 planet_housing_add = 4 planet_amenities_add = 8 }
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -100,7 +91,6 @@ building_system_capital_gr = {
 			planet_amenities_add = 8
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -113,7 +103,6 @@ building_system_capital_gr = {
 			planet_amenities_add = 8
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -126,7 +115,6 @@ building_system_capital_gr = {
 			planet_amenities_add = 8
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -139,7 +127,6 @@ building_system_capital_gr = {
 			planet_amenities_add = 8
 		}
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -147,7 +134,6 @@ building_system_capital_gr = {
 		}
 		modifier = { planet_jobs_productive_upkeep_mult = 0.1 planet_jobs_productive_produces_mult = 0.1 }
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -155,7 +141,6 @@ building_system_capital_gr = {
 		}
 		modifier = { planet_jobs_productive_upkeep_mult = 0.1 planet_jobs_productive_produces_mult = 0.1 }
 	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -163,22 +148,18 @@ building_system_capital_gr = {
 		}
 		modifier = { planet_jobs_productive_upkeep_mult = 0.1 planet_jobs_productive_produces_mult = 0.1 }
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b4_minerals }
 		upkeep = { energy = 3 }
 	}
-
 	# ai_weight = { weight = 0 }
 }
 
 building_temple_gr = {
 	base_buildtime = @b1_time
 	# building_sets = { imperial_world }
-
 	category = unity
-
 	potential = {
 		exists = owner
 		owner = {
@@ -191,7 +172,6 @@ building_temple_gr = {
 		}
 		NOT = { has_modifier = slave_colony }
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
@@ -208,7 +188,6 @@ building_temple_gr = {
 			}
 		}
 	}
-
 	convert_to = {
 		building_temple
 		building_hive_node
@@ -217,19 +196,16 @@ building_temple_gr = {
 		building_corporate_monument
 		building_sacrificial_temple_1
 	}
-
 	planet_modifier = { job_priest_add = 1 job_imperium_acolyte_add = 2 }
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
 		upkeep = { energy = 1 }
 	}
-
 	prerequisites = { "tech_cultural_heritage" }
-
-	show_tech_unlock_if = { OR = { has_origin = origin_godruler has_machine_cult = yes } }
-
+	show_tech_unlock_if = {
+		OR = { has_origin = origin_godruler has_machine_cult = yes }
+	}
 	# ai_weight = { weight = 0 }
 }
 
@@ -237,9 +213,7 @@ building_foundry_1_gr = {
 	# icon = building_foundry_1
 	base_buildtime = @b1_time
 	# building_sets = { imperial_world }
-
 	category = manufacturing
-
 	potential = {
 		exists = owner
 		owner = {
@@ -256,7 +230,6 @@ building_foundry_1_gr = {
 		}
 		NOR = { has_modifier = resort_colony has_modifier = slave_colony }
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -276,9 +249,7 @@ building_foundry_1_gr = {
 			}
 		}
 	}
-
 	convert_to = { building_foundry_1 }
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -286,17 +257,13 @@ building_foundry_1_gr = {
 		}
 		modifier = { job_imperium_techpriest_add = 1 job_foundry_add = 1 job_artisan_add = 1 }
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
 		upkeep = { energy = @b1_upkeep }
 	}
-
 	prerequisites = { tech_basic_industry }
-
 	# ai_weight = { weight = 0 }
-
 	ai_resource_production = {
 		alloys = 1
 		trigger = { always = yes }
@@ -307,9 +274,7 @@ building_research_lab_1_gr = {
 	# icon = building_research_lab_1
 	base_buildtime = @b1_time
 	# building_sets = { imperial_world }
-
 	category = research
-
 	potential = {
 		exists = owner
 		owner = {
@@ -322,7 +287,6 @@ building_research_lab_1_gr = {
 		}
 		NOR = { has_modifier = resort_colony has_modifier = slave_colony has_modifier = penal_colony }
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -341,9 +305,7 @@ building_research_lab_1_gr = {
 			}
 		}
 	}
-
 	convert_to = { building_research_lab_1 }
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -351,15 +313,12 @@ building_research_lab_1_gr = {
 		}
 		modifier = { job_imperium_techpriest_add = 1 job_imperium_servitor_add = 2 planet_housing_add = 3 }
 	}
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
 		upkeep = { energy = @b1_upkeep }
 	}
-
 	prerequisites = { "tech_basic_science_lab_1" }
-
 	# ai_weight = { weight = 0 }
 }
 
@@ -367,9 +326,7 @@ building_bureaucratic_1_gr = {
 	# icon = building_bureaucratic_1
 	base_buildtime = @b1_time
 	# building_sets = { imperial_world }
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -378,7 +335,6 @@ building_bureaucratic_1_gr = {
 		}
 		NOR = { has_modifier = penal_colony has_modifier = slave_colony has_modifier = resort_colony }
 	}
-
 	destroy_trigger = {
 		NAND = {
 			exists = owner
@@ -388,27 +344,22 @@ building_bureaucratic_1_gr = {
 			}
 		}
 	}
-
 	convert_to = { building_bureaucratic_1 }
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
 		upkeep = { energy = 1 }
 	}
-
 	planet_modifier = { job_imperium_adminsage_add = 1 job_imperium_scribe_add = 3 planet_housing_add = 4 }
-
 	prerequisites = { "tech_planetary_government" }
-
-	show_tech_unlock_if = { OR = { has_origin = origin_godruler has_machine_cult = yes } }
-
+	show_tech_unlock_if = {
+		OR = { has_origin = origin_godruler has_machine_cult = yes }
+	}
 	on_queued = {
 		planet = {
 			set_timed_planet_flag = { flag = recent_admin_building_built years = 2 }
 		}
 	}
-
 	# ai_weight = {
 	# 	weight = 0
 	# 	modifier = {
@@ -439,9 +390,7 @@ building_precinct_house_gr = {
 	# icon = building_precinct_house
 	base_buildtime = @b1_time
 	# building_sets = { imperial_world }
-
 	category = government
-
 	potential = {
 		exists = owner
 		owner = {
@@ -454,14 +403,12 @@ building_precinct_house_gr = {
 		}
 		NOT = { is_planet_class = pc_cosmogenesis_world }
 	}
-
 	allow = {
 		OR = {
 			owner = { is_ai = no }
 			planet_crime > 15
 		}
 	}
-
 	destroy_trigger = {
 		NAND = {
 			exists = owner
@@ -475,21 +422,17 @@ building_precinct_house_gr = {
 			}
 		}
 	}
-
 	convert_to = { building_precinct_house }
-
 	planet_modifier = { job_imperium_arbiter_add = 4 planet_housing_add = 4 }
-
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
 		upkeep = { energy = 2 }
 	}
-
 	prerequisites = { "tech_planetary_government" }
-
-	show_tech_unlock_if = { OR = { has_origin = origin_godruler has_machine_cult = yes } }
-
+	show_tech_unlock_if = {
+		OR = { has_origin = origin_godruler has_machine_cult = yes }
+	}
 	# ai_weight = {
 	# 	weight = 0
 	# 	modifier = {
@@ -507,9 +450,7 @@ building_fortress_gr = {
 	planetary_ftl_inhibitor = yes
 	# add_to_first_building_slot = yes
 	# building_sets = { imperial_world }
-
 	category = army
-
 	potential = {
 		exists = owner
 		owner = {
@@ -521,9 +462,7 @@ building_fortress_gr = {
 			}
 		}
 	}
-
 	allow = { has_upgraded_capital = yes }
-
 	destroy_trigger = {
 		NAND = {
 			exists = owner
@@ -537,11 +476,8 @@ building_fortress_gr = {
 			}
 		}
 	}
-
 	convert_to = { building_fortress }
-
 	planet_modifier = { planet_housing_add = 3 }
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -549,44 +485,35 @@ building_fortress_gr = {
 		}
 		modifier = { job_imperium_militarum_add = 3 }
 	}
-
 	resources = {
 		category = planet_buildings_strongholds
 		cost = { minerals = @b2_minerals }
 		upkeep = { energy = 2 }
 	}
-
 	# ai_weight = { weight = 0 }
 }
 
-
 building_chapel_barracks = {
 	base_buildtime = 360
-
 	category = army
-
 	potential = {
 		exists = owner
-		owner = { has_origin = origin_godruler } # has_country_flag = human_empire
+		owner = { has_origin = origin_godruler }		# has_country_flag = human_empire
 	}
-
 	destroy_trigger = {
 		exists = owner
-		owner = { NOT = { has_country_flag = human_empire } }
+		owner = {
+			NOT = { has_country_flag = human_empire }
+		}
 	}
-
 	# prerequisites = { "tech_adeptus_astartes" }
-
 	resources = {
 		category = planet_buildings
-		cost = {
-			minerals = 500
-		}
+		cost = { minerals = 500 }
 		upkeep = { energy = 10 }
 	}
-
-	ai_weight = {
-		weight = 20
-		modifier = { factor = 0 has_building = building_chapel_barracks }
-	}
+	# ai_weight = {
+	# 	weight = 20
+	# 	modifier = { factor = 0 has_building = building_chapel_barracks }
+	# }
 }

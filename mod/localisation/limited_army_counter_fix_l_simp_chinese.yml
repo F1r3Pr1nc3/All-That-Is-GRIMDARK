@@ -1,0 +1,5 @@
+﻿l_simp_chinese:
+ imperial_legion_plural: "$resolution_emperor_imperial_legions$"
+ titanic_assault_army_plural: "Titanic Beasts"
+ titanic_azizian_assault_army_plural: "Azizian Armies"
+ troop_limit_tooltip: "$TRIGGER_FAIL$§R我们已经拥有这种部队的最大数量。§!"

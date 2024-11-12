@@ -45,21 +45,30 @@ origin_necron_awakening = {
 		# trait = trait_necrons
 	}
 	modifier = {
-		army_health = 0.5
-		army_damage_mult = 0.2
 		# pop_cat_worker_happiness = 2.00
 		# pop_amenities_usage_base = -2
 		# pop_job_amenities_mult = 0.10
-		# New in v.3.9
-		planet_pop_assembly_add = -1
-		country_naval_cap_mult = -0.5
-		shipclass_military_build_speed_mult = -0.25
-		country_base_sr_dark_matter_produces_add = 20
+		# New in v3.9
+		planet_pop_assembly_add = -0.5
+		country_naval_cap_mult = -0.25
+		shipclass_military_build_speed_mult = -0.2
+		# Removed in v3.14: has it own armies and traits
+		# army_health = 0.5
+		# army_damage_mult = 0.2
+		# New in v3.13
+		country_base_sr_dark_matter_produces_add = 15
+		# New in v3.14 from civic_necron_awaking (halfed values)
+		ship_weapon_range_mult = 0,5
+		ship_hull_mult = 0.75
+		ship_hull_regen_add_perc = 0.15
+		ship_weapon_damage = 1
+		ship_shield_mult = 1
+		all_technology_research_speed = 0.4
 	}
 	description = "origin_tooltip_reawakened_effects"
 	flags = {
-		"custom_start_screen"
-		"necron_empire"
+		custom_start_screen
+		necron_empire
 		first_contact_event
 		Story7
 	}

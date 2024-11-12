@@ -1,0 +1,106 @@
+@titanic_azizian_soldier_maximum = 3
+@titanic_life_soldier_per_planet_maximum = 3
+@imperial_legion_soldier_maximum = 12
+
+# this = army
+is_limited_army = {
+	OR = {
+		army_type = titanic_assault_army
+		army_type = titanic_azizian_assault_army
+		army_type = imperial_legion
+		# Grimdark
+		army_type = adeptus_astartes
+		army_type = chaos_marines
+		army_type = death_guard
+	}
+}
+
+# this = country
+is_limited_army_country = {
+	OR = {
+		AND = { has_country_flag = titanic_life_soldiers is_variable_set = titanic_life_soldier_count }
+		AND = { has_country_flag = titanic_azizian_soldiers is_variable_set = titanic_azizian_soldier_count }
+		AND = { is_galactic_emperor = yes is_variable_set = imperial_legion_soldier_count }
+		# Grimdark
+		AND = { has_origin = origin_godruler is_variable_set = adeptus_astartes_count }
+		AND = { has_country_flag = chaos_empire has_shroudsick_origin = no is_variable_set = chaos_marines_count }
+		AND = { has_shroudsick_origin = yes is_variable_set = death_guard_count }
+	}
+}
+
+# Works because we can assume that the first variable (titanic_life_soldier_count) is the minimum requirement (for any deeper check)
+# this = country
+has_available_titanic_life_capacity = {
+	optimize_memory
+	check_variable = { which = titanic_life_soldier_count value < @titanic_life_soldier_per_planet_maximum }
+	# NAND = {
+	# 	is_variable_set = titanic_life_soldier_count
+	# 	check_variable = { which = titanic_life_soldier_count value >= @titanic_life_soldier_per_planet_maximum }
+	# }
+	NAND = {
+		is_variable_set = titanic_life_soldier_queued_count
+		is_variable_set = titanic_life_soldier_maximum
+		check_variable_arithmetic = { which = titanic_life_soldier_count add = titanic_life_soldier_queued_count value >= titanic_life_soldier_maximum }
+	}
+}
+
+# Works because we can assume that the first variable (titanic_azizian_soldier_count) is the minimum requirement (for any deeper check)
+# this = country
+has_available_titanic_azizian_capacity = {
+	optimize_memory
+	check_variable = { which = titanic_azizian_soldier_count value < @titanic_azizian_soldier_maximum }
+	# NAND = {
+	# 	is_variable_set = titanic_azizian_soldier_count
+	# 	check_variable = { which = titanic_azizian_soldier_count value >= @titanic_azizian_soldier_maximum }
+	# }
+	NAND = {
+		is_variable_set = titanic_azizian_soldier_queued_count
+		check_variable_arithmetic = { which = titanic_azizian_soldier_count add = titanic_azizian_soldier_queued_count value >= @titanic_azizian_soldier_maximum }
+	}
+}
+
+# Works because we can assume that the first variable (imperial_legion_soldier_count) is the minimum requirement (for any deeper check)
+# this = country
+has_available_imperial_legion_capacity = {
+	optimize_memory
+	check_variable = { which = imperial_legion_soldier_count value < @imperial_legion_soldier_maximum }
+	# NAND = {
+	# 	is_variable_set = imperial_legion_soldier_count
+	# 	check_variable = { which = imperial_legion_soldier_count value >= @imperial_legion_soldier_maximum }
+	# }
+	NAND = {
+		is_variable_set = imperial_legion_soldier_queued_count
+		check_variable_arithmetic = { which = imperial_legion_soldier_count add = imperial_legion_soldier_queued_count value >= @imperial_legion_soldier_maximum }
+	}
+}
+
+# TODO if per planet
+# # this = country
+# has_available_adeptus_astartes_capacity = {
+# 	optimize_memory
+# 	check_variable = { which = adeptus_astartes_count value < @adeptus_astartes_count_maximum }
+# 	NAND = {
+# 		is_variable_set = adeptus_astartes_queued_count
+# 		check_variable_arithmetic = { which = adeptus_astartes_count add = adeptus_astartes_queued_count value >= @adeptus_astartes_count_maximum }
+# 	}
+# }
+
+# # this = country
+# has_available_chaos_marines_capacity = {
+# 	optimize_memory
+# 	check_variable = { which = chaos_marines_count value < @chaos_marines_soldier_maximum }
+# 	NAND = {
+# 		is_variable_set = chaos_marines_soldier_queued_count
+# 		check_variable_arithmetic = { which = chaos_marines_count add = chaos_marines_soldier_queued_count value >= @chaos_marines_soldier_maximum }
+# 	}
+# }
+
+# # this = country
+# has_available_death_guard_capacity = {
+# 	optimize_memory
+# 	check_variable = { which = death_guard_count value < @death_guard_soldier_maximum }
+# 	NAND = {
+# 		is_variable_set = death_guard_soldier_queued_count
+# 		check_variable_arithmetic = { which = death_guard_count add = death_guard_soldier_queued_count value >= @death_guard_soldier_maximum }
+# 	}
+# }

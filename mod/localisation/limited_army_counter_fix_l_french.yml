@@ -1,0 +1,5 @@
+﻿l_french:
+ imperial_legion_plural: "$resolution_emperor_imperial_legions$"
+ titanic_assault_army_plural: "Titanic Beasts"
+ titanic_azizian_assault_army_plural: "Azizian Armies"
+ troop_limit_tooltip: "$TRIGGER_FAIL$§RNous avons déjà le nombre maximal de ce type d'armée.§!"

@@ -4,11 +4,7 @@ building_gladiatorarena = {
 	potential = {
 		exists = owner
 		owner = {
-			OR = {
-				has_origin = origin_paindrinkers
-				has_origin = origin_shroudrage
-				has_origin = origin_barbarichorde
-			}
+			OR = { has_origin = origin_paindrinkers has_origin = origin_shroudrage has_origin = origin_barbarichorde }
 		}
 	}
 	allow = {
@@ -17,11 +13,7 @@ building_gladiatorarena = {
 	destroy_trigger = {
 		exists = owner
 		owner = {
-			NOR = {
-				has_origin = origin_paindrinkers
-				has_origin = origin_shroudrage
-				has_origin = origin_barbarichorde
-			}
+			NOR = { has_origin = origin_paindrinkers has_origin = origin_shroudrage has_origin = origin_barbarichorde }
 		}
 	}
 	planet_modifier = { job_duelist_add = 3 }
@@ -43,36 +35,6 @@ building_gladiatorarena = {
 	# }
 }
 
-building_monolith_complex = {
-	base_buildtime = 400
-	base_cap_amount = 1
-	can_be_ruined = no
-	category = army
-	potential = {
-		exists = owner
-		owner = { has_necron_origin = yes }
-		merg_is_relic_world = yes
-	}
-	# allow = {  }
-	destroy_trigger = {
-		exists = owner
-		owner = {
-			has_necron_origin = no
-		}
-	}
-	army_modifier = { army_starting_experience_add = 500 }
-	triggered_planet_modifier = {
-		modifier = { job_soldier_add = 4 }
-	}
-	resources = {
-		category = planet_buildings
-		cost = { minerals = 400 }
-		upkeep = { energy = 40 }
-	}
-	# prerequisites = {  }
-	# ai_weight = { base = 500 }
-}
-
 building_chaos_temple = {
 	base_buildtime = 360
 
@@ -92,19 +54,12 @@ building_chaos_temple = {
 
 	resources = {
 		category = planet_buildings
-		cost = {
-			minerals = 500
-		}
-		upkeep = {
-			energy = 10
-		}
+		cost = { minerals = 500 }
+		upkeep = { energy = 10 }
 	}
 
-	ai_weight = {
-		weight = 20
-		modifier = {
-			factor = 0
-			has_building = building_chaos_temple
-		}
-	}
+	# ai_weight = {
+	# 	weight = 20
+	# 	modifier = { factor = 0 has_building = building_chaos_temple }
+	# }
 }

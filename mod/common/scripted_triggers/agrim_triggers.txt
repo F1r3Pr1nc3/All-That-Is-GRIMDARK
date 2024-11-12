@@ -63,7 +63,10 @@ has_shroudsick_origin = {
 		has_origin = origin_shroudsick
 		has_origin = origin_necrophage # Normally as hive not possible
 	}
-	has_country_flag = nurgle
+	OR = {
+		has_country_flag = chaos_empire
+		has_country_flag = nurgle
+	}
 }
 
 # For most compatibility
@@ -72,6 +75,7 @@ has_necron_origin = {
 		has_origin = origin_necron_awakening
 		# has_origin = origin_reawakened # Keept for backward compat.
 		has_country_flag = necron_empire
+		# has_valid_civic = civic_necron_awaking
 	}
 }
 

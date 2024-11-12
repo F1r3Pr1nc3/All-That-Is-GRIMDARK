@@ -295,12 +295,13 @@ trait_necrons = {
 		# pop_environment_tolerance = 2 due machine
 		# pop_growth_speed = -0.15
 		army_morale_damage_mult = 0.2
-		army_damage_mult = 0.5
-		army_health = 0.2
+		army_damage_mult = 0.5	# 0.2
+		army_health = 0.5		# 0.2
 		planet_jobs_produces_mult = 0.25
 		planet_pops_upkeep_mult = 0.2
-		# leader_skill_levels = 2
+		leader_skill_levels = 2
 		leader_lifespan_add = 100000
+		pop_factions_unity_produces_mult = 0.25
 	}
 	slave_cost = {
 		energy = 1500
