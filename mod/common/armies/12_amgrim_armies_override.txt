@@ -27,13 +27,12 @@ gene_warrior_army = {
 	potential = {
 		from = {
 			NOR = {
-				is_robotic = yes # has_trait = "trait_mechanical" # has_trait = "trait_machine_unit"
+				is_robotic = yes
 				has_trait = "trait_tyranid"
 				has_trait = "trait_limited_cybernetic"
 				has_trait = "trait_robot_synthetic_dawn"
 				has_virtual_species_trait = yes
 				is_sapient = no
-
 			}
 		}
 	}
@@ -138,7 +137,7 @@ undead_army = {
 		from = {
 			from = {
 				is_sapient = yes
-				is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+				is_robotic = no
 			}
 		}
 		planet = {
@@ -168,7 +167,7 @@ undead_defense_army = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 		planet = {
 			OR = {

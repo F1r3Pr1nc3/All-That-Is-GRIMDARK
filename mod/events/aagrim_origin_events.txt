@@ -5,25 +5,24 @@ country_event = {
 	id = aagrimstarts.2000
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { merg_is_default_empire = yes }
+	trigger = {
+		merg_is_default_empire = yes
+	}
 	immediate = {
+		set_update_modifiers_batch = begin
+		# if = { limit = { NOT = { has_origin = origin_default } } sometimes the presets can lose they origin
+		get_capital_planet = yes # TODO Maybe too early
+		give_tech_no_error_effect = { TECH = tech_planetary_defenses MESSAGE = no }		# Tier 0
+		give_tech_no_error_effect = { TECH = tech_assault_armies MESSAGE = no }			# Tier 0
 		if = {
 			limit = { NOR = { is_ai = yes has_global_flag = allthatisgrimdark_mod } }
 			set_global_flag = allthatisgrimdark_mod
 		}
-
-		set_update_modifiers_batch = begin
-		if = {
-			limit = { NOT = { has_origin = origin_default } }
-			get_capital_planet = yes
-			give_tech_no_error_effect = { TECH = tech_planetary_defenses MESSAGE = no }		# Tier 0
-			give_tech_no_error_effect = { TECH = tech_assault_armies MESSAGE = no }			# Tier 0
-		}
-
 		if = { # 1 Setup Barbaric Horde "Ork Horde"
 			limit = {
 				OR = {
 					has_origin = origin_barbarichorde
+					has_country_flag = ork_empire
 					owner_main_species = {
 						OR = {
 							species_portrait = "Orkz"	# Compat Mod "WH species"
@@ -150,14 +149,17 @@ country_event = {
 			give_technology = { message = yes tech = tech_psionic_theory }		# Tier 3
 			give_technology = { message = no tech = tech_telepathy }
 			set_country_flag = breached_shroud
-			event_target:capital_planet = {
-				while = { count = 6
-					create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+			if = {
+				limit = { exists = event_target:capital_planet }
+				event_target:capital_planet = {
+					while = { count = 6
+						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+					}
+					add_district_and_planet_size_if_needed_effect = { district = district_city }
+					remove_building = building_research_lab_1
+					add_building = building_holo_theatres
+					add_building = building_factory_1
 				}
-				add_district_and_planet_size_if_needed_effect = { district = district_city }
-				remove_building = building_research_lab_1
-				add_building = building_holo_theatres
-				add_building = building_factory_1
 			}
 			add_resource = { energy = 1000 }
 			country_event = { id = utopia.2656 days = 2 }
@@ -171,7 +173,6 @@ country_event = {
 					is_species = "Nurglen"
 				}
 			}
-
 			give_technology = { tech = tech_genome_mapping message = yes }				# Tier 1
 			# give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
 			# give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3
@@ -192,7 +193,8 @@ country_event = {
 								has_trait = trait_necrophage
 								has_trait = trait_plantoid_budding
 								has_trait = trait_lithoid_budding
-								has_trait = trait_advanced_buddingtrait_tiyanki
+								has_trait = trait_advanced_budding
+								has_trait = trait_tiyanki
 							}
 						}
 						NOR = {
@@ -220,37 +222,38 @@ country_event = {
 				}
 			}
 			# }
-
-			event_target:capital_planet = {
-				add_building = building_hive_major_capital_sick
-				add_building = building_hive_node_sick
-				add_building = building_foundry_1
-				add_building = building_hive_warren_sick
-				add_building = building_hive_warren_sick
-				add_district = { district_type = district_generator_infected ignore_cap = yes }
-				add_district = { district_type = district_mining_infected ignore_cap = yes }
-				add_district = { district_type = district_farming_infected ignore_cap = yes }
-				add_district = { district_type = district_generator_infected ignore_cap = yes }
-				add_district = { district_type = district_mining_infected ignore_cap = yes }
-				add_district = { district_type = district_farming_infected ignore_cap = yes }
-				add_district = { district_type = district_hive_infected ignore_cap = yes }
-				while = { count = 6
-					create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-				}
-				solar_system = {
-					random_system_planet = {
-						limit = { is_star = no is_colony = no }
-						change_pc = pc_nuked
-						add_deposit = d_ore_rich_caverns
-						add_deposit = d_fungal_caves
-						if = {
-							limit = { planet_size < 14 }
-							set_planet_size = 14
+			if = {
+				limit = { exists = event_target:capital_planet }
+				event_target:capital_planet = {
+					add_building = building_hive_major_capital_sick
+					add_building = building_hive_node_sick
+					add_building = building_foundry_1
+					add_building = building_hive_warren_sick
+					add_building = building_hive_warren_sick
+					add_district = { district_type = district_generator_infected ignore_cap = yes }
+					add_district = { district_type = district_mining_infected ignore_cap = yes }
+					add_district = { district_type = district_farming_infected ignore_cap = yes }
+					add_district = { district_type = district_generator_infected ignore_cap = yes }
+					add_district = { district_type = district_mining_infected ignore_cap = yes }
+					add_district = { district_type = district_farming_infected ignore_cap = yes }
+					add_district = { district_type = district_hive_infected ignore_cap = yes }
+					while = { count = 6
+						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+					}
+					solar_system = {
+						random_system_planet = {
+							limit = { is_star = no is_colony = no }
+							change_pc = pc_nuked
+							add_deposit = d_ore_rich_caverns
+							add_deposit = d_fungal_caves
+							if = {
+								limit = { planet_size < 14 }
+								set_planet_size = 14
+							}
 						}
 					}
 				}
 			}
-
 			set_country_flag = chaos_empire
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
@@ -279,23 +282,26 @@ country_event = {
 			# log="Give shroudsinners empire \\[This.GetName] $tech_subdermal_stimulation$"
 			give_technology = { message = no tech = tech_subdermal_stimulation }
 			set_country_flag = breached_shroud
-			event_target:capital_planet = {
-				while = { count = 7
-					create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+			if = {
+				limit = { exists = event_target:capital_planet }
+				event_target:capital_planet = {
+					while = { count = 7
+						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+					}
+					add_deposit = d_decrepit_dwellings
+					add_district_and_planet_size_if_needed_effect = { district = district_farming }
+					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
+					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
+					add_district = { district_type = district_mining ignore_cap = yes }
+					add_building = building_paradise_dome
+					add_building = building_hyper_entertainment_forum
+					remove_building = building_factory_1
+					remove_building = building_foundry_1
+					remove_building = building_temple
+					remove_building = building_research_lab_1
+					add_building = building_crystal_plant
+					add_building = building_refinery
 				}
-				add_deposit = d_decrepit_dwellings
-				add_district_and_planet_size_if_needed_effect = { district = district_farming }
-				add_district_and_planet_size_if_needed_effect = { district = district_industrial }
-				add_district_and_planet_size_if_needed_effect = { district = district_industrial }
-				add_district = { district_type = district_mining ignore_cap = yes }
-				add_building = building_paradise_dome
-				add_building = building_hyper_entertainment_forum
-				remove_building = building_factory_1
-				remove_building = building_foundry_1
-				remove_building = building_temple
-				remove_building = building_research_lab_1
-				add_building = building_crystal_plant
-				add_building = building_refinery
 			}
 			add_resource = { energy = 1000 }
 			if = { # Compare with prescipted empire design
@@ -568,11 +574,19 @@ country_event = {
 			limit = {
 				OR = {
 					has_origin = origin_bioreformers
-					# has_origin = origin_tyranid_planet # Compat Mod "Warhammer 40K - Tyranids"
+					has_country_flag = tyranid_empire
+					has_origin = origin_tyranid_planet # Compat Mod "Warhammer 40K - Tyranids"
 					owner_main_species = {
 						has_trait = trait_tyranid # Compat Mod "Warhammer 40K - Tyranids"
 					}
 					is_species = name_list_TYRANID1
+				}
+				owner_main_species = {
+					NOR = {
+						is_species_class = "Genestealer"	# Compat Mod "WH species"
+						species_portrait = "Genestealer"	# Compat Mod "WH species"
+						is_species = "Genestealer"
+					}
 				}
 			}
 			if = { # Compare with prescipted empire design
@@ -596,46 +610,7 @@ country_event = {
 					is_species = name_list_NECRON1
 				}
 			}
-			event_target:capital_planet = {
-				remove_building = building_research_lab_1
-				add_district = district_nexus
-				if = {
-					limit = { planet_size < 25 }
-					set_planet_size = 25
-				}
-				add_deposit = d_collapsed_spire
-				# remove_building = building_factory_1
-				# add_deposit = d_production_datacore
-				# add_deposit = d_research_datacore
-				add_deposit = d_abandoned_mining_tunnels
-				add_deposit = d_immense_solar_array
-				add_deposit = d_ancient_reactor_pits
-				add_deposit = d_crumbling_mining_tunnels
-				add_deposit = d_relic_metal_boneyard
-				add_deposit = d_relic_metal_boneyard
-				add_district = district_farming
-				add_district = district_mining
-				add_district = district_generator
-
-				add_building = building_class_4_singularity
-
-				solar_system = {
-					random_system_planet = {
-						limit = { is_star = no is_colony = no }
-						if = {
-							limit = { planet_size < 14 }
-							set_planet_size = 14
-						}
-						change_pc = pc_nuked
-						set_planet_flag = pf_guarenteed_stasis_tombs
-						if = {
-							limit = { NOT = { has_modifier = "irradiated_planet" } }
-							add_modifier = { modifier = "irradiated_planet" days = -1 }
-						}
-					}
-				}
-			}
-			country_event = { id = aagrimstarts.11 days = 2 }
+			country_event = { id = aagrimstarts.11 days = 1 }
 		}
 		else_if = { # 11 Setup "Adeptus Mechanicus"
 			limit = {
@@ -944,7 +919,8 @@ country_event = {
 			limit = {
 				OR = {
 					has_origin = origin_godruler	# Mankind
-					has_country_flag = human_empire	# Fallback Humans
+					# has_country_flag = human_empire	# Fallback Humans
+					has_country_flag = the_mankind	# Fallback Humans
 					AND = {
 						exists = ruler
 						ruler.species = { species_portrait = "IMP_Emperor_ruler" }
@@ -965,7 +941,11 @@ country_event = {
 			solar_system = {
 				random_system_planet = {
 					limit = {
-						NOR = { is_planet = event_target:capital_planet is_colony = yes }
+						NAND = {
+							exists = event_target:capital_planet
+							is_planet = event_target:capital_planet
+							is_colony = yes
+						}
 						is_colonizable = yes
 					}
 					weights = { base = 1
@@ -994,7 +974,7 @@ country_event = {
 			}
 		}
 		else = { # non_grimdark_empire
-			set_timed_country_flag = { flag = non_grimdark_empire days = 1 }
+			set_timed_country_flag = { flag = non_grimdark_empire days = 2 }
 		}
 		if = { # All Grimdark empires should be aware of alien life
 			limit = { NOT = { has_country_flag = non_grimdark_empire } }
@@ -1010,9 +990,7 @@ country_event = {
 			set_country_flag = Story6
 			set_country_flag = Story7
 		}
-		else = {
-			remove_country_flag = non_grimdark_empire
-		}
+		else = { remove_country_flag = non_grimdark_empire }
 		set_update_modifiers_batch = end
 	}
 }
@@ -1169,7 +1147,7 @@ country_event = {
 					plural = NAME_Human_plural
 					class = "HUM"
 					namelist = "HUMAN3"
-					portrait = "human"
+					portrait = "human_legacy"
 					traits = random
 					homeworld = event_target:sol_system_earth
 					effect = { save_event_target_as = secondary_species }
@@ -1216,7 +1194,7 @@ country_event = {
 			else = {
 				modify_species = {
 					species = event_target:secondary_species
-					base = root.founder_species
+					base = none # event_target:secondary_species
 					add_trait = trait_functional
 					add_traits_at_start_of_list = yes
 					ideal_planet_class = prev
@@ -1240,6 +1218,7 @@ country_event = {
 							}
 						}
 						set_species_identity = root.owner_main_species
+						set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 					}
 				}
 			}
@@ -2630,10 +2609,18 @@ country_event = {
 						}
 					}
 				}
-				# limit = { has_origin = origin_tyranid_planet } # Mod "Warhammer 40K - Tyranids"
 			}
 			if = {
 				limit = { NOT = { has_origin = origin_bioreformers } }
+				if = { # Compat Mod "Warhammer 40K - Tyranids"
+					limit = {
+						has_origin = origin_tyranid_planet
+						owner_main_species = { NOT = { is_species_class = "Tyranid" } }
+					}
+					owner_main_species = {
+						mirror_species = { CLASS = "Tyranid" }
+					}
+				}
 				set_origin = origin_bioreformers
 			}
 			set_policy = { policy = first_contact_protocol option = first_contact_attack_allowed cooldown = yes }
@@ -2710,6 +2697,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		get_capital_planet = yes
 		if = {
 			limit = {
 				OR = { is_ai = yes has_astral_planes_dlc = yes }
@@ -2760,12 +2748,48 @@ country_event = {
 				change_species_characteristics = { add_trait = trait_machine_unit add_traits_at_start_of_list = yes }
 			}
 		}
-		get_capital_planet = yes
 		event_target:capital_planet = {
 			if = {
 				limit = { has_building = building_research_lab_1 }
 				remove_building = building_research_lab_1
 			}
+			add_district = district_nexus
+			if = {
+				limit = { planet_size < 25 }
+				set_planet_size = 25
+			}
+			add_deposit = d_collapsed_spire
+			# remove_building = building_factory_1
+			# add_deposit = d_production_datacore
+			# add_deposit = d_research_datacore
+			add_deposit = d_abandoned_mining_tunnels
+			add_deposit = d_immense_solar_array
+			add_deposit = d_ancient_reactor_pits
+			add_deposit = d_crumbling_mining_tunnels
+			add_deposit = d_relic_metal_boneyard
+			add_deposit = d_relic_metal_boneyard
+			add_district = district_farming
+			add_district = district_mining
+			add_district = district_generator
+
+			add_building = building_class_4_singularity
+
+			solar_system = {
+				random_system_planet = {
+					limit = { is_star = no is_colony = no }
+					if = {
+						limit = { planet_size < 14 }
+						set_planet_size = 14
+					}
+					change_pc = pc_nuked
+					set_planet_flag = pf_guarenteed_stasis_tombs
+					if = {
+						limit = { NOT = { has_modifier = "irradiated_planet" } }
+						add_modifier = { modifier = "irradiated_planet" days = -1 }
+					}
+				}
+			}
+
 			add_district = { district_type = district_farming ignore_cap = yes }
 			add_district = { district_type = district_nexus ignore_cap = yes }
 			add_district = { district_type = district_mining ignore_cap = yes }
@@ -3680,6 +3704,57 @@ event = {
 		# 	}
 		# 	save_event_target_as = necron_empire
 		# }
+
+		# Created in v3.14.159
+		# if = {
+		# 	limit = {
+		# 		NOT = { has_global_flag = switched_chaos_touched_traid }
+		# 		any_country = {
+		# 			any_owned_species = { has_trait = trait_heretic_astartes }
+		# 		}
+		# 	}
+		# 	set_global_flag = switched_chaos_touched_traid
+		# 	every_country = {
+		# 		limit = { any_owned_species = { has_trait = trait_heretic_astartes } }
+		# 		every_owned_species = {
+		# 			limit = { has_trait = trait_heretic_astartes }
+		# 			change_species_characteristics = { remove_trait = trait_heretic_astartes add_trait = trait_heretic_astartes }
+		# 			if = {
+		# 				limit = { prev = { NOT = { has_country_flag = chaos_empire } } }
+		# 				prev = {
+		# 					if = {
+		# 						limit = {
+		# 							NOT = { has_policy_flag = purge_allowed }
+		# 							can_set_policy = { policy = purge option = purge_allowed }
+		# 						}
+		# 						set_policy = { policy = purge option = purge_allowed cooldown = yes }
+		# 					}
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						prev = { has_policy_flag = purge_allowed }
+		# 						NOR = {
+		# 							has_citizenship_type = { type = citizenship_purge country = prev }
+		# 							has_purge_type = { country = prev type = purge_neutering }
+		# 						}
+		# 					}
+		# 					set_citizenship_type = { country = prev type = citizenship_purge cooldown = yes }
+		# 					set_purge_type = { country = prev type = purge_neutering cooldown = yes }
+		# 				}
+		# 				else = {
+		# 					every_species_pop = {
+		# 						limit = {
+		# 							exists = owner
+		# 							is_owned_by = prevprevprev
+		# 						}
+		# 						random = { chance = 75 kill_pop = yes }
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
+
 		# Removed in v3.13
 		# if = {
 		# 	limit = {

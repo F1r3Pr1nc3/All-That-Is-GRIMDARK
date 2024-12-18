@@ -271,10 +271,7 @@ slavery_livestock = {
 		}
 		custom_tooltip = {
 			fail_text = CANNOT_LIVESTOCK_MATRIX_MACHINES
-			NOR = {
-				has_trait = trait_mechanical
-				has_trait = trait_machine_unit
-			}
+			is_robotic = no
 		}
 		custom_tooltip = {
 			fail_text = empire_not_xenophobe

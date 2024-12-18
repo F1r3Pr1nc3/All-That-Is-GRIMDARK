@@ -40,9 +40,9 @@ origin_necron_awakening = {
 		}
 	}
 	traits = {
-		trait = trait_machine_unit		# MACHINE
-		# trait_mechanical ROBOT
-		# trait = trait_necrons
+		# trait = trait_machine_unit	# MACHINE
+		# trait = trait_mechanical		# ROBOT
+		trait = trait_necrons
 	}
 	modifier = {
 		# pop_cat_worker_happiness = 2.00
@@ -65,6 +65,7 @@ origin_necron_awakening = {
 		ship_shield_mult = 1
 		all_technology_research_speed = 0.4
 	}
+
 	description = "origin_tooltip_reawakened_effects"
 	flags = {
 		custom_start_screen

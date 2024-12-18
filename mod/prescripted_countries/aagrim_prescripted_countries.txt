@@ -37,7 +37,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -45,7 +44,6 @@
 						key="PRESCRIPTED_species_adjective_mechanicus"
 					}
 				}
-
 			}
 		}
 		species_bio="Comprising of humans heavily augmented with cybernetics, they venerate technology as a form of religion. Their devotion to the Machine God, known as the Omnissiah, drives them to seek and understand ancient and powerful technologies across the galaxy."
@@ -79,7 +77,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -87,7 +84,6 @@
 						key="SPEC_Servitors_adj"
 					}
 				}
-
 			}
 		}
 		species_bio="This is a specialized sub-species within the Adeptus Mechanicus, created through extensive cybernetic augmentation and lobotomization. These once-human individuals have been transformed into obedient and highly specialized laborers, tasked with serving the technological needs of the Adeptus Mechanicus."
@@ -106,7 +102,6 @@
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -114,7 +109,6 @@
 					key="Mechanicus"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -122,7 +116,6 @@
 					key="Forge Dominion"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -175,7 +168,14 @@
 	ruler=
 	{
 		gender=indeterminable
-		name="PRESCRIPTED_ruler_name_mechanicus"
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_mechanicus"
+			}
+			use_full_regnal_name=yes
+		}
 		portrait="Adeptus_Mechanicus" # "dmech4"		# "MECHA4" # "human_male_02"
 		texture=1
 		attachment=50
@@ -244,7 +244,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -252,13 +251,14 @@
 						key="PRESCRIPTED_species_adjective_ork"
 					}
 				}
-
 			}
 		}
 		species_bio="This species epitomizes savagery, violence, and primal instincts. Their insatiable appetite for combat leads them to great crusades across the galaxy, because they are the horde, and they must fight."
 		name_list="ORK1"		# "REP4"
 		gender=not_set
+		trait="trait_orkz"
 		trait="trait_self_sustained"
+		trait="trait_survivor"
 		trait="trait_slow_learners"
 		trait="trait_natural_engineers"
 		trait="trait_strong"
@@ -280,7 +280,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -288,14 +287,15 @@
 						key="Grot_adj"
 					}
 				}
-
 			}
 		}
 		species_bio="Grot_desc"
 		name_list="ART1"
 		gender=not_set
 		# trait="trait_syncretic_proles"
+		# trait="trait_orkz"
 		trait="trait_self_sustained"
+		trait="trait_survivor"
 		trait="trait_unruly"
 		trait="trait_industrious"
 		# trait="trait_incubator" has_toxoids
@@ -306,7 +306,6 @@
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -314,7 +313,6 @@
 					key="name_list_ORK1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -322,7 +320,6 @@
 					key="Horde"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -377,11 +374,10 @@
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_ork"
+				# key="PRESCRIPTED_ruler_name_ork"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -390,7 +386,6 @@
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -399,7 +394,6 @@
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -459,7 +453,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -467,12 +460,12 @@
 						key="PRESCRIPTED_species_adjective_eldar"
 					}
 				}
-
 			}
 		}
 		species_bio="The Eldar, who call themselves 'Asuryani', are an ancient and highly advanced race, probably compose the majority of the surviving 'Aeldari' species. They are graceful, agile beings with potent psychic abilities, residing on colossal starships known as 'Craftworlds'. Guided by powerful Seers, they strive to preserve their dwindling race and navigate the dangers of the galaxy."
 		name_list="ELDAR1"		# "HUM2"
 		gender=not_set
+		trait="trait_eldar"
 		# trait="trait_latent_psionic" not at gamestart
 		# trait="trait_void_dweller_1" not at gamestart
 		trait="trait_solitary"
@@ -484,7 +477,6 @@
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -492,7 +484,6 @@
 					key="Soulkeeper"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -500,7 +491,6 @@
 					key="Unity"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -583,7 +573,6 @@
 	}
 	origin="origin_soulkeepers"
 }
-
 # Vol 2
 # Chaos Space Marine "World Eaters" (XII Legion - former "War Hounds") - Khorne
 "Khornate Ravagers"=
@@ -611,7 +600,6 @@
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -619,12 +607,12 @@
 						key="PRESCRIPTED_species_adjective_khorne"
 					}
 				}
-
 			}
 		}
 		species_bio="Khornates, are devout followers of Khorne, the Chaos God of bloodshed and battle, within the grim and brutal universe. These warriors - including the Chaos Space Marine Legion 'World Eaters' - have forsaken the ideals of the Imperium and embraced the path of relentless combat and unbridled aggression. They revel in the glory of battle, seeking to spill the blood of their foes in the name of Khorne"
 		name_list="CHAOS1"		# "HUMAN3"
 		gender=not_set
+		trait="trait_heretic_astartes"
 		trait="trait_strong"
 		trait="trait_enduring"
 		trait="trait_repugnant"
@@ -656,6 +644,7 @@
 		species_bio="The Bloodbound are a fearsome warrior caste forged in the crucible of Khorne's relentless passion for bloodshed and martial prowess. Hailing from the tumultuous landscapes of their homeworld, Khornathrax, these brutish beings are the living embodiment of Khorne's insatiable thirst for combat and domination."
 		name_list="CHAOS1"		# "HUMAN3"
 		gender=not_set
+		trait="trait_heretic_astartes"
 		# trait="trait_daemons"
 		# trait="trait_syncretic_proles"
 		# trait="trait_self_sustained"
@@ -671,7 +660,6 @@
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -679,7 +667,6 @@
 					key="PRESCRIPTED_species_name_khorne"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -687,7 +674,6 @@
 					key="Ravagers"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -695,7 +681,6 @@
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -703,7 +688,6 @@
 					key="PRESCRIPTED_adjective_khorne"
 				}
 			}
-
 		}
 	}
 	authority="auth_imperial" # "auth_chaos"
@@ -719,7 +703,6 @@
 	planet_name=
 	{
 		key="PRESCRIPTED_planet_name_khorne" # "Crucible"
-
 	}
 	planet_class="pc_desert"
 	system_name=
@@ -803,7 +786,6 @@
 	}
 	origin="origin_shroudrage"	# "origin_world_eater"
 }
-
 # Tzeentch: Thousand Sons (XV Legion) - Cursed by Tzeentch, they are powerful sorcerers and serve the Chaos God of change and manipulation.
 # Alpha Legion (XX Legion)
 "Tzeentch Fellowship"=
@@ -834,6 +816,7 @@
 		species_bio="The Tzeentchian are followers of the Chaos God Tzeentch, are adept at sorcery and seek power through complex schemes and arcane knowledge. They come from various species and are characterized by their ever-shifting allegiance and mastery of psychic abilities. Tzeentchians are agents of chaos, wielding unpredictable influence in the galaxy."
 		name_list="MAM2"
 		gender=not_set
+		trait="trait_heretic_astartes"
 		# trait="trait_psionic"
 		trait="trait_industrious"
 		trait="trait_natural_physicists"
@@ -925,7 +908,6 @@
 	}
 	origin="origin_shroudmutated"
 }
-
 # Clone with DLC
 # Slaanesh: Emperor's Children (III Legion) - Devoted to Slaanesh, the Chaos God of excess and pleasure.
 "Slaaneshi Covenant"=
@@ -956,7 +938,8 @@
 		species_bio="The Slaaneshi are followers of the Chaos God Slaanesh, which is associated with excess, pleasure, and indulgence. They come from various species and are characterized by their pursuit of hedonistic pleasures and sensations. They seek to push the boundaries of sensation and pleasure to extremes."
 		name_list="CHAOS1"		# "HUM2"
 		gender=not_set
-		# trait="trait_latent_psionic"
+		trait="trait_heretic_astartes"
+		trait="trait_latent_psionic"
 		trait="trait_charismatic"
 		trait="trait_deviants"
 		trait="trait_decadent"
@@ -1047,7 +1030,6 @@
 	}
 	origin="origin_shroudsinners"
 }
-
 # Fallback Clone without DLC
 Slaanesh=
 {
@@ -1077,7 +1059,8 @@ Slaanesh=
 		species_bio="The Slaaneshi are followers of the Chaos God Slaanesh, which is associated with excess, pleasure, and indulgence. They come from various species and are characterized by their pursuit of hedonistic pleasures and sensations. They seek to push the boundaries of sensation and pleasure to extremes."
 		name_list="CHAOS1"		# "HUM2"
 		gender=not_set
-		# trait="trait_latent_psionic"
+		trait="trait_heretic_astartes"
+		trait="trait_latent_psionic"
 		trait="trait_charismatic"
 		trait="trait_deviants"
 		trait="trait_decadent"
@@ -1169,7 +1152,6 @@ Slaanesh=
 	}
 	origin="origin_shroudsinners"
 }
-
 # TODO infected jobs do not work?
 # Nurgle: Death Guard (XIV Legion) - Devoted to Nurgle, the Chaos God of decay and pestilence.
 # "Nurglen Clique"
@@ -1202,7 +1184,8 @@ Slaanesh=
 		name_list="MOL3"
 		gender=not_set
 		trait="trait_hive_mind"
-		# trait="trait_shroud_sick"
+		trait="trait_shroud_sick"
+		trait="trait_heretic_astartes"
 		trait="trait_repugnant"
 		trait="trait_strong"
 		trait="trait_adaptive"
@@ -1319,7 +1302,8 @@ Slaanesh=
 		name_list="MOL3"
 		gender=not_set
 		trait="trait_hive_mind"
-		# trait="trait_shroud_sick"
+		trait="trait_shroud_sick"
+		trait="trait_heretic_astartes"
 		trait="trait_repugnant"
 		trait="trait_strong"
 		trait="trait_adaptive"
@@ -1406,7 +1390,6 @@ Slaanesh=
 	}
 	origin="origin_shroudsick"
 }
-
 # Vol 3
 "necronresurge"=
 {
@@ -1433,7 +1416,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -1441,13 +1423,13 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_necron"
 					}
 				}
-
 			}
 		}
 		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
 		name_list="NECRON1"
 		gender=not_set
 		trait="trait_machine_unit"
+		trait="trait_necrons"
 		trait="trait_robot_high_bandwidth"
 		trait="trait_robot_recycled"
 		trait="trait_robot_mass_produced"
@@ -1459,7 +1441,6 @@ Slaanesh=
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -1467,7 +1448,6 @@ Slaanesh=
 					key="name_list_NECRON1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -1475,7 +1455,6 @@ Slaanesh=
 					key="Resurgency"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -1529,11 +1508,10 @@ Slaanesh=
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_necron"
+				# key="PRESCRIPTED_ruler_name_necron"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -1542,7 +1520,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -1551,7 +1528,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -1606,7 +1582,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -1614,13 +1589,12 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_necron"
 					}
 				}
-
 			}
 		}
 		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
 		name_list="NECRON1"
 		gender=not_set
-		trait="trait_machine_unit"
+		trait="trait_necrons"
 		trait="trait_robot_high_bandwidth"
 		trait="trait_robot_recycled"
 		trait="trait_robot_mass_produced"
@@ -1632,7 +1606,6 @@ Slaanesh=
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -1640,7 +1613,6 @@ Slaanesh=
 					key="name_list_NECRON1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -1648,7 +1620,6 @@ Slaanesh=
 					key="Resurgency"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -1702,11 +1673,10 @@ Slaanesh=
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_necron"
+				# key="PRESCRIPTED_ruler_name_necron"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -1715,7 +1685,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -1724,7 +1693,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -1759,7 +1727,6 @@ Slaanesh=
 	}
 	origin="origin_necron_awakening"
 }
-
 # Dark Eldar "Drukhari Regime"
 "drukravagers"=
 {
@@ -1786,7 +1753,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -1794,12 +1760,12 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_darkeldar"
 					}
 				}
-
 			}
 		}
 		species_bio="The Drukhari, also known as the Dark Eldar, are a sinister faction in the universe. They are the twisted descendants of the ancient Eldar race, embracing sadistic and malevolent practices. The Drukhari thrive on pain and suffering, raiding the galaxy from their dark city-communes in the Webway. Masters of speed and stealth, they are feared for their ruthless and cunning tactics."
 		name_list="DARKELDAR1"		# "NECROID4"
 		gender=not_set
+		trait="trait_eldar"
 		trait="trait_decadent"		# -1
 		trait="trait_enduring"		# +1
 		trait="trait_quick_learners"		# +1
@@ -1824,7 +1790,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -1832,7 +1797,6 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_ork"
 					}
 				}
-
 			}
 		}
 		species_bio="Orks' robust physiology and natural resilience also make them suitable for various forms of forced labor and servitude. Their raw physical power can be harnessed for tasks that might be too demanding for other species."
@@ -1849,7 +1813,6 @@ Slaanesh=
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -1857,7 +1820,6 @@ Slaanesh=
 					key="name_list_DARKELDAR1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -1865,7 +1827,6 @@ Slaanesh=
 					key="Regime"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -1952,7 +1913,6 @@ Slaanesh=
 	}
 	origin="origin_paindrinkers"
 }
-
 # Vol 4
 # "Tyranid Swarm"
 "tryanidswarmalp"=
@@ -1980,7 +1940,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -1988,14 +1947,13 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_tyranid"
 					}
 				}
-
 			}
 		}
 		species_bio="The Tyranid Swarm is an extragalactic species. They are a terrifying and all-consuming hive mind, driven by a singular purpose: to consume all biological matter in their path. Comprising a myriad of bioengineered organisms, the Tyranid Swarm is an unstoppable force of nature, capable of adapting and evolving rapidly to overcome any opposition. Their vast numbers and relentless hunger for biomass make them a formidable threat in the galaxy. The Tyranids' unrelenting pursuit of consumption and their ability to adapt to any environment make them a nightmarish adversary for all who face them."
 		name_list="TYRANID1"		# "HIVE2"
 		gender=not_set
 		trait="trait_hive_mind"
-		# trait="trait_tyranid" # trait="trait_extremely_adaptive"
+		trait="trait_tyranid" # trait="trait_extremely_adaptive"
 		trait="trait_repugnant"
 		trait="trait_fleeting"
 		# trait="trait_noxious" has_toxoids
@@ -2007,7 +1965,6 @@ Slaanesh=
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -2015,7 +1972,6 @@ Slaanesh=
 					key="name_list_TYRANID1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -2023,7 +1979,6 @@ Slaanesh=
 					key="Swarm"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -2076,11 +2031,10 @@ Slaanesh=
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_tyranid"
+				# key="PRESCRIPTED_ruler_name_tyranid"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -2089,7 +2043,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -2098,7 +2051,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -2127,7 +2079,6 @@ Slaanesh=
 	}
 	origin="origin_bioreformers"
 }
-
 # "Tau Empire"
 "tauunityalp"=
 {
@@ -2154,7 +2105,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -2162,12 +2112,12 @@ Slaanesh=
 						key="PRESCRIPTED_species_adjective_tau"
 					}
 				}
-
 			}
 		}
 		species_bio="The Tau are a technologically advanced species known for their innovative engineering and diplomatic approach to interstellar relations. United under the Greater Good philosophy, they seek harmony and cooperation among diverse species. The Tau Empire, guided by their Ethereals, strives for progress, expansion, and a brighter future for all."
 		name_list="TAU1"		# "HUM3"
 		gender=not_set
+		trait="trait_tau"
 		trait="trait_thrifty"
 		trait="trait_intelligent"
 		trait="trait_weak"
@@ -2190,7 +2140,6 @@ Slaanesh=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -2198,7 +2147,6 @@ Slaanesh=
 						key="Kroot_adj"
 					}
 				}
-
 			}
 		}
 		species_bio="Kroot_desc"
@@ -2216,7 +2164,6 @@ Slaanesh=
 		key="%ADJECTIVE%"
 		variables=
 		{
-
 			{
 				key="adjective"
 				value=
@@ -2224,7 +2171,6 @@ Slaanesh=
 					key="name_list_TAU1"
 				}
 			}
-
 			{
 				key="1"
 				value=
@@ -2232,7 +2178,6 @@ Slaanesh=
 					key="Empire"
 				}
 			}
-
 		}
 	}
 	adjective=
@@ -2286,11 +2231,10 @@ Slaanesh=
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_tau"
+				# key="PRESCRIPTED_ruler_name_tau"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -2299,7 +2243,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -2308,7 +2251,6 @@ Slaanesh=
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -2347,7 +2289,6 @@ Slaanesh=
 	}
 	origin="origin_greatergood"
 }
-
 # O God Ruler "Terran Imperium"
 imp=
 {
@@ -2374,7 +2315,6 @@ imp=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -2382,7 +2322,6 @@ imp=
 						key="PRESCRIPTED_species_adjective_mankind"
 					}
 				}
-
 			}
 		}
 		species_bio="The Posthumans are highly augmented beings, surpassing normal human capabilities through advanced technology and genetic enhancements. They are elite warriors and leaders, embodying humanity's relentless pursuit of advancement."
@@ -2422,7 +2361,7 @@ imp=
 	{
 		key="PRESCRIPTED_system_name_mankind"
 	}
-	initializer="" # sol_holy_mars_system_initializer sol_system_initializer
+	initializer="sol_system_initializer"
 	graphical_culture="humanoid_01" # "mammalian_01"
 	city_graphical_culture="humanoid_01"
 	empire_flag=
@@ -2452,11 +2391,10 @@ imp=
 		{
 			full_names=
 			{
-				key="PRESCRIPTED_ruler_name_mankind"
+				# key="PRESCRIPTED_ruler_name_mankind"
 				key="%LEADER_2%"
 				variables=
 				{
-
 					{
 						key="1"
 						value=
@@ -2465,7 +2403,6 @@ imp=
 							literal=yes
 						}
 					}
-
 					{
 						key="2"
 						value=
@@ -2474,7 +2411,6 @@ imp=
 							literal=yes
 						}
 					}
-
 				}
 			}
 			# use_full_regnal_name=yes
@@ -2536,7 +2472,6 @@ imp=
 			key="%ADJECTIVE%"
 			variables=
 			{
-
 				{
 					key="adjective"
 					value=
@@ -2544,13 +2479,13 @@ imp=
 						key="PRESCRIPTED_species_adjective_black_legion"
 					}
 				}
-
 			}
 		}
 		# species_bio="The Black Legion, formerly known as the Luna Wolves, is a formidable Chaos Space Marine faction led by the Warmaster Abaddon. Driven by the pursuit of power and ascension, they seek to unleash the full might of Chaos upon the galaxy. Abaddon, the favored son of all four Chaos Gods, commands this malevolent force with the singular goal of the Imperium of Man's destruction."
 		species_bio="Chaos Space Marines, once noble warriors of the Imperium, have succumbed to the seductive call of Chaos. They are now twisted, malevolent beings devoted to the service of the dark powers that inhabit the Warp. These corrupted humans have forsaken their former allegiances and are now formidable champions of Chaos."
 		name_list="CHAOS1"		# "grand_crusade_luna_wolves"
-		# trait="trait_heretic_astartes"
+		gender=male
+		trait="trait_heretic_astartes"
 		trait="trait_strong"		# +1
 		trait="trait_solitary"		# -1
 		trait="trait_slow_breeders"		# -2

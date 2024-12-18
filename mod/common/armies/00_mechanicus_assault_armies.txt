@@ -36,7 +36,7 @@ machine_assault_10 = {
 		from = {
 			OR = { has_utopia = no has_trait = trait_cybernetic }
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 	}
 }

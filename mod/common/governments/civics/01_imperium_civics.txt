@@ -1,13 +1,13 @@
 # DEPRECATED: remove me on > v.3.11
-civic_imperialcult = {
-	modification = no
-	# icon = "gfx/interface/icons/governments/civics/civic_imperial_cult.dds"
-	potential = { always = no }
-	possible = { always = no }
-	random_weight = { base = 0 }
-	ai_weight = { base = 0 }
-	description = civic_imperial_cult_effects
-}
+# civic_imperialcult = {
+# 	modification = no
+# 	# icon = "gfx/interface/icons/governments/civics/civic_imperial_cult.dds"
+# 	potential = { always = no }
+# 	possible = { always = no }
+# 	random_weight = { base = 0 }
+# 	ai_weight = { base = 0 }
+# 	description = civic_imperial_cult_effects
+# }
 # TODO ECC and 40k Planet Specialization
 # civic_mechanicus
 # Machine Cult - start with robot tech, Mecha-monastery + techno_priest jobs (engineering, unity)

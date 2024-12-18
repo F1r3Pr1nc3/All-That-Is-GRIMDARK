@@ -46,7 +46,7 @@ origin_greatergood = {
 		country_trade_fee = -0.01
 		country_trade_attractiveness = 1
 	}
-	# traits = { trait = trait_tau } TODO
+	traits = { trait = trait_tau }
 	has_secondary_species = {
 		title = civic_syncretic_evolution_secondary_species
 		traits = {
@@ -86,7 +86,10 @@ origin_shroudmutated = {
 		}
 	}
 	modifier = { pop_government_ethic_attraction = -0.25 }
-	# traits = { trait = trait_psionic }
+	traits = {
+		# trait = trait_psionic
+		trait = trait_heretic_astartes
+	}
 	description = "origin_tooltip_shroudmutated_effects"
 	flags = {
 		"custom_start_screen"
@@ -145,15 +148,17 @@ origin_shroudrage = {
 		planet_pops_organics_food_upkeep_mult = -0.25
 		country_pop_enslaved_mult = 0.25
 	}
-	# traits = {
-	# 	trait = trait_survivor removed in v.3.11
-	# }
+	traits = {
+		# trait = trait_survivor removed in v.3.11
+		trait = trait_heretic_astartes
+	}
 	has_secondary_species = {
 		title = civic_syncretic_evolution_secondary_species # TODO better title
 		traits = {
 			# trait = trait_syncretic_proles
 			trait = trait_very_strong
 			# trait = trait_repugnant
+			trait = trait_heretic_astartes
 		}
 	}
 	description = "origin_tooltip_shroudrage_effects"
@@ -207,7 +212,10 @@ origin_shroudsinners = {
 		}
 	}
 	modifier = { pop_amenities_usage_mult = 0.25 }
-	# traits = { trait = trait_latent_psionic }
+	traits = {
+		trait = trait_latent_psionic
+		trait = trait_heretic_astartes
+	}
 	description = "origin_tooltip_shroudsinners_effects"
 	flags = {
 		"custom_start_screen"
@@ -246,7 +254,11 @@ origin_shroudsick = {
 		leader_lifespan_add = 100
 		army_health = 0.5
 	}
-	# traits = { trait = trait_repugnant trait = trait_shroud_sick }
+	traits = {
+		# trait = trait_repugnant
+		trait = trait_shroud_sick
+		trait = trait_heretic_astartes
+	}
 	description = "origin_tooltip_shroudsick_effects"
 	flags = {
 		"custom_start_screen"
@@ -286,16 +298,17 @@ origin_barbarichorde = {
 		country_claim_influence_cost_mult = -0.2
 	}
 	traits = {
-		# trait = trait_orkz TODO
+		trait = trait_orkz
 		trait = trait_self_sustained
-		# trait = trait_survivor removed in v.3.11
+		trait = trait_survivor
 	}
 	has_secondary_species = {
 		title = civic_syncretic_evolution_secondary_species
 		traits = {
+			# trait = trait_orkz
 			# trait = trait_syncretic_proles
-			# trait = trait_survivor removed in v.3.11
 			trait = trait_self_sustained
+			trait = trait_survivor
 		}
 	}
 	description = "origin_tooltip_barbarichorde_effects"
@@ -327,16 +340,16 @@ origin_soulkeepers = {
 	}
 	modifier = {
 		pop_growth_speed = -0.5
-		planet_colony_development_speed_mult = -0.25 # TODO
+		planet_colony_development_speed_mult = -0.25
 		planet_jobs_specialist_produces_mult = 0.05 # agenda_favored_society_finish
 		leader_skill_levels = 1
 		leader_lifespan_add = 400  # 200
 	}
-	# traits = {
-	# 	trait = trait_eldar TODO
-	# 	# trait = trait_latent_psionic
-	# 	# trait = trait_void_dweller_1
-	# }
+	traits = {
+		trait = trait_eldar
+		# trait = trait_latent_psionic
+		# trait = trait_void_dweller_1
+	}
 	description = "origin_tooltip_soulkeepers_effects"
 	flags = {
 		"custom_start_screen"
@@ -387,7 +400,7 @@ origin_paindrinkers = {
 		empire_size_colonies_mult = 1
 	}
 	traits = {
-		# trait = trait_eldar TODO
+		trait = trait_eldar
 		trait = trait_decadent
 		trait = trait_quick_learners		# This trait represents their high intelligence and adaptability. = species_leader_exp_gain = 0.1
 	}
@@ -435,7 +448,7 @@ origin_bioreformers = {
 		modify_species_cost_mult = -0.5
 		army_damage_mult = 0.25
 	}
-	# traits = { trait = trait_tyranid } TODO
+	traits = { trait = trait_tyranid }
 	description = "origin_tooltip_bioreformers_effects"
 	flags = { custom_start_screen }
 	advanced_start = yes
@@ -456,10 +469,9 @@ origin_bioreformers = {
 # 	potential = { always = no }
 # 	possible = { always = no }
 # 	traits = {
-# 		# trait = trait_necrons TODO
+# 		trait = trait_necrons
 # 		trait = trait_machine_unit		# MACHINE
-# 		# trait_mechanical ROBOT
-# 		# trait = trait_necrons
+# 		# trait_mechanical # ROBOT
 # 	}
 # 	modifier = { army_health = 0.5 army_damage_mult = 0.2 }
 # 	description = "origin_tooltip_reawakened_effects"
@@ -507,6 +519,7 @@ origin_godruler = {
 		pop_citizen_happiness = 0.05
 		council_agenda_progress_speed = 0.2
 	}
+	can_build_ruler_ship = yes
 	description = "origin_tooltip_godruler_effects"
 	flags = {
 		"custom_start_screen"
@@ -606,10 +619,11 @@ origin_fallen_psionic = {
 		pop_citizen_happiness = 0.05
 		council_agenda_progress_speed = 0.2
 	}
-	# traits = {
-	# 	trait = trait_heretic_astartes
-	# 	trait = trait_chaos_undivided
-	# }
+	can_build_ruler_ship = yes
+	traits = {
+		trait = trait_heretic_astartes
+		# trait = trait_chaos_undivided
+	}
 	description = "origin_tooltip_fallen_psionic_effects"
 	flags = {
 		"custom_start_screen"

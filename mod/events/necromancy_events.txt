@@ -687,17 +687,17 @@ country_event = {
 			random = { chance = @reanimation_ratio
 				from = {
 					switch = { trigger = army_type
-						plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
-						giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
-						titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
-						titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = giant_undead_army		value = 1 } } }
-						gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = gene_warrior_army		value = 1 } } }
-						imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-						adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-						chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-						undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = undead_defense_army	value = 1 } } }
-						undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = undead_army			value = 1 } } }
-						default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+						plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
+						giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = giant_undead_army		value = 1 } } }
+						titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = giant_undead_army		value = 1 } } }
+						titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = giant_undead_army		value = 1 } } }
+						gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = gene_warrior_army		value = 1 } } }
+						imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+						adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+						chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+						undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = undead_defense_army	value = 1 } } }
+						undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = undead_army			value = 1 } } }
+						default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
 					}
 				}
 			}
@@ -706,17 +706,17 @@ country_event = {
 		else = { # Opponent (no infected_army but more likely)
 			from = {
 				switch = { trigger = army_type
-				plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
-				giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
-				titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
-				titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = giant_undead_army	value = 1 } } }
-				gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = gene_warrior_army	value = 1 } } }
-				imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-				adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-				chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = death_guard			value = 1 } } }
-				undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = undead_defense_army	value = 1 } } }
-				undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = undead_army			value = 1 } } }
-				default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 8 } change_variable = { which = plague_zombies		value = 1 } } }
+				plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
+				giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+				titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+				titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+				gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = gene_warrior_army	value = 1 } } }
+				imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+				adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+				chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+				undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_defense_army	value = 1 } } }
+				undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_army			value = 1 } } }
+				default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
 				}
 			}
 		}

@@ -24,7 +24,7 @@ assault_army_ae_guardians = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 	}
 }
@@ -47,7 +47,7 @@ assault_army_ae_aspect = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 		planet = { has_building = building_aspect_shrine }
 	}
@@ -71,7 +71,7 @@ assault_army_dr_raiders = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 	}
 }

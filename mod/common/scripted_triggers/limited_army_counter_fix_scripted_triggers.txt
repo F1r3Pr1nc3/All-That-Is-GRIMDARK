@@ -1,6 +1,6 @@
+@imperial_legion_soldier_maximum = 12
 @titanic_azizian_soldier_maximum = 3
 @titanic_life_soldier_per_planet_maximum = 3
-@imperial_legion_soldier_maximum = 12
 
 # this = army
 is_limited_army = {
@@ -32,11 +32,10 @@ is_limited_army_country = {
 # this = country
 has_available_titanic_life_capacity = {
 	optimize_memory
-	check_variable = { which = titanic_life_soldier_count value < @titanic_life_soldier_per_planet_maximum }
-	# NAND = {
-	# 	is_variable_set = titanic_life_soldier_count
-	# 	check_variable = { which = titanic_life_soldier_count value >= @titanic_life_soldier_per_planet_maximum }
-	# }
+	NAND = {
+		is_variable_set = titanic_life_soldier_count
+		check_variable = { which = titanic_life_soldier_count value >= @titanic_life_soldier_per_planet_maximum }
+	}
 	NAND = {
 		is_variable_set = titanic_life_soldier_queued_count
 		is_variable_set = titanic_life_soldier_maximum
@@ -48,11 +47,10 @@ has_available_titanic_life_capacity = {
 # this = country
 has_available_titanic_azizian_capacity = {
 	optimize_memory
-	check_variable = { which = titanic_azizian_soldier_count value < @titanic_azizian_soldier_maximum }
-	# NAND = {
-	# 	is_variable_set = titanic_azizian_soldier_count
-	# 	check_variable = { which = titanic_azizian_soldier_count value >= @titanic_azizian_soldier_maximum }
-	# }
+	NAND = {
+		is_variable_set = titanic_azizian_soldier_count
+		check_variable = { which = titanic_azizian_soldier_count value >= @titanic_azizian_soldier_maximum }
+	}
 	NAND = {
 		is_variable_set = titanic_azizian_soldier_queued_count
 		check_variable_arithmetic = { which = titanic_azizian_soldier_count add = titanic_azizian_soldier_queued_count value >= @titanic_azizian_soldier_maximum }
@@ -63,18 +61,17 @@ has_available_titanic_azizian_capacity = {
 # this = country
 has_available_imperial_legion_capacity = {
 	optimize_memory
-	check_variable = { which = imperial_legion_soldier_count value < @imperial_legion_soldier_maximum }
-	# NAND = {
-	# 	is_variable_set = imperial_legion_soldier_count
-	# 	check_variable = { which = imperial_legion_soldier_count value >= @imperial_legion_soldier_maximum }
-	# }
+	NAND = {
+		is_variable_set = imperial_legion_soldier_count
+		check_variable = { which = imperial_legion_soldier_count value >= @imperial_legion_soldier_maximum }
+	}
 	NAND = {
 		is_variable_set = imperial_legion_soldier_queued_count
 		check_variable_arithmetic = { which = imperial_legion_soldier_count add = imperial_legion_soldier_queued_count value >= @imperial_legion_soldier_maximum }
 	}
 }
 
-# TODO if per planet
+# GRIMDARK TODO if per planet
 # # this = country
 # has_available_adeptus_astartes_capacity = {
 # 	optimize_memory

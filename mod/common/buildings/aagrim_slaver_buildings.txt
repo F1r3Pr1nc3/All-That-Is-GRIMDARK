@@ -17,7 +17,7 @@ building_overseer_homes_grim = {
 	}
 
 	allow = {
-		any_owned_pop = { is_enslaved = yes }
+		count_enslaved_species = { count > 0 }
 	}
 
 	destroy_trigger = {

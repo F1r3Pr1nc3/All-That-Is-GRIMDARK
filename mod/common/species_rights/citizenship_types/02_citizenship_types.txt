@@ -391,10 +391,7 @@ citizenship_purge = {
 		exists = from
 		from = { is_machine_empire = no }
 		OR = {
-			NOT = {
-				has_trait = trait_mechanical
-				has_trait = trait_machine_unit
-			}
+			is_robotic = no
 			from = { has_policy_flag = robots_outlawed }
 			AND = {
 				from = { is_hive_empire = yes }

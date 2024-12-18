@@ -25,7 +25,6 @@ country_event = {
 				if = {
 					limit = {
 						NOR = {
-							has_trait = "trait_functional"
 							has_trait = "trait_unruly"
 							has_trait = "trait_sedentary"
 							has_trait = "trait_deviants"
@@ -38,15 +37,19 @@ country_event = {
 						}
 					}
 					modify_species = {
+						species = this
+						base = none
 						add_trait = trait_functional
 						add_traits_at_start_of_list = yes
 						change_scoped_species = no
 						effect = {
+							set_species_identity = prev
 							root.capital_scope = {
 								while = { count = 3
 									create_pop = { species = prev }
 								}
 							}
+							set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 						}
 					}
 				}
@@ -214,14 +217,17 @@ country_event = {
 						# 	species_portrait = "human_legacy"
 						# }
 					}
-					prev = { set_species_identity = prev }
+					set_species_identity = prev # prev = { set_species_identity = prev }
 				}
 			}
 			random_owned_species = {
 				limit = {
 					is_sapient = yes
-					NOT = { is_same_species = root.owner_main_species }
-					OR = { is_human_species = yes species_portrait = "Servitors" }
+					NOR = { is_same_species = root.owner_main_species is_same_species = root.founder_species }
+					OR = {
+						is_human_species = yes
+						species_portrait = "Servitors"
+					}
 				}
 				random_galaxy_species = {
 					limit = {
@@ -229,6 +235,7 @@ country_event = {
 						is_same_species_class = prev # is_species_class = HUM
 						NOR = {
 							is_same_species = root.owner_main_species
+							is_same_species = root.owner_species
 							is_same_species = prev
 							has_trait = trait_heretic_astartes
 							has_trait = trait_daemons
@@ -239,7 +246,10 @@ country_event = {
 							has_trait = trait_eldar
 							has_trait = trait_orkz
 						}
-						OR = { is_human_species = yes species_portrait = "Servitors" }
+						OR = {
+							is_human_species = yes
+							species_portrait = "Servitors"
+						}
 					}
 					prev = { set_species_identity = prev }
 				}

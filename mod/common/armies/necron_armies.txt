@@ -243,7 +243,7 @@ necron_warriors_defense = {
 # 		from = {
 # 			is_sapient = yes
 # 			is_robotic = no
-# 			# NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+# 			# is_robotic = no
 # 		}
 # 		planet = {
 # 			OR = {
@@ -291,7 +291,7 @@ necron_warriors_defense = {
 # Compare undead_army
 plague_zombies = {
 	damage = 0.5 # 1.00
-	health = 6.7 # 1.50
+	health = 3 # 6.7 # 1.50
 	has_morale = no
 	collateral_damage = 1 # 1.25
 	morale_damage = 1.75
@@ -311,7 +311,7 @@ plague_zombies = {
 	potential = {
 		from = {
 			is_sapient = yes
-			is_robotic = no # NOR = { has_trait = "trait_mechanical" has_trait = "trait_machine_unit" }
+			is_robotic = no
 		}
 		planet = {
 			has_active_building = building_dread_encampment
