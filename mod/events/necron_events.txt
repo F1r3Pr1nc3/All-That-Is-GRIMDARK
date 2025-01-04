@@ -937,9 +937,7 @@ planet_event = {
 							can_colonize = { who = root.owner status = yes }
 						}
 						create_colony = { owner = root.owner species = event_target:necron_species }
-						while = { count = 2
-							create_pop = { species = event_target:necron_species }
-						}
+						create_pop = { species = event_target:necron_species count = 2 }
 					}
 					else = {
 						# set_planet_flag = colony_event
@@ -1166,9 +1164,7 @@ planet_event = {
 			create_colony = { owner = event_target:necron_empire species = event_target:necron_species }
 		}
 		set_owner = event_target:necron_empire
-		while = { count = 5
-			create_pop = { species = event_target:necron_species }
-		}
+		create_pop = { species = event_target:necron_species count = 5 }
 		if = {
 			limit = { NOT = { has_building = building_fortress } }
 			add_building = building_fortress

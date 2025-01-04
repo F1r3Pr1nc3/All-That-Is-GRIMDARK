@@ -156,8 +156,8 @@ district_generator = {
 	prerequisites = {
 		tech_power_plant_1
 	}
-
 }
+
 district_mining = {
 	expansion_planner = yes
 
@@ -229,6 +229,15 @@ district_mining = {
 
 	triggered_planet_modifier = {
 		potential = {
+			has_modifier = metal_planet
+		}
+		modifier = {
+			planet_housing_add = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
@@ -242,7 +251,11 @@ district_mining = {
 		potential = {
 			exists = owner
 			owner = {
-				NOR = { is_gestalt = yes is_fallen_empire_spiritualist = yes has_origin = origin_barbarichorde }
+				NOR = {
+					is_gestalt = yes
+					is_fallen_empire_spiritualist = yes
+					has_origin = origin_barbarichorde
+				}
 			}
 		}
 		modifier = {
@@ -253,9 +266,7 @@ district_mining = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = {
-				has_origin = origin_barbarichorde
-			}
+			owner = { has_origin = origin_barbarichorde }
 		}
 		modifier = {
 			job_mekgrot_add = 2
@@ -347,6 +358,15 @@ district_farming = {
 		category = planet_districts_farming
 		cost = {
 			minerals = @base_cost
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+			}
+		}
+		cost = {
+			food = @base_cost
+			trigger = {
+				has_modifier = wooden_planet
+			}
 		}
 		# Anglers Civic cost effect
 		cost = {
@@ -412,6 +432,7 @@ district_farming = {
 			planet_housing_add = 1
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner

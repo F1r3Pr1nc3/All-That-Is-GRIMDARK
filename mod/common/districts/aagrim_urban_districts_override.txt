@@ -15,7 +15,11 @@ district_city = {
 			uses_district_set = machine_world
 			uses_district_set = shattered_ring_world
 		}
-		NOT = { has_modifier = resort_colony }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
 	}
 
 	potential = {
@@ -24,20 +28,25 @@ district_city = {
 			owner = { is_regular_empire = yes }
 			owner = { is_primitive = yes is_hive_empire = no }
 		}
-		NOT = { has_deposit = d_crashed_slaver_ship }
 		OR = {
-			uses_district_set = district_resort
+			# uses_district_set = district_resort Vanilla BUG
 			uses_district_set = standard
 			uses_district_set = hive_world
 			uses_district_set = machine_world
 			uses_district_set = shattered_ring_world
 		}
-		NOT = { has_modifier = resort_colony }
+		NOR = {
+			has_deposit = d_crashed_slaver_ship
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
 	}
 
 	allow = {
 		NOR = {
-			# has_modifier = resort_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
 		# Ariphaos Patch (3.9)
@@ -58,15 +67,34 @@ district_city = {
 		district_rw_city
 		district_nexus
 		district_hive
+		district_prison
 	}
 
 	resources = {
 		category = planet_districts_cities
 		cost = {
 			minerals = @city_cost
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+			}
+		}
+		cost = {
+			food = @city_cost
+			trigger = {
+				has_modifier = wooden_planet
+			}
 		}
 		upkeep = {
 			energy = 2
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+			}
+		}
+		upkeep = {
+			food = 2
+			trigger = {
+				has_modifier = wooden_planet
+			}
 		}
 	}
 
@@ -90,7 +118,6 @@ district_city = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = {  }
 			owner = {
 				OR = {
 					AND = {

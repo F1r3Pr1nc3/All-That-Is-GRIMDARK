@@ -47,6 +47,7 @@ trait_cyborg = {
 	}
 	slave_cost = { energy = 1500 }
 }
+
 trait_adeptus_astartes = {
 	cost = 1
 	# icon = "gfx/interface/icons/traits/trait_adeptus_astartes.dds"
@@ -180,8 +181,8 @@ trait_heretic_astartes = {
 		army_damage_mult = 0.15				# Increased Morale and Resilience: Reflecting their formidable combat abilities, give a bonus to army damage. This represents the enhanced martial prowess of the Warp-touched warriors.
 		army_morale = 0.05					# Chaotic Zealotry: reflecting their unholy strength and relentless devotion when fighting in the name of Chaos.
 		army_defense_health_mult = 0.5
-		pop_environment_tolerance = 0.35	# 0.75
-		# pop_growth_speed = 0.05			# Unholy Vitality: reflect the Chaos-fueled survival instincts and biological adaptability but with a twist: their growth rate could occasionally fluctuate due to Warp influence, resulting in random small boosts or reductions.
+		pop_environment_tolerance = 0.35	# 1.5
+		# pop_growth_speed = 0.05			# -0.3 Unholy Vitality: reflect the Chaos-fueled survival instincts and biological adaptability but with a twist: their growth rate could occasionally fluctuate due to Warp influence, resulting in random small boosts or reductions.
 		planet_pops_consumer_goods_upkeep_mult = -0.25
 		# planet_jobs_minerals_produces_mult = 0.25
 		leader_skill_levels = 2				# This represents the leadership prowess of Chaos Space Marine commanders, who often lead their warbands with tactical acumen and strategic brilliance.
@@ -269,6 +270,7 @@ trait_adeptus_mechanicus = {
 		energy = 1500
 	}
 }
+
 trait_necrons = {
 	# icon = "gfx/interface/icons/traits/trait_necrons.dds"
 	cost = 0
@@ -305,7 +307,7 @@ trait_necrons = {
 	leader_age_max = 100000
 	opposites = {
 		trait_heretic_astartes
-		trait_shroud_sick
+		# trait_shroud_sick
 		trait_adeptus_custodes
 		trait_orkz
 		trait_cyborg
@@ -332,6 +334,7 @@ trait_necrons = {
 		energy = 1500
 	}
 }
+
 trait_orkz = {
 	cost = 0
 	# icon = "gfx/interface/icons/traits/trait_orkz.dds"
@@ -447,6 +450,7 @@ trait_tyranid = {
 		energy = 1500
 	}
 }
+
 trait_daemons = {
 	cost = 0
 	# icon = "gfx/interface/icons/traits/trait_daemons.dds"
@@ -538,7 +542,7 @@ trait_tau = {
 	# 	HUM
 	# 	MAM
 	# 	REP
-	# 	Tau  # enable via Patch
+	# 	Tau  # Enable via Patch
 	# }
 	# initial = no
 	randomized = no
@@ -557,7 +561,6 @@ trait_tau = {
 	leader_age_min = 20
 	leader_age_max = 40
 	opposites = {
-
 	}
 	modifier = {
 		pop_environment_tolerance = 0.05
@@ -570,6 +573,7 @@ trait_tau = {
 		energy = 1500
 	}
 }
+
 trait_eldar = {
 	cost = 0
 	# icon = "gfx/interface/icons/traits/trait_eldar.dds"
@@ -655,6 +659,7 @@ trait_adeptus_custodes = {
 		energy = 1500
 	}
 }
+
 trait_drukhari = {
 	cost = 0
 	# icon = "gfx/interface/icons/traits/trait_drukhari.dds"

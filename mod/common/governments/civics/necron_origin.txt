@@ -58,7 +58,7 @@ origin_necron_awakening = {
 		# New in v3.13
 		country_base_sr_dark_matter_produces_add = 15
 		# New in v3.14 from civic_necron_awaking (halfed values)
-		ship_weapon_range_mult = 0,5
+		ship_weapon_range_mult = 0.5
 		ship_hull_mult = 0.75
 		ship_hull_regen_add_perc = 0.15
 		ship_weapon_damage = 1

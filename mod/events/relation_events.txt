@@ -45,9 +45,7 @@ country_event = {
 						effect = {
 							set_species_identity = prev
 							root.capital_scope = {
-								while = { count = 3
-									create_pop = { species = prev }
-								}
+								create_pop = { species = prev count = 3 }
 							}
 							set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 						}
@@ -2022,7 +2020,7 @@ planet_event = {
 					uses_district_set = city_world
 					uses_district_set = hive_world
 					uses_district_set = machine_world
-					is_planet_class = pc_gaia
+					merg_is_gaia_basic = yes
 					merg_is_relic_world = yes
 				}
 				owner = {

@@ -49,7 +49,7 @@ building_necron_tomb = {
 		planet_army_build_speed_mult = -0.25
 		planet_army_build_time_mult = -0.25
 		defense_armies_add = 8		# planet_fortification_strength = 8
-		planet_combat_width_add = 4		# TODO?
+		# planet_combat_width_add = 4		# Entry not allowed by category
 		army_defense_health_mult = 1.5		# TODO?
 		army_defense_damage_mult = 1.5		# TODO?
 		pop_happiness = 5
@@ -96,7 +96,10 @@ building_necron_tomb = {
 			food = 1
 		}
 	}
-	army_modifier = { army_starting_experience_add = 500 }
+	army_modifier = {
+		army_starting_experience_add = 500
+		planet_combat_width_add = 4
+	}
 	triggered_desc = { text = job_merchant_effect_desc }
 	on_built = {
 		owner = {

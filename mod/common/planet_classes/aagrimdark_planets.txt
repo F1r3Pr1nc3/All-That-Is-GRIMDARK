@@ -123,8 +123,8 @@ pc_infected = {
 	starting_planet = no
 	show_city = no
 	carry_cap_per_free_district = @carry_cap_high
-
 }
+
 # DEPRECATED TODO REPLACE pc_imperiumhive with pc_hive_tundra in > 3.12
 # pc_imperiumhive = {
 # 	entity = "city_planet"

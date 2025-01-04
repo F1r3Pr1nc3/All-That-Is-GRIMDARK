@@ -1,4 +1,4 @@
-# SUPPORT WH40k Planets Renewed: Introduced in v.3.11
+# SUPPORT WH40k Planets Renewed: Introduced in v3.11
 is_imperium_hive_planet = {
 	OR = {
 		# is_planet_class = pc_imperiumhive
@@ -87,6 +87,7 @@ has_machine_cult = {
 		has_ai_personality = adpt_mec
 	}
 }
+
 # Merger of Rules
 MECR_trigger_1_can_be_part_of_galactic_community = {
 	has_necron_origin = no

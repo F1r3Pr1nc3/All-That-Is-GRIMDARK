@@ -152,9 +152,7 @@ country_event = {
 			if = {
 				limit = { exists = event_target:capital_planet }
 				event_target:capital_planet = {
-					while = { count = 6
-						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-					}
+					create_pop = { species = owner_species count = 6 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 					add_district_and_planet_size_if_needed_effect = { district = district_city }
 					remove_building = building_research_lab_1
 					add_building = building_holo_theatres
@@ -237,9 +235,7 @@ country_event = {
 					add_district = { district_type = district_mining_infected ignore_cap = yes }
 					add_district = { district_type = district_farming_infected ignore_cap = yes }
 					add_district = { district_type = district_hive_infected ignore_cap = yes }
-					while = { count = 6
-						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-					}
+					create_pop = { species = owner_species count = 6 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 					solar_system = {
 						random_system_planet = {
 							limit = { is_star = no is_colony = no }
@@ -285,9 +281,7 @@ country_event = {
 			if = {
 				limit = { exists = event_target:capital_planet }
 				event_target:capital_planet = {
-					while = { count = 7
-						create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-					}
+					create_pop = { species = owner_species count = 7 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 					add_deposit = d_decrepit_dwellings
 					add_district_and_planet_size_if_needed_effect = { district = district_farming }
 					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
@@ -485,7 +479,7 @@ country_event = {
 									}
 								}
 							}
-							while = { count = 3 create_pop = { species = prev ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } } }
+							create_pop = { species = prev count = 3 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 						}
 						if = {
 							limit = { exists = event_target:eldar_homeworld }
@@ -828,10 +822,7 @@ country_event = {
 				generate_start_deposits_and_blockers = yes
 				generate_start_buildings_and_districts = yes
 				set_planet_flag = legionhomeworld
-				while = { count = 8 # 21 too much
-					create_pop = { species = owner_main_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-				}
-
+				create_pop = { species = owner_main_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } count = 8 } # 21 too much
 				# TODO test sector exists
 				sector = { set_name = NAME_eyechaos }
 				create_cluster = { id = NAME_eyechaos center = solar_system radius = 30 }
@@ -953,7 +944,7 @@ country_event = {
 							OR = {
 								merg_is_relic_world = yes
 								is_planet_class = pc_continental
-								is_planet_class = pc_gaia
+								merg_is_gaia_basic = yes
 								is_ideal_planet_class = { who = root status = yes }
 							}
 						}
@@ -1183,10 +1174,8 @@ country_event = {
 					extra_trait_points = 2
 				}
 				last_created_species = {
-					root = {
-						capital_scope = {
-							while = { count = 3 create_pop = { species = prevprev ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } } }
-						}
+					root.capital_scope = {
+						create_pop = { species = prevprev count = 3 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 						owner_main_species = { set_species_identity = prevprev }
 					}
 				}
@@ -1282,9 +1271,7 @@ country_event = {
 			# add_district = district_mining
 			add_district = district_farming
 			add_deposit = d_decrepit_dwellings
-			while = { count = 6
-				create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-			}
+			create_pop = { species = owner_species count = 6 ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 			remove_building = building_research_lab_1
 			add_building = building_gladiatorarena
 		}
@@ -1345,7 +1332,7 @@ country_event = {
 			add_district_and_planet_size_if_needed_effect = { district = district_hab_housing }
 			add_district = { district_type = district_hab_energy ignore_cap = yes }
 			add_district = { district_type = district_hab_industrial ignore_cap = yes }
-			# while = { count = 3 create_pop = { species = prev.owner_species } }
+			# create_pop = { species = prev.owner_species count = 3 }
 			add_building = building_shaper_shrine
 			add_building = building_hydroponics_farm
 
@@ -1401,9 +1388,9 @@ country_event = {
 								limit = { OR = { event_target:void_dweller_owner = { is_ai = yes } is_difficulty < 5 } }
 								if = {
 									limit = { owner = { is_eager_explorer_empire = no } }
-									while = { count = 3 create_pop = { species = owner_species } }
+									create_pop = { species = owner_species count = 3 }
 								}
-								while = { count = 1 create_pop = { species = owner_species } }
+								create_pop = { species = owner_species count = 1 }
 							}
 							prev = { set_planet_flag = habitat@PREV }
 							set_planet_flag = mining_habitat
@@ -1481,13 +1468,9 @@ country_event = {
 						# 	set_owner = event_target:void_dweller_owner
 						# 	if = {
 						# 		limit = { owner = { is_eager_explorer_empire = no } }
-						# 		while = { count = 3
-						# 			create_pop = { species = owner_species }
-						# 		}
+						# 		create_pop = { species = owner_species count = 3 }
 						# 	}
-						# 	while = { count = 1
-						# 		create_pop = { species = owner_species }
-						# 	}
+						# 	create_pop = { species = owner_species }
 						# 	prev = { set_planet_flag = habitat@PREV }
 						# 	set_planet_flag = energy_habitat
 						# 	add_district_and_planet_size_if_needed_effect = { district = district_hab_housing }
@@ -2132,10 +2115,8 @@ country_event = {
 						set_surveyed = { surveyed = yes surveyor = root }
 						start_colony = { owner = root } # species = event_target:secondary_species
 						root = { set_country_flag = has_built_or_repaired_megastructure } # And set the country flag so you can take Galactic Wonders
-						while = { count = 2
-							create_pop = { species = event_target:secondary_species ethos = { ethic = ethic_militarist } }
-							create_pop = { species = event_target:third_species }
-						}
+						create_pop = { species = event_target:secondary_species ethos = { ethic = ethic_militarist } count = 2 }
+						create_pop = { species = event_target:third_species count = 2 }
 					}
 					prev = {
 						if = {
@@ -2166,10 +2147,8 @@ country_event = {
 				limit = { owner = { is_megacorp = yes } }
 				add_building = building_commercial_zone # 5 jobs
 			}
-			while = { count = 3
-				create_pop = { species = event_target:secondary_species ethos = { ethic = ethic_militarist } }
-				create_pop = { species = event_target:third_species }
-			}
+			create_pop = { species = event_target:secondary_species ethos = { ethic = ethic_militarist } count = 3 }
+			create_pop = { species = event_target:third_species count = 3 }
 			create_starbase = {
 				size = orbital_ring_tier_1
 				owner = root
@@ -3291,7 +3270,7 @@ country_event = {
 								OR = {
 									merg_is_relic_world = yes
 									is_planet_class = pc_continental
-									is_planet_class = pc_gaia
+									merg_is_gaia_basic = yes
 									is_ideal_planet_class = { who = root status = yes }
 									has_planet_flag = planet_earth
 								}
@@ -3306,12 +3285,7 @@ country_event = {
 							generate_start_deposits_and_blockers = yes
 							generate_start_buildings_and_districts = yes
 							# generate_start_pops = yes
-							while = { count = 1
-								create_pop = {
-									species = root.owner_species
-									ethos = { ethic = ethic_xenophobe ethic = ethic_militarist }
-								}
-							}
+							create_pop = { species = root.owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 						}
 					}
 				}
@@ -3929,7 +3903,7 @@ event = {
 					has_origin = origin_paindrinkers	# Dark Eldar (Drukhari)
 					has_origin = origin_necron_awakening	# Necrons (The Undying)
 					has_origin = origin_bioreformers	# Tyranid
-					# has_origin = origin_barbarichorde	# Ork Greenskins (Waaagh!) seems too strong
+					has_origin = origin_barbarichorde	# Ork Greenskins (Waaagh!) seems too strong
 					# has_country_flag = chaos_empire
 				}
 				NOR = { has_country_flag = cf_grimdark_unemployed_cooldown has_country_flag = under_tmp_colonization }
@@ -4039,7 +4013,7 @@ country_event = {
 						limit = { planet_size > 15 colonizable_planet = yes }
 						weights = { base = 1
 							modifier = { add = 5 is_planet_class = pc_arid }
-							modifier = { add = 10 is_planet_class = pc_gaia }
+							modifier = { add = 10 merg_is_gaia_basic = yes }
 							modifier = { add = 20 is_planet_class = pc_tropical }
 							modifier = { add = 100 has_planet_flag = Pechplanet }
 						}
@@ -4180,9 +4154,7 @@ country_event = {
 			}
 		}
 		event_target:capital_planet = {
-			while = { count = 12
-				create_pop = { species = event_target:servile_species ethos = random }
-			}
+			create_pop = { species = event_target:servile_species count = 12 ethos = random }
 		}
 	}
 	after = {

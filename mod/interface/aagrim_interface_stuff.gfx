@@ -48,10 +48,7 @@ spriteTypes = {
 		name = "GFX_evt_iforge"
 		texturefile = "gfx/event_pictures/origins/origin_iforge.dds"
 	}
-}
-# MOGR
-spriteTypes = {
-	### ORIGINS ###
+	### MOGR
 	spriteType = {
 		name = "GFX_evt_godruler"
 		texturefile = "gfx/event_pictures/origins/origin_godruler.dds"

@@ -219,6 +219,7 @@
 	origin="origin_iforge"	# origin_syncretic_evolution
 }
 # Vol 1 "Ork Horde"
+# EMPIRE_DESIGN_ork
 "warhordeorks"=
 {
 	key="EMPIRE_DESIGN_ork"
@@ -260,13 +261,14 @@
 		trait="trait_self_sustained"
 		trait="trait_survivor"
 		trait="trait_slow_learners"
-		trait="trait_natural_engineers"
-		trait="trait_strong"
+		# trait="trait_natural_engineers"
+		trait="trait_very_strong"
+		trait="trait_sedentary"
 	}
 	secondary_species=
 	{
-		class="REP"
-		portrait="rep11"
+		class="REP" # HUM
+		portrait="rep11" # "humanoid_hp_02"
 		species_name=
 		{
 			key="Grot"
@@ -300,6 +302,8 @@
 		trait="trait_industrious"
 		# trait="trait_incubator" has_toxoids
 		trait="trait_fleeting"
+		trait="trait_conformists"
+		# trait="trait_natural_engineers"
 	}
 	name=
 	{
@@ -425,6 +429,7 @@
 	{
 		"civic_fanatic_purifiers"
 		"civic_nationalistic_zeal"
+		"civic_warrior_culture"
 	}
 	origin="origin_barbarichorde"
 }
@@ -1391,6 +1396,7 @@ Slaanesh=
 	origin="origin_shroudsick"
 }
 # Vol 3
+# "Necron Resurgency" Hive
 "necronresurge"=
 {
 	key="necronresurge"
@@ -1547,7 +1553,7 @@ Slaanesh=
 	ignore_portrait_duplication=no
 	room="necron2_room"	# "machine_room"
 	spawn_enabled=yes	# Yes / no / always
-	playable = has_synthetic_dawn_not_machine_age
+	playable = has_synthetic_dawn
 	ethic="ethic_gestalt_consciousness"
 	civics=
 	{
@@ -1594,6 +1600,8 @@ Slaanesh=
 		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
 		name_list="NECRON1"
 		gender=not_set
+		# trait="trait_mechanical"
+		trait="trait_machine_unit"
 		trait="trait_necrons"
 		trait="trait_robot_high_bandwidth"
 		trait="trait_robot_recycled"
@@ -1632,7 +1640,7 @@ Slaanesh=
 		"custom_start_screen"
 		"necron_empire"
 	}
-	government = "gov_machine_terminator"
+	government = "gov_star_empire"
 	advisor_voice_type="l_necroid_vir"
 	planet_name=
 	{
@@ -1708,6 +1716,7 @@ Slaanesh=
 		trait="trait_ruler_logistic_understanding"
 		leader_class="official"
 	}
+	spawn_as_fallen=no
 	spawn_enabled=yes	# Yes / no / always
 	playable = has_machine_age_dlc
 	ignore_portrait_duplication=no
@@ -2435,8 +2444,8 @@ imp=
 	ignore_portrait_duplication=yes
 	room="personality_democratic_crusaders_room" # "Imperium2_room"
 	spawn_enabled=yes	# Yes / no / always
-	# ethic="ethic_xenophobe"
-	ethic="ethic_authoritarian"	# Reflecting the centralized control and hierarchical structure of the empire, an authoritarian ethic would be suitable for a God Imperator Empire. It would ensure that power remains firmly in the hands of the ruler or ruling family, allowing for greater centralization of authority.
+	ethic="ethic_xenophobe"
+	# ethic="ethic_authoritarian"	# Reflecting the centralized control and hierarchical structure of the empire, an authoritarian ethic would be suitable for a God Imperator Empire. It would ensure that power remains firmly in the hands of the ruler or ruling family, allowing for greater centralization of authority.
 	ethic="ethic_militarist"	#
 	ethic="ethic_spiritualist"	# Embracing the belief in the divine right of the ruler and the worship of the God-Emperor, a spiritualist ethic would align well with the religious fervor and devotion of the populace. It would provide bonuses to unity and stability, reflecting the unwavering loyalty to the divine ruler.
 	civics=

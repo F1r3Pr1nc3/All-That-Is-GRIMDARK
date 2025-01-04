@@ -515,8 +515,8 @@ origin_godruler = {
 	# preferred_planet_class_neighbor = no
 	initializers = { sol_holy_mars_system_initializer sol_system_initializer }
 	modifier = {
-		all_technology_research_speed = -0.5
-		pop_citizen_happiness = 0.05
+		all_technology_research_speed = -0.4
+		# pop_citizen_happiness = 0.05
 		council_agenda_progress_speed = 0.2
 	}
 	can_build_ruler_ship = yes
