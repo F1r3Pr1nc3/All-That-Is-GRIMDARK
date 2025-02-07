@@ -32,11 +32,11 @@ aod_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -105,11 +105,11 @@ sto_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -132,11 +132,11 @@ tau_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -159,11 +159,11 @@ genestealer_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -186,11 +186,11 @@ eldar_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -213,11 +213,11 @@ drukhari_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -235,16 +235,17 @@ drukhari_01 = {
 
 tyranid_01 = {
 	fallback = arthropoid_01
-	ship_color = yes
+	# has_city_graphics = no
+	ship_color = no
 	ship_lighting = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -256,7 +257,7 @@ tyranid_01 = {
 		# rim_start_far = 1.5
 		# rim_stop_far = 2.0
 		ambient_near = 0.1
-		ambient_far = 0.0
+		ambient_far = 25.0
 	}
 }
 
@@ -267,11 +268,11 @@ ork_01 = {
 		cam_light_1_dir = { 0.6 -0.2 0.1 }
 		cam_light_2_dir = { -0.4 0.0 0.0 }
 		cam_light_3_dir = { 0.4 -1.0 -0.1 }
-		
+
 		# cam_light_1_dir = { 1.0 0.0 0.5 }
 		# cam_light_2_dir = { -0.5 -0.2 0.0 }
 		# cam_light_3_dir = { 0.4 -1.0 0.0 }
-		
+
 		intensity_near = 1.0
 		intensity_far = 5.0
 		near_value = 100
@@ -317,7 +318,7 @@ gothic_01 = {
 		cam_light_1_dir = { 0.5 0.0 0.5 }
 		cam_light_2_dir = { -0.5 0.2 0.0 }
 		cam_light_3_dir = { 0.5 -1.0 0.0 }
-		
+
 		intensity_near = 0.3
 		intensity_far = 0.7
 		near_value = 700
@@ -340,7 +341,7 @@ nurgle_01 = {
 		cam_light_1_dir = { 0.5 0.0 0.5 }
 		cam_light_2_dir = { -0.5 0.2 0.0 }
 		cam_light_3_dir = { 0.5 -1.0 0.0 }
-		
+
 		intensity_near = 0.3
 		intensity_far = 0.7
 		near_value = 700
@@ -363,7 +364,7 @@ tzeentch_01 = {
 		cam_light_1_dir = { 0.5 0.0 0.5 }
 		cam_light_2_dir = { -0.5 0.2 0.0 }
 		cam_light_3_dir = { 0.5 -1.0 0.0 }
-		
+
 		intensity_near = 0.3
 		intensity_far = 0.7
 		near_value = 700
@@ -386,7 +387,7 @@ slaanesh_01 = {
 		cam_light_1_dir = { 0.5 0.0 0.5 }
 		cam_light_2_dir = { -0.5 0.2 0.0 }
 		cam_light_3_dir = { 0.5 -1.0 0.0 }
-		
+
 		intensity_near = 0.3
 		intensity_far = 0.7
 		near_value = 700
@@ -409,7 +410,7 @@ khorne_01 = {
 		cam_light_1_dir = { 0.5 0.0 0.5 }
 		cam_light_2_dir = { -0.5 0.2 0.0 }
 		cam_light_3_dir = { 0.5 -1.0 0.0 }
-		
+
 		intensity_near = 0.3
 		intensity_far = 0.7
 		near_value = 700

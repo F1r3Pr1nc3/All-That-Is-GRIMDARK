@@ -1,15 +1,16 @@
 ### 9 Heretic Traitor Legions ###
 # 1 Black Legion (XVI Legion)	- Chaos Undivided; (Primarch: Abaddon the Despoiler) (formerly "Sons of Horus" and first "Luna Wolves"): They serve all the Chaos Gods.
 # 2 Word Bearers (XVII Legion)	- Chaos Undivided: (Primarch: Lorgar Aurelian) (formerly "Imperial Heralds"): They serve all the Chaos Gods, devoted to spreading the worship of Chaos.
-# 3 Iron Warriors (IV Legion)	- Chaos Undivided: (Primarch: Perturabo) They serve all the Chaos Gods, but they are not particularly aligned with any one of them. Known for their mastery of siege warfare
-# 4 Night Lords (VIII Legion)	- Chaos Undivided: (Primarch: Konrad Curze) They serve all the Chaos Gods, but are particularly aligned with terror and fear. They became notorious for their terror tactics and brutal methods of warfare.
-# 5 Alpha Legion (XX Legion)	- Chaos Undivided or primarily Tzeentch: (Primarch: Alpharius Omegon) They serve all the Chaos Gods, known for their enigmatic and secretive nature and for employing misinformation, subterfuge, and intricate plots, making it challenging to discern their true loyalties.
+# 3 Night Lords (VIII Legion)	- Chaos Undivided: (Primarch: Konrad Curze) They serve all the Chaos Gods, but are particularly aligned with terror and fear. They became notorious for their terror tactics and brutal methods of warfare.
+# 4 Iron Warriors (IV Legion)	- Lose Chaos: (Primarch: Perturabo) They serve all the Chaos Gods, but they are not particularly aligned with any one of them. Known for their mastery of siege warfare
+# 5 Alpha Legion (XX Legion)	- Lose Chaos or primarily Tzeentch: (Primarch: Alpharius/Omegon) They serve all the Chaos Gods, known for their enigmatic and secretive nature and for employing misinformation, subterfuge, and intricate plots, making it challenging to discern their true loyalties.
 # 6 World Eaters (XII Legion)	- Khorne: (Primarch: Angron)
 # 7 Death Guard (XIV Legion)	- Nurgle: (Primarch: Mortarion)
 # 8 Thousand Sons (XV Legion)	- Tzeentch: (Primarch: Magnus the Red)
 # 9 Emperor's Children (III Legion) - Slaanesh: (Primarch: Fulgrim)
 # 10 Sons of Malice				- Malice (Malal): (Renegade Chapter, Leader: Unknown) a mysterious and obscure Chaos God. He represents a unique and paradoxical aspect of Chaos—self-destruction, rebellion, and the endless cycle of Chaos feeding on itself
 # 11 Red Corsairs				- Lose Chaos Undivided: (Renegade Chapter, Leader: Huron Blackheart) are characterized by their pragmatic approach to piracy and war, often salvaging ships and equipment from their enemies. They are known for incorporating renegade Space Marines from other Chapters, offering them refuge and a place in their ranks, which has led to the Red Corsairs becoming a large and varied warband.
+
 # "EMPIRE_DESIGN_mechanicus"=
 # "Mechanican Forge Dominion"=
 "adeptus_mechanicus"=

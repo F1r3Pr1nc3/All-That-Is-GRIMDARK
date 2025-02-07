@@ -1,4 +1,3 @@
-
 @distance = 36 # 50
 @base_moon_distance = 9 # 10
 @jumps = 3

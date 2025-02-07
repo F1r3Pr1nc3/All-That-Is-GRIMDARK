@@ -317,3 +317,4 @@
  FLAG_CATEGORY_necrons: "$PRESCRIPTED_species_plural_necron$"
  FLAG_CATEGORY_tau: "$PRESCRIPTED_species_plural_tau$"
  FLAG_CATEGORY_tyranids: "$PRESCRIPTED_species_plural_tyranid$"
+ # tyranid_01: "$trait_tyranid$" # TODO

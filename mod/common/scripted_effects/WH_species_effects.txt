@@ -1,4 +1,5 @@
 # Given a species, and change the CLASS
+# Optional PORTRAIT: TODO not working yet, needs right portrait identification
 # Apply to all pops, leaders and armies that have the original species and the same owner as the scope object.
 # Scope: changing_species (or something that has a species and an owner)
 mirror_species = {

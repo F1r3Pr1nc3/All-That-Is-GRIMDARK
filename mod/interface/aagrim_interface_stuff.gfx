@@ -53,4 +53,10 @@ spriteTypes = {
 		name = "GFX_evt_godruler"
 		texturefile = "gfx/event_pictures/origins/origin_godruler.dds"
 	}
+	# map
+	spriteType = {
+		name = "GFX_hfe_map_mode_plague"
+		texturefile = "gfx/interface/icons/map_mode/map_mode_plague.dds"
+		noOfFrames = 2
+	}
 }

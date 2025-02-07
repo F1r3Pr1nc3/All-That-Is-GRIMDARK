@@ -36,18 +36,18 @@ country_event = {
 							has_psionic_species_trait = yes
 						}
 					}
-					modify_species = {
-						species = this
-						base = none
-						add_trait = trait_functional
-						add_traits_at_start_of_list = yes
-						change_scoped_species = no
-						effect = {
-							set_species_identity = prev
-							root.capital_scope = {
-								create_pop = { species = prev count = 3 }
+					root.capital_scope = {
+						modify_species = {
+							species = prev
+							add_trait = trait_functional
+							add_traits_at_start_of_list = yes
+							change_scoped_species = no
+							effect = {
+								prev = {
+									create_pop = { species = prev count = 3 }
+								}
+								set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 							}
-							set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 						}
 					}
 				}
@@ -181,11 +181,9 @@ country_event = {
 				add_trait_no_notify = leader_trait_legendary_high_king
 				add_trait_no_notify = leader_trait_legendary_military_knowledge
 				# add_trait_no_notify = leader_trait_legendary_warmonger
-				modify_species = {
-					species = species
+				modify_species = { # WORKS but the species is not listed in the empire
 					add_trait = trait_perfected_genes
 					add_traits_at_start_of_list = yes
-					change_scoped_species = no
 				}
 			}
 
@@ -301,12 +299,10 @@ country_event = {
 		every_owned_leader = {
 			limit = { has_psionic_leader_trait = no }
 			add_trait_no_notify = leader_trait_psionic
-			modify_species = {
-				species = species
+			modify_species = { # WORKS but the species is not listed in the empire
 				add_trait = trait_psionic
 				add_trait = trait_perfected_genes
 				add_traits_at_start_of_list = yes
-				change_scoped_species = no
 			}
 		}
 		owner_main_species = {
@@ -330,7 +326,6 @@ country_event = {
 				# modify_species = {
 				# 	add_trait = trait_daemons
 				# 	add_traits_at_start_of_list = yes
-				# 	change_scoped_species = no
 				# 	effect = {
 				# 		root = {
 				# 			while = { count = 17
@@ -350,7 +345,7 @@ country_event = {
 					# add_trait = trait_latent_psionic
 					add_trait = trait_daemons
 					add_traits_at_start_of_list = yes
-					change_scoped_species = no
+					# change_scoped_species = no in species scope not applicable
 					effect = {
 						root = {
 							while = { count = 3
@@ -499,12 +494,11 @@ country_event = {
 						# log = "modify_species \\[This.GetName] species_portrait again"
 						# change_species_characteristics = { remove_trait = trait_daemons add_trait = trait_heretic_astartes add_traits_at_start_of_list = yes can_change_leader = yes }
 						modify_species = {
-							species = this
 							base = none
 							remove_trait = trait_daemons
 							add_trait = trait_heretic_astartes
 							add_traits_at_start_of_list = yes
-							change_scoped_species = no
+							# change_scoped_species = no in species scope not applicable
 							effect = {
 								change_species_portrait = "human"
 								create_species = {
@@ -554,16 +548,16 @@ country_event = {
 						# }
 					}
 					switch = { trigger = has_country_flag
-						the_emperor_children	= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Emperor's_Children" effect = { save_event_target_as = chaos_marine } } }
-						the_world_eater			= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "World_Eaters"		effect = { save_event_target_as = chaos_marine } } }
-						the_thousand_sons		= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Thousand_Sons"	effect = { save_event_target_as = chaos_marine } } }
-						the_death_guard			= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Death_Guard"		effect = { save_event_target_as = chaos_marine } } }
-						the_alpha_legion		= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Alpha_Legion"		effect = { save_event_target_as = chaos_marine } } }
-						the_night_lords			= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Night_Lords"		effect = { save_event_target_as = chaos_marine } } }
-						the_iron_warrior		= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Iron_Warriors"	effect = { save_event_target_as = chaos_marine } } }
-						chaos_undivided_worship	= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Black_legion"		effect = { save_event_target_as = chaos_marine } } }
-						the_black_legion		= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Black_legion"		effect = { save_event_target_as = chaos_marine } } }
-						the_word_bearer			= { modify_species = { species = event_target:chaos_marine change_scoped_species = no add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Word_Bearers"		effect = { save_event_target_as = chaos_marine } } }
+						the_emperor_children	= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Emperor's_Children" effect = { save_event_target_as = chaos_marine } } }
+						the_world_eater			= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "World_Eaters"		effect = { save_event_target_as = chaos_marine } } }
+						the_thousand_sons		= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Thousand_Sons"	effect = { save_event_target_as = chaos_marine } } }
+						the_death_guard			= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Death_Guard"		effect = { save_event_target_as = chaos_marine } } }
+						the_alpha_legion		= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Alpha_Legion"		effect = { save_event_target_as = chaos_marine } } }
+						the_night_lords			= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Night_Lords"		effect = { save_event_target_as = chaos_marine } } }
+						the_iron_warrior		= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Iron_Warriors"	effect = { save_event_target_as = chaos_marine } } }
+						chaos_undivided_worship	= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Black_legion"		effect = { save_event_target_as = chaos_marine } } }
+						the_black_legion		= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Black_legion"		effect = { save_event_target_as = chaos_marine } } }
+						the_word_bearer			= { modify_species = { species = event_target:chaos_marine add_trait = trait_heretic_astartes remove_trait = trait_daemons portrait = "Word_Bearers"		effect = { save_event_target_as = chaos_marine } } }
 					}
 				}
 				event_target:chaos_marine = {
@@ -596,7 +590,7 @@ country_event = {
 						# add_trait = trait_latent_psionic
 						add_trait = trait_daemons
 						add_traits_at_start_of_list = yes
-						change_scoped_species = no
+						# change_scoped_species = no in species scope not applicable
 						effect = {
 							if = {
 								limit = { has_global_flag = WHspecies_installed NOT = { is_species_class = "Chaos_Daemons" } }
@@ -663,11 +657,9 @@ country_event = {
 		every_owned_leader = {
 			limit = { has_psionic_leader_trait = no }
 			add_trait_no_notify = leader_trait_psionic
-			modify_species = {
-				species = species
+			modify_species = { # WORKS but the species is not listed in the empire
 				add_trait = trait_daemons
 				add_traits_at_start_of_list = yes
-				change_scoped_species = no
 			}
 		}
 		if = {
@@ -810,10 +802,12 @@ country_event = {
 					has_country_flag = ork_empire
 					founder_species = {
 						OR = {
-							species_portrait = "Orkz"	# Compat Mod "WH species"
-							# is_species_class = "Orkz"	# Compat Mod "WH species"
+							AND = { # Compat Mod "WH species"
+								has_global_flag = WHspecies_installed
+								OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+							}
+							# is_species_class = "Ork"	# Compat Mod "Orks species" TODO
 							has_trait = "trait_orkz"
-							is_species_class = "Ork"	# Compat Mod "Orks species"
 							is_species = name_list_ORK1
 						}
 					}
@@ -827,11 +821,11 @@ country_event = {
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_pc_nuked_preference } }
-					modify_species = { add_trait = trait_pc_nuked_preference }
+					root = { modify_species = { species = prev add_trait = trait_pc_nuked_preference } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_survivor } }
-					modify_species = { add_trait = trait_survivor }
+					root = { modify_species = { species = prev add_trait = trait_survivor } }
 				}
 			}
 			set_country_flag = chaos_empire
@@ -851,7 +845,7 @@ country_event = {
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_shroud_sick } }
-					modify_species = { add_trait = trait_shroud_sick add_traits_at_start_of_list = yes }
+					root = { modify_species = { species = prev add_trait = trait_shroud_sick add_traits_at_start_of_list = yes } }
 				}
 			}
 			add_resource = { energy = 1000 }
@@ -892,23 +886,23 @@ country_event = {
 				}
 				if = {
 					limit = { has_trait = trait_latent_psionic }
-					modify_species = { remove_trait = trait_latent_psionic }
+					root = { modify_species = { species = prev add_trait = trait_latent_psionic } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_psionic } }
 					if = {
 						limit = { has_trait = trait_cybernetic }
-						modify_species = { remove_trait = trait_cybernetic }
+						root = { modify_species = { species = prev add_trait = trait_cybernetic } }
 					}
-					modify_species = { add_trait = trait_psionic }
+					root = { modify_species = { species = prev add_trait = trait_psionic } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_pc_habitat_preference } }
-					modify_species = { add_trait = trait_pc_habitat_preference }
+					root = { modify_species = { species = prev add_trait = trait_pc_habitat_preference } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_void_dweller_1 } }
-					modify_species = { add_trait = trait_void_dweller_1 }
+					root = { modify_species = { species = prev add_trait = trait_void_dweller_1 } }
 				}
 			}
 			random_owned_fleet = {
@@ -957,11 +951,11 @@ country_event = {
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_drukhari } }
-					modify_species = { add_trait = trait_drukhari add_traits_at_start_of_list = yes }
+					root = { modify_species = { add_trait = trait_drukhari add_traits_at_start_of_list = yes } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_pc_desert_preference } }
-					modify_species = { add_trait = trait_pc_desert_preference add_traits_at_start_of_list = yes }
+					root = { modify_species = { species = prev add_trait = trait_pc_desert_preference add_traits_at_start_of_list = yes } }
 				}
 			}
 			random_owned_fleet = {
@@ -1030,17 +1024,12 @@ country_event = {
 					has_origin = origin_greatergood
 					# has_origin = origin_tau_colony
 					has_country_flag = tau_empire
+					has_civic = civic_tau_government # Mod "Tau Fleet Weapons"
 					founder_species = {
 						has_trait = trait_tau		# Compat Mod "WH species" and WH40k Tau
 						# is_species_class = "Tau"	# Compat Mod "WH species"
 					}
 					is_species = name_list_TAU1
-				}
-			}
-			owner_main_species = {
-				if = {
-					limit = { NOT = { has_trait = trait_tau } }
-					modify_species = { add_trait = trait_tau add_traits_at_start_of_list = yes }
 				}
 			}
 			if = { limit = { NOT = { has_country_flag = tau_empire } } set_country_flag = tau_empire }
@@ -1115,14 +1104,14 @@ country_event = {
 			## Species
 			every_owned_species = {
 				limit = { NOT = { has_trait = trait_functional } }
-				modify_species = { add_trait = trait_functional add_traits_at_start_of_list = yes }
+				root = { modify_species = { species = prev add_trait = trait_functional add_traits_at_start_of_list = yes } }
 				if = {
 					limit = { NOT = { has_trait = trait_cyborg } }
-					modify_species = { add_trait = trait_cyborg }
+					root = { modify_species = { species = prev add_trait = trait_cyborg } }
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_cybernetic } }
-					modify_species = { add_trait = trait_cybernetic }
+					root = { modify_species = { species = prev add_trait = trait_cybernetic } }
 				}
 			}
 
@@ -1142,9 +1131,7 @@ country_event = {
 					}
 				}
 				else = {
-					owner_main_species = {
-						modify_species = { add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes }
-					}
+					modify_species = { species = owner_main_species add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes }
 				}
 			}
 
@@ -1155,13 +1142,16 @@ country_event = {
 				}
 				if = {
 					limit = { NOT = { has_trait = trait_lobotomised_servitors } }
-					modify_species = { add_trait = trait_lobotomised_servitors }
+					root = { modify_species = { species = prev add_trait = trait_lobotomised_servitors } }
 				}
-				modify_species = {
-					add_trait = trait_syncretic_proles
-					add_trait = trait_cyborg_double_jointed
-					add_traits_at_start_of_list = yes
-					effect = { save_event_target_as = servile_species }
+				root = {
+					modify_species = {
+						species = prev
+						add_trait = trait_syncretic_proles
+						add_trait = trait_cyborg_double_jointed
+						add_traits_at_start_of_list = yes
+						effect = { save_event_target_as = servile_species }
+					}
 				}
 			}
 			every_owned_leader = {
@@ -1202,7 +1192,7 @@ country_event = {
 			owner_main_species = {
 				if = {
 					limit = { NOT = { has_trait = trait_heretic_astartes } }
-					modify_species = { add_trait = trait_heretic_astartes add_traits_at_start_of_list = yes }
+					root = { modify_species = { species = prev add_trait = trait_heretic_astartes } }
 				}
 			}
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
@@ -1213,6 +1203,7 @@ country_event = {
 		}
 		else_if = { # Fallback Genestealer (TODO)
 			limit = {
+				has_global_flag = WHspecies_installed
 				has_country_flag = tyranid_empire
 				exists = founder_species
 				founder_species = {
@@ -1418,6 +1409,7 @@ country_event = {
 	}
 }
 ## Tau
+# on_five_years/on_start
 country_event = {
 	id = aagrimstarts.2004
 	hide_window = yes
@@ -1433,11 +1425,10 @@ country_event = {
 					order_by = value:num_species_pop
 					root = { change_dominant_species = { species = prev } }
 				}
-				change_dominant_species = { species = event_target:mirror_species change_all = yes }
-				if = {
-					limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
-					owner_main_species = { set_species_identity = root.founder_species }
-				}
+				# if = {
+				# 	limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+				# 	owner_main_species = { set_species_identity = root.founder_species }
+				# }
 			}
 			else_if = {
 				limit = { any_owned_species = { is_species = trait_tau } }
@@ -1447,14 +1438,14 @@ country_event = {
 					order_by = value:num_species_pop
 					root = { change_dominant_species = { species = prev } }
 				}
-				if = {
-					limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
-					owner_main_species = { set_species_identity = root.founder_species }
-				}
+				# if = {
+				# 	limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+				# 	owner_main_species = { set_species_identity = root.founder_species }
+				# }
 				owner_main_species = {
 					if = {
 						limit = { NOT = { has_trait = trait_tau } }
-						modify_species = { add_trait = trait_tau add_traits_at_start_of_list = yes }
+						root = { modify_species = { species = prev add_trait = trait_tau add_traits_at_start_of_list = yes } }
 					}
 				}
 			}
@@ -1470,10 +1461,10 @@ country_event = {
 			}
 			add_opinion_modifier = { who = root modifier = opinion_both_xenos }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_xenos } }
-			if = {
-				limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
-				owner_main_species = { set_species_identity = root.founder_species }
-			}
+			# if = {
+			# 	limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+			# 	owner_main_species = { set_species_identity = root.founder_species }
+			# }
 		}
 	}
 }
@@ -1497,14 +1488,14 @@ country_event = {
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 			add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
-			if = {
-				limit = {
-					exists = founder_species
-					prev = { has_country_flag = eldar_empire }
-					owner_main_species = { NOT = { is_same_species = root.founder_species } }
-				}
-				owner_main_species = { set_species_identity = root.founder_species }
-			}
+			# if = {
+			# 	limit = {
+			# 		exists = founder_species
+			# 		root = { has_country_flag = eldar_empire }
+			# 		owner_main_species = { NOT = { is_same_species = root.founder_species } }
+			# 	}
+			# 	owner_main_species = { set_species_identity = root.founder_species }
+			# }
 		}
 
 		every_playable_country = {
@@ -1531,14 +1522,14 @@ country_event = {
 			}
 			add_opinion_modifier = { who = root modifier = opinion_both_eldar }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_eldar } }
-			if = {
-				limit = {
-					exists = founder_species
-					prev = { has_country_flag = darkeldar_empire }
-					owner_main_species = { NOT = { is_same_species = root.founder_species } }
-				}
-				owner_main_species = { set_species_identity = root.founder_species }
-			}
+			# if = {
+			# 	limit = {
+			# 		exists = founder_species
+			# 		root = { has_country_flag = darkeldar_empire }
+			# 		owner_main_species = { NOT = { is_same_species = root.founder_species } }
+			# 	}
+			# 	owner_main_species = { set_species_identity = root.founder_species }
+			# }
 			if = {
 				limit = { is_xenophobe = no }
 				shift_ethic = ethic_xenophobe
@@ -1597,10 +1588,10 @@ country_event = {
 					order_by = value:num_species_pop
 					root = { change_dominant_species = { species = prev } }
 				}
-				if = {
-					limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
-					owner_main_species = { set_species_identity = root.founder_species }
-				}
+				# if = {
+				# 	limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+				# 	owner_main_species = { set_species_identity = root.founder_species }
+				# }
 			}
 			else_if = {
 				limit = {
@@ -1615,10 +1606,12 @@ country_event = {
 							has_trait = trait_eldar
 						}
 						OR = {
-							species_portrait = "Orkz"
+							AND = { # Compat Mod "WH species"
+								has_global_flag = WHspecies_installed
+								OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+							}
+							# is_species_class = "Ork"	# Compat Mod "Orks species" TODO
 							AND = { is_species_class = HUM species_portrait = "humanoid_hp_12" }
-							is_species_class = "Orkz"	# Compat Mod "WH species"
-							is_species_class = "Ork"	# Compat Mod "Orks species"
 							is_species = name_list_ORK1
 						}
 					}
@@ -1626,15 +1619,15 @@ country_event = {
 				owner_main_species = {
 					if = {
 						limit = { NOT = { has_trait = trait_pc_nuked_preference } }
-						modify_species = { add_trait = trait_pc_nuked_preference }
+						root = { modify_species = { species = prev add_trait = trait_pc_nuked_preference } }
 					}
 					if = {
 						limit = { NOT = { has_trait = trait_survivor } }
-						modify_species = { add_trait = trait_survivor }
+						root = { modify_species = { species = prev add_trait = trait_survivor } }
 					}
 					if = {
 						limit = { NOT = { has_trait = trait_orkz } }
-						modify_species = { add_trait = trait_orkz }
+						root = { modify_species = { species = prev add_trait = trait_orkz } }
 					}
 				}
 			}
@@ -1654,7 +1647,10 @@ country_event = {
 					has_trait = "trait_orkz"
 					OR = {
 						# species_portrait = root.owner_main_species # TODO scope allowed?
-						species_portrait = "Orkz"
+						AND = { # Compat Mod "WH species"
+							has_global_flag = WHspecies_installed
+							OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+						}
 						AND = { is_species_class = HUM species_portrait = "humanoid_hp_12" }
 						has_trait = "trait_orkz"
 						is_species = name_list_ORK1
@@ -1664,10 +1660,10 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_both_ork }
 			add_opinion_modifier = { who = root modifier = opinion_flavors_up }
 			add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
-			if = {
-				limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
-				owner_main_species = { set_species_identity = root.founder_species }
-			}
+			# if = {
+			# 	limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+			# 	owner_main_species = { set_species_identity = root.founder_species }
+			# }
 		}
 		owner_main_species = {
 			random_galaxy_species = {
@@ -1677,8 +1673,10 @@ country_event = {
 					NOT = { is_same_species = prev }
 					has_trait = "trait_orkz"
 					OR = {
-						# species_portrait = prev # TODO scope allowed?
-						species_portrait = "Orkz"
+						AND = { # Compat Mod "WH species"
+							has_global_flag = WHspecies_installed
+							OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+						}
 						AND = { is_species_class = HUM species_portrait = "humanoid_hp_12" }
 						is_species = name_list_ORK1
 					}
@@ -1781,7 +1779,6 @@ country_event = {
 # 			create_pop = { species = fromfrom.species }
 # 			last_created_pop = {
 # 				modify_species = {
-# 					species = this
 # 					add_trait = trait_cybernetic
 # 					add_trait = trait_zombie
 # 					add_traits_at_start_of_list = yes
@@ -2029,7 +2026,7 @@ planet_event = {
 				}
 			}
 			event_target:purge_species = {
-				modify_species = { ideal_planet_class = root }
+				root = { modify_species = { ideal_planet_class = root } }
 			}
 		}
 		from = {

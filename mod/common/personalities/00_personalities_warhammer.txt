@@ -53,7 +53,7 @@
 # NOTE: Weight is additive!
 
 ork = {
-	aggressiveness = 4 # Orks thrive on battle and seek constant conflict. They are highly aggressive, always looking for opportunities to fight and expand their territories.
+	aggressiveness = 3 # Orks thrive on battle and seek constant conflict. They are highly aggressive, always looking for opportunities to fight and expand their territories.
 	trade_willingness = 0.5
 	bravery = 3.5 # 4 Orks are highly aggressive and will engage with anyone, regardless of relative strength. They relish combat and may not always make the most strategic choices.
 	combat_bravery = 3
@@ -105,7 +105,7 @@ ork = {
 }
 
 chaos = {
-	aggressiveness = 5 # Chaos forces thrive on conflict and chaos, making them extremely aggressive. They are highly likely to declare wars, send insults, and commit a large portion of their fleet to offense.
+	aggressiveness = 4 # Chaos forces thrive on conflict and chaos, making them extremely aggressive. They are highly likely to declare wars, send insults, and commit a large portion of their fleet to offense.
 	trade_willingness = 0.0
 	bravery = 4 # 8 Chaos factions thrive on conflict and are not afraid to go after opponents of similar or even greater strength. They revel in chaos and may not always pick the most strategic targets.
 	combat_bravery = 1.75
@@ -210,7 +210,7 @@ eldar = {
 darkeldar = {
 	aggressiveness = 1.5 # Dark Eldar are driven by their sadistic desires and love for inflicting pain. While they are not as aggressive as Chaos, they still have a penchant for warfare and raids.
 	trade_willingness = 0.9
-	bravery = 4 # 9 The Dark Eldar are ruthless and sadistic, often seeking out the most challenging opponents for their own amusement.
+	bravery = 4 # The Dark Eldar are ruthless and sadistic, often seeking out the most challenging opponents for their own amusement.
 	combat_bravery = 1.25
 
 	military_spending = 1.4

@@ -66,7 +66,7 @@ CHAOS1 = {
 		psionic_army		= { sequential_name = WH40K_CHAOS1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_CHAOS1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_CHAOS1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Ogryn Brutes" }
+		# android_army = { sequential_name = "$ORD$ Ogryn Brutes" }
 	}
 
 	### PLANETS
@@ -206,7 +206,7 @@ DARKELDAR1 = {
 		psionic_army		= { sequential_name = WH40K_DARKELDAR1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_DARKELDAR1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_DARKELDAR1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Incubi" }
+		# android_army = { sequential_name = "$ORD$ Incubi" }
 	}
 
 	planet_names = {
@@ -344,7 +344,7 @@ ELDAR1 = {
 		psionic_army		= { sequential_name = WH40K_ELDAR1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_ELDAR1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_ELDAR1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Wraithguards" }
+		# android_army = { sequential_name = "$ORD$ Wraithguards" }
 	}
 	### PLANETS
 	planet_names = {
@@ -467,7 +467,7 @@ IMPERIUM1 = {
 		psionic_army		= { random_names = { Grey_Knights } sequential_name = WH40K_IMPERIUM1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_IMPERIUM1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_IMPERIUM1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Terminators" }
+		# android_army = { sequential_name = "$ORD$ Terminators" }
 	}
 	### PLANETS
 	planet_names = {
@@ -653,7 +653,7 @@ NECRON1 = {
 		machine_assault_1	= { sequential_name = MACHINE1_MECHANIZEDASSAULTFORCE }
 		machine_assault_2	= { sequential_name = MACHINE1_HEAVYASSAULTFORCE }
 		machine_assault_3	= { sequential_name = MACHINE1_ASSAULTTITANULTRA }
-		# android_army = { sequential_name = "%O% Deathmarks" }
+		# android_army = { sequential_name = "$ORD$ Deathmarks" }
 	}
 	### PLANETS
 	planet_names = {
@@ -789,7 +789,7 @@ ORK1 = {
 		psionic_army		= { sequential_name = WH40K_ORK1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_ORK1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_ORK1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Cybork Painboz" }
+		# android_army = { sequential_name = "$ORD$ Cybork Painboz" }
 	}
 	### PLANETS
 	planet_names = {
@@ -935,7 +935,7 @@ TAU1 = {
 		psionic_army		= { sequential_name = WH40K_TAU1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_TAU1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_TAU1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Formosians" }
+		# android_army = { sequential_name = "$ORD$ Formosians" }
 	}
 	### PLANETS
 	planet_names = {
@@ -1044,7 +1044,7 @@ TYRANID1 = {
 		psionic_army		= { sequential_name = WH40K_TYRANID1_ARMYNAMES_6 }
 		xenomorph_army		= { sequential_name = WH40K_TYRANID1_ARMYNAMES_7 }
 		gene_warrior_army	= { sequential_name = WH40K_TYRANID1_ARMYNAMES_8 }
-		# android_army = { sequential_name = "%O% Hormagaunts" }
+		# android_army = { sequential_name = "$ORD$ Hormagaunts" }
 	}
 	### PLANETS
 	planet_names = {

@@ -15,16 +15,31 @@ is_imperium_hive_planet = {
 		# is_planet_class = pc_mega_hive
 	}
 }
-is_forge_planet = {
+# is_forge_planet = {
+# 	always = no
+# 	# OR = {
+# 	# 	is_planet_class = pc_forge
+# 	# 	is_planet_class = pc_forgee
+# 	# 	is_planet_class = pc_forgeee
+# 	# 	is_planet_class = pc_forge_ring
+# 	# 	is_planet_class = pc_forge_ring2
+# 	# 	is_planet_class = pc_forge_ring3
+# 	# }
+# }
+# 40k Age of Indomitus TODO scripted var
+is_wh_planet_industrial = {
 	always = no
 	# OR = {
+	# 	is_planet_class = pc_industrial
 	# 	is_planet_class = pc_forge
 	# 	is_planet_class = pc_forgee
 	# 	is_planet_class = pc_forgeee
 	# 	is_planet_class = pc_forge_ring
 	# 	is_planet_class = pc_forge_ring2
 	# 	is_planet_class = pc_forge_ring3
-	# }
+	# 	is_planet_class = pc_refinery
+	# 	is_planet_class = pc_armoury
+    # }
 }
 
 has_not_toxoids = {
@@ -75,7 +90,8 @@ has_necron_origin = {
 		has_origin = origin_necron_awakening
 		# has_origin = origin_reawakened # Keept for backward compat.
 		has_country_flag = necron_empire
-		# has_valid_civic = civic_necron_awaking
+		# has_civic = civic_necron_awaking
+		# has_civic = civic_necron_legion # Mod "Necron Fleet Weapons"
 	}
 }
 
