@@ -296,11 +296,11 @@ country_event = {
 					set_planet_flag = pf_generated_stasis_tombs
 					add_deposit = d_aa_stasis_chambers
 					add_deposit = d_aa_stasis_chambers
-					log="Necrons are awakening on \\[This.GetName]"
+					log = "Necrons are awakening on \\[This.GetName]"
 				}
 			}
 		}
-		else = { log="FAIL: No Necron planet found!" break = yes }
+		else = { log = "FAIL: No Necron planet found!" break = yes }
 		country_event = { id = necron.111 } # Hack: Target event is not of the correct type, expected it to be a country: but it works
 	}
 }
@@ -420,7 +420,7 @@ event = {
 				}
 				weights = { base = 1 modifier = { add = 50 count_species_pop = { count > 1 } } }
 				save_event_target_as = necron_species
-				log="[This.GetName] species restored"
+				log = "[This.GetName] species restored"
 				# rename_species = { # Error, but it's just a fallback anyway
 				# 	name = name_list_NECRON1
 				# 	# name_list = NECRON1 Invalid
@@ -475,7 +475,7 @@ event = {
 		# CREATE_NECRON_DYNASTY
 		# restore_country_backup_data = yes - Restores backed up data to the scoped country. See store_country_backup_data for what data can be backed up.
 		event_target:necron_planet = {
-			log="\\[necron_species.GetName] are awakened on \\[This.GetName]"
+			log = "\\[necron_species.GetName] are awakened on \\[This.GetName]"
 			create_country = {
 				name = EMPIRE_DESIGN_necron
 				adjective = PRESCRIPTED_adjective_necron
@@ -524,7 +524,7 @@ event = {
 					background_ethic = ethic_fanatic_xenophobe # ethic_gestalt_consciousness # ethic_fanatic_militarist
 				}
 				set_country_type = awakened_marauders # gray_goo awakened_marauders
-				log="The Awakening of [This.GetName] has begun"
+				log = "The Awakening of [This.GetName] has begun"
 			}
 			if = { # create_colony
 				limit = { has_owner = no }
@@ -731,7 +731,7 @@ planet_event = {
 				# weights = { base = 1
 					# modifier = { add = 50 is_synthetic_empire = yes NOT = { has_technology = tech_dyson_sphere } }
 				# }
-				log="Copy techs from [This.GetName]"
+				log = "Copy techs from [This.GetName]"
 				prev = {
 					establish_communications_no_message = prev
 					establish_contact = { who = prev location = root }

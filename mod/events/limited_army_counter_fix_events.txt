@@ -266,7 +266,7 @@ planet_event = {
 # 					NOT = { has_country_flag = army_counter_decremented@prev }
 # 				}
 # 			}
-# 			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
+# 			# log = "\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
 # 			decrement_army_count = yes
 # 		}
 # 	}
@@ -335,7 +335,7 @@ country_event = {
 				is_limited_army = yes
 				root = { NOT = { has_country_flag = army_counter_decremented@prev } }
 			}
-			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
+			# log = "\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
 			decrement_army_count = yes
 		}
 	}
@@ -357,7 +357,7 @@ country_event = {
 		is_limited_army_country = yes
 	}
 	immediate = {
-		# log="\\[This.GetName] has a limited army disbanded \\[From.GetName]"
+		# log = "\\[This.GetName] has a limited army disbanded \\[From.GetName]"
 		from = { decrement_army_count = yes }
 	}
 }

@@ -57,7 +57,7 @@ colonize_planet = {
 			start_colony = { owner = root species = prev.species }
 		}
 	}
-	log="\\[Root.GetName] starts effect auto-colonizing \\[prevprev.GetName]"
+	log = "\\[Root.GetName] starts effect auto-colonizing \\[prevprev.GetName]"
 	delete_fleet = this
 }
 

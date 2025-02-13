@@ -16,6 +16,16 @@ country_event = {
 			limit = { NOR = { is_ai = yes has_global_flag = allthatisgrimdark_mod } }
 			set_global_flag = allthatisgrimdark_mod
 		}
+		random_owned_species = {
+			limit = {
+				is_sapient = yes
+				NOT = { is_same_species = prev }
+			}
+			save_event_target_as = servile_species
+			event_target:capital_planet = {
+				create_pop = { species = event_target:servile_species count = 3 }
+			}
+		}
 		if = { # 1 Setup Barbaric Horde "Ork Horde"
 			limit = {
 				OR = {
@@ -25,7 +35,7 @@ country_event = {
 						OR = {
 							AND = { # Compat Mod "WH species"
 								has_global_flag = WHspecies_installed
-								OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+								OR = { species_portrait = "Orkz" is_species_class = "Orkz" }
 							}
 							# is_species_class = "Ork"	# Compat Mod "Orks species" TODO
 							has_trait = "trait_orkz"
@@ -72,24 +82,25 @@ country_event = {
 					limit = { NOT = { has_trait = trait_orkz } }
 					change_species_characteristics = { add_trait = trait_orkz can_change_leader = yes }
 				}
-				random_galaxy_species = {
-					limit = {
-						is_sapient = yes
-						is_same_species_class = prev
-						NOT = { is_same_species = prev }
-						OR = {
-							AND = { # Compat Mod "WH species"
-								has_global_flag = WHspecies_installed
-								OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
-							}
-							has_trait = "trait_orkz"
-							# AND = { is_species_class = "HUM" species_portrait = "humanoid_hp_12" }
-							# species_portrait = prev # TODO scope allowed?
-							is_species = name_list_ORK1
-						}
-					}
-					set_species_identity = prev
-				}
+				# TODO TEST
+				# random_galaxy_species = {
+				# 	limit = {
+				# 		is_sapient = yes
+				# 		is_same_species_class = prev
+				# 		NOT = { is_same_species = prev }
+				# 		OR = {
+				# 			AND = { # Compat Mod "WH species"
+				# 				has_global_flag = WHspecies_installed
+				# 				OR = { species_portrait = "Orkz" is_species_class = "Orkz" }
+				# 			}
+				# 			has_trait = "trait_orkz"
+				# 			# AND = { is_species_class = "HUM" species_portrait = "humanoid_hp_12" }
+				# 			# species_portrait = prev # TODO scope allowed?
+				# 			is_species = name_list_ORK1
+				# 		}
+				# 	}
+				# 	set_species_identity = prev
+				# }
 			}
 			random_owned_species = {
 				limit = {
@@ -119,9 +130,7 @@ country_event = {
 				set_origin = origin_barbarichorde
 			}
 			every_owned_leader = {
-				limit = {
-					NOR = { leader_class = scientist species = { has_trait = trait_very_strong } }
-				}
+				limit = { NOR = { leader_class = scientist species = { has_trait = trait_very_strong } } }
 				modify_species = { add_trait = trait_very_strong }
 			}
 			set_country_flag = ork_empire
@@ -283,7 +292,7 @@ country_event = {
 			give_technology = { message = no tech = tech_rare_crystals }
 			give_technology = { message = no tech = tech_hyper_entertainment_forum }
 			give_technology = { message = no tech = tech_paradise_dome }
-			# log="Give shroudsinners empire \\[This.GetName] $tech_subdermal_stimulation$"
+			# log = "Give shroudsinners empire \\[This.GetName] $tech_subdermal_stimulation$"
 			give_technology = { message = no tech = tech_subdermal_stimulation }
 			set_country_flag = breached_shroud
 			if = {
@@ -428,8 +437,7 @@ country_event = {
 							}
 						}
 					}
-
-					void_dweller_home_planet_setup = yes
+					void_dweller_home_planet_setup = yes # TODO Error needs owned planet in system?
 					validate_and_repair_planet_buildings_and_districts = yes # Replace/removes all invalid (potential trigger not fulfilled) buildings and districts, then repairs all ruined buildings on the scoped planet
 				}
 			}
@@ -638,27 +646,28 @@ country_event = {
 					change_species_portrait = cyb12_m_03
 				}
 			}
-			if = { # Omit purging own pops
-				limit = {
-					any_owned_species = {
-						NOR = { is_species_class = "Mechanicus" is_species_class = "HUM" } # is_species_class = "Imperium" dropped backward
-					}
-				}
-				every_owned_species = {
-					limit = {
-						NOR = { is_species_class = "Mechanicus" is_species_class = "HUM" } # is_species_class = "Imperium" dropped backward
-					}
-					mirror_species = { CLASS = HUM }
-					if = {
-						limit = { exists = prev.founder_species }
-						event_target:mirror_species = { set_species_identity = prevprev.founder_species }
-					}
-					else = {
-						event_target:mirror_species = { set_species_identity = prevprev.owner_main_species }
-					}
-				}
-				change_dominant_species = { species = event_target:mirror_species change_all = yes }
-			}
+
+			# if = { # Omit purging own pops
+			# 	limit = {
+			# 		any_owned_species = {
+			# 			NOR = { is_species_class = "Mechanicus" is_species_class = "HUM" } # is_species_class = "Imperium" dropped backward
+			# 		}
+			# 	}
+			# 	every_owned_species = {
+			# 		limit = {
+			# 			NOR = { is_species_class = "Mechanicus" is_species_class = "HUM" } # is_species_class = "Imperium" dropped backward
+			# 		}
+			# 		mirror_species = { CLASS = HUM }
+			# 		if = {
+			# 			limit = { exists = prev.founder_species }
+			# 			event_target:mirror_species = { set_species_identity = prevprev.founder_species }
+			# 		}
+			# 		else = {
+			# 			event_target:mirror_species = { set_species_identity = prevprev.owner_main_species }
+			# 		}
+			# 	}
+			# 	change_dominant_species = { species = event_target:mirror_species change_all = yes }
+			# }
 			if = {
 				limit = { OR = { is_ai = yes has_toxoids = yes } }
 				if = {
@@ -676,12 +685,6 @@ country_event = {
 					owner_main_species = { change_species_portrait = tox2 }
 				}
 			}
-
-			if = {
-				limit = { has_machine_cult = no }
-				set_origin = origin_iforge # origin_mechanists
-			}
-
 			if = { # Compare with prescipted empire design
 				limit = {
 					NOT = { has_civic = civic_memory_vault }
@@ -1187,7 +1190,7 @@ country_event = {
 			else = {
 				modify_species = {
 					species = event_target:secondary_species
-					base = none # event_target:secondary_species
+					# base = none # event_target:secondary_species
 					add_trait = trait_functional
 					add_traits_at_start_of_list = yes
 					ideal_planet_class = prev
@@ -1210,7 +1213,7 @@ country_event = {
 								}
 							}
 						}
-						set_species_identity = root.owner_main_species
+						# set_species_identity = root.owner_main_species
 						set_citizenship_type = { country = root type = citizenship_limited cooldown = yes } # Residence
 					}
 				}
@@ -1254,6 +1257,9 @@ country_event = {
 		set_update_modifiers_batch = end
 		country_event = { id = aagrimstarts.2001 days = 2 } # relations
 	}
+	after = {
+		event_target:capital_planet = { disable_building = building_fortress_gr }
+	}
 }
 
 ## setup_shroudrage (on_game_start)
@@ -1291,9 +1297,7 @@ country_event = {
 			}
 		}
 		every_owned_leader = {
-			limit = {
-				NOR = { leader_class = scientist species = { has_trait = trait_very_strong } }
-			}
+			limit = { NOR = { leader_class = scientist species = { has_trait = trait_very_strong } } }
 			modify_species = { add_trait = trait_very_strong }
 		}
 		set_country_flag = chaos_empire
@@ -1325,7 +1329,7 @@ country_event = {
 			force_add_civic = civic_pompous_purists
 		}
 
-		log="Setup origin_soulkeepers 'Eldar' void_dweller_system "
+		log = "Setup origin_soulkeepers 'Eldar' void_dweller_system "
 		set_country_flag = origin_soulkeepers
 		set_country_flag = eldar_empire
 		set_country_flag = laser_tech
@@ -1857,7 +1861,7 @@ country_event = {
 			limit = {
 				is_sapient = yes
 				NOT = { is_same_species = root.owner_main_species }
-				num_positive_traits > 1
+				num_positive_traits > 0
 			}
 			save_event_target_as = secondary_species
 		}
@@ -1875,7 +1879,7 @@ country_event = {
 				# OR = { is_species_class = "Imperium"	# Dropped backward Compat Mod "WH species"
 				is_species_class = "HUM" # AND = { }
 				is_human_species = yes
-				num_positive_traits > 1
+				num_positive_traits > 0
 			}
 			save_event_target_as = third_species
 		}
@@ -1899,14 +1903,14 @@ country_event = {
 					OR = {
 						AND = { # Compat Mod "WH species"
 							has_global_flag = WHspecies_installed
-							OR = { species_portrait = "Orkz" is_species_class = "Orkz"	}
+							OR = { species_portrait = "Orkz" is_species_class = "Orkz" }
 						}
 						AND = { is_species_class = "HUM" species_portrait = "humanoid_hp_12" }
 						# is_species_class = "Ork"	# Compat Mod "Orks species" TODO
 						has_trait = "trait_orkz"
 						is_species = name_list_ORK1
 					}
-					num_positive_traits > 1
+					num_positive_traits > 0
 				}
 				event_target:secondary_species = { set_species_identity = prev }
 				save_event_target_as = secondary_species
@@ -1949,7 +1953,7 @@ country_event = {
 							has_trait = trait_eldar
 						}
 						is_species_class = HUM
-						num_positive_traits > 1
+						num_positive_traits > 0
 					}
 					weights = { base = 1
 						modifier = { add = 3 is_sapient = yes }
@@ -2186,7 +2190,7 @@ country_event = {
 			}
 			give_technology = { tech = tech_fusion_power message = yes }			# Tier 1
 			give_technology = { tech = tech_cold_fusion_power message = yes }		# Tier 2
-			# log="Give paindrinkers empire \\[This.GetName] $tech_subdermal_stimulation$"
+			# log = "Give paindrinkers empire \\[This.GetName] $tech_subdermal_stimulation$"
 			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_subdermal_stimulation } # Tier 2
 			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_experimental_subspace_navigation } # Tier 2
 			give_technology = { tech = tech_antimatter_power message = yes }		# Tier 3
@@ -2213,7 +2217,7 @@ country_event = {
 					}
 					is_species_class = HUM
 					OR = { species_portrait = humanoid_hp_12 is_species = PRESCRIPTED_species_name_mankind }
-					num_positive_traits > 1
+					num_positive_traits > 0
 				}
 				# prev = { set_species_identity = prev } do it in aagrimstarts.222
 				save_event_target_as = servile_species
@@ -2361,7 +2365,7 @@ country_event = {
 				add_trait = "trait_resilient"		# +1
 				add_trait = "trait_fleeting"		# -1
 				add_trait = "trait_unruly"			# -2
-				effect = {  }
+				effect = { }
 			}
 			event_target:servile_species = {
 				set_citizenship_type = { country = root type = citizenship_full }
@@ -3108,7 +3112,7 @@ country_event = {
 					}
 				}
 				random_species_pop = {
-					log="Init Machine God"
+					log = "Init Machine God"
 					add_modifier = { modifier = machine_god }
 					add_modifier = { modifier = army_rank_elite }
 					add_modifier = { modifier = agenda_conquer_nature_finish }
@@ -3219,13 +3223,14 @@ country_event = {
 		give_technology = { message = yes tech = tech_integrated_cybernetics } # tier2weight3
 		# add_research_option = tech_planetary_shield_generator
 		# add_research_option = tech_robomodding
+		add_modifier = { modifier = "artifact_find_peaceful_application_leader_improvement" }
 
 		get_capital_planet = yes
 		event_target:capital_planet = {
-			if = {
-				limit = { NOR = { is_imperium_hive_planet = yes is_wh_planet_industrial = yes } }
-				change_pc = pc_hive_tundra # pc_imperiumhive
-			}
+			# if = { TODO
+			# 	limit = { NOR = { is_imperium_hive_planet = yes is_wh_planet_industrial = yes } }
+			# 	change_pc = pc_hive_tundra # pc_imperiumhive
+			# }
 			if = {
 				limit = { has_planet_flag = planet_mars }
 				set_name = "Sol Mars"
@@ -3310,7 +3315,7 @@ country_event = {
 			add_building = building_foundry_1_gr
 			add_building = building_temple_gr
 			add_building = building_fortress_gr
-			clear_deposits = yes
+			# clear_deposits = yes
 			add_deposit = d_holyterra_sprawl
 			add_deposit = d_holyterra_sprawl
 			add_deposit = d_holyterra_defences
@@ -3337,7 +3342,7 @@ country_event = {
 						add_planet_devastation = 35
 						if = {
 							limit = { root = { is_ai = yes } }
-							clear_blockers = yes
+							# clear_blockers = yes
 							# create_colony = { owner = root species = root.owner_species }
 							start_colony = { owner = root species = root.owner_species }
 							generate_start_deposits_and_blockers = yes
@@ -3348,6 +3353,14 @@ country_event = {
 					}
 				}
 			}
+		}
+
+		if = {
+			limit = { is_ai = no }
+			add_resource = { energy = 500 volatile_motes = 25 }
+		}
+		else = {
+			add_resource = { energy = 2000 alloys = 200 volatile_motes = 75 }
 		}
 
 		# create_fleet = {
@@ -3364,39 +3377,70 @@ country_event = {
 		if = {
 			limit = {
 				NOT = { has_tradition = tr_cybernetics_adopt }
-				OR = { is_ai = yes has_utopia = yes }
+				# OR = { is_ai = yes has_utopia = yes } DEBUG
 			}
 			# TODO SOLVE FAKE has_ascension_perk = ap_the_flesh_is_weak
+			set_origin = origin_cybernetic_creed
 			add_tradition = "tr_cybernetics_adopt"
-			complete_special_project = { type = "FLESH_IS_WEAK_PROJECT" }
-			set_country_flag = cyborg_empire # i.e. Has completed "FLESH_IS_WEAK_PROJECT"
+			# complete_special_project = { type = "FLESH_IS_WEAK_PROJECT" }
+			# set_country_flag = cyborg_empire # i.e. Has completed "FLESH_IS_WEAK_PROJECT"
 			add_tradition = "tr_cybernetics_transubstantiation_synthesis"
-			add_tradition = "tr_cybernetics_metabolic_reprocessing"
-			add_tradition = "tr_cybernetics_integrated_anatomy"
-			add_tradition = "tr_cybernetics_augmentation_overload"
+			# add_tradition = "tr_cybernetics_metabolic_reprocessing"
+			# add_tradition = "tr_cybernetics_integrated_anatomy"
+			# add_tradition = "tr_cybernetics_augmentation_overload"
 			# add_tradition = "tr_cybernetics_modular_cybernetics"
 			# add_tradition = "tr_cybernetics_finish"
 		}
-		else_if = { # NOT compatible - needs AA's Cyborg Ascendance (3.4)
-			limit = {
-				NOT = { has_tradition = tr_synthetics_adopt }
-				OR = { is_ai = yes has_synthetic_dawn = yes }
-			}
-			give_technology = { message = yes tech = tech_synthetic_workers }
-			give_technology = { message = no tech = tech_synthetic_leaders }
-			add_tradition = "tr_synthetics_adopt"
-			add_tradition = "tr_synthetics_maintenance_protocols"
-			add_tradition = "tr_synthetics_optimization_algorithms"
-			add_tradition = "tr_synthetics_transubstatiation_synthesis"
-			# add_tradition = "tr_synthetics_prefabricated_components"
-			# add_tradition = "tr_synthetics_solid_state_actuators"
-			# add_tradition = "tr_synthetics_finish"
-			complete_special_project = { type = "SYNTHETIC_EVOLUTION_PROJECT" } # set_country_flag = synthetic_empire # i.e. Has completed "SYNTHETIC_EVOLUTION_PROJECT"
-		}
+		# else_if = { # NOT compatible - needs AA's Cyborg Ascendance (3.4)
+		# 	limit = {
+		# 		NOT = { has_tradition = tr_synthetics_adopt }
+		# 		OR = { is_ai = yes has_synthetic_dawn = yes }
+		# 	}
+		# 	give_technology = { message = yes tech = tech_synthetic_workers }
+		# 	give_technology = { message = no tech = tech_synthetic_leaders }
+		# 	add_tradition = "tr_synthetics_adopt"
+		# 	add_tradition = "tr_synthetics_maintenance_protocols"
+		# 	add_tradition = "tr_synthetics_optimization_algorithms"
+		# 	add_tradition = "tr_synthetics_transubstatiation_synthesis"
+		# 	# add_tradition = "tr_synthetics_prefabricated_components"
+		# 	# add_tradition = "tr_synthetics_solid_state_actuators"
+		# 	# add_tradition = "tr_synthetics_finish"
+		# 	complete_special_project = { type = "SYNTHETIC_EVOLUTION_PROJECT" } # set_country_flag = synthetic_empire # i.e. Has completed "SYNTHETIC_EVOLUTION_PROJECT"
+		# }
 		## Species
+		random_owned_species = { # has num pop can still 0
+			limit = {
+				is_sapient = yes
+				NOT = { is_exact_same_species = owner_main_species }
+			}
+			save_event_target_as = servile_species
+			if = {
+				limit = { NOR = { has_trait = trait_syncretic_proles has_trait = trait_cyborg_double_jointed } }
+				modify_species = {
+					add_trait = trait_syncretic_proles
+					add_trait = trait_cyborg_double_jointed
+					add_traits_at_start_of_list = yes
+					effect = { save_event_target_as = servile_species set_species_flag = syncretic_species@root set_species_identity = prev }
+				}
+			}
+			log = "Found servile species \\[servile_species.GetName] for \\[Root.GetName]"
+		}
+		if = {
+			limit = { exists = event_target:servile_species }
+			event_target:servile_species = {
+				if = {
+					limit = { NOT = { has_trait = trait_lobotomised_servitors } }
+					change_species_characteristics = { add_trait = trait_lobotomised_servitors }
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_limited_cybernetic } }
+					change_species_characteristics = { add_trait = trait_limited_cybernetic }
+				}
+			}
+		}
 		owner_main_species = {  # Debuff
-			while = { count = 20
-				limit = { count_species_pop = { count > 2 } }
+			while = { count = 10
+				limit = { count_species_pop = { count > 3 } }
 				random_species_pop = { kill_pop = yes }
 			}
 			if = {
@@ -3404,84 +3448,127 @@ country_event = {
 				change_species_characteristics = { add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes can_change_leader = yes }
 			}
 		}
+
 		every_owned_species = {
 			limit = { NOT = { has_trait = trait_functional } }  # Debuff
-			while = { count = 1 random_species_pop = { kill_pop = yes } }
 			change_species_characteristics = { add_trait = trait_functional add_traits_at_start_of_list = yes }
-			if = {
-				limit = { NOT = { has_trait = trait_cyborg } }
-				change_species_characteristics = { add_trait = trait_cyborg can_change_leader = yes }
-			}
+			# if = {
+			# 	limit = { NOT = { has_trait = trait_cyborg } } }
+			# 	change_species_characteristics = { add_trait = trait_cyborg can_change_leader = yes }
+			# }
 		}
-		every_owned_species = {
-			limit = { NOT = { has_trait = trait_cybernetic } } # Debuff
-			while = { count = 1 random_species_pop = { kill_pop = yes } }
-			change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
-			if = {
-				limit = { NOT = { has_trait = trait_cyborg } }
-				change_species_characteristics = { add_trait = trait_cyborg can_change_leader = yes }
-			}
-		}
+		# every_owned_species = {
+		# 	limit = { NOT = { has_trait = trait_cybernetic } } # Debuff
+		# 	# change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
+		# 	if = {
+		# 		limit = { NOT = { has_trait = trait_cyborg } }
+		# 		change_species_characteristics = { add_trait = trait_cyborg can_change_leader = yes }
+		# 	}
+		# }
 
-		random_owned_species = {
-			limit = {
-				is_sapient = yes
-				NOR = { is_same_species = root.owner_main_species has_trait = trait_syncretic_proles has_trait = trait_cyborg_double_jointed }
-			}
-			log="Found servile species for [Root.GetName]"
-			if = {
-				limit = { NOT = { has_trait = trait_lobotomised_servitors } }
-				change_species_characteristics = { add_trait = trait_lobotomised_servitors }
-			}
-			prev = {
-				modify_species = {
-					base = prev
-					add_trait = trait_syncretic_proles
-					add_trait = trait_cyborg_double_jointed
-					add_traits_at_start_of_list = yes
-					effect = { save_event_target_as = servile_species set_species_flag = syncretic_species@root }
-				}
-			}
-		}
 		# Given a species, create a mod with trait_cybernetic and apply to all pops, leaders
 		# And armies that have the original species and the same owner as the scope object.
-		create_cybernetic_species_mod = yes
+		# create_cyber_species_effect
+		random_owned_pop = {
+			limit = { is_exact_same_species = root }
+			if = {
+				limit = { NOT = { pop_has_trait = trait_cyborg } }
+				modify_species = { add_trait = trait_cyborg }
+			}
+			create_cybernetic_species_mod = yes
+			last_created_species = { save_event_target_as = cyber_species }
+		}
+		change_dominant_species = { species = event_target:cyber_species }
+
+		event_target:cyber_species = {
+			modify_species = {
+				remove_trait = trait_cyborg_neural_limiters
+				add_trait = trait_talented
+				add_trait = trait_cyborg_enhanced_memory
+				add_trait = trait_cyborg_learning_algorithms
+				add_traits_at_start_of_list = yes
+				effect = { save_event_target_as = cyber_species }
+			}
+		}
 		every_owned_leader = {
 			limit = { NOR = { has_trait = leader_trait_cyborg has_leader_flag = renowned_leader has_leader_flag = legendary_leader } }
 			add_trait_no_notify = leader_trait_cyborg
+			change_species = event_target:cyber_species
 		}
 		every_pool_leader = {
 			limit = { NOT = { has_trait = leader_trait_cyborg } }
 			add_trait_no_notify = leader_trait_cyborg
+			change_species = event_target:cyber_species
 		}
 		ruler = {
 			add_skill_without_trait_selection = 1
 			set_immortal = yes
+			add_trait_no_notify = leader_trait_resilient_2
 			add_trait_no_notify = leader_trait_cyborg
 			add_trait_no_notify = leader_trait_the_cybernetic_luminary
+			add_trait_no_notify = leader_trait_legendary_great_teacher
+			change_species = event_target:cyber_species
 		}
 		if = {
 			limit = { is_spiritualist = yes is_authoritarian = yes NOR = { is_gestalt = yes has_civic = civic_imperial_cult } }
 			force_add_civic = "civic_imperial_cult"
 		}
-		country_event = { id = aagrimstarts.222 days = 1 } # Set Servile Species
 		country_event = { id = aagrimstarts.2001 days = 2 } # relations
 	}
 	after = {
 		# TODO Missing compatibility mod check: WH40k Planets Renewed
-		event_target:capital_planet = {
-			if = {
-				limit = { is_wh_planet_industrial = no }
-				change_pc = pc_forge_ring
-			}
-			if = {
-				limit = { is_wh_planet_industrial = yes }
-				add_district = district_forge_housing
-				add_district = district_forge_geothermal
-				add_district = district_forge_archeotech_admin
-				add_district = district_forge_refinery
-			}
+		# event_target:capital_planet = {
+		# 	if = {
+		# 		limit = { is_wh_planet_industrial = no }
+		# 		change_pc = pc_forge_ring
+		# 	}
+		# 	if = {
+		# 		limit = { is_wh_planet_industrial = yes }
+		# 		add_district = district_forge_housing
+		# 		add_district = district_forge_geothermal
+		# 		add_district = district_forge_archeotech_admin
+		# 		add_district = district_forge_refinery
+		# 	}
+		# }
+		if = {
+			limit = { has_machine_cult = no }
+			set_origin = origin_iforge # origin_mechanists
 		}
+		if = {
+			limit = {
+				NOT = {
+					any_situation = {
+						OR = { is_situation_type = situation_cyberization is_situation_type = situation_cyberization_hive }
+					}
+				}
+			}
+			country_event = { id = cyber.1 } # Cyberization - First event
+		}
+		event_target:capital_planet = { disable_building = building_fortress_gr }
+		# if = { TODO
+		# 	limit = {
+		# 		exists = event_target:servile_species
+		# 	}
+		# 	event_target:servile_species = {
+		# 		random_species_pop = {
+		# 			convert_to_limited_cybernetic_effect = { CYBER_SPECIES = event_target:servile_species }
+		# 		}
+		# 	}
+		# 	event_target:cybernetic_species_of_@event_target:servile_species = {
+		# 		save_event_target_as = servile_species
+		# 	}
+		# 	every_owned_pop = {
+		# 		limit = {
+		# 			NOR = {
+		# 				is_same_species = owner_main_species
+		# 				pop_has_trait = trait_cybernetic
+		# 				pop_has_trait = trait_limited_cybernetic
+		# 			}
+		# 		}
+		# 		change_species = event_target:servile_species
+		# 	}
+		# }
+		country_event = { id = aagrimstarts.222 days = 1 } # Set Servile Species
 	}
 }
 
@@ -4005,8 +4092,8 @@ country_event = {
 			random_owned_species = {
 				limit = {
 					is_sapient = yes
-					NOT = { is_same_species = root.owner_main_species }
-					num_positive_traits > 1
+					NOT = { is_exact_same_species = root.owner_main_species }
+					num_positive_traits > 0
 				}
 				save_event_target_as = servile_species
 			}
@@ -4020,7 +4107,7 @@ country_event = {
 						is_species_class = "AVI"
 						species_portrait = "avi14"
 						OR = { has_trait = "trait_syncretic_proles" has_trait = "trait_conformists" has_trait = "trait_fleeting" }
-						num_positive_traits > 1
+						num_positive_traits > 0
 					}
 				}
 				random_galaxy_species = {
@@ -4029,9 +4116,10 @@ country_event = {
 						is_species_class = "AVI"
 						species_portrait = "avi14"
 						OR = { has_trait = "trait_syncretic_proles" has_trait = "trait_conformists" has_trait = "trait_fleeting" }
-						num_positive_traits > 1
+						num_positive_traits > 0
 					}
 					save_event_target_as = servile_species
+					log = "Debug: No servile_species exists, take galaxy one AVI"
 				}
 			}
 			# else_if = {
@@ -4039,14 +4127,14 @@ country_event = {
 			# 		any_galaxy_species = {
 			# 			is_sapient = yes
 			# 			OR = { species_portrait = "Kroot" is_species_class = "Tau" is_species_class = "AVI" }
-			# 			num_positive_traits > 1
+			# 			num_positive_traits > 0
 			# 		}
 			# 	}
 			# 	random_galaxy_species = {
 			# 		limit = {
 			# 			is_sapient = yes
 			# 			OR = { species_portrait = "Kroot" is_species_class = "Tau" is_species_class = "AVI" }
-			# 			num_positive_traits > 1
+			# 			num_positive_traits > 0
 			# 		}
 			# 		save_event_target_as = servile_species
 			# 	}
@@ -4057,7 +4145,7 @@ country_event = {
 						is_sapient = yes
 						OR = { is_species_class = "MAM" is_species_class = "REP" }
 						OR = { has_trait = "trait_syncretic_proles" has_trait = "trait_conformists" has_trait = "trait_fleeting" }
-						num_positive_traits > 1
+						num_positive_traits > 0
 					}
 				}
 				random_galaxy_species = {
@@ -4065,9 +4153,10 @@ country_event = {
 						is_sapient = yes
 						OR = { is_species_class = "MAM" is_species_class = "REP" }
 						OR = { has_trait = "trait_syncretic_proles" has_trait = "trait_conformists" has_trait = "trait_fleeting" }
-						num_positive_traits > 1
+						num_positive_traits > 0
 					}
 					save_event_target_as = servile_species
+					log = "Debug: No servile_species exists, take galaxy one MAM"
 				}
 			}
 			else = {
@@ -4118,6 +4207,7 @@ country_event = {
 							limit = { exists = event_target:pech }
 							set_species_homeworld = event_target:pech
 						}
+						log = "Debug: No servile_species exists, create Kroot"
 					}
 				}
 			}
@@ -4137,7 +4227,7 @@ country_event = {
 		}
 		event_target:servile_species = {
 			every_species_pop = { remove_pop_flag = event_purge clear_pop_category = yes }
-			# log="Set servile species right [This.GetName]"
+			# log = "Set servile species right [This.GetName]"
 			# paindrinkers, barbarichorde, greatergood
 			# grimdark_create_extra_pops
 			# if = {
@@ -4215,7 +4305,7 @@ country_event = {
 						AND = { prev = { OR = { species_portrait = "Kroot" is_species = "Kroot" } } OR = { species_portrait = "Kroot" is_species = "Kroot" } } # avi14 HUM Tau
 						AND = { prev = { species_portrait = "Gretchins" } species_portrait = "Gretchins" } # rep11 HUM Orks
 					}
-					num_positive_traits > 1
+					num_positive_traits > 0
 				}
 				prev = { set_species_identity = prev }
 			}
@@ -4359,7 +4449,7 @@ country_event = {
 										root = { set_timed_country_flag = { flag = cf_grimdark_unemployed_cooldown months = 2 } }
 										prevprevprev = {
 											fleet = {
-												log="\\[Root.GetName] starts auto-colonizing \\[prevprev.GetName]"
+												log = "\\[Root.GetName] starts auto-colonizing \\[prevprev.GetName]"
 												queue_actions = {
 													move_to = prevprev
 													orbit_planet = prevprev
