@@ -39,11 +39,13 @@ mirror_species = {
 			class = $CLASS$
 			portrait = this
 			traits = this
-			# traits = { ideal_planet_class = this }
 			can_be_modified = this
 			homeworld = this
 			namelist = this
 			gender = this
+			traits = {
+				ideal_planet_class = this
+			}
 			effect = { save_event_target_as = mirror_species }
 		}
 	}

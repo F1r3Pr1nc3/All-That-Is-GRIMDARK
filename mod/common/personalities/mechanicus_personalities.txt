@@ -1,5 +1,5 @@
 adpt_mec = {
-	aggressiveness = 1.0
+	aggressiveness = 0.75
 	trade_willingness = 1.0
 	bravery = 1.25
 	combat_bravery = 1.0
@@ -26,9 +26,9 @@ adpt_mec = {
 	claims_modifier = 0.75
 
 	behaviour = {
-		conqueror = yes
+		conqueror = no
 		subjugator = no
-		liberator = no
+		liberator = yes
 		opportunist = yes
 		slaver = no
 		uplifter = no

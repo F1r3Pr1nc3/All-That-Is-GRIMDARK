@@ -125,7 +125,11 @@ country_event = {
 				if = { # Hegemon Setup origin_hegemon
 					limit = { root = { has_origin = origin_godruler } }
 					if = { # If member is_ai = no the federation still not exists
-						limit = { has_federation = yes root = { has_federation = yes } }
+						limit = {
+							has_federation = yes
+							root = { has_federation = yes }
+							federation = { is_same_value = root.federation }
+						}
 						federation = {
 							set_federation_type = hegemony_federation # military_federation
 							set_federation_leader = root
@@ -217,7 +221,7 @@ country_event = {
 			# random_owned_species = {
 			# 	limit = {
 			# 		is_sapient = yes
-			# 		NOR = { is_same_species = root.owner_main_species is_same_species = root.founder_species }
+			# 		NOR = { is_same_species = root is_same_species = root.founder_species }
 			# 		OR = {
 			# 			is_human_species = yes
 			# 			species_portrait = "Servitors"
@@ -228,7 +232,7 @@ country_event = {
 			# 			is_sapient = yes
 			# 			is_same_species_class = prev # is_species_class = HUM
 			# 			NOR = {
-			# 				is_same_species = root.owner_main_species
+			# 				is_same_species = root
 			# 				is_same_species = root.owner_species
 			# 				is_same_species = prev
 			# 				has_trait = trait_heretic_astartes
@@ -371,11 +375,11 @@ country_event = {
 					}
 				}
 			}
-			if = {
-				limit = { has_global_flag = WHspecies_installed NOT = { is_species_class = "Chaos_Daemons" } }
-				mirror_species = { CLASS = Chaos_Daemons }
-				root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
-			}
+			# if = { TODO mod var & mirror_species improvement
+			# 	limit = { has_global_flag = WHspecies_installed NOT = { is_species_class = "Chaos_Daemons" } }
+			# 	mirror_species = { CLASS = Chaos_Daemons }
+			# 	root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
+			# }
 		}
 		if = {
 			limit = {
@@ -517,10 +521,10 @@ country_event = {
 												is_sapient = yes
 												is_same_species_class = prev
 												has_trait = trait_heretic_astartes
-												NOR = { is_same_species = root.owner_main_species is_same_species = prev }
+												NOR = { is_same_species = root is_same_species = prev }
 												species_portrait = "human"
 											}
-											prev = { set_species_identity = prev }
+											prev = { set_species_identity = prev set_species_homeworld = prev.home_planet }
 										}
 									}
 								}
@@ -560,7 +564,7 @@ country_event = {
 				event_target:chaos_marine = {
 					# if = {
 					# 	limit = { root = { OR = { is_gestalt = yes has_ethic = ethic_fanatic_xenophobe } } }
-					# 	set_species_identity = root.owner_main_species
+					# 	set_species_identity = root
 					# }
 					change_species_characteristics = {
 						remove_trait = trait_pc_nuked_preference
@@ -641,8 +645,7 @@ country_event = {
 			if = {
 				limit = { has_civic = civic_fanatic_purifiers }
 				every_owned_species = {
-					limit = { NOT = { is_same_species = root.owner_main_species } }
-					# root.owner_main_species = { set_species_identity = prev }
+					limit = { NOT = { is_same_species = root } }
 					set_citizenship_type = { country = root type = citizenship_full }
 				}
 			}
@@ -877,7 +880,6 @@ country_event = {
 				}
 			}
 			modify_species = {
-				species = prev
 				remove_trait = trait_latent_psionic
 				remove_trait = trait_cybernetic
 				add_trait = trait_psionic
@@ -885,6 +887,8 @@ country_event = {
 				add_trait = trait_void_dweller_1
 				add_trait = trait_pc_habitat_preference
 				add_traits_at_start_of_list = yes
+				effect = {
+				}
 			}
 			random_owned_fleet = {
 				limit = {
@@ -1083,18 +1087,44 @@ country_event = {
 				set_origin = origin_iforge # origin_mechanists
 			}
 			## Species
-			# every_owned_species = {
-			# 	limit = { NOT = { has_trait = trait_functional } }
-			# 	root = { modify_species = { species = prev add_trait = trait_functional add_traits_at_start_of_list = yes } }
-			# 	if = {
-			# 		limit = { NOT = { has_trait = trait_cyborg } }
-			# 		root = { modify_species = { species = prev add_trait = trait_cyborg } }
-			# 	}
-			# 	if = {
-			# 		limit = { NOT = { has_trait = trait_cybernetic } }
-			# 		root = { modify_species = { species = prev add_trait = trait_cybernetic } }
-			# 	}
-			# }
+			random_owned_species = {
+				limit = { NOT = { is_same_species = root } }
+				root = {
+					modify_species = {
+						species = prev
+						effect = {
+							if = {
+								limit = { NOT = { has_trait = trait_syncretic_proles } }
+								change_species_characteristics = { add_trait = trait_syncretic_proles }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_cyborg_double_jointed } }
+								change_species_characteristics = { add_trait = trait_cyborg_double_jointed }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_lobotomised_servitors } }
+								change_species_characteristics = { add_trait = trait_lobotomised_servitors }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_limited_cybernetic } }
+								change_species_characteristics = { add_trait = trait_limited_cybernetic }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_functional } }
+								change_species_characteristics = { add_trait = trait_functional add_traits_at_start_of_list = yes }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_cyborg } }
+								change_species_characteristics = { add_trait = trait_cyborg }
+							}
+							if = {
+								limit = { NOT = { has_trait = trait_cybernetic } }
+								change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
+							}
+						}
+					}
+				}
+			}
 
 			if = {
 				limit = { owner_main_species = { NOT = { has_trait = trait_adeptus_mechanicus } } }
@@ -1119,11 +1149,11 @@ country_event = {
 			random_owned_species = {
 				limit = {
 					is_sapient = yes
-					NOR = { is_same_species = root.owner_main_species has_trait = trait_syncretic_proles has_trait = trait_cyborg_double_jointed }
-				}
-				if = {
-					limit = { NOT = { has_trait = trait_lobotomised_servitors } }
-					root = { modify_species = { species = prev add_trait = trait_lobotomised_servitors } }
+					NOR = {
+						is_same_species = root
+						has_trait = trait_syncretic_proles
+						has_trait = trait_cyborg_double_jointed
+					}
 				}
 				root = {
 					modify_species = {
@@ -1131,12 +1161,24 @@ country_event = {
 						add_trait = trait_syncretic_proles
 						add_trait = trait_cyborg_double_jointed
 						add_traits_at_start_of_list = yes
-						effect = { save_event_target_as = servile_species }
+						effect = {
+							if = {
+								limit = { NOT = { has_trait = trait_lobotomised_servitors } }
+								change_species_characteristics = { add_trait = trait_lobotomised_servitors }
+							}
+							save_event_target_as = servile_species
+						}
 					}
 				}
 			}
 			every_owned_leader = {
-				limit = { NOR = { has_trait = leader_trait_cyborg has_leader_flag = renowned_leader has_leader_flag = legendary_leader } }
+				limit = {
+					NOR = {
+						has_trait = leader_trait_cyborg
+						has_leader_flag = renowned_leader
+						has_leader_flag = legendary_leader
+					}
+				}
 				add_trait_no_notify = leader_trait_cyborg
 			}
 			every_pool_leader = {
@@ -1338,7 +1380,7 @@ country_event = {
 	}
 }
 
-## Necron relations.3 (on start)
+## Necron relations.3 (On New Necron Country)
 country_event = {
 	id = aagrimstarts.2011
 	hide_window = yes
@@ -1367,7 +1409,11 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_both_necron }
 			root = { add_opinion_modifier = { who = prev modifier = opinion_both_necron } }
 			if = {
-				limit = { exists = founder_species owner_main_species = { NOT = { is_same_species = root.founder_species } } }
+				limit = {
+					exists = founder_species
+					owner_main_species = { NOT = { is_same_species = root.founder_species } }
+					founder_species = { has_trait = trait_necrons }
+				}
 				owner_main_species = { set_species_identity = root.founder_species }
 			}
 		}
@@ -1623,8 +1669,8 @@ country_event = {
 				}
 				has_communications = root # Not into the blue
 				owner_main_species = {
-					is_same_species_class = root.owner_main_species
-					NOT = { is_same_species = root.owner_main_species }
+					is_same_species_class = root
+					NOT = { is_same_species = root }
 					has_trait = "trait_orkz"
 					OR = {
 						# species_portrait = root.owner_main_species # TODO scope allowed?
@@ -1663,6 +1709,7 @@ country_event = {
 					}
 				}
 				set_species_identity = prev
+				set_species_homeworld = prev.home_planet
 			}
 		}
 		if = {
@@ -1670,17 +1717,18 @@ country_event = {
 			random_owned_species = {
 				limit = {
 					is_sapient = yes
-					NOT = { is_same_species = root.owner_main_species }
+					NOT = { is_same_species = root }
 					OR = { species_portrait = "Kroot" is_species = "Kroot" }
 				}
 				random_galaxy_species = {
 					limit = {
 						is_sapient = yes
 						is_same_species_class = prev
-						NOR = { is_same_species = root.owner_main_species is_same_species = prev }
+						NOR = { is_same_species = root is_same_species = prev }
 						OR = { species_portrait = "Kroot" is_species = "Kroot" }
 					}
 					set_species_identity = prev
+					set_species_homeworld = prev.home_planet
 				}
 			}
 		}
@@ -1690,17 +1738,18 @@ country_event = {
 				limit = {
 					is_sapient = yes
 					is_species_class = "AVI"
-					NOT = { is_same_species = root.owner_main_species }
+					NOT = { is_same_species = root }
 					species_portrait = "avi14"
 				}
 				random_galaxy_species = {
 					limit = {
 						is_sapient = yes
 						is_same_species_class = prev
-						NOR = { is_same_species = root.owner_main_species is_same_species = prev }
+						NOR = { is_same_species = root is_same_species = prev }
 						species_portrait = "avi14"
 					}
 					set_species_identity = prev
+					set_species_homeworld = prev.home_planet
 				}
 			}
 		}
@@ -1929,7 +1978,7 @@ planet_event = {
 								AND = { has_trait = trait_tyranid prev = { has_country_flag = tyranid_empire } }
 							}
 							NOR = {
-								is_same_species = prev.owner_main_species
+								is_same_species = prev
 								has_citizenship_type = { type = citizenship_purge country = prev }
 								has_purge_type = { country = prev type = purge_neutering }
 								any_species_pop = { is_being_purged = yes }
@@ -1945,7 +1994,7 @@ planet_event = {
 								AND = { has_trait = trait_tyranid prev = { has_country_flag = tyranid_empire } }
 							}
 							NOR = {
-								is_same_species = prev.owner_main_species
+								is_same_species = prev
 								has_citizenship_type = { type = citizenship_purge country = prev }
 								has_purge_type = { country = prev type = purge_neutering }
 								any_species_pop = { is_being_purged = yes }
@@ -1970,24 +2019,24 @@ planet_event = {
 			# }
 		}
 
-		if = {
-			limit = {
-				has_global_flag = WHspecies_installed
-				NOT = { event_target:purge_species = { is_same_species_class = root.owner_species } }
-			}
-			if = {
-				limit = { owner_species = { is_species_class = "Tyranids" } }
-				event_target:purge_species = {
-					mirror_species = { CLASS = Tyranids }
-				}
-			}
-			else_if = {
-				limit = { owner_species = { is_species_class = "Chaos_Daemons" } }
-				event_target:purge_species = {
-					mirror_species = { CLASS = Chaos_Daemons }
-				}
-			}
-		}
+		# if = { TODO mod var & mirror_species improvement
+		# 	limit = {
+		# 		has_global_flag = WHspecies_installed
+		# 		NOT = { event_target:purge_species = { is_same_species_class = root.owner_species } }
+		# 	}
+		# 	if = {
+		# 		limit = { owner_species = { is_species_class = "Tyranids" } }
+		# 		event_target:purge_species = {
+		# 			mirror_species = { CLASS = Tyranids }
+		# 		}
+		# 	}
+		# 	else_if = {
+		# 		limit = { owner_species = { is_species_class = "Chaos_Daemons" } }
+		# 		event_target:purge_species = {
+		# 			mirror_species = { CLASS = Chaos_Daemons }
+		# 		}
+		# 	}
+		# }
 
 		if = {
 			limit = {

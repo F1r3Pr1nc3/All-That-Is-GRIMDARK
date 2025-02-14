@@ -326,7 +326,7 @@ traditionalist = {
 		}
 		trigger = {
 			owner = {
-				NOT = { has_country_flag = cyborg_empire }
+				is_cyborg_empire = no
 			}
 		}
 	}
@@ -346,7 +346,7 @@ traditionalist = {
 		}
 		trigger = {
 			owner = {
-				NOT = { has_country_flag = cyborg_empire }
+				is_cyborg_empire = no
 			}
 		}
 	}
@@ -367,7 +367,6 @@ traditionalist = {
 				OR = {
 					has_ascension_perk = ap_the_flesh_is_weak
 					is_cyborg_empire = yes
-					has_country_flag = cyborg_empire
 				}
 			}
 		}
@@ -436,10 +435,7 @@ traditionalist = {
 
 		trigger = {
 			owner = {
-				NOR = {
-					has_country_flag = cyborg_empire # i.e. Has completed "FLESH_IS_WEAK_PROJECT"
-					is_cyborg_empire = yes # Checks for the Cybernetic trait
-				}
+				is_cyborg_empire = no # Checks for the Cybernetic trait i.e. Has completed "FLESH_IS_WEAK_PROJECT"
 			}
 		}
 	}

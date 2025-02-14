@@ -142,11 +142,7 @@ citizenship_assimilation = {
 			}
 			custom_tooltip = { # non-devouring hive mind
 				fail_text = HIVE_SPECIES_MUST_BE_NON_HIVE
-				NOR = {
-					has_trait = trait_hive_mind
-					has_trait = trait_mechanical
-					has_trait = trait_machine_unit
-				}
+				is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes
 			}
 		}
 		else_if = {

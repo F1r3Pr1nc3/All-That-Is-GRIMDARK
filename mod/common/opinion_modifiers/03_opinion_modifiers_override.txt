@@ -31,7 +31,12 @@ triggered_spiritualist_opinion_of_machine_empires = {
 		has_machine_cult = no
 		from = {
 			is_machine_empire = yes
-			NOR = { is_mechanical_empire = yes is_cyborg_empire = yes has_civic = civic_machine_terminator has_civic = civic_machine_assimilator }
+			NOR = {
+				is_mechanical_empire = yes
+				is_cyborg_empire = yes
+				has_civic = civic_machine_terminator
+				has_civic = civic_machine_assimilator
+			}
 		}
 	}
 	opinion = { base = -40 }

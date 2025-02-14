@@ -1,22 +1,4 @@
-# grimdark_generate_start_deposits = {
-# grimdark_nuked_deposits = {
-# grimdark_soulkeepers_habitat = {
-# grimdark_soulkeepers_circuit = {
-# grimdark_soulkeepers_bureau = {
-# grimdark_create_extra_pops = {
-# setup_barbarichorde = {
-# setup_shroudrage = {
-# setup_shroudmutated = {
-# setup_shroudsick = {
-# setup_shroudsinners = {
-# setup_soulkeepers = {
-# setup_paindrinkers = {
-# setup_greatergood = {
-# setup_bioreformers = {
-# setup_reawakened = {
-# create_remote_shroudgate_planet = {
-# create_net_shroudgate_planets = {
-# grim_extra_corvettes = {
+
 create_nearby_shroudgate_planet = {
 	# every_system_planet = {
 	# 	set_surveyed = { surveyed = yes surveyor = root }
@@ -50,7 +32,6 @@ create_nearby_tomb_planet = {
 	}
 }
 
-# TODO: transclude
 colonize_planet = {
 	random_owned_ship = {
 		orbit = {

@@ -16,7 +16,7 @@ machine_assault_10 = {
 		upkeep = { energy = 8 }
 	}
 	show_tech_unlock_if = {
-		OR = { has_ascension_perk = ap_the_flesh_is_weak has_country_flag = cyborg_empire }
+		OR = { has_ascension_perk = ap_the_flesh_is_weak is_cyborg_empire = yes }
 	}
 	prerequisites = { "tech_mega_engineering" }
 	allow = {

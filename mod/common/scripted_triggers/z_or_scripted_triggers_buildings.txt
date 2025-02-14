@@ -23,7 +23,7 @@ has_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { merg_is_habitat = yes }
+		limit = { is_planet_class = pc_habitat }
 		custom_tooltip = {
 			fail_text = "requires_building_hab_capital"
 			OR = {
@@ -90,7 +90,7 @@ has_major_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { merg_is_habitat = yes }
+		limit = { is_planet_class = pc_habitat }
 		custom_tooltip = {
 			fail_text = "requires_building_hab_major_capital"
 			OR = {
@@ -153,7 +153,7 @@ has_fully_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { merg_is_habitat = yes }
+		limit = { is_planet_class = pc_habitat }
 		custom_tooltip = {
 			fail_text = "requires_building_hab_system_capital"
 			OR = {
@@ -241,14 +241,13 @@ has_engineered_evolution_synergy = {
 has_flesh_is_weak_anti_synergy = {
 	OR = {
 		is_materialist = no
-		has_tradition = tr_cybernetics_adopt
-		has_country_flag = cyborg_empire
-		has_origin = origin_godruler		# has_country_flag = the_mankind
-		has_origin = origin_bioreformers	# has_country_flag = tyranid_empire
+		has_tradition = tr_cybernetics_adopt	# has_country_flag = cyborg_empire
+		has_origin = origin_godruler			# has_country_flag = the_mankind
+		has_origin = origin_bioreformers		# has_country_flag = tyranid_empire
 		has_country_flag = tyranid_empire
 		has_soulkeepers_origin = yes
-		has_shroudsick_origin = yes			# has_country_flag = nurgle
-		has_origin = origin_shroudrage		# has_country_flag = khorne
+		has_shroudsick_origin = yes				# has_country_flag = nurgle
+		has_origin = origin_shroudrage			# has_country_flag = khorne
 	}
 }
 # Gets overriden by blocks_ai_synthetic_evolution
