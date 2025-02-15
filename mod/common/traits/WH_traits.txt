@@ -1,7 +1,7 @@
 ##################
 # WH Traits
 ##################
-# Distinguishes trait_adeptus_mechanicus
+# Distinguishes trait_adeptus_mechanicus, trait_cybernetic?
 trait_cyborg = {
 	cost = 1
 	# icon = "gfx/interface/icons/traits/trait_mechanical.dds"

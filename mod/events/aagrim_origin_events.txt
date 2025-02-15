@@ -197,6 +197,7 @@ country_event = {
 			add_resource = { energy = 1000 }
 			country_event = { id = utopia.2656 days = 2 }
 			set_country_flag = chaos_empire
+			set_country_flag = tzeentch
 			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 4 Setup Shroud Sick
@@ -593,7 +594,6 @@ country_event = {
 				force_add_civic = civic_merchant_guilds
 			}
 			country_event = { id = aagrimstarts.9 }
-			country_event = { id = aagrimstarts.2004 days = 2 } # relations
 		}
 		else_if = { # 9 setup_bioreformers
 			limit = {
@@ -2317,7 +2317,6 @@ country_event = {
 	hide_window = yes
 	# trigger = { has_origin = origin_greatergood }
 	immediate = {
-		set_country_flag = tau_empire
 		set_country_flag = laser_tech
 		if = {
 			limit = { is_xenophobe = yes }
@@ -2395,11 +2394,23 @@ country_event = {
 				add_trait = "trait_resilient"		# +1
 				add_trait = "trait_fleeting"		# -1
 				add_trait = "trait_unruly"			# -2
-				effect = { }
+				effect = {
+					save_event_target_as = servile_species
+				}
 			}
 			event_target:servile_species = {
 				set_citizenship_type = { country = root type = citizenship_full }
+
 			}
+			every_owned_species = {
+				limit = {
+					is_same_species = event_target:servile_species
+					NOT = { is_exact_same_species = event_target:servile_species }
+				}
+				every_species_pop = { change_species = event_target:servile_species }
+				set_species_identity = event_target:servile_species
+			}
+			country_event = { id = aagrimstarts.223 days = 1 scopes = { from = event_target:servile_species } } # Try merge
 		}
 
 		get_capital_planet = yes
@@ -2453,13 +2464,25 @@ country_event = {
 							name_list = "AVI2"
 							extra_trait_points = 4
 							effect = {
-								save_event_target_as = servile_species
 								set_citizenship_type = { country = root type = citizenship_full }
 								change_species_characteristics = {
 									# add_trait = "trait_limited_regeneration"
 									# add_trait = "trait_hunters" # Reflecting their skills as hunters and trackers.
 									add_trait = "trait_nomadic" # They are known to be a nomadic species.
 									add_trait = "trait_deviants" # Reflecting their diverse and adaptable nature
+								}
+								if = {
+									limit = {
+										NAND = {
+											exists = event_target:servile_species
+											event_target:servile_species = { is_species = "Kroot" }
+										}
+									}
+									save_event_target_as = servile_species
+								}
+								else = {
+									event_target:servile_species = { set_species_homeworld = event_target:pech }
+									set_species_identity = event_target:servile_species
 								}
 							}
 						}
@@ -2478,6 +2501,7 @@ country_event = {
 								force_remove_civic = civic_machine_terminator
 								force_remove_civic = civic_hive_devouring_swarm
 							}
+							country_event = { id = aagrimstarts.223 days = 1 scopes = { from = event_target:servile_species } } # Try merge
 						}
 					}
 				}
@@ -2520,8 +2544,20 @@ country_event = {
 							homeworld = event_target:vespid
 							extra_trait_points = 4
 							effect = {
-								save_event_target_as = servile_species
 								set_citizenship_type = { country = root type = citizenship_full }
+								if = {
+									limit = {
+										NAND = {
+											exists = event_target:servile_species
+											event_target:servile_species = { is_species = "Vespid" }
+										}
+									}
+									save_event_target_as = servile_species
+								}
+								else = {
+									event_target:servile_species = { set_species_homeworld = event_target:vespid }
+									set_species_identity = event_target:servile_species
+								}
 							}
 						}
 						create_late_pre_ftl_empire = yes
@@ -2540,10 +2576,13 @@ country_event = {
 							force_remove_civic = civic_machine_terminator
 							force_remove_civic = civic_hive_devouring_swarm
 						}
+						country_event = { id = aagrimstarts.223 days = 1 scopes = { from = event_target:servile_species } } # Try merge
 					}
 				}
 			}
 		}
+		set_country_flag = tau_empire
+		country_event = { id = aagrimstarts.2004 days = 2 } # relations
 	}
 }
 
@@ -4253,7 +4292,14 @@ country_event = {
 					}
 				}
 			}
-			every_species_pop = { remove_pop_flag = event_purge clear_pop_category = yes }
+			# every_species_pop = { remove_pop_flag = event_purge clear_pop_category = yes }
+			prev = {
+				every_owned_pop = {
+					limit = { is_same_species = prevprev }
+					remove_pop_flag = event_purge
+					clear_pop_category = yes
+				}
+			}
 			# log = "Set servile species right [This.GetName]"
 			# paindrinkers, barbarichorde, greatergood
 			# grimdark_create_extra_pops
@@ -4320,13 +4366,45 @@ country_event = {
 			# 	limit = { has_colonization_control = { type = no country = root } }
 			# 	set_colonization_controls = { type = yes country = root cooldown = yes }
 			# }
+			root = {
+				country_event = { id = aagrimstarts.223 days = 1 scopes = { from = prev } } # Try merge
+			}
+			event_target:capital_planet = {
+				create_pop = { species = prev count = 12 }
+			}
+		}
+
+	}
+	after = {
+		if = {
+			limit = { any_owned_species = { num_positive_traits < 2 } }
+			log = "Kill worse pops?"
+			random_owned_species = {
+				limit = { num_positive_traits < 2 }
+				every_species_pop = {
+					limit = { exists = owner is_owned_by = root }
+					kill_pop = yes
+				}
+			}
+		}
+	}
+}
+# Species merge
+# From = species
+country_event = {
+	id = aagrimstarts.223
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = from }
+	immediate = {
+		from = { # event_target:servile_species
 			random_galaxy_species = {
 				limit = {
 					is_crossbreeding_possible = yes
 					is_same_species_class = prev
 					NOR = {
 						is_same_species = prev
-						is_same_species = root
+						is_same_species = from
 					}
 					# species_portrait = prev # TODO scope allowed?
 					OR = { # If scope is not scope allowed is_species_class = HUM
@@ -4346,23 +4424,16 @@ country_event = {
 				prev = {
 					log = "Unify \\[This.GetName] and \\[Prev.GetName]"
 					set_species_identity = prev
-					set_species_homeworld = prev.home_planet
-				}
-			}
-			event_target:capital_planet = {
-				create_pop = { species = prev count = 12 }
-			}
-		}
-	}
-	after = {
-		if = {
-			limit = { any_owned_species = { num_positive_traits < 2 } }
-			log = "Kill worse pops?"
-			random_owned_species = {
-				limit = { num_positive_traits < 2 }
-				every_species_pop = {
-					limit = { exists = owner is_owned_by = root }
-					kill_pop = yes
+					if = {
+						limit = {
+							exists = prev.home_planet
+							NAND = {
+								exists = root.capital_scope
+								root.capital_scope = { is_planet = prev.home_planet }
+							}
+						}
+						set_species_homeworld = prev.home_planet
+					}
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 ## WH40K RELATIONS ##
 namespace = aagrimstarts
-## Human relations.1 (needs dealy on init as country flags maybe not set immediately)
+## Human relations.1 (needs delay on init as country flags maybe not set immediately)
 country_event = {
 	id = aagrimstarts.2001
 	hide_window = yes
@@ -492,7 +492,7 @@ country_event = {
 								# species_portrait = "Alpha_Legion"
 							}
 						}
-						# log = "modify_species \\[This.GetName] species_portrait again"
+						# log = "modify species \\[This.GetName] species_portrait again"
 						# change_species_characteristics = { remove_trait = trait_daemons add_trait = trait_heretic_astartes add_traits_at_start_of_list = yes can_change_leader = yes }
 						modify_species = {
 							base = none
@@ -587,42 +587,45 @@ country_event = {
 							# create_pop = { species = event_target:chaos_marine }
 						}
 					}
-					modify_species = {
-						# add_trait = trait_latent_psionic
-						add_trait = trait_daemons
-						add_traits_at_start_of_list = yes
-						# change_scoped_species = no in species scope not applicable
-						effect = {
-							if = {
-								limit = { has_global_flag = WHspecies_installed NOT = { is_species_class = "Chaos_Daemons" } }
-								mirror_species = { CLASS = Chaos_Daemons }
-							}
-							root = {
-								while = { count = 3
-									# capital_scope = { create_pop = { species = prevprev } }
-									random_owned_pop = {
-										limit = { is_exact_same_species = prevprevprev }
-										change_species = prevprev
-									}
-									random_owned_leader = {
-										limit = { is_exact_same_species = prevprevprev }
-										change_species = prevprev
-									}
-									random_pool_leader = {
-										limit = { is_exact_same_species = prevprevprev }
-										change_species = prevprev
-									}
-									random_envoy = {
-										limit = { is_exact_same_species = prevprevprev }
-										change_species = prevprev
-									}
-									random_owned_army = {
-										limit = { exists = species is_exact_same_species = prevprevprev }
-										change_species = prevprev
+					if = {
+						limit = { NOT = { has_trait = trait_daemons } }
+						modify_species = {
+							# add_trait = trait_latent_psionic
+							add_trait = trait_daemons
+							add_traits_at_start_of_list = yes
+							# change_scoped_species = no in species scope not applicable
+							effect = {
+								if = {
+									limit = { has_global_flag = WHspecies_installed NOT = { is_species_class = "Chaos_Daemons" } }
+									mirror_species = { CLASS = Chaos_Daemons }
+								}
+								root = {
+									while = { count = 3
+										# capital_scope = { create_pop = { species = prevprev } }
+										random_owned_pop = {
+											limit = { is_exact_same_species = prevprevprev }
+											change_species = prevprev
+										}
+										random_owned_leader = {
+											limit = { is_exact_same_species = prevprevprev }
+											change_species = prevprev
+										}
+										random_pool_leader = {
+											limit = { is_exact_same_species = prevprevprev }
+											change_species = prevprev
+										}
+										random_envoy = {
+											limit = { is_exact_same_species = prevprevprev }
+											change_species = prevprev
+										}
+										random_owned_army = {
+											limit = { exists = species is_exact_same_species = prevprevprev }
+											change_species = prevprev
+										}
 									}
 								}
+								set_citizenship_type = { country = root type = citizenship_full }
 							}
-							set_citizenship_type = { country = root type = citizenship_full }
 						}
 					}
 				}
@@ -657,9 +660,12 @@ country_event = {
 		every_owned_leader = {
 			limit = { has_psionic_leader_trait = no }
 			add_trait_no_notify = leader_trait_psionic
-			modify_species = { # WORKS but the species is not listed in the empire
-				add_trait = trait_daemons
-				add_traits_at_start_of_list = yes
+			if = {
+				limit = { species = { NOT = { has_trait = trait_daemons } } }
+				modify_species = { # WORKS but the species is not listed in the empire
+					add_trait = trait_daemons
+					add_traits_at_start_of_list = yes
+				}
 			}
 		}
 		if = {
@@ -785,7 +791,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = { get_capital_planet = yes event_target:capital_planet = { check_planet_employment = yes } }
+	after = {
+		get_capital_planet = yes
+		event_target:capital_planet = {
+			check_planet_employment = yes
+		}
+	}
 }
 
 # Steady Relations (on_five_year_pulse_country)
@@ -813,8 +824,11 @@ country_event = {
 					}
 				}
 			}
+			if = {
+				limit = { NOT = { has_country_flag = ork_empire } }
+				country_event = { id = aagrimstarts.2007 days = 2 } # relations
+			}
 			set_country_flag = ork_empire
-			country_event = { id = aagrimstarts.2007 days = 2 } # relations
 		}
 		else_if = { # 2 setup_shroudrage
 			limit = { OR = { has_origin = origin_shroudrage has_country_flag = khorne } }
@@ -828,17 +842,23 @@ country_event = {
 					root = { modify_species = { species = prev add_trait = trait_survivor } }
 				}
 			}
+			if = {
+				limit = { NAND = { has_country_flag = chaos_empire has_country_flag = khorne } }
+				country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			}
 			set_country_flag = chaos_empire
 			set_country_flag = khorne
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 3 setup_shroudmutated
 			limit = { OR = { has_origin = origin_shroudmutated has_country_flag = tzeentch } }
 			set_country_flag = breached_shroud
 			add_resource = { energy = 1000 }
+			if = {
+				limit = { NAND = { has_country_flag = chaos_empire has_country_flag = tzeentch } }
+				country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			}
 			set_country_flag = chaos_empire
 			set_country_flag = tzeentch
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 4 setup_shroudsick
 			limit = { has_shroudsick_origin = yes }
@@ -849,9 +869,12 @@ country_event = {
 				}
 			}
 			add_resource = { energy = 1000 }
+			if = {
+				limit = { NAND = { has_country_flag = chaos_empire has_country_flag = nurgle } }
+				country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			}
 			set_country_flag = chaos_empire
 			set_country_flag = nurgle
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 5 setup_shroudsinners
 			limit = {
@@ -867,10 +890,13 @@ country_event = {
 				}
 			}
 			add_resource = { energy = 1000 }
+			if = {
+				limit = { NAND = { has_country_flag = chaos_empire has_country_flag = slaanesh } }
+				country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			}
 			set_country_flag = breached_shroud
 			set_country_flag = chaos_empire
 			set_country_flag = slaanesh
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
 		}
 		else_if = { # 6 Setup Soulkeepers
 			limit = {
@@ -879,17 +905,18 @@ country_event = {
 					founder_species = { has_trait = trait_eldar } # Compat Mod "WH species"
 				}
 			}
-			modify_species = {
-				remove_trait = trait_latent_psionic
-				remove_trait = trait_cybernetic
-				add_trait = trait_psionic
-				add_trait = trait_eldar
-				add_trait = trait_void_dweller_1
-				add_trait = trait_pc_habitat_preference
-				add_traits_at_start_of_list = yes
-				effect = {
-				}
-			}
+			# TODO not double species
+			# modify_species = {
+			# 	remove_trait = trait_latent_psionic
+			# 	remove_trait = trait_cybernetic
+			# 	add_trait = trait_psionic
+			# 	add_trait = trait_eldar
+			# 	add_trait = trait_void_dweller_1
+			# 	add_trait = trait_pc_habitat_preference
+			# 	add_traits_at_start_of_list = yes
+			# 	effect = {
+			# 	}
+			# }
 			random_owned_fleet = {
 				limit = {
 					is_ship_size = science
@@ -1088,39 +1115,43 @@ country_event = {
 			}
 			## Species
 			random_owned_species = {
-				limit = { NOT = { is_same_species = root } }
+				limit = {
+					NOR = { is_same_species = root has_trait = trait_cybernetic }
+					has_trait = trait_syncretic_proles
+					NAND = {
+						has_trait = trait_lobotomised_servitors
+						has_trait = trait_functional
+						has_trait = trait_limited_cybernetic
+					}
+				}
 				root = {
 					modify_species = {
 						species = prev
 						effect = {
 							if = {
-								limit = { NOT = { has_trait = trait_syncretic_proles } }
-								change_species_characteristics = { add_trait = trait_syncretic_proles }
-							}
-							if = {
-								limit = { NOT = { has_trait = trait_cyborg_double_jointed } }
-								change_species_characteristics = { add_trait = trait_cyborg_double_jointed }
-							}
-							if = {
 								limit = { NOT = { has_trait = trait_lobotomised_servitors } }
 								change_species_characteristics = { add_trait = trait_lobotomised_servitors }
-							}
-							if = {
-								limit = { NOT = { has_trait = trait_limited_cybernetic } }
-								change_species_characteristics = { add_trait = trait_limited_cybernetic }
 							}
 							if = {
 								limit = { NOT = { has_trait = trait_functional } }
 								change_species_characteristics = { add_trait = trait_functional add_traits_at_start_of_list = yes }
 							}
 							if = {
-								limit = { NOT = { has_trait = trait_cyborg } }
-								change_species_characteristics = { add_trait = trait_cyborg }
+								limit = { NOT = { has_trait = trait_limited_cybernetic } }
+								change_species_characteristics = { add_trait = trait_limited_cybernetic }
 							}
-							if = {
-								limit = { NOT = { has_trait = trait_cybernetic } }
-								change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
-							}
+							# if = {
+							# 	limit = { NOT = { has_trait = trait_cyborg } }
+							# 	change_species_characteristics = { add_trait = trait_cyborg }
+							# }
+							# if = {
+							# 	limit = { NOT = { has_trait = trait_cybernetic } }
+							# 	change_species_characteristics = { add_trait = trait_cybernetic add_traits_at_start_of_list = yes }
+							# }
+							# if = {
+							# 	limit = { NOT = { has_trait = trait_cyborg_double_jointed } }
+							# 	change_species_characteristics = { add_trait = trait_cyborg_double_jointed }
+							# }
 						}
 					}
 				}
@@ -1142,7 +1173,7 @@ country_event = {
 					}
 				}
 				else = {
-					modify_species = { species = owner_main_species add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes }
+					modify_species = { species = root.owner_main_species add_trait = trait_adeptus_mechanicus add_traits_at_start_of_list = yes }
 				}
 			}
 
@@ -1153,6 +1184,10 @@ country_event = {
 						is_same_species = root
 						has_trait = trait_syncretic_proles
 						has_trait = trait_cyborg_double_jointed
+					}
+					OR = {
+						has_trait = trait_cybernetic
+						has_trait = trait_cyborg
 					}
 				}
 				root = {
@@ -1197,7 +1232,10 @@ country_event = {
 					add_trait = leader_trait_the_cybernetic_luminary
 				}
 			}
-			country_event = { id = aagrimstarts.2001 days = 2 } # relations
+			if = {
+				limit = { NOT = { has_country_flag = human_empire } }
+				country_event = { id = aagrimstarts.2001 days = 2 } # relations
+			}
 			set_country_flag = human_empire
 		}
 		else_if = { # Black Legion (Chaos Undevided)
@@ -1218,12 +1256,15 @@ country_event = {
 					root = { modify_species = { species = prev add_trait = trait_heretic_astartes } }
 				}
 			}
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			if = {
+				limit = { NAND = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } }
+				country_event = { id = aagrimstarts.2002 days = 2 } # relations
+			}
 		}
-		else_if = { # Fallback Chaos
-			limit = { has_country_flag = chaos_empire }
-			country_event = { id = aagrimstarts.2002 days = 2 } # relations
-		}
+		# else_if = { # Fallback Chaos
+		# 	limit = { has_country_flag = chaos_empire }
+		# 	country_event = { id = aagrimstarts.2002 days = 2 } # relations
+		# }
 		else_if = { # Fallback Genestealer (TODO)
 			limit = {
 				has_global_flag = WHspecies_installed
@@ -1236,15 +1277,15 @@ country_event = {
 			}
 			country_event = { id = aagrimstarts.2008 days = 2 } # relations
 		}
-		else_if = {
-			limit = {
-				OR = {
-					has_origin = origin_godruler	# Mankind
-					has_country_flag = human_empire	# Fallback Humans
-				}
-			}
-			country_event = { id = aagrimstarts.2001 days = 2 } # relations
-		}
+		# else_if = { TODO not create unlimited new stuff
+		# 	limit = {
+		# 		OR = {
+		# 			has_origin = origin_godruler	# Mankind
+		# 			has_country_flag = human_empire	# Fallback Humans
+		# 		}
+		# 	}
+		# 	country_event = { id = aagrimstarts.2001 days = 2 } # relations
+		# }
 		if = { # Strengthen weak empires
 			limit = { NOT = { has_origin = origin_default } }
 			country_event = { id = aagrimstarts.2030 days = 15 random = 15 }
@@ -1645,16 +1686,31 @@ country_event = {
 				}
 				owner_main_species = {
 					if = {
-						limit = { NOT = { has_trait = trait_pc_nuked_preference } }
-						root = { modify_species = { species = prev add_trait = trait_pc_nuked_preference } }
-					}
-					if = {
-						limit = { NOT = { has_trait = trait_survivor } }
-						root = { modify_species = { species = prev add_trait = trait_survivor } }
-					}
-					if = {
-						limit = { NOT = { has_trait = trait_orkz } }
-						root = { modify_species = { species = prev add_trait = trait_orkz } }
+						limit = {
+							NAND = {
+								has_trait = trait_pc_nuked_preference
+								has_trait = trait_orkz
+								has_trait = trait_survivor
+							}
+						}
+						root = {
+							modify_species = {
+								effect = {
+									if = {
+										limit = { NOT = { has_trait = trait_pc_nuked_preference } }
+										change_species_characteristics = { add_trait = trait_pc_nuked_preference  add_traits_at_start_of_list = yes }
+									}
+									if = {
+										limit = { NOT = { has_trait = trait_orkz } }
+										change_species_characteristics = { add_trait = trait_orkz add_traits_at_start_of_list = yes }
+									}
+									if = {
+										limit = { NOT = { has_trait = trait_survivor } }
+										change_species_characteristics = { add_trait = trait_survivor }
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1709,7 +1765,16 @@ country_event = {
 					}
 				}
 				set_species_identity = prev
-				set_species_homeworld = prev.home_planet
+				if = {
+					limit = {
+						exists = prev.home_planet
+						NAND = {
+							exists = root.capital_scope
+							root.capital_scope = { is_planet = prev.home_planet }
+						}
+					}
+					set_species_homeworld = prev.home_planet
+				}
 			}
 		}
 		if = {
@@ -1728,7 +1793,16 @@ country_event = {
 						OR = { species_portrait = "Kroot" is_species = "Kroot" }
 					}
 					set_species_identity = prev
-					set_species_homeworld = prev.home_planet
+					if = {
+						limit = {
+							exists = prev.home_planet
+							NAND = {
+								exists = root.capital_scope
+								root.capital_scope = { is_planet = prev.home_planet }
+							}
+						}
+						set_species_homeworld = prev.home_planet
+					}
 				}
 			}
 		}
@@ -1749,7 +1823,16 @@ country_event = {
 						species_portrait = "avi14"
 					}
 					set_species_identity = prev
-					set_species_homeworld = prev.home_planet
+					if = {
+						limit = {
+							exists = prev.home_planet
+							NAND = {
+								exists = root.capital_scope
+								root.capital_scope = { is_planet = prev.home_planet }
+							}
+						}
+						set_species_homeworld = prev.home_planet
+					}
 				}
 			}
 		}
@@ -2055,9 +2138,7 @@ planet_event = {
 					NOT = { ideal_planet_class = root }
 				}
 			}
-			event_target:purge_species = {
-				root = { modify_species = { ideal_planet_class = root } }
-			}
+			modify_species = { species = event_target:purge_species ideal_planet_class = root }
 		}
 		from = {
 			if = {
@@ -2169,24 +2250,24 @@ country_event = {
 			# 	}
 			# }
 			# else = {
-			ordered_playable_country = {
-				position = 0
-				order_by = trigger:fleet_power
-				inverse = yes
-				limit = {
-					is_ai = yes
-					NOR = {
-						is_same_empire = root
-						is_subject = yes
-						is_overlord = yes
-						has_origin = origin_default
-						used_naval_capacity_percent >= 0.4
-					}
-					relative_power = { who = root value <= inferior category = economy }
+		ordered_playable_country = {
+			position = 0
+			order_by = trigger:fleet_power
+			inverse = yes
+			limit = {
+				is_ai = yes
+				NOR = {
+					is_same_empire = root
+					is_subject = yes
+					is_overlord = yes
+					has_origin = origin_default
+					used_naval_capacity_percent >= 0.4
 				}
-				add_resource = { energy = 2000 minerals = 2000 food = 2000 unity = 6000 influence = 150 }
-				first_contact_grant_random_tech_option = { PROGRESS = 0.2 }
-				create_fleet_from_naval_cap = 0.1
+				relative_power = { who = root value <= inferior category = economy }
+			}
+			add_resource = { energy = 2000 minerals = 2000 food = 2000 unity = 6000 influence = 150 }
+			first_contact_grant_random_tech_option = { PROGRESS = 0.2 }
+			create_fleet_from_naval_cap = 0.1
 			# }
 			# }
 			# log = "Avaiable buff countries \\[This.tmp_var_buff_countries]"
