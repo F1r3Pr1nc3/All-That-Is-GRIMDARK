@@ -2127,7 +2127,9 @@ planet_event = {
 					}
 				}
 			}
-			create_pop = { species = event_target:purge_species }
+		}
+		event_target:purge_species = {
+			root = { create_pop = { species = prev } }
 			from = {
 				if = {
 					limit = { is_gestalt = no }

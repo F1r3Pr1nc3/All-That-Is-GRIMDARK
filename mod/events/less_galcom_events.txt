@@ -387,12 +387,12 @@ event = {
 				effect = {
 					set_owner = prev
 					while = { count = 10
-						create_army_transport = { army_type = "assault_army" species = owner_species }
+						create_army_transport = { army_type = "assault_army" species = prev.owner_species }
 					}
 					while = { count = 3
-						create_army_transport = { army_type = "mecha_army" army_name = "NAME_mechawarrior_contractors" }
+						create_army_transport = { army_type = "mecha_army" army_name = "NAME_mechawarrior_contractors" species = prev.owner_species }
 					}
-					create_army_transport = { army_type = "titanic_assault_army" }
+					create_army_transport = { army_type = "titanic_assault_army" species = prev.owner_species }
 					set_location = { target = prev.capital_scope }
 				}
 			}
@@ -519,7 +519,7 @@ event = {
 				effect = {
 					set_owner = prev
 					while = { count = 3
-						create_army_transport = { army_type = "mutant_army" species = owner_species }
+						create_army_transport = { army_type = "mutant_army" species = prev.owner_species }
 					}
 					set_location = { target = prev.capital_scope }
 				}
