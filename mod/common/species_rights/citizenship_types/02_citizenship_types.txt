@@ -40,10 +40,8 @@ citizenship_assimilation = {
 							}
 						}
 						root = {
-							is_mechanical_species = no
-							NOT = {
-								# has_trait = trait_mechanical
-								# has_trait = trait_machine_unit
+							NOR = {
+								is_mechanical_species = yes
 								has_trait = trait_cybernetic
 							}
 						}

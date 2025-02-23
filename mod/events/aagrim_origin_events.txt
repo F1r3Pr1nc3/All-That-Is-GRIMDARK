@@ -2945,7 +2945,7 @@ country_event = {
 			if = {
 				limit = {
 					any_galaxy_species = {
-						has_trait = trait_machine_unit
+						is_robotic = yes
 						has_trait = trait_necrons
 						OR = {
 							has_species_flag = machine_god
@@ -2956,7 +2956,7 @@ country_event = {
 				## RESTORE NECRON OVERLORD SPECIES
 				random_galaxy_species = {
 					limit = {
-						has_trait = trait_machine_unit
+						is_robotic = yes
 						has_trait = trait_necrons
 						OR = {
 							has_species_flag = machine_god
@@ -2967,52 +2967,75 @@ country_event = {
 				}
 			}
 			else = {
-				create_species = {
-					name = PRESCRIPTED_ruler_name_necron
-					species_bio = "§LThis species is so far above others that they're often viewed as deities.§!"
-					class = PARAGON # MACHINE
-					portrait = par_renown_03
-					homeworld = root.owner_species
-					# traits = root.owner_species
-					traits = {
-						trait = "trait_machine_unit"
-						trait = "trait_necrons"
-						trait = "trait_robot_high_bandwidth"
-						trait = random_traits
+				owner_species = {
+					create_species = {
+						name = PRESCRIPTED_ruler_name_necron
+						# is_mod = yes breaks the game
+						species_bio = "§LThis species is so far above others that they're often viewed as deities.§!"
+						class = PARAGON # MACHINE
+						portrait = par_renown_03
+						homeworld = this
+						traits = this
+						traits = {
+							trait = "trait_machine_unit"
+							trait = "trait_necrons"
+							trait = "trait_robot_high_bandwidth"
+							trait = random_traits
+						}
+						namelist = this
+						immortal = yes
+						can_be_modified = no
+						gender = indeterminable
+						# clear_parent_species_link = yes
+						allow_negative_traits = no
+						extra_trait_points = 3
+						effect = {
+							set_species_flag = machine_god
+							save_event_target_as = azaryn_species
+							# set_species_identity = prev
+						}
 					}
-					# is_mod = yes breaks the game
-					namelist = root.owner_species
-					immortal = yes
-					can_be_modified = no
-					gender = indeterminable
-					# clear_parent_species_link = yes
-					allow_negative_traits = no
-					extra_trait_points = 3
-					effect = {
-						set_species_flag = machine_god
-						save_event_target_as = azaryn_species
-						# set_species_identity = root.owner_species
-						set_citizenship_type = { country = root type = citizenship_full_machine cooldown = yes }
+					# modify_species = {
+					# 	base = none
+					# 	portrait = par_renown_03
+					# 	effect = {
+					# 		rename_species = { name = random }
+					# 		change_species_characteristics = {
+					# 			immortal = yes
+					# 			can_be_modified = no
+					# 			portrait = par_renown_03
+					# 		}
+					# 	}
+					# }
+
+				}
+			}
+			event_target:azaryn_species = {
+				set_species_flag = machine_god
+				# rename_species = { name = "Necron" } # TODO
+				# set_species_identity = root.owner_species
+				if = {
+					limit = { count_species_pop = { limit = { } count = 0 } }
+					event_target:capital_planet = {
+						create_pop = { species = prev ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
 					}
 				}
-				# modify_species = {
-				# 	base = none
-				# 	portrait = par_renown_03
-				# 	change_scoped_species = no
-				# 	effect = {
-				# 		set_species_flag = machine_god
-				# 		rename_species = { name = random }
-				# 		save_event_target_as = azaryn_species
-				# 		set_citizenship_type = { country = root type = citizenship_full_machine cooldown = no }
-				# 		change_species_characteristics = {
-				# 			immortal = yes
-				# 			can_be_modified = no
-				# 			portrait = par_renown_03
-				# 			gender = any
-				# 		}
-				# 	}
-				# }
+				random_species_pop = {
+					log = "Init Machine God"
+					add_modifier = { modifier = machine_god }
+					add_modifier = { modifier = army_rank_elite }
+					add_modifier = { modifier = agenda_conquer_nature_finish }
+					add_modifier = { modifier = pop_happiness_positive }
+				}
+				if = {
+					limit = { root = { is_machine_empire = yes } }
+					set_citizenship_type = { country = root type = citizenship_full_machine cooldown = yes }
+				}
+				else = {
+					set_citizenship_type = { country = root type = citizenship_full cooldown = yes }
+				}
 			}
+
 			closest_system = {
 				limit = {
 					any_system_planet = {
@@ -3084,38 +3107,6 @@ country_event = {
 				set_location = prev.capital_star
 			}
 		}
-		create_leader = {
-			name = PRESCRIPTED_ruler_name_necron
-			species = event_target:azaryn_species
-			class = random_ruler
-			skill = 3
-			set_age = 99
-			randomize_traits = no
-			traits = {
-				# 3 = leader_trait_reformer
-				# 3 = leader_trait_legendary_military_knowledge
-				3 = leader_trait_legendary_high_king
-				trait = leader_trait_legendary_ancestors_knowledge
-				trait = leader_trait_legendary_unfriendly
-				# trait = leader_trait_zealot
-				trait = leader_trait_chosen # leader_trait_composer_chosen
-				# trait = leader_trait_expert_survivalist
-				trait = trait_ruler_logistic_understanding_2
-			}
-			gender = female
-			event_leader = yes
-			immortal = yes
-			hide_age = yes
-			can_manually_change_location = no
-			can_assign_to_council = yes
-			hide_leader = yes
-			background_planet = event_target:capital_planet
-			skip_background_generation = yes
-			background_ethic = ethic_fanatic_xenophobe # ethic_gestalt_consciousness
-			# custom_description = root.ruler
-			# custom_catch_phrase = root.ruler
-			# background_job = root.ruler
-		}
 		if = {
 			limit = { is_gestalt = no }
 			if = {
@@ -3170,75 +3161,122 @@ country_event = {
 			}
 		}
 
-		last_created_leader = {
-			species = {
-				set_species_flag = machine_god
-				# rename_species = { name = "Necron" } # TODO
-				# save_event_target_as = azaryn_species
-				# set_species_identity = root.owner_species
-				if = {
-					limit = { count_species_pop = { limit = { } count = 0 } }
-					event_target:capital_planet = {
-						create_pop = { species = prev ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-					}
-				}
-				random_species_pop = {
-					log = "Init Machine God"
-					add_modifier = { modifier = machine_god }
-					add_modifier = { modifier = army_rank_elite }
-					add_modifier = { modifier = agenda_conquer_nature_finish }
-					add_modifier = { modifier = pop_happiness_positive }
-				}
+		create_leader = {
+			name = PRESCRIPTED_ruler_name_necron
+			species = event_target:azaryn_species
+			class = random_ruler
+			skill = 3
+			set_age = 99
+			randomize_traits = no
+			traits = {
+				# 3 = leader_trait_reformer
+				# 3 = leader_trait_legendary_military_knowledge
+				3 = leader_trait_legendary_high_king
+				trait = leader_trait_legendary_ancestors_knowledge
+				trait = leader_trait_legendary_unfriendly
+				# trait = leader_trait_zealot
+				trait = leader_trait_chosen # leader_trait_composer_chosen
+				# trait = leader_trait_expert_survivalist
+				trait = trait_ruler_logistic_understanding_2
 			}
-			root = {
+			gender = female
+			event_leader = yes
+			immortal = yes
+			hide_age = yes
+			can_manually_change_location = no
+			can_assign_to_council = yes
+			hide_leader = yes
+			background_planet = event_target:capital_planet
+			skip_background_generation = yes
+			background_ethic = ethic_fanatic_xenophobe # ethic_gestalt_consciousness
+			# custom_description = root.ruler
+			# custom_catch_phrase = root.ruler
+			# background_job = root.ruler
+			effect = {
+				set_owner = root
+				set_immortal = yes
+				freeze_leader_age = yes
+				add_skill_without_trait_selection = 5
+				set_leader_flag = leader_death_events_blocked
+				set_leader_flag = immune_to_negative_traits
+				set_leader_flag = machine_god
 				if = {
-					limit = { is_ai = yes }
-					# ruler = { kill_leader = { show_notification = no } }
-					# country_event = { id = paragon_2.2095 scopes = { from = prev } days = 1 }
-					event_target:capital_planet = {
-						assign_leader = prevprev
-						if = {
-							limit = { exists = sector exists = sector.sector_capital.leader }
-							sector.sector_capital = { assign_leader = prevprevprev }
+					limit = { root = { OR = { is_ai = yes has_paragon_dlc = yes } } }
+					add_trait_no_notify = leader_trait_legendary_leader
+					add_trait_no_notify = leader_trait_the_apparatus_luminary # 50 energy
+					add_trait_no_notify = leader_trait_the_synth_luminary # 25 alloys
+					add_trait_no_notify = leader_trait_zealot
+					# add_trait_no_notify = leader_trait_expert_survivalist
+					# add_trait_no_notify = subclass_official_visionary
+					set_leader_flag = paragon_origin_legendary_leader
+					paragon_origin_legendary_leader_trait_giver = yes
+					# Too much costs for start
+					root = {
+						# ruler = { kill_leader = { show_notification = no } }
+						# country_event = { id = paragon_2.2095 scopes = { from = prev } days = 1 }
+						event_target:capital_planet = {
+							assign_leader = prevprev
+							if = {
+								limit = { exists = sector exists = sector.sector_capital.leader }
+								sector.sector_capital = { assign_leader = prevprevprev }
+							}
 						}
-					}
-					assign_leader = prev
-					if = {
-						limit = { count_country = { limit = { has_relic = r_time_crystal } count = 0 } }
-						add_relic = r_time_crystal
+						if = {
+							limit = { is_ai = yes }
+							assign_leader = prev
+							if = {
+								limit = { count_country = { limit = { has_relic = r_time_crystal } count = 0 } }
+								add_relic = r_time_crystal
+							}
+						}
+						else = {
+							unlock_council_selection = yes
+							unlock_council_slots = 2
+							if = {
+								limit = { is_gestalt = yes }
+								if = {
+									limit = { prev = { leader_class = commander } }
+									set_council_position_to_council = councilor_gestalt_legion
+									prev = { set_council_position = councilor_gestalt_legion }
+								}
+								else_if = {
+									limit = { prev = { leader_class = official } }
+									set_council_position_to_council = councilor_gestalt_regulatory
+									prev = { set_council_position = councilor_gestalt_regulatory }
+								}
+								else_if = {
+									limit = { prev = { leader_class = scientist } }
+									set_council_position_to_council = councilor_gestalt_cognitive
+									prev = { set_council_position = councilor_gestalt_cognitive }
+								}
+							}
+							else = {
+								if = {
+									limit = { prev = { leader_class = commander } }
+									set_council_position_to_council = councilor_defense
+									prev = { set_council_position = councilor_defense }
+								}
+								else_if = {
+									limit = { prev = { leader_class = official } }
+									set_council_position_to_council = councilor_state
+									prev = { set_council_position = councilor_state }
+								}
+								else_if = {
+									limit = { prev = { leader_class = scientist } }
+									set_council_position_to_council = councilor_research
+									prev = { set_council_position = councilor_research }
+								}
+							}
+						}
+						add_modifier = { modifier = copy_alloys_income_modifier mult = 25 } # Compensate alloys costs
+						add_modifier = { modifier = copy_energy_income_modifier mult = 50 } # Compensate energy costs
+						# add_monthly_resource_mult = { resource = alloys value = 2 }
+						# add_monthly_resource_mult = { resource = energy value = 2 }
 					}
 				}
 			}
-			set_owner = root
-			set_immortal = yes
-			freeze_leader_age = yes
-			add_skill_without_trait_selection = 5
-			set_leader_flag = leader_death_events_blocked
-			set_leader_flag = immune_to_negative_traits
-			set_leader_flag = machine_god
-			if = {
-				limit = { root = { OR = { is_ai = yes has_paragon_dlc = yes } } }
-				add_trait_no_notify = leader_trait_legendary_leader
-				add_trait_no_notify = leader_trait_the_apparatus_luminary # 50 energy
-				add_trait_no_notify = leader_trait_the_synth_luminary # 25 alloys
-				add_trait_no_notify = leader_trait_zealot
-				# add_trait_no_notify = leader_trait_expert_survivalist
-				# add_trait_no_notify = subclass_official_visionary
-				set_leader_flag = paragon_origin_legendary_leader
-				paragon_origin_legendary_leader_trait_giver = yes
-			}
 		}
-		# Too much costs for start
-		if = {
-			limit = { ruler = { has_trait = leader_trait_the_synth_luminary } }
-			add_modifier = { modifier = copy_alloys_income_modifier mult = 25 } # Compensate alloys costs
-			# add_monthly_resource_mult = { resource = alloys value = 2 }
-		}
-		if = {
-			limit = { ruler = { has_trait = leader_trait_the_apparatus_luminary } }
-			add_modifier = { modifier = copy_energy_income_modifier mult = 50 } # Compensate energy costs
-			# add_monthly_resource_mult = { resource = energy value = 2 }
-		}
+
 		give_tech_no_error_effect = { TECH = tech_lasers_2 MESSAGE = no }	# Tier 1
 		give_tech_no_error_effect = { TECH = tech_plasma_1 MESSAGE = no }	# Tier 2
 		give_tech_no_error_effect = { TECH = tech_lasers_3 MESSAGE = no }	# Tier 2
