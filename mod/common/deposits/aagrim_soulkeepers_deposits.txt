@@ -11,8 +11,8 @@ d_aa_exodite_enclave = {
 			limit = { exists = owner }
 			if = {
 				limit = { owner = { has_soulkeepers_origin = yes } }
-				create_pop = { species = owner }
-				random = { chance = 50 create_pop = { species = owner } }
+				create_pop_group = { species = owner }
+				random = { chance = 50 create_pop_group = { species = owner } }
 			}
 			else = {
 				owner = { add_resource = { minerals = 250 } }
@@ -51,7 +51,7 @@ d_aa_exodite_enclave = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
 		}
-		modifier = { trade_value_add = 2 planet_amenities_add = 2 job_exodite_add = 1 }
+		modifier = { planet_amenities_add = 200 job_exodite_add = 100 }
 	}
 
 	ai_weight = { weight = 0 }
@@ -82,9 +82,8 @@ d_aa_infinity_circuit = {
 		}
 		modifier = {
 			planet_stability_add = 1
-			job_bonesinger_add = 1
-			planet_max_buildings_add = 2
-			planet_amenities_add = 10
+			job_bonesinger_add = 100
+			planet_amenities_add = 1000
 			planet_crime_add = -10
 		}
 	}
@@ -127,9 +126,8 @@ d_aa_infinity_circuit_alt = {
 		}
 		modifier = {
 			planet_stability_add = 2
-			job_bonesinger_add = 1
-			planet_max_buildings_add = 2
-			planet_amenities_add = 10
+			job_bonesinger_add = 100
+			planet_amenities_add = 1000
 			planet_crime_add = -10
 		}
 	}
@@ -178,7 +176,7 @@ d_aa_shroudgate_active = {
 				}
 			}
 		}
-		modifier = { trade_value_add = 5 planet_amenities_add = 5 pop_growth_from_immigration = 0.75 }
+		modifier = { planet_amenities_add = 500 }
 	}
 
 	triggered_planet_modifier = {
@@ -186,7 +184,7 @@ d_aa_shroudgate_active = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
 		}
-		modifier = { job_seer_add = 1 job_bonesinger_add = 1 planet_max_buildings_add = 2 }
+		modifier = { job_seer_add = 100 job_bonesinger_add = 100 }
 	}
 
 	drop_weight = { weight = 0 }

@@ -1,30 +1,10 @@
 origin_necron_awakening = {
 	is_origin = yes
-	# icon = "gfx/interface/icons/origins/origins_remnant.dds"
-	# picture = GFX_origin_necron_awakening
-	# starting_colony = pc_necron_awakend_tomb_world
 	icon = "gfx/interface/icons/origins/origins_reawakened.dds"
 	picture = GFX_evt_reawakened
 	max_once_global = yes
 	starting_colony = pc_relic
 	preferred_planet_class_neighbor = no
-	# triggered_pop_modifier = {
-	# 	potential = {
-	# 		NOR = {
-	# 			has_job = enforcer
-	# 			has_job = colonist
-	# 			has_job = telepath
-	# 		}
-	# 		OR = {
-	# 			is_pop_category = worker
-	# 			is_pop_category = criminal
-	# 			is_pop_category = slave
-	# 			is_pop_category = unemployed
-	# 		}
-	# 	}
-	# 	pop_amenities_usage_base = -2
-	# 	pop_job_amenities_mult = 0.1
-	# }
 	playable = { has_synthetic_dawn = yes has_ancrel = yes }
 	possible = {
 		authority = {

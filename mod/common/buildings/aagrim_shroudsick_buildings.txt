@@ -6,8 +6,10 @@ building_hive_major_capital_sick = {
 	can_demolish = no
 	can_be_ruined = no
 	can_be_disabled = no
-	building_sets = { infected_world }
-
+	building_sets = {
+		government
+		urban
+	}
 	category = government
 	potential = {
 		uses_district_set = infected_world
@@ -24,14 +26,12 @@ building_hive_major_capital_sick = {
 		building_hive_major_capital
 	}
 	planet_modifier = {
-		planet_housing_add = 10
-		planet_amenities_no_happiness_add = 5
-		job_tallier_add = 2
-		job_tallier_drone_add = 2
-		job_maintenance_drone_add = 5
-		job_sickneophyte_add = 3
-		job_sickneophyte_drone_add = 3
-		planet_max_buildings_add = 4
+		planet_housing_add = 1000
+		job_tallier_add = 200
+		job_tallier_drone_add = 200
+		job_maintenance_drone_add = 500
+		job_sickneophyte_add = 300
+		job_sickneophyte_drone_add = 300
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -79,7 +79,10 @@ building_hive_major_capital_sick = {
 
 building_hive_node_sick = {
 	base_buildtime = @b1_time
-	building_sets = { infected_world }
+	building_sets = {
+		government
+		urban
+	}
 
 	category = unity
 	potential = {
@@ -117,8 +120,8 @@ building_hive_node_sick = {
 		}
 	}
 	planet_modifier = {
-		job_tallier_add = 3
-		job_tallier_drone_add = 3
+		job_tallier_add = 300
+		job_tallier_drone_add = 300
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -128,7 +131,7 @@ building_hive_node_sick = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 2
+			planet_housing_add = 200
 		}
 	}
 	on_queued = {
@@ -143,7 +146,10 @@ building_hive_node_sick = {
 
 building_hive_warren_sick = {
 	base_buildtime = @b1_time
-	building_sets = { infected_world }
+		building_sets = {
+		government
+		urban
+	}
 
 	category = amenity
 	potential = {
@@ -168,8 +174,8 @@ building_hive_warren_sick = {
 		building_hive_warren
 	}
 	planet_modifier = {
-		planet_housing_add = 3
-		planet_amenities_no_happiness_add = 5
+		planet_housing_add = 300
+		planet_amenities_no_happiness_add = 500
 	}
 	resources = {
 		category = planet_buildings

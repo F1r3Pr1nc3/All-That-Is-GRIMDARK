@@ -1,8 +1,11 @@
 imperium_techpriest = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_energy_grid
-	clothes_texture_index = 2
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_energy_grid
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -10,12 +13,8 @@ imperium_techpriest = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_specialist_job
-
 	possible = {
-		owner = {
-			is_gestalt = no
-		}
+		owner = { is_gestalt = no }
 	}
 
 	resources = {
@@ -144,10 +143,6 @@ imperium_techpriest = {
 		modifier = {
 			factor = 1.2
 
-			OR = {
-				is_unemployed = yes
-				has_job = "imperium_techpriest"
-			}
 			exists = planet
 			planet = {
 				has_available_jobs = "imperium_techpriest"
@@ -168,9 +163,12 @@ imperium_techpriest = {
 
 imperium_magos = {
 	category = ruler
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_research_lab_1
-	clothes_texture_index = 3
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_research_lab_1
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -178,12 +176,10 @@ imperium_magos = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_ruler_job
-
 	possible = {
-		complex_specialist_job_check_trigger = yes
+		owner = { is_gestalt = no }
 	}
-
+	
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -256,10 +252,6 @@ imperium_magos = {
 		}
 		modifier = {
 			factor = 1.5
-			has_job = imperium_magos
-		}
-		modifier = {
-			factor = 1.5
 			has_trait = trait_latent_psionic
 		}
 		modifier = {
@@ -305,10 +297,13 @@ imperium_magos = {
 }
 
 imperium_prefect = {
-	category = ruler
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_capital
-	clothes_texture_index = 3
+	category = specialist
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_capital
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -316,7 +311,9 @@ imperium_prefect = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_specialist_job
+	possible = {
+		owner = { is_gestalt = no }
+	}
 
 	resources = {
 		category = planet_administrators
@@ -376,10 +373,6 @@ imperium_prefect = {
 			can_take_servant_job = yes
 		}
 		modifier = {
-			factor = 1.5
-			has_job = imperium_prefect
-		}
-		modifier = {
 			factor = 0.5
 			has_trait = trait_presapient_proles
 		}
@@ -400,9 +393,12 @@ imperium_prefect = {
 
 imperium_adminsage = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_capital
-	clothes_texture_index = 3
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_capital
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -410,7 +406,10 @@ imperium_adminsage = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_specialist_job
+	possible = {
+		owner = { is_gestalt = no }
+	}
+	
 	resources = {
 		category = planet_administrators
 		produces = {
@@ -469,10 +468,6 @@ imperium_adminsage = {
 			can_take_servant_job = yes
 		}
 		modifier = {
-			factor = 1.5
-			has_job = imperium_adminsage
-		}
-		modifier = {
 			factor = 0.5
 			has_trait = trait_presapient_proles
 		}
@@ -493,9 +488,12 @@ imperium_adminsage = {
 
 imperium_arbiter = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_precinct_house
-	clothes_texture_index = 5
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_precinct_house
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -506,7 +504,7 @@ imperium_arbiter = {
 	possible_precalc = can_fill_specialist_job
 
 	possible = {
-		battle_thrall_job_check_trigger = yes
+		owner = { is_gestalt = no }
 	}
 
 	resources = {
@@ -528,10 +526,6 @@ imperium_arbiter = {
 			}
 			energy = 2
 		}
-	}
-
-	pop_modifier = {
-		pop_defense_armies_add = 2
 	}
 
 	planet_modifier = {
@@ -590,10 +584,6 @@ imperium_arbiter = {
 			can_take_servant_job = yes
 		}
 		modifier = {
-			factor = 10
-			has_job = imperium_arbiter
-		}
-		modifier = {
 			factor = 1.1
 			has_trait = trait_cybernetic
 		}
@@ -622,14 +612,6 @@ imperium_arbiter = {
 			owner = { has_valid_civic = civic_police_state }
 		}
 		modifier = {
-			factor = 20
-			has_job = imperium_arbiter
-			OR = {
-				has_trait = trait_robust
-				has_trait = trait_robot_efficient_processors
-			}
-		}
-		modifier = {
 			factor = 1.1
 			OR = {
 				has_trait = trait_robot_propaganda_machines
@@ -656,20 +638,21 @@ imperium_arbiter = {
 
 imperium_agent = {
 	category = ruler
-	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_palace
-	clothes_texture_index = 5
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_palace
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
-	possible_precalc = can_fill_ruler_job
-
+	 
 	possible = {
-		battle_thrall_job_check_trigger = yes
+		owner = { is_gestalt = no }
 	}
 
 	resources = {
@@ -680,14 +663,6 @@ imperium_agent = {
 		planet_crime_mult = -0.05
 		pop_government_ethic_attraction = 0.05
 	}
-
-	pop_modifier = {
-		pop_defense_armies_add = 5
-	}
-
-	# triggered_pop_modifier = {
-	#	pop_government_ethic_attraction = 2
-	#}
 
 	weight = {
 		weight = @specialist_job_weight
@@ -713,7 +688,6 @@ imperium_agent = {
 		}
 		modifier = {
 			factor = 4
-			has_job = imperium_agent
 		}
 	}
 }

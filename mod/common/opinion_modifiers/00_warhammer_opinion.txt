@@ -13,6 +13,7 @@ opinion_both_chaos = {
 opinion_traitor_chaos = {
 	opinion = { base = -200 }
 }
+
 opinion_both_eldar = {
 	opinion = { base = 200 }
 }
@@ -21,11 +22,31 @@ opinion_both_ork = {
 	opinion = { base = 200 }
 }
 
+opinion_corpse_emperor = {
+	opinion = { base = -200 }
+}
+
 opinion_both_necron = {
 	opinion = { base = 200 }
 }
 
-# opinion_both_darkeldar = {
+opinion_eldar_natural_ally = {
+ 	opinion = { base = 125 }
+ }
+
+opinion_eldar_history = {
+ 	opinion = { base = 200 }
+}
+ 
+opinion_eldar_dislike = {
+ 	opinion = { base = -100 }
+}
+ 
+opinion_eldar_hates_chaos = {
+ 	opinion = { base = -400 }
+}
+ 
+#opinion_both_darkeldar = {
 # 	opinion = { base = 200 }
 # }
 
@@ -33,32 +54,103 @@ opinion_both_xenos = {
 	opinion = { base = 200 }
 }
 
+opinion_tau_hate_chaos = {
+	opinion = { base = -200 }
+}
+
+opinion_tau_natural_ally = {
+	opinion = { base = 50 }
+}
+
+opinion_chaos_hate_rival = {
+	opinion = { base = -300 }
+}
+
+opinion_ork_risk_friend = {
+    opinion = { base = 50 }
+}
+
+opinion_ork_natural_ally = {
+    opinion = { base = 50 }
+}
+
 opinion_both_tyranid = {
 	opinion = { base = 200 }
 }
 
-# opinion_human_hate_xenos = {
-# 	opinion = { base = -50 }
-# }
+opinion_human_hate_xenos = {
+ 	opinion = { base = -250 }
+ }
 
-# opinion_chaos_hate_xenos = {
-# 	opinion = { base = -50 }
-# }
+opinion_chaos_hate_xenos = {
+ 	opinion = { base = -50 }
+ }
 
 opinion_necron_hate_everyone = {
-	opinion = { base = -50 }
+	opinion = { base = -250 }
 }
 
-# opinion_senatorum = {
+#opinion_senatorum = {
 # 	opinion = { base = 1000 }
 # }
 
-# opinion_wanted_to_leave_confederation = {
+#opinion_wanted_to_leave_confederation = {
 # 	opinion = { base = -200 }
 # 	decay = { base = 1 }
 # }
 
-# opinion_denied_to_leave_confederation = {
+#opinion_denied_to_leave_confederation = {
 # 	opinion = { base = -300 }
 # 	decay = { base = 1 }
 # }
+
+ # MECHANICUS OPINIONS
+ # Embassy opinion modifier
+triggered_mechanicus_opinion_of_machine_empires = {
+	trigger = {
+		has_machine_cult = yes
+		from = {
+			is_machine_empire = yes
+			NOT = { has_civic = civic_machine_terminator }
+		}
+	}
+	opinion = { base = 60 }
+}
+
+triggered_machine_empires_opinion_of_mechanicus = {
+	trigger = {
+		is_machine_empire = yes
+		NOT = { has_civic = civic_machine_terminator }
+		from = { has_machine_cult = yes }
+	}
+	opinion = { base = 20 }
+}
+
+# triggered_mechanicus_opinion_of_mechanicus = {
+# 	trigger = {
+# 		has_machine_cult = yes
+# 		from = { has_machine_cult = yes }
+# 	}
+# 	opinion = { base = 80 }
+# }
+
+triggered_mechanicus_empires_opinion_of_cyborg = {
+	trigger = {
+		# is_spiritualist = yes
+		has_machine_cult = yes
+		from = { is_cyborg_empire = yes }
+	}
+	opinion = { base = 20 }
+}
+
+triggered_opinion_trait_cute_AI = {
+	trigger = {
+		from = {
+			exists = ruler
+			ruler = {
+				species = { has_trait = "trait_cute_AI" }
+			}
+		}
+	}
+	opinion = { base = 25 }
+}

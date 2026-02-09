@@ -3,6 +3,10 @@ building_aspect_shrine = {
 	base_cap_amount = 3
 
 	category = army
+	
+	building_sets = {
+		fortress
+	}
 
 	potential = {
 		exists = owner
@@ -23,7 +27,7 @@ building_aspect_shrine = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		modifier = { job_exarch_add = 1 job_aspectwarrior_add = 2 }
+		modifier = { job_exarch_add = 100 job_aspectwarrior_add = 200 }
 	}
 
 	resources = {
@@ -44,7 +48,10 @@ building_shaper_shrine = {
 	base_cap_amount = 4
 
 	category = army
-
+	
+	building_sets = {
+		fortress
+	}
 	potential = {
 		exists = owner
 		owner = { has_soulkeepers_origin = yes }
@@ -62,7 +69,7 @@ building_shaper_shrine = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		modifier = { job_bonesinger_add = 2 }
+		modifier = { job_bonesinger_add = 200 }
 	}
 
 	resources = {
@@ -80,6 +87,10 @@ building_seer_shrine = {
 	base_cap_amount = 2
 
 	category = army
+	
+	building_sets = {
+		fortress
+	}
 
 	potential = {
 		exists = owner
@@ -98,7 +109,7 @@ building_seer_shrine = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		modifier = { job_seer_add = 1 }
+		modifier = { job_seer_add = 100 }
 	}
 
 	resources = {

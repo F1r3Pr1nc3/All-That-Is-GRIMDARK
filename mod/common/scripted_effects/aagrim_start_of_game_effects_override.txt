@@ -670,7 +670,7 @@ generate_start_buildings_and_districts = {
 					}
 				}
 				if = {
-					limit = { owner = { is_spiritualist = no is_pleasure_seeker = yes } }
+					limit = { owner = { is_spiritualist = no has_valid_civic = civic_pleasure_seekers } }
 					add_building = building_holo_theatres
 					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
 				}
@@ -1105,7 +1105,7 @@ generate_start_buildings_and_districts = {
 					}
 				}
 				if = {
-					limit = { owner = { is_spiritualist = no is_pleasure_seeker = yes } }
+					limit = { owner = { is_spiritualist = no has_valid_civic = civic_pleasure_seekers } }
 					add_building = building_holo_theatres
 					add_district_and_planet_size_if_needed_effect = { district = district_srw_commercial }
 				}

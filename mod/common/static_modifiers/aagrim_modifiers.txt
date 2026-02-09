@@ -22,28 +22,28 @@ peace_sucks_1 = {
 peace_sucks_2 = {
 	pop_happiness = -0.1
 	planet_stability_add = -10
-	pop_growth_speed_reduction = 0.1
+	bonus_pop_growth_mult = -0.1 
 	planet_crime_mult = 0.5
 }
 
 peace_sucks_3 = {
 	pop_happiness = -0.15
 	planet_stability_add = -15
-	pop_growth_speed_reduction = 0.15
+	bonus_pop_growth_mult = -0.15
 	planet_crime_mult = 0.75
 }
 
 peace_sucks_4 = {
 	pop_happiness = -0.2
 	planet_stability_add = -20
-	pop_growth_speed_reduction = 0.2
+	bonus_pop_growth_mult = -0.2
 	planet_crime_mult = 1.0
 }
 
 peace_sucks_5 = {
 	pop_happiness = -0.25
 	planet_stability_add = -25
-	pop_growth_speed_reduction = 0.25
+	bonus_pop_growth_mult = -0.25
 	planet_crime_mult = 1.5
 }
 
@@ -52,7 +52,7 @@ shroudinfection_begins = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_wasteland.dds"
 	planet_building_build_speed_mult = 0.5
 	pop_environment_tolerance = -0.1
-	pop_growth_speed = 0.5
+	bonus_pop_growth_mult = 0.5
 }
 
 shroudinfection_progression = {
@@ -60,5 +60,5 @@ shroudinfection_progression = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_wasteland.dds"
 	planet_building_build_speed_mult = 0.25
 	pop_environment_tolerance = -0.05
-	pop_growth_speed = 0.25
+	bonus_pop_growth_mult = 0.25 
 }

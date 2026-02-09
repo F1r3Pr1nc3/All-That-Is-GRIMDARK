@@ -1,6 +1,10 @@
 building_mekworkshop = {
 	base_buildtime = @b1_time
 	category = manufacturing
+	building_sets = {
+		industrial
+		foundry
+	}
 	potential = {
 		exists = owner
 		owner = { has_origin = origin_barbarichorde }
@@ -12,9 +16,9 @@ building_mekworkshop = {
 		}
 	}
 	planet_modifier = {
-		job_mekboy_add = 1
-		job_mekgrot_add = 1
-		planet_amenities_add = 2
+		job_mekboy_add = 100
+		job_mekgrot_add = 100
+		planet_amenities_add = 200
 	}
 	resources = {
 		category = planet_buildings
@@ -32,6 +36,9 @@ building_mekworkshop = {
 building_squigburna = {
 	base_buildtime = 90
 	category = resource
+	building_sets = {
+		hydroponics
+	}
 	potential = {
 		exists = owner
 		owner = { has_origin = origin_barbarichorde }
@@ -56,5 +63,5 @@ building_squigburna = {
 		}
 		upkeep = { food = 2 }
 	}
-	planet_modifier = { job_squigherder_add = 1 job_burnaboy_add = 1 }
+	planet_modifier = { job_squigherder_add = 200 job_burnaboy_add = 200 }
 }

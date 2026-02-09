@@ -1,0 +1,276 @@
+namespace = grimstart
+
+country_event = {
+	id = grimstart.5
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { has_origin = origin_greatergood }
+	immediate = {
+		set_country_flag = laser_tech
+		if = {
+			limit = { is_xenophobe = yes }
+			country_remove_ethic = ethic_xenophobe
+			country_remove_ethic = ethic_fanatic_xenophobe
+			shift_ethic = ethic_fanatic_xenophile
+		}
+		else_if = {
+			limit = { NOT = { has_ethic = ethic_fanatic_xenophile } }
+			shift_ethic = ethic_fanatic_xenophile
+		}
+		if = {
+			limit = { NOT = { has_civic = civic_aristocratic_elite } }
+			force_add_civic = civic_aristocratic_elite
+		}
+		if = {
+			limit = { NOT = { has_civic = civic_inwards_perfection } }
+			force_add_civic = civic_inwards_perfection
+		}
+		if = {
+			limit = { NOT = { has_civic = civic_efficient_bureaucracy } }
+			force_add_civic = civic_efficient_bureaucracy # Reflecting their organized society
+		}
+		if = {
+			limit = { NOT = { has_civic = civic_meritocracy } }
+			force_add_civic = civic_meritocracy # Reflecting their organized society
+		}
+		give_technology = { message = no tech = tech_robotic_workers }
+		give_technology = { message = no tech = tech_droid_workers }
+		give_technology = { message = no tech = tech_space_trading }
+
+		owner_main_species = {
+			if = {
+				limit = { NOT = { has_trait = trait_tau } }
+				change_species_characteristics = { add_trait = trait_tau add_traits_at_start_of_list = yes can_change_leader = yes }
+			}
+			if = {
+				limit = { is_species_class = HUM }
+				mirror_species = { CLASS = MAM }
+				change_species_portrait = rep2
+				root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
+			}
+			else_if = {
+				limit = { is_species_class = REP }
+				mirror_species = { CLASS = MAM }
+				change_species_portrait = rep2
+				root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
+			}
+			else_if = {
+				limit = { is_species_class = MAM }
+				change_species_portrait = rep2
+			}
+		}
+		random_owned_species = {
+			limit = {
+				is_crossbreeding_possible = yes
+				NOT = { is_same_species = prev }
+			}
+			save_event_target_as = servile_species
+			set_species_flag = syncretic_species@root
+		}
+
+		if = {
+			limit = { exists = event_target:servile_species }
+			modify_species = {
+				species = event_target:servile_species
+				ideal_planet_class = "pc_tropical" # add_trait = "trait_pc_tropical_preference"
+				# add_trait = "trait_syncretic_proles" # 0
+				add_trait = "trait_necrophage"		# 0
+				add_trait = "trait_adaptive"		# +2
+				add_trait = "trait_rapid_breeders"	# +2
+				add_trait = "trait_conformists"		# +2
+				add_trait = "trait_communal"		# +1
+				add_trait = "trait_strong"			# +1
+				add_trait = "trait_resilient"		# +1
+				add_trait = "trait_fleeting"		# -1
+				add_trait = "trait_unruly"			# -2
+				effect = {
+					save_event_target_as = servile_species
+				}
+			}
+			event_target:servile_species = {
+				set_citizenship_type = { country = root type = citizenship_full }
+
+			}
+			every_owned_species = {
+				limit = {
+					is_same_species = event_target:servile_species
+					NOT = { is_exact_same_species = event_target:servile_species }
+				}
+				every_species_pop = { change_species = event_target:servile_species }
+				set_species_identity = event_target:servile_species
+			}
+			country_event = { id = aagrimstarts.2001 days = 10 scopes = { from = event_target:servile_species } } # Try merge
+		}
+
+		get_capital_planet = yes
+		event_target:capital_planet = {
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_ore_rich_caverns
+			add_deposit = d_lichen_fields
+			add_deposit = d_fungal_caves
+			add_deposit = d_fungal_caves
+			add_deposit = d_searing_desert
+			add_deposit = d_searing_desert
+			add_building = building_noble_estates
+			# Make starting colonisables be primitives
+			solar_system = {
+				# Kroot
+				closest_system = {
+					limit = { has_star_flag = neighbor_t1_first_colony }
+					max_steps = 3
+					random_system_planet = {
+						limit = { is_colonizable = yes is_colony = no has_planet_flag = prescripted_ideal }
+						set_name = "Pech"
+						# generate_late_pre_ftls_on_planet = yes
+						change_pc = "pc_tropical"
+						set_planet_flag = Pechplanet
+						save_event_target_as = pech
+						select_pre_ftl_origin = yes
+						# create_pre_ftl_species = yes
+						create_species = {
+							sapient = yes
+							name = "Kroot"
+							class = "AVI"
+							portrait = "avi14"
+							plural = "Kroot_plural"
+							adjective = "Kroot_adj"
+							species_bio = "Kroot_desc"
+							traits = {
+								ideal_planet_class = "pc_tropical" # add_trait = "trait_pc_tropical_preference"
+								trait = "trait_necrophage"		# 0
+								trait = "trait_adaptive"		# +2
+								trait = "trait_rapid_breeders"	# +2
+								trait = "trait_conformists"		# +2
+								trait = "trait_communal"		# +1
+								trait = "trait_strong"			# +1 Kroot are known for their physical strength.
+								trait = "trait_resilient"		# +1
+								trait = "trait_fleeting"		# -1
+								trait = "trait_unruly"			# -2
+							}
+							# can_be_modified = this
+							# gender = this
+							homeworld = event_target:pech # Jungle-covered Death World Pech
+							name_list = "AVI2"
+							extra_trait_points = 4
+							effect = {
+								set_citizenship_type = { country = root type = citizenship_full }
+								change_species_characteristics = {
+									# add_trait = "trait_limited_regeneration"
+									# add_trait = "trait_hunters" # Reflecting their skills as hunters and trackers.
+									add_trait = "trait_nomadic" # They are known to be a nomadic species.
+									add_trait = "trait_deviants" # Reflecting their diverse and adaptable nature
+								}
+								if = {
+									limit = {
+										NAND = {
+											exists = event_target:servile_species
+											event_target:servile_species = { is_species = "Kroot" }
+										}
+									}
+									save_event_target_as = servile_species
+								}
+								else = {
+									event_target:servile_species = { set_species_homeworld = event_target:pech }
+									set_species_identity = event_target:servile_species
+								}
+							}
+						}
+						create_late_pre_ftl_empire = yes
+						setup_pre_ftl_planet = yes
+						pre_ftl_clean_up_effect = yes
+						change_colony_foundation_date = -461
+						while = { count = 4
+							create_army = { owner = last_created_country type = primitive_additional_army species = event_target:servile_species }
+						}
+						# Somehow vanilla bug
+						last_created_country = {
+							if = {
+								limit = { is_homicidal = yes }
+								force_remove_civic = civic_fanatic_purifiers
+								force_remove_civic = civic_machine_terminator
+								force_remove_civic = civic_hive_devouring_swarm
+							}
+							country_event = { id = aagrimstarts.223 days = 1 scopes = { from = event_target:servile_species } } # Try merge
+						}
+					}
+				}
+				reroll_random = yes
+				# Vespid
+				closest_system = {
+					limit = { has_star_flag = neighbor_t2_second_colony }
+					max_steps = 6
+					random_system_planet = {
+						limit = { is_colonizable = yes is_colony = no has_planet_flag = prescripted_ideal }
+						# generate_late_pre_ftls_on_planet = yes
+						set_name = "Vespid Prime"
+						change_pc = "pc_desert"
+						set_planet_flag = Vespidplanet
+						save_event_target_as = vespid
+						select_pre_ftl_origin = yes
+						# create_pre_ftl_species = yes
+						create_species = {
+							sapient = yes
+							# is_mod = yes
+							name = "Vespid"
+							plural = "Vespids"
+							class = "ART"
+							portrait = "art1" # You may need to create a custom portrait if one doesn't already exist.
+							species_bio = "The Vespid are an insectoid species from the arid world of Vespid Prime. With their tough exoskeletons and advanced crystal-based weaponry, they are formidable warriors. Vespid society is structured around a hive system led by a queen, and they communicate through pheromones and ultrasonic vibrations. Their strength, agility, and unique culture make them a notable presence in the galaxy."
+							name_list = "ART2"
+							traits = {
+								ideal_planet_class = event_target:vespid
+								trait = "trait_strong"			# Vespids are known for their physical strength.
+								trait = "trait_intelligent"		# They have a unique form of communication and intelligence.
+								trait = "trait_slow_breeders"	# Reflecting their low reproduction rate.
+								trait = "trait_conformists"		# They are loyal to their leaders.
+								trait = "trait_enduring"		# Resilience and ability to withstand damage
+								trait = "trait_adaptive"		# Ability to survive in harsh environments
+								trait = random_traits
+								trait = random_traits
+							}
+							# can_be_modified = this
+							# gender = this
+							homeworld = event_target:vespid
+							extra_trait_points = 4
+							effect = {
+								set_citizenship_type = { country = root type = citizenship_full }
+								if = {
+									limit = {
+										NAND = {
+											exists = event_target:servile_species
+											event_target:servile_species = { is_species = "Vespid" }
+										}
+									}
+									save_event_target_as = servile_species
+								}
+								else = {
+									event_target:servile_species = { set_species_homeworld = event_target:vespid }
+									set_species_identity = event_target:servile_species
+								}
+							}
+						}
+						create_late_pre_ftl_empire = yes
+						setup_pre_ftl_planet = yes
+						pre_ftl_clean_up_effect = yes
+						change_colony_foundation_date = -1275
+						while = { count = 4
+							create_army = { owner = last_created_country type = primitive_additional_army species = event_target:servile_species }
+						}
+					}
+					# Somehow vanilla bug
+					last_created_country = {
+						if = {
+							limit = { is_homicidal = yes }
+							force_remove_civic = civic_fanatic_purifiers
+							force_remove_civic = civic_machine_terminator
+							force_remove_civic = civic_hive_devouring_swarm
+						}
+						country_event = { id = aagrimstarts.223 days = 1 scopes = { from = event_target:servile_species } } # Try merge
+					}
+				}
+			}
+		}
+		set_country_flag = tau_empire
+		country_event = { id = aagrimstarts.2001 days = 10 } # Updated Relations Main file
+	}
+}

@@ -1,0 +1,474 @@
+namespace = grimstart
+
+country_event = {
+	id = grimstart.4
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_origin = origin_paindrinkers }
+	immediate = {
+		give_technology = { message = no tech = tech_space_exploration }
+		give_technology = { message = no tech = tech_sensors_2 }	# Tier 2
+		give_technology = { message = no tech = tech_neural_implants }
+		give_technology = { message = no tech = tech_morphogenetic_field_mastery }
+		give_technology = { message = no tech = tech_penal_colonies }
+            give_technology = { message = no tech = tech_wormhole_stabilization }
+		get_capital_planet = yes
+		owner_main_species = {
+			while = { count = 3 random_species_pop = { kill_pop = yes } }
+			if = {
+				limit = { NOT = { has_trait = trait_drukhari } }
+				change_species_characteristics = { add_trait = trait_drukhari add_traits_at_start_of_list = yes can_change_leader = yes }
+			}
+			if = {
+				limit = { NOT = { has_trait = trait_pc_desert_preference } }
+				change_species_characteristics = { add_trait = trait_pc_desert_preference add_traits_at_start_of_list = yes }
+			}
+		}
+		if = {
+			limit = { NOT = { has_civic = civic_death_cult } }
+			force_add_civic = civic_death_cult
+		}
+		random_owned_species = {
+			limit = {
+				is_crossbreeding_possible = yes
+				NOT = { is_same_species = prev }
+				num_positive_traits > 0
+			}
+			save_event_target_as = secondary_species
+		}
+		random_galaxy_species = {
+			limit = {
+				is_sapient = yes
+				is_species_class = "HUM"
+				# OR = { is_species_class = "Imperium"	# Dropped backward Compat Mod "WH species"
+				is_human_species = yes
+				NOR = {
+					is_same_species = prev
+					is_same_species = event_target:secondary_species
+					has_trait = trait_necrons
+					has_trait = trait_tau
+					has_trait = trait_eldar
+					has_psionic_species_trait = yes
+				}
+				num_positive_traits > 0
+			}
+			save_event_target_as = third_species
+		}
+
+		if = {
+			limit = {
+				exists = event_target:secondary_species
+				event_target:secondary_species = { is_species_class = "HUM" species_portrait = "humanoid_hp_12" }
+			}
+			random_galaxy_species = {
+				limit = {
+					is_crossbreeding_possible = yes
+					NOR = {
+						is_same_species = prev
+						is_same_species = event_target:secondary_species
+						has_trait = trait_necrons
+						has_trait = trait_tau
+						has_trait = trait_eldar
+						has_psionic_species_trait = yes
+					}
+					OR = {
+						AND = { # Compat Mod "WH species"
+							has_global_flag = WHspecies_installed
+							OR = { species_portrait = "Orkz" is_species_class = "Orkz" }
+						}
+						AND = { is_species_class = "HUM" species_portrait = "humanoid_hp_12" }
+						# is_species_class = "Ork"	# Compat Mod "Orks species" TODO
+						has_trait = "trait_orkz"
+						is_species = name_list_ORK1
+					}
+					num_positive_traits > 0
+				}
+				event_target:secondary_species = { set_species_identity = prev }
+				save_event_target_as = secondary_species
+			}
+		}
+		if = {
+			limit = { NOT = { exists = event_target:third_species } }
+			if = {
+				limit = { NOT = { exists = event_target:sol_system_earth } }
+				random_system = {
+					limit = { has_star_flag = sol_system }
+					random_system_planet = {
+						limit = { has_planet_flag = planet_earth }
+						save_global_event_target_as = sol_system_earth
+					}
+				}
+			}
+			# TODO fallback NOT = { exists = event_target:sol_system_earth }
+			if = {
+				limit = { exists = event_target:sol_system_earth }
+				create_species = {
+					name = NAME_Human
+					plural = NAME_Human_plural
+					class = "HUM"
+					namelist = "HUMAN3"
+					portrait = "human"
+					traits = random
+					homeworld = event_target:sol_system_earth
+					effect = { save_event_target_as = third_species }
+				}
+			}
+			else = {
+				random_galaxy_species = {
+					limit = {
+						is_sapient = yes
+						is_species_class = HUM
+						NOR = {
+							is_same_species = prev
+							is_same_species = event_target:secondary_species
+							has_trait = trait_necrons
+							has_trait = trait_tau
+							has_trait = trait_eldar
+						}
+						num_positive_traits > 0
+					}
+					weights = { base = 1
+						modifier = { add = 3 is_crossbreeding_possible = yes }
+						modifier = { add = 6 has_psionic_species_trait = no }
+						modifier = { add = 12 is_human_species = yes }
+					}
+					save_event_target_as = third_species
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { exists = event_target:third_species } }
+			event_target:secondary_species = { save_event_target_as = third_species }
+		}
+
+		event_target:capital_planet = {
+			solar_system = {
+				spawn_natural_wormhole = { bypass_type = wormhole random_pos = yes orbit_angle = 360 }
+				random_neighbor_system_euclidean = {
+					limit = {
+						OR = { has_owner = no is_owned_by = root }
+						NOR = {
+							starting_system = yes
+							has_natural_wormhole = yes
+							has_hyperlane_to = prev
+							has_special_star_flag_trigger = yes
+							any_neighbor_system = { has_owner = yes space_owner = { is_fallen_empire = yes } }
+						}
+					}
+					# weights = { base = 1 modifier = { add = 10 has_special_star_flag_trigger = no } }
+					save_event_target_as = psi_nav_system
+				}
+				if = {
+					limit = { NOT = { exists = event_target:psi_nav_system } }
+					random_neighbor_system = {
+						limit = {
+							OR = { has_owner = no is_owned_by = root }
+							starting_system = no
+							has_natural_wormhole = no
+							any_neighbor_system = { NOT = { is_same_value = prevprev } }
+							has_special_star_flag_trigger = no
+							count_neighbor_system = { limit = { has_owner = yes space_owner = { is_fallen_empire = yes } } count = 0 }
+						}
+						# weights = {
+						# 	base = 1
+						# 	modifier = { add = 4 OR = { has_owner = no is_owned_by = root } }
+						# 	modifier = { add = 10 has_special_star_flag_trigger = no }
+						# }
+						save_event_target_as = psi_nav_system
+					}
+				}
+				if = {
+					limit = { NOT = { exists = event_target:psi_nav_system } }
+					closest_system = {
+						min_steps = 2
+						max_steps = 14
+						limit = {
+							NOR = {
+								has_owner = yes
+								starting_system = yes
+								has_natural_wormhole = yes
+								# has_hyperlane_to = prev
+								has_special_star_flag_trigger = yes
+								any_neighbor_system = { has_owner = yes space_owner = { is_fallen_empire = yes } }
+							}
+						}
+						save_event_target_as = psi_nav_system
+					}
+				}
+				event_target:psi_nav_system = {
+					spawn_natural_wormhole = { bypass_type = wormhole random_pos = yes orbit_angle = 360 }
+					link_wormholes = prev
+					if = {
+						limit = { NOT = { exists = starbase } }
+						create_starbase = {
+							size = starbase_starport
+							# owner = root
+							module = shipyard
+							effect = { set_owner = root }
+						}
+					}
+					if = {
+						limit = { root = { is_ai = yes } } # To be sure
+						system_event = { id = aagrimstarts.80 days = 3600 }
+					}
+				}
+				# Do this later for AI, as the AI has problems to start with this
+				if = {
+					limit = { root = { is_ai = no } }
+					every_neighbor_system = {
+						limit = {
+							any_neighbor_system = { NOT = { is_same_value = prevprev } }
+							count_neighbor_system = { count > 1 }
+						}
+						remove_hyperlane = { from = this to = prev }
+					}
+				}
+				random_fleet_in_system = {
+					limit = { is_owned_by = root }
+					weights = { base = 1
+						modifier = { add = 50 is_ship_class = shipclass_science_ship }
+					}
+					random_owned_ship = {
+						fire_on_action = { on_action = on_entering_system_first_time scopes = { from = prevprev fromfrom = root } }
+						if = {
+							limit = { is_ship_size = science }
+							save_event_target_as = jump_drive_ship
+						}
+					}
+					root = { fire_on_action = { on_action = on_system_survey scopes = { from = prevprev fromfrom = prev.fleet } } }
+				}
+				set_surveyed = { surveyed = yes surveyor = root }
+				system_event = { id = aagrimstarts.80 days = 3600 }
+				if = {
+					limit = { prev = { has_ringworld_output_boost = yes } }
+					# Copy from Shattered Ring country_event = { id = origin.3150 }
+					if = {
+						limit = { num_guaranteed_colonies >= 1 }
+						every_megastructure = {
+							limit = { exists = owner is_owned_by = root is_megastructure_type = ring_world_ruined }
+							remove_megastructure = this
+						}
+						spawn_shattered_ring_guaranteed_1_effect = yes
+						spawn_shattered_ring_guaranteed_2_effect = yes
+					}
+					else = {
+						# limit = { num_guaranteed_colonies > 0 }
+						random_megastructure = {
+							limit = {
+								exists = owner
+								is_owned_by = root
+								is_megastructure_type = ring_world_ruined
+								has_megastructure_flag = guaranteed_1
+							}
+							remove_megastructure = this
+						}
+						spawn_shattered_ring_guaranteed_1_effect = yes
+					}
+					# TODO: Make this a special project for human player
+					random_system_planet = {
+						limit = {
+							is_planet_class = pc_shattered_ring_habitable
+							NOT = { is_planet = prevprev }
+						}
+						# Repair Shattered Ring: from decision_shattered_ring_project
+						clear_blockers = yes # clear_deposits = yes
+						change_pc = pc_ringworld_habitable
+						set_planet_entity = { entity = ringworld_habitable_entity graphical_culture = owner }
+						prev = {
+							every_system_planet = {
+								limit = { is_planet_class = pc_ringworld_tech }
+								set_planet_entity = { entity = ringworld_tech_entity_01_entity graphical_culture = root }
+							}
+							every_system_planet = {
+								limit = { is_planet_class = pc_ringworld_seam }
+								set_planet_entity = { entity = ringworld_seam_entity_01_entity graphical_culture = root }
+							}
+						}
+						# Remove Scrap Processing Buildings
+						if = {
+							limit = { has_building = building_mineral_purification_plant }
+							remove_building = building_mineral_purification_plant
+						}
+						if = {
+							limit = { has_building = building_mineral_purification_hub }
+							remove_building = building_mineral_purification_hub
+						}
+						# This removes the extra districts when fixing the ring world.
+						shattered_ring_world_conversion_effect = { DISTRICT = district_rw_city VARIABLE = num_housing_districts }
+						shattered_ring_world_conversion_effect = { DISTRICT = district_rw_commercial VARIABLE = num_commercial_districts }
+						# All empire types get farming and industrial districts
+						shattered_ring_world_conversion_effect = { DISTRICT = district_rw_farming VARIABLE = num_farming_districts }
+						shattered_ring_world_conversion_effect = { DISTRICT = district_rw_industrial VARIABLE = num_industrial_districts }
+						if = { # Finally, bring it in line with ringworld sizes
+							limit = { planet_size < 12 }
+							set_planet_size = 12
+						}
+						set_surveyed = { surveyed = yes surveyor = root }
+						start_colony = { owner = root } # species = event_target:secondary_species
+					}
+					prev = {
+						if = {
+							limit = { planet_size < 14 }
+							set_planet_size = 14
+						}
+						change_pc = pc_ringworld_habitable
+						set_planet_entity = { entity = ringworld_habitable_entity graphical_culture = owner }
+						add_district_and_planet_size_if_needed_effect = { district = district_rw_city }
+						add_district_and_planet_size_if_needed_effect = { district = district_rw_farming }
+					}
+				}
+			}
+		        get_capital_planet = yes
+		        event_target:capital_planet = {
+			remove_building = building_bureaucratic_1
+			remove_building = building_research_lab_1
+			while = {
+				count = 3
+				add_district = district_rw_city
+			}
+			add_zone = {
+				district = district_rw_city
+				zone = zone_default
+			}
+			while = {
+				count = 3
+				add_district = district_rw_generator
+			}
+			add_zone = {
+				district = district_rw_generator
+				zone = zone_energy
+			}
+			while = {
+				count = 3
+				add_district = district_rw_farming
+			}
+			add_zone = {
+				district = district_rw_farming
+				zone = zone_food
+			}
+			add_building = building_capital			# 3 jobs
+			add_deposit = d_arcane_generator
+			add_building = building_commercial_zone
+			add_building = building_slave_processing
+			clear_blockers = yes
+			add_building = building_bureaucratic_1	# 2 jobs
+			add_building = building_research_lab_1	# 2 jobs
+			add_building = building_foundry_1		# 2 jobs
+			add_building = building_factory_1		# 2 jobs
+			add_building = building_precinct_house	# 2 jobs
+			if = {
+				limit = { owner = { is_megacorp = yes } }
+				add_building = building_commercial_zone # 5 jobs
+			}
+			create_pop_group = { species = event_target:secondary_species }
+			create_pop_group = { species = event_target:secondary_species }
+			create_pop_group = { species = event_target:secondary_species }
+			create_starbase = {
+				size = orbital_ring_tier_1
+				owner = root
+				# module = <starbase_module>
+				# building = <starbase_building>
+				effect = { prev = { set_planet_flag = has_megastructure } }
+			}
+		}
+		if = {
+			limit = { is_ai = yes }
+			# Buff them
+			add_resource = { energy = 1000 minerals = 1000 alloys = 1000 }
+			if = {
+				limit = { is_machine_empire = no }
+				add_resource = { food = 1000 }
+			}
+			if = {
+				limit = { is_gestalt = no }
+				add_resource = { consumer_goods = 1000 }
+			}
+			give_technology = { tech = tech_fusion_power message = yes }			# Tier 1
+			give_technology = { tech = tech_cold_fusion_power message = yes }		# Tier 2
+			# log = "Give paindrinkers empire \\[This.GetName] $tech_subdermal_stimulation$"
+			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_subdermal_stimulation } # Tier 2
+			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_experimental_subspace_navigation } # Tier 2
+			give_technology = { tech = tech_antimatter_power message = yes }		# Tier 3
+			# give_technology = { message = no tech = tech_sensors_3 }	# Tier 3 later
+			add_research_option = tech_zero_point_power		# Tier 4
+			add_tech_progress = { tech = tech_zero_point_power progress = 0.1 }
+			give_technology = { tech = tech_wormhole_stabilization message = yes } # Tier 3 AI does not trigger research project (v.3.9)
+		}
+		else = {
+			add_research_option = tech_wormhole_stabilization	# Tier 3 later prerequisites = { "tech_hyper_drive_2" "tech_physics_2" }
+			add_tech_progress = { tech = tech_wormhole_stabilization progress = 0.80 }
+		}
+
+		event_target:secondary_species = {
+			random_galaxy_species = {
+				limit = {
+					is_sapient = yes
+					is_species_class = HUM
+					NOR = {
+						is_same_species = root
+						is_same_species = prev
+						AND = { exists = event_target:third_species is_same_species = event_target:third_species }
+						has_trait = trait_necrons
+						has_psionic_species_trait = yes
+					}
+					OR = { species_portrait = humanoid_hp_12 is_species = PRESCRIPTED_species_name_mankind }
+					num_positive_traits > 0
+				}
+				save_event_target_as = servile_species
+			}
+		}
+
+		set_country_flag = darkeldar_empire
+		set_country_flag = cloaking_tech
+		country_event = { id = aagrimstarts.2001 days = 10 } # Relations event
+
+		if = {
+			limit = { NOT = { exists = event_target:jump_drive_ship } }
+			create_fleet = {
+				name = "NAME_From_Beyond"
+				effect = {
+					set_owner = root
+					create_ship = {
+						name = "NAME_Dagger"
+						random_existing_design = science
+						prefix = no
+						effect = { save_event_target_as = jump_drive_ship }
+					}
+					set_location = event_target:psi_nav_system
+				}
+			}
+		}
+		event_target:jump_drive_ship = {
+			if = {
+				limit = { is_ship_size = science }
+				if = {
+					limit = { owner = { is_ai = yes } }
+					set_ship_design = { design = "NAME_From_Beyond_Ship_Cloak" }
+				}
+				else = {
+					set_ship_design = { design = "NAME_From_Beyond_Ship" }
+				}
+				fleet = {
+					set_fleet_settings = { can_upgrade = no spawn_debris = no }
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_fleet = { is_ship_size = constructor }
+				count_owned_fleet = {
+					limit = {
+						is_ship_class = shipclass_constructor
+						any_owned_ship = { has_component = PSI_JUMP_DRIVE_1 }
+					}
+					count = 0
+				}
+			}
+			random_owned_fleet = {
+				limit = { is_ship_size = constructor }
+				set_ship_design = { design = "NAME_Penitent" }
+				set_fleet_settings = { can_upgrade = no spawn_debris = no }
+			}
+		}
+	}
+}

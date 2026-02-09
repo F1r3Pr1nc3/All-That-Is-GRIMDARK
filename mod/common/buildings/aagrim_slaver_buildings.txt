@@ -3,6 +3,13 @@ building_overseer_homes_grim = {
 	base_cap_amount = 1
 
 	category = amenity
+	
+	building_sets = {
+		government
+		urban
+		entertainment
+		resort
+	}
 
 	potential = {
 		exists = owner
@@ -32,11 +39,10 @@ building_overseer_homes_grim = {
 	}
 
 	planet_modifier = {
-		job_slave_overseer_add = 1
-		job_enforcer_add = 1
-		job_healthcare_add = 1
+		job_slave_overseer_add = 100
+		job_enforcer_add = 100
+		job_healthcare_add = 100
 		planet_stability_add = 5
-		trade_value_add = 5
 	}
 
 	resources = {

@@ -11,7 +11,6 @@ d_holyterra_sprawl = {
 	}
 	
 	planet_modifier = { 
-		planet_max_districts_add = -1
 		planet_crime_add = 15
 	}
 	

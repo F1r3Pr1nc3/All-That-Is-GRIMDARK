@@ -1,19 +1,18 @@
 bonesinger = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_shaper_shrine
-	clothes_texture_index = 3
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_shaper_shrine
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
-	possible_precalc = can_fill_specialist_job
-
-	possible = { has_psionic_species_trait = yes }
-
+	possible = { has_trait = trait_eldar }
 	resources = {
 		category = planet_metallurgists
 		produces = {
@@ -41,10 +40,8 @@ bonesinger = {
 			factor = 2
 			species = { exists = event_target:racket_species is_same_species = event_target:racket_species }
 		}
-		modifier = { factor = 5 has_job = bonesinger }
 		modifier = {
 			factor = 15
-			has_job = bonesinger
 			OR = { has_trait = trait_robust has_trait = trait_robot_efficient_processors }
 		}
 		modifier = {
@@ -59,19 +56,19 @@ bonesinger = {
 
 seer = {
 	category = ruler
-	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_seer_shrine
-	clothes_texture_index = 5
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_seer_shrine
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
-	possible_precalc = can_fill_ruler_job
-
-	possible = { has_psionic_species_trait = yes }
+	possible = { has_trait = trait_eldar }
 
 	resources = {
 		category = planet_telepaths
@@ -125,7 +122,6 @@ seer = {
 		modifier = { factor = 2 has_trait = trait_resilient }
 		modifier = { factor = 10 has_psionic_species_trait = yes }
 		modifier = { factor = 0.1 can_take_servant_job = yes }
-		modifier = { factor = 1.5 has_job = seer }
 		modifier = {
 			factor = 1.5
 			OR = { has_trait = trait_robot_propaganda_machines has_trait = trait_traditional }
@@ -148,12 +144,14 @@ seer = {
 
 exarch = {
 	category = ruler
-	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_aspect_shrine
-	clothes_texture_index = 4
-
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_aspect_shrine
+		}
+    }
+	
 	country_modifier = { country_naval_cap_add = 6 }
-
 	triggered_country_modifier = {
 		potential = {
 			exists = planet
@@ -164,8 +162,6 @@ exarch = {
 		}
 		modifier = { country_naval_cap_add = 2 }
 	}
-
-	pop_modifier = { pop_defense_armies_add = 5 }
 
 	resources = {
 		category = planet_soldiers
@@ -192,15 +188,10 @@ exarch = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_ruler_job
-
-	possible = {
-		owner = { is_gestalt = no }
-	}
+    possible = { has_trait = trait_eldar }
 
 	weight = {
 		weight = @soldier_job_weight
-		modifier = { factor = 25 has_job = exarch }
 		modifier = {
 			factor = 10
 			exists = planet
@@ -244,9 +235,12 @@ exarch = {
 
 aspectwarrior = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_aspect_shrine
-	clothes_texture_index = 4
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_aspect_shrine
+		}
+    }
 
 	country_modifier = { country_naval_cap_add = 5 }
 
@@ -288,15 +282,10 @@ aspectwarrior = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_specialist_job
-
-	possible = {
-		owner = { is_gestalt = no }
-	}
+    possible = { has_trait = trait_eldar }
 
 	weight = {
 		weight = @soldier_job_weight
-		modifier = { factor = 3 has_job = aspectwarrior }
 		modifier = {
 			factor = 10
 			exists = planet
@@ -340,9 +329,12 @@ aspectwarrior = {
 
 exodite = {
 	category = worker
-	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_food_processing_facility
-	clothes_texture_index = 2
+	swappable_data = {
+		default = {
+			condition_string = WORKER_JOB_TRIGGER
+			building_icon = building_food_processing_facility
+		}
+    }
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -350,12 +342,7 @@ exodite = {
 		is_being_assimilated = no
 	}
 
-	possible_precalc = can_fill_worker_job
-
-	possible = {
-		hidden_trigger = { exists = owner }
-		owner = { is_gestalt = no }
-	}
+    possible = { has_trait = trait_eldar }
 
 	resources = {
 		category = planet_farmers
@@ -376,14 +363,6 @@ exodite = {
 		}
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_soulkeepers_origin = yes }
-		}
-		modifier = { pop_housing_usage_add = -0.5 pop_environment_tolerance = 0.5 }
-	}
-
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -391,6 +370,7 @@ exodite = {
 		}
 		modifier = { planet_amenities_add = 2 }
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -398,35 +378,35 @@ exodite = {
 		}
 		modifier = { planet_amenities_add = 2 }
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_valid_civic = civic_agrarian_idyll }
-			OR = { has_trait = trait_robot_domestic_protocols has_trait = trait_charismatic }
 		}
 		modifier = { planet_amenities_add = 0.4 }
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_valid_civic = civic_agrarian_idyll }
-			has_trait = trait_repugnant
 		}
 		modifier = { planet_amenities_add = -0.4 }
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
-			OR = { has_trait = trait_robot_domestic_protocols has_trait = trait_charismatic }
 		}
 		modifier = { planet_amenities_add = 0.4 }
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
-			has_trait = trait_repugnant
 		}
 		modifier = { planet_amenities_add = -0.4 }
 	}
@@ -482,15 +462,12 @@ exodite = {
 		modifier = {
 			factor = 1.2
 
-			OR = { is_unemployed = yes has_job = exodite }
 			exists = planet
 			planet = { has_available_jobs = exodite }
 			owner = {
 				has_monthly_income = { resource = food value < 0 }
 			}
 		}
-
-		modifier = { factor = 2.0 has_job = exodite }
 
 		modifier = {
 			factor = 0.5

@@ -1,0 +1,865 @@
+namespace = aagrimstarts
+# Handle peace_sucks modifiers (on_war_beginning / on_yearly_pulse_country) # Was on_monthly_pulse_country
+country_event = {
+	id = aagrimstarts.100
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = yes
+		OR = { has_origin = origin_shroudrage has_origin = origin_barbarichorde has_origin = origin_bioreformers }
+		years_passed > 30 # num_communications > 1
+	}
+	immediate = {
+		set_update_modifiers_batch = begin
+		if = {
+			limit = { is_at_war = yes }
+			remove_modifier = peace_sucks_1
+			remove_modifier = peace_sucks_2
+			remove_modifier = peace_sucks_3
+			remove_modifier = peace_sucks_4
+			remove_modifier = peace_sucks_5
+			if = {
+				limit = {
+					has_origin = origin_shroudrage
+					NOT = { has_modifier = we_love_war }
+				}
+				add_modifier = { modifier = we_love_war days = -1 }
+				if = {
+					limit = { has_resource = { type = alloys amount < 2000 } }
+					add_resource = { alloys = 2000 minerals = 1000 }
+				}
+			}
+			if = {
+				limit = {
+					has_origin = origin_barbarichorde
+					NOT = { has_modifier = we_love_waaagh }
+				}
+				add_modifier = { modifier = we_love_waaagh days = -1 }
+			}
+		}
+		else = {
+			remove_modifier = we_love_waaagh
+			remove_modifier = we_love_war
+			if = {
+				limit = {
+					NOR = {
+						has_modifier = peace_sucks_1
+						has_modifier = peace_sucks_2
+						has_modifier = peace_sucks_3
+						has_modifier = peace_sucks_4
+						has_modifier = peace_sucks_5
+					}
+				}
+				if = {
+					limit = { years_of_peace = { value > 2 } }
+					add_modifier = { modifier = peace_sucks_1 days = -1 }
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						OR = {
+							years_of_peace = { value < 10 }
+							years_of_peace = { value > 25 }
+						}
+					}
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					remove_modifier = peace_sucks_3
+					remove_modifier = peace_sucks_4
+					if = {
+						limit = { NOT = { has_modifier = peace_sucks_5 } }
+						add_modifier = { modifier = peace_sucks_5 days = -1 }
+					}
+				}
+				else_if = {
+					limit = { years_of_peace = { value <= 15 } }
+					remove_modifier = peace_sucks_1
+					if = {
+						limit = { NOT = { has_modifier = peace_sucks_2 } }
+						add_modifier = { modifier = peace_sucks_2 days = -1 }
+					}
+					remove_modifier = peace_sucks_3
+					remove_modifier = peace_sucks_4
+					remove_modifier = peace_sucks_5
+				}
+				else_if = {
+					limit = { years_of_peace = { value <= 20 } }
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					if = {
+						limit = { NOT = { has_modifier = peace_sucks_3 } }
+						add_modifier = { modifier = peace_sucks_3 days = -1 }
+					}
+					remove_modifier = peace_sucks_4
+					remove_modifier = peace_sucks_5
+				}
+				else = {
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					remove_modifier = peace_sucks_3
+					if = {
+						limit = { NOT = { has_modifier = peace_sucks_4 } }
+						add_modifier = { modifier = peace_sucks_4 days = -1 }
+					}
+					remove_modifier = peace_sucks_5
+				}
+			}
+		}
+		set_update_modifiers_batch = end
+	}
+}
+
+# (on_colonized)
+planet_event = {
+	id = aagrimstarts.1200
+	is_triggered_only = yes
+	title = "job_exodite_plural"
+	desc = aagrimstarts.1200.desc
+	picture = GFX_evt_colony_settlement
+	pre_triggers = { has_owner = yes original_owner = yes }
+	trigger = {
+		is_colony = yes
+		exists = owner
+		owner = { is_ai = no has_soulkeepers_origin = yes }
+		has_deposit = d_aa_exodite_enclave
+		NOT = { has_planet_flag = pf_told_about_exodites }
+	}
+	immediate = { set_planet_flag = pf_told_about_exodites }
+	option = { name = aagrimstarts.1200.option.a }
+}
+## SHROUDINFECTION
+# on_planet_occupied / on_planet_transfer / on_colonized
+planet_event = {
+	id = aagrimstarts.1400
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = { has_shroudsick_origin = yes }
+			}
+			AND = {
+				exists = controller
+				controller = { has_shroudsick_origin = yes }
+			}
+		}
+		NOR = { has_planet_flag = pf_infected_begun has_modifier = shroudinfection_begins has_modifier = shroudinfection_progression }
+		uses_district_set = standard
+	}
+	immediate = {
+		set_planet_flag = pf_infected_begun
+		planet_event = { id = aagrimstarts.1410 days = 2 }
+	}
+}
+
+# Shroudinfection begins
+planet_event = {
+	id = aagrimstarts.1410
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = { has_shroudsick_origin = yes }
+			}
+			AND = {
+				exists = controller
+				controller = { has_shroudsick_origin = yes }
+			}
+		}
+		NOR = {
+			has_modifier = shroudinfection_begins
+			has_modifier = shroudinfection_progression
+			is_planet_class = pc_infested # pc_infected
+		}
+		uses_district_set = standard
+		has_planet_flag = pf_infected_begun
+	}
+	immediate = {
+		if = {
+			limit = { pop_amount > 1 }
+			add_modifier = { modifier = shroudinfection_begins years = 2 }
+			planet_event = { id = aagrimstarts.1420 days = 727 } # 7 days more
+		}
+		else = {
+			planet_event = { id = aagrimstarts.1410 days = 60 random = 60 }
+		}
+	}
+}
+
+# Shroudinfection progression
+planet_event = {
+	id = aagrimstarts.1420
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = { has_shroudsick_origin = yes }
+			}
+			AND = {
+				exists = controller
+				controller = { has_shroudsick_origin = yes }
+			}
+		}
+		NOR = {
+			has_modifier = shroudinfection_begins
+			has_modifier = shroudinfection_progression
+			is_planet_class = pc_infested # pc_infected
+		}
+	}
+	immediate = {
+		if = {
+			limit = { pop_amount > 1 }
+			add_modifier = { modifier = shroudinfection_progression years = 3 }
+			planet_event = { id = aagrimstarts.1430 days = 1080 }
+		}
+		else = {
+			planet_event = { id = aagrimstarts.1420 days = 60 random = 60 }
+		}
+	}
+}
+
+# Handle Chaos Factions (on_monthly_pulse)
+event = {
+	id = aagrimstarts.1001
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { years_passed > 24 }
+	immediate = {
+		random_playable_country = {
+			limit = {
+				is_ai = yes
+				num_communications > 1
+				OR = {
+					has_shroudsick_origin = yes		# Chaos Nurglen (Death Guard)
+					has_origin = origin_shroudrage		# Chaos Khornate (World Eaters)
+					has_origin = origin_shroudsinners	# Chaos Slaaneshi (Emperor's Children)
+					has_origin = origin_shroudmutated	# Chaos Tzeentch (Thousand Sons)
+					has_origin = origin_paindrinkers	# Dark Eldar (Drukhari)
+					has_origin = origin_necron_awakening	# Necrons (The Undying)
+					has_origin = origin_bioreformers	# Tyranid
+					has_origin = origin_barbarichorde	# Ork Greenskins (Waaagh!) seems too strong
+					# has_country_flag = chaos_empire
+				}
+				NOR = { has_country_flag = cf_grimdark_unemployed_cooldown has_country_flag = under_tmp_colonization }
+
+			}
+			# country_event = { id = aagrimstarts.100 }	# Handle peace_sucks modifiers
+			country_event = { id = aagrimstarts.1300 }	# Check planets employment
+		}
+	}
+}
+
+#TODO:
+# The AI won't build buildings or the unique districts on infected worlds, also with the other chaos god origins
+# They don't build on their world too much which made them all be destroyed by other AI empires over the test run.
+planet_event = {
+	id = aagrimstarts.1430
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				owner = { has_shroudsick_origin = yes }
+			}
+			AND = {
+				exists = controller
+				controller = { has_shroudsick_origin = yes }
+			}
+		}
+		pop_amount > 1
+		NOT = {
+			is_planet_class = pc_infested # pc_infected
+		}
+	}
+	immediate = {
+		change_pc = pc_infested # pc_infected
+		# TODO !?
+		set_planet_flag = pf_hide_city
+		set_planet_flag = pf_hide_generator
+		set_planet_flag = pf_hide_farming
+		set_planet_flag = pf_hide_mining
+		clear_blockers = yes
+		remove_building = building_colony_shelter
+		remove_building = building_hive_capital
+		remove_building = building_deployment_post
+		remove_building = building_capital
+		remove_building = building_hive_capital
+		remove_building = building_machine_capital
+		remove_building = building_resort_capital
+		remove_building = building_slave_capital
+		remove_building = building_major_capital
+		remove_building = building_hive_major_capital
+		remove_building = building_machine_major_capital
+		remove_building = building_resort_major_capital
+		remove_building = building_slave_major_capital
+		remove_building = building_system_capital
+		add_building = building_hive_major_capital_sick
+		if = {
+			limit = { NOT = { has_modifier = resort_colony } }
+			remove_district = district_farming
+			remove_district = district_farming_uncapped
+			add_district = { district_type = district_farming_infected ignore_cap = yes }
+			if = {
+				limit = { pop_amount > 500 }
+				remove_district = district_hive
+				# remove_district = district_hive_uncapped
+				add_district = { district_type = district_hive_infected ignore_cap = yes }
+				if = {
+					limit = { pop_amount > 1000 }
+					remove_district = district_hive
+					# remove_district = district_hive_uncapped
+					remove_district = district_mining
+					# remove_district = district_mining_uncapped
+					add_district = { district_type = district_hive_infected ignore_cap = yes }
+					add_district = { district_type = district_mining_infected ignore_cap = yes }
+					if = {
+						limit = { pop_amount > 2000 }
+						remove_district = district_hive
+						# remove_district = district_hive_uncapped
+						remove_district = district_farming
+						remove_district = district_farming_uncapped
+						add_district = { district_type = district_hive_infected ignore_cap = yes }
+						add_district = { district_type = district_farming_infected ignore_cap = yes }
+						if = {
+							limit = { pop_amount > 3000 }
+							remove_district = district_hive
+							# remove_district = district_hive_uncapped
+							remove_district = district_generator
+							remove_district = district_generator_uncapped
+							add_district = { district_type = district_hive_infected ignore_cap = yes }
+							add_district = { district_type = district_generator_infected ignore_cap = yes }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+planet_event = {
+    id = aagrimstarts.2025
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = from
+        from = {
+            OR = {
+                has_country_flag = chaos_empire
+                has_country_flag = tyranid_empire
+            }
+        }
+    }
+    immediate = {
+        random_owned_species = {
+            limit = {
+                is_robotic = no
+                is_crossbreeding_possible = yes
+                NOR = {
+                    has_trait = trait_cyborg
+                    has_trait = trait_cybernetic
+                    has_trait = trait_zombie
+                    has_trait = trait_adeptus_mechanicus
+                }
+            }
+            save_event_target_as = purge_species
+        }
+        # safety guard
+        if = { limit = { NOT = { exists = event_target:purge_species } } break = yes }
+        if = {
+            limit = { from = { has_country_flag = tyranid_empire } }
+
+            event_target:purge_species = {
+                modify_species = {
+                    add_trait = trait_tyranid
+                    add_trait = trait_lobotomised_servitors
+                    remove_trait = trait_daemons
+                    remove_trait = trait_heretic_astartes
+                }
+            }
+        }
+        else = {
+            event_target:purge_species = {
+                modify_species = {
+                    add_trait = trait_daemons
+                    add_trait = trait_heretic_astartes
+                    add_trait = trait_lobotomised_servitors
+                    remove_trait = trait_tyranid
+                }
+            }
+        }
+        from = {
+            create_pop = { species = event_target:purge_species }
+        }
+        from = {
+            event_target:purge_species = {
+                if = {
+                    limit = { can_set_policy = { policy = slavery option = slavery_allowed } }
+                    set_citizenship_type = { country = from type = citizenship_slavery }
+                }
+                else = {
+                    set_citizenship_type = { country = from type = citizenship_limited }
+                }
+            }
+        }
+        every_playable_country = {
+            limit = {
+                NOT = { is_same_empire = from }
+                has_communications = from
+            }
+            add_opinion_modifier = { who = from modifier = opinion_necrophage }
+        }
+    }
+}
+
+# Species merge
+# From = species
+country_event = {
+	id = aagrimstarts.223
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = from }
+	immediate = {
+		from = { # event_target:servile_species
+			random_galaxy_species = {
+				limit = {
+					is_crossbreeding_possible = yes
+					is_same_species_class = prev
+					NOR = {
+						is_same_species = prev
+						is_same_species = from
+					}
+					# species_portrait = prev # TODO scope allowed?
+					OR = { # If scope is not scope allowed is_species_class = HUM
+						AND = { prev = { species_portrait = "Servitors" } species_portrait = "Servitors" } # human_legacy HUM Mechanicus
+						AND = { prev = {  OR = { species_portrait = "human_legacy" species_portrait = "human" } } OR = { species_portrait = "human_legacy"  species_portrait = "human" } } # human_legacy HUM Mechanicus
+						AND = { prev = { species_portrait = "humanoid_02" } species_portrait = "humanoid_02" } # HUM Khorne Bloodbounds
+						AND = { prev = { species_portrait = "humanoid_03" } species_portrait = "humanoid_03" } # HUM Drukhari
+						AND = { prev = { species_portrait = "humanoid_hp_13" } species_portrait = "humanoid_hp_13" } # HUM Slaaneshi
+						AND = { prev = { OR = { species_portrait = "Kroot" is_species = "Kroot" } } OR = { species_portrait = "Kroot" is_species = "Kroot" } } # avi14 HUM Tau
+						AND = { prev = { species_portrait = "Gretchins" } species_portrait = "Gretchins" } # HUM Orks
+						AND = { prev = { species_portrait = "humanoid_hp_12" } species_portrait = "humanoid_hp_12" } # HUM Orks
+						AND = { prev = { species_portrait = "humanoid_hp_01" } species_portrait = "humanoid_hp_01" } # HUM Khorne
+						AND = { prev = { species_portrait = "rep11" } species_portrait = "rep11" } # HUM Grot
+					}
+					num_positive_traits > 0
+				}
+				prev = {
+					log = "Unify \\[This.GetName] and \\[Prev.GetName]"
+					set_species_identity = prev
+					if = {
+						limit = {
+							exists = prev.home_planet
+							NAND = {
+								exists = root.capital_scope
+								root.capital_scope = { is_planet = prev.home_planet }
+							}
+						}
+						set_species_homeworld = prev.home_planet
+					}
+				}
+			}
+		}
+	}
+}
+
+# Setup delay for AI (10 years)
+system_event = {
+	id = aagrimstarts.80
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		has_natural_wormhole = yes
+		OR = {
+			AND = {
+				exists = space_owner
+				space_owner = { has_origin = origin_paindrinkers is_ai = yes }
+			}
+			any_system_colony = {
+				owner = { has_origin = origin_paindrinkers is_ai = yes }
+			}
+		}
+	}
+	immediate = {
+		every_neighbor_system = {
+			limit = {
+				any_neighbor_system = { NOT = { is_same_value = prevprev } }
+				count_neighbor_system = { count > 1 }
+			}
+			remove_hyperlane = { from = this to = prev }
+			# if = { limit = { is_system_connected_to_relay_network = no }
+		}
+		if = {
+			limit = {
+				exists = space_owner
+				space_owner = { has_origin = origin_paindrinkers }
+			}
+			space_owner = { save_event_target_as = paindrinkers }
+		}
+		else = {
+			random_system_colony = {
+				limit = { owner = { has_origin = origin_paindrinkers } }
+				owner = { save_event_target_as = paindrinkers }
+			}
+		}
+		event_target:paindrinkers = {
+			if = {
+				limit = { NOT = { has_country_flag = encountered_first_wormhole } }
+				set_country_flag = encountered_first_wormhole
+				add_seen_bypass_type = wormhole
+				add_tech_option_or_research_effect = { TECH = tech_wormhole_stabilization PROGRESS = 0.02 CATEGORY = physics_research }
+			}
+
+			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_experimental_subspace_navigation } # Tier 2
+			give_tech_no_error_effect = { MESSAGE = yes TECH = tech_sensors_3 } # Tier 3
+			# give_tech_no_error_effect = { MESSAGE = yes TECH = tech_zero_point_power }	# Tier 4
+			# give_tech_no_error_effect = { MESSAGE = yes TECH = tech_jump_drive_1 }	# Tier 5
+			add_research_option = tech_jump_drive_1		# Tier 5
+			add_tech_progress = { tech = tech_jump_drive_1 progress = 0.5 }
+			if = {	# Tier 3 prerequisites = { "tech_hyper_drive_2" "tech_physics_2" }
+				limit = { NOT = { has_technology = tech_wormhole_stabilization } }
+				# give_tech_no_error_effect = { MESSAGE = no TECH = tech_physics_2 }
+				give_tech_no_error_effect = { MESSAGE = no TECH = tech_hyper_drive_2 }
+				# add_tech_progress = { tech = tech_wormhole_stabilization progress = 0.02 }
+				add_resource = { physics_research = 3000 }
+				give_technology = { tech = tech_wormhole_stabilization message = yes }	# Tier 3
+			}
+			if = {
+				limit = { OR = { is_ai = yes has_overlord_dlc = yes } }
+				add_research_option = tech_hyper_relays	# Tier 2
+			}
+			give_technology = { tech = "tech_rare_crystals" message = no }
+			give_technology = { tech = "tech_mine_zro" message = yes }
+			give_technology = { tech = "tech_mine_rare_crystals" message = yes }
+			give_technology = { tech = "tech_mine_volatile_motes" message = yes }
+			give_technology = { tech = "tech_mine_exotic_gases" message = yes }
+			if = {
+				limit = { NOT = { has_country_flag = encountered_first_gateway } }
+				set_country_flag = encountered_first_gateway
+				add_seen_bypass_type = gateway
+				if = {
+					limit = { is_ai = yes }
+					give_tech_no_error_effect = { MESSAGE = yes TECH = tech_hyper_drive_3 } # Tier 3
+					# give_tech_no_error_effect = { MESSAGE = yes TECH = tech_physics_3 } # Tier 4
+					add_tech_option_or_research_effect = {
+						TECH = tech_gateway_activation # Tier 4 prerequisites = { "tech_hyper_drive_3" "tech_physics_3" }
+						PROGRESS = 0.02
+						CATEGORY = physics_research
+					}
+				}
+			}
+			add_cloaking_tech = yes
+		}
+		random_system_planet = {
+			limit = { is_planet_class = pc_shattered_ring_habitable }
+			# Repair Shattered Ring: from decision_shattered_ring_project
+			clear_blockers = yes # clear_deposits = yes
+			change_pc = pc_ringworld_habitable
+			set_planet_entity = { entity = ringworld_habitable_entity graphical_culture = owner }
+			start_colony = { owner = event_target:paindrinkers }
+			if = {
+				limit = { planet_size < 12 }
+				set_planet_size = 12
+			}
+		}
+	}
+}
+
+# Check planets employment - (indirect on_monthly_pulse/ on_game_start)
+country_event = {
+	id = aagrimstarts.1300
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		exists = capital_scope
+		# NOT = { has_country_flag = cf_grimdark_unemployed_cooldown }
+	}
+	immediate = {
+		if = {
+			limit = { any_owned_pop = { is_unemployed = yes } }
+			country_event = { id = aagrimstarts.1301 days = 10 random = 10 }
+		}
+		if = {
+			# Cheap workaround for helping colonizing
+			limit = {
+				controlled_colonizable > 0
+				# ai_colonize_plans = 0
+				NOT = { has_country_flag = under_tmp_colonization }
+				any_system_within_border = {
+					has_access_fleet = root
+					count_system_colony = { count = 0 }
+					any_system_planet = {
+						is_colonizable = yes
+						can_colonize = { who = root status = yes }
+					}
+				}
+			}
+			set_timed_country_flag = { flag = under_tmp_colonization years = 1 }
+			if = {
+				limit = { any_owned_fleet = { is_ship_class = shipclass_colonizer is_fleet_idle = yes } }
+				if = {
+					limit = {
+						any_owned_fleet = {
+							is_fleet_idle = yes
+							any_owned_ship = {
+								is_ship_class = shipclass_colonizer
+								root = {
+									any_system_within_border = {
+										has_access_fleet = root
+										count_system_colony = { count = 0 }
+										any_system_planet = {
+											NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+											is_colonizable = yes
+											can_colonize = { who = root status = yes }
+											prevprevprev.species = { can_live_on_planet = prev }
+											habitability = { who = prevprevprev.species value >= 0.7 }
+										}
+										prevprevprev = { can_access_system = prev }
+									}
+								}
+							}
+						}
+					}
+					every_owned_fleet = {
+						limit = {
+							is_fleet_idle = yes
+							any_owned_ship = {
+								is_ship_class = shipclass_colonizer
+								root = {
+									any_system_within_border = {
+										has_access_fleet = root
+										count_system_colony = { count = 0 }
+										any_system_planet = {
+											NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+											is_colonizable = yes
+											can_colonize = { who = root status = yes }
+											prevprevprev.species = { can_live_on_planet = prev }
+											habitability = { who = prevprevprev.species value >= 0.7 }
+										}
+										prevprevprev = { can_access_system = prev }
+									}
+								}
+							}
+						}
+						random_owned_ship = {
+							root = {
+								random_system_within_border = {
+									limit = {
+										has_access_fleet = root
+										count_system_colony = { count = 0 }
+										any_system_planet = {
+											is_colonizable = yes
+											can_colonize = { who = root status = yes }
+											prevprevprev.species = { can_live_on_planet = prev }
+											habitability = { who = prevprevprev.species value >= 0.7 }
+										}
+										prevprevprev = { can_access_system = prev }
+									}
+									random_system_planet = {
+										limit = {
+											NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+											is_colonizable = yes
+											can_colonize = { who = root status = yes }
+											prevprevprev.species = { can_live_on_planet = prev }
+											habitability = { who = prevprevprev.species value >= 0.7 }
+										}
+										set_timed_planet_flag = { flag = under_tmp_colonization years = 1 }
+										root = { set_timed_country_flag = { flag = cf_grimdark_unemployed_cooldown months = 2 } }
+										prevprevprev = {
+											fleet = {
+												log = "\\[Root.GetName] starts auto-colonizing \\[prevprev.GetName]"
+												queue_actions = {
+													move_to = prevprev
+													orbit_planet = prevprev
+													effect = {
+														id = colonize_planet.effect@this
+														orbit = {
+															if = {
+																limit = { is_colonizable = yes }
+																start_colony = { owner = root species = prevprev.species }
+															}
+															else = {
+																create_pop = { species = prevprev.species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+															}
+														}
+														delete_fleet = this
+													}
+												}
+											}
+											auto_move_to_planet = {
+												target = prev
+												clear_auto_move_on_arrival = yes
+												arrival_effect = colonize_planet # set_fleet_order = colonize_planet
+												# arrival_effect = { random_owned_ship = { orbit = { start_colony = { owner = root species = prev.species } } } }
+												# destroy_on_arrival = yes
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				# TODO Fallback
+				else = { log = "Colonizer has no access? \\[This.GetName]" }
+			}
+			else_if = {
+				limit = {
+					exists = capital_star.starbase
+					exists = capital_star.starbase.owner
+					# exists = capital_star.space_owner
+					capital_star.starbase.owner = { is_same_empire = root }
+					NOR = {
+						any_owned_fleet = { is_ship_class = shipclass_colonizer }
+						capital_star.solar_system = {
+							any_fleet_in_system = { is_mobile = yes is_owned_by = root }
+						}
+					}
+					any_owned_species = {
+						NOR = {
+							has_citizenship_type = { type = citizenship_purge country = root }
+							has_purge_type = { country = root type = purge_neutering }
+							# any_species_pop = { is_being_purged = yes }
+						}
+						root = {
+							any_system_within_border = {
+								has_access_fleet = root
+								count_system_colony = { count = 0 }
+								any_system_planet = {
+									NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+									is_colonizable = yes
+									can_colonize = { who = root status = yes }
+									prevprevprev = { can_live_on_planet = prev }
+									habitability = { who = prevprevprev value >= 0.7 }
+								}
+							}
+						}
+					}
+				}
+				random_owned_species = {
+					limit = {
+						NOR = {
+							has_citizenship_type = { type = citizenship_purge country = root }
+							has_purge_type = { country = root type = purge_neutering }
+							# any_species_pop = { is_being_purged = yes }
+						}
+						root = {
+							any_system_within_border = {
+								has_access_fleet = root
+								count_system_colony = { count = 0 }
+								any_system_planet = {
+									NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+									is_colonizable = yes
+									can_colonize = { who = root status = yes }
+									prevprevprev = { can_live_on_planet = prev }
+									habitability = { who = prevprevprev value >= 0.7 }
+								}
+							}
+						}
+					}
+					weights = { base = 1 modifier = { add = 10 NOT = { is_same_species = root } } }
+					prev = {
+						capital_scope = {
+							create_fleet = {
+								effect = {
+									set_owner = root
+									create_ship = { random_existing_design = colonizer colonizer_species = prevprevprev }
+									set_location = { target = prev.starbase distance = 5 }
+								}
+								settings = {
+									can_change_composition = no
+									can_change_leader = no
+									uses_naval_capacity = no
+									spawn_debris = no
+								}
+							}
+						}
+						set_timed_country_flag = { flag = cf_grimdark_unemployed_cooldown months = 2 }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_owned_species = {
+						NOR = {
+							has_citizenship_type = { type = citizenship_purge country = root }
+							has_purge_type = { country = root type = purge_neutering }
+							# any_species_pop = { is_being_purged = yes }
+						}
+						root = {
+							any_system_within_border = {
+								has_access_fleet = root
+								count_system_colony = { count = 0 }
+								any_system_planet = {
+									NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+									is_colonizable = yes
+									can_colonize = { who = root status = yes }
+									prevprevprev = { can_live_on_planet = prev }
+									habitability = { who = prevprevprev value >= 0.7 }
+								}
+								root.capital_scope.solar_system = {
+									any_fleet_in_system = { is_mobile = yes is_owned_by = root can_access_system = prevprev }
+								}
+							}
+						}
+					}
+				}
+				random_owned_species = {
+					limit = {
+						NOR = {
+							has_citizenship_type = { type = citizenship_purge country = root }
+							has_purge_type = { country = root type = purge_neutering }
+							# any_species_pop = { is_being_purged = yes }
+						}
+						prev = {
+							any_system_within_border = {
+								has_access_fleet = root
+								count_system_colony = { count = 0 }
+								any_system_planet = {
+									NOR = { has_owner = yes has_planet_flag = under_tmp_colonization }
+									is_colonizable = yes
+									can_colonize = { who = root status = yes }
+									prevprevprev = { can_live_on_planet = prev }
+									habitability = { who = prevprevprev value >= 0.7 }
+								}
+								root.capital_scope.solar_system = {
+									any_fleet_in_system = { is_mobile = yes is_owned_by = root can_access_system = prevprev }
+								}
+							}
+						}
+					}
+					weights = { base = 1 modifier = { add = 10 NOT = { is_same_species = root } } }
+					prev = {
+						capital_scope = {
+							create_fleet = {
+								effect = {
+									set_owner = root
+									create_ship = { random_existing_design = colonizer colonizer_species = prevprev }
+									set_location = { target = prev distance = 5 }
+								}
+								settings = {
+									can_change_composition = no
+									can_change_leader = no
+									uses_naval_capacity = no
+									spawn_debris = no
+								}
+							}
+						}
+						set_timed_country_flag = { flag = cf_grimdark_unemployed_cooldown months = 2 }
+					}
+				}
+			}
+		}
+	}
+}

@@ -11,14 +11,387 @@
 # 10 Sons of Malice				- Malice (Malal): (Renegade Chapter, Leader: Unknown) a mysterious and obscure Chaos God. He represents a unique and paradoxical aspect of Chaos—self-destruction, rebellion, and the endless cycle of Chaos feeding on itself
 # 11 Red Corsairs				- Lose Chaos Undivided: (Renegade Chapter, Leader: Huron Blackheart) are characterized by their pragmatic approach to piracy and war, often salvaging ships and equipment from their enemies. They are known for incorporating renegade Space Marines from other Chapters, offering them refuge and a place in their ranks, which has led to the Red Corsairs becoming a large and varied warband.
 
-# "EMPIRE_DESIGN_mechanicus"=
-# "Mechanican Forge Dominion"=
+"warhordeorks"=
+{
+	key="EMPIRE_DESIGN_ork"
+	ship_prefix=
+	{
+		key="OMGNM"
+		literal=yes
+	}
+	species=
+	{
+		class="HUM"
+		portrait="humanoid_hp_12"
+		species_name=
+		{
+			key="name_list_ORK1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_ork"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+				
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_ork"
+					}
+				}
+ 
+			}
+		}
+		name_list="ORK1"
+		gender=not_set
+		trait="trait_organic"
+		trait="trait_orkz"
+		trait="trait_self_sustained"
+		trait="trait_survivor"
+	}
+	secondary_species=
+	{
+		class="REP"
+		portrait="rep11"
+		species_name=
+		{
+			key="Grot"
+		}
+		species_plural=
+		{
+			key="Grot_plural"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+				
+				{
+					key="adjective"
+					value=
+					{
+						key="Grot_adj"
+					}
+				}
+ 
+			}
+		}
+		name_list="ORK1"
+		gender=not_set
+		trait="trait_organic"
+		trait="trait_self_sustained"
+		trait="trait_survivor"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+			
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_ORK1"
+				}
+			}
+ 
+			{
+				key="1"
+				value=
+				{
+					key="Horde"
+				}
+			}
+ 
+		}
+	}
+	adjective=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+			
+			{
+				key="adjective"
+				value=
+				{
+					key="PRESCRIPTED_adjective_ork"
+				}
+			}
+ 
+		}
+	}
+	authority="auth_dictatorial"
+	government="gov_bandit_kingdom"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_ork"
+	}
+	planet_class="pc_continental"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_ork"
+	}
+	initializer=""
+	graphical_culture="mammalian_01"
+	city_graphical_culture="mammalian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="pirate"
+			file="ork_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="flash.dds"
+		}
+		colors=
+		{
+			"dark_orange"
+			"off_white"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=female
+		name=
+		{
+			full_names=
+			{
+				key="PRESCRIPTED_ruler_name_ork"
+			}
+			use_full_regnal_name=yes
+		}
+		portrait="humanoid_hp_12_female"
+		texture=0
+		evolution_mask=0
+		attachment=0
+		clothes=4
+		trait="trait_ruler_logistic_understanding"
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="default_room"
+	spawn_enabled=yes
+	ethic="ethic_fanatic_xenophobe"
+	ethic="ethic_militarist"
+	civics=
+	{
+		"civic_barbaric_despoilers"
+		"civic_warrior_culture"
+		"civic_nationalistic_zeal"
+	}
+	origin="origin_barbarichorde"
+}
+
+"Necron Resurgency "=
+{
+	key="Necron Resurgency State"
+	ship_prefix=
+	{
+		key="NRS"
+		literal=yes
+	}
+	species=
+	{
+		class="MACHINE"
+		portrait="sd_hum_robot"
+		species_name=
+		{
+			key="name_list_NECRON1" # "name_list_NECRON1"
+		}
+		species_plural=
+		{
+			key="PRESCRIPTED_species_plural_necron"
+		}
+		species_adjective=
+		{
+			key="%ADJECTIVE%"
+			variables=
+			{
+				
+				{
+					key="adjective"
+					value=
+					{
+						key="PRESCRIPTED_species_adjective_necron"
+					}
+				}
+ 
+			}
+		}
+		name_list="NECRON1"
+		gender=indeterminable
+		trait="trait_machine_unit"
+		trait="trait_necrons"
+		trait="trait_robot_mass_produced"
+		trait="trait_robot_repurposed_hardware"
+		trait="trait_robot_high_bandwidth"
+		trait="trait_robot_recycled"
+		trait="trait_robot_durable"
+	}
+	name=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+			
+			{
+				key="adjective"
+				value=
+				{
+					key="name_list_NECRON1"
+				}
+			}
+ 
+			{
+				key="1"
+				value=
+				{
+					key="%ADJ%"
+					variables=
+					{
+						
+						{
+							key="1"
+							value=
+							{
+								key="Resurgency"
+								variables=
+								{
+									
+									{
+										key="1"
+										value=
+										{
+											key="State"
+										}
+									}
+ 
+								}
+							}
+						}
+ 
+					}
+				}
+			}
+ 
+		}
+	}
+	adjective=
+	{
+		key="%ADJECTIVE%"
+		variables=
+		{
+			
+			{
+				key="adjective"
+				value=
+				{
+					key="PRESCRIPTED_adjective_necron"
+				}
+			}
+ 
+		}
+	}
+	authority="auth_imperial"
+	government="gov_despotic_hegemony"
+	planet_name=
+	{
+		key="PRESCRIPTED_planet_name_necron"
+	}
+	planet_class="pc_continental"
+	system_name=
+	{
+		key="PRESCRIPTED_system_name_necron"
+	}
+	initializer=""
+	graphical_culture="mammalian_01"
+	city_graphical_culture="mammalian_01"
+	empire_flag=
+	{
+		icon=
+		{
+			category="necrons"
+			file="necron_emblem.dds"
+		}
+		background=
+		{
+			category="backgrounds"
+			file="stripe.dds"
+		}
+		colors=
+		{
+			"orange"
+			"dark_purple"
+			"null"
+			"null"
+		}
+	}
+	ruler=
+	{
+		gender=indeterminable
+		name=
+		{
+			full_names=
+			{
+				key="%LEADER_1%"
+				variables=
+				{
+					
+					{
+						key="1"
+						value=
+						{
+							key="HUM1_CHR_Jesslur"
+						}
+					}
+ 
+					{
+						key="2"
+						value=
+						{
+							key="HUM1_CHR_dVhakk"
+						}
+					}
+ 
+				}
+			}
+		}
+		portrait="sd_hum_robot"
+		texture=0
+		evolution_mask=0
+		attachment=0
+		clothes=0
+		leader_class="official"
+	}
+	spawn_as_fallen=no
+	ignore_portrait_duplication=no
+	room="necron2_room"
+	spawn_enabled=yes
+	ethic="ethic_fanatic_authoritarian"
+	ethic="ethic_materialist"
+	origin="origin_necron_awakening"
+}
+
 "adeptus_mechanicus"=
 {
 	key="EMPIRE_DESIGN_mechanicus"
 	ship_prefix=
 	{
-		key=""
+		key="Omnis"
 		literal=yes
 	}
 	species=
@@ -124,14 +497,6 @@
 		key="PRESCRIPTED_adjective_mechanicus"
 	}
 	authority="auth_dictatorial"	# auth_imperial
-	flags=
-	{
-		"mankind_star_empire"
-		"loyallegion"
-		"humanoid"
-		"human_empire"
-		"ai_no_leave_fed"
-	}
 	government="gov_theocratic_dictatorship"	# gov_imperium
 	advisor_voice_type="l_materialist"	# l_machine
 	planet_name=
@@ -219,222 +584,7 @@
 	}
 	origin="origin_iforge"	# origin_syncretic_evolution
 }
-# Vol 1 "Ork Horde"
-# EMPIRE_DESIGN_ork
-"warhordeorks"=
-{
-	key="EMPIRE_DESIGN_ork"
-	ship_prefix=
-	{
-		key="OMGNM"
-		literal=yes
-	}
-	species=
-	{
-		class="HUM" # Orkz
-		portrait="humanoid_hp_12" # Orkz
-		species_name=
-		{
-			key="name_list_ORK1"
-		}
-		species_plural=
-		{
-			key="PRESCRIPTED_species_plural_ork"
-		}
-		species_adjective=
-		{
-			key="%ADJECTIVE%"
-			variables=
-			{
-				{
-					key="adjective"
-					value=
-					{
-						key="PRESCRIPTED_species_adjective_ork"
-					}
-				}
-			}
-		}
-		species_bio="This species epitomizes savagery, violence, and primal instincts. Their insatiable appetite for combat leads them to great crusades across the galaxy, because they are the horde, and they must fight."
-		name_list="ORK1"		# "REP4"
-		gender=not_set
-		trait="trait_orkz"
-		trait="trait_self_sustained"
-		trait="trait_survivor"
-		trait="trait_slow_learners"
-		# trait="trait_natural_engineers"
-		trait="trait_very_strong"
-		trait="trait_sedentary"
-	}
-	secondary_species=
-	{
-		class="REP" # HUM
-		portrait="rep11" # "humanoid_hp_02"
-		species_name=
-		{
-			key="Grot"
-		}
-		species_plural=
-		{
-			key="Grot_plural"
-		}
-		species_adjective=
-		{
-			key="%ADJECTIVE%"
-			variables=
-			{
-				{
-					key="adjective"
-					value=
-					{
-						key="Grot_adj"
-					}
-				}
-			}
-		}
-		species_bio="Grot_desc"
-		name_list="ART1"
-		gender=not_set
-		# trait="trait_syncretic_proles"
-		# trait="trait_orkz"
-		trait="trait_self_sustained"
-		trait="trait_survivor"
-		trait="trait_unruly"
-		trait="trait_industrious"
-		# trait="trait_incubator" has_toxoids
-		trait="trait_fleeting"
-		trait="trait_conformists"
-		# trait="trait_natural_engineers"
-	}
-	name=
-	{
-		key="%ADJECTIVE%"
-		variables=
-		{
-			{
-				key="adjective"
-				value=
-				{
-					key="name_list_ORK1"
-				}
-			}
-			{
-				key="1"
-				value=
-				{
-					key="Horde"
-				}
-			}
-		}
-	}
-	adjective=
-	{
-		key="PRESCRIPTED_adjective_ork"
-	}
-	authority="auth_dictatorial"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"ork_empire"
-		"the_goff"
-	}
-	government="gov_purity_order"
-	planet_name=
-	{
-		key="PRESCRIPTED_planet_name_ork"
-	}
-	planet_class="pc_tropical"
-	system_name=
-	{
-		key="PRESCRIPTED_system_name_ork"
-	}
-	initializer=""
-	graphical_culture="pirate_01"	# "reptilian_01"
-	city_graphical_culture="arthropoid_01"
-	empire_flag=
-	{
-		icon=
-		{
-			category="pirate"
-			file="ork_emblem.dds"
-		}
-		background=
-		{
-			category="backgrounds"
-			file="flash.dds"
-		}
-		colors=
-		{
-			"dark_orange"
-			"off_white"
-			"null"
-			"null"
-		}
-	}
-	ruler=
-	{
-		gender=male
-		name=
-		{
-			full_names=
-			{
-				# key="PRESCRIPTED_ruler_name_ork"
-				key="%LEADER_2%"
-				variables=
-				{
-					{
-						key="1"
-						value=
-						{
-							key="Rattsch"
-							literal=yes
-						}
-					}
-					{
-						key="2"
-						value=
-						{
-							key="Roko_Ki"
-							literal=yes
-						}
-					}
-				}
-			}
-			# use_full_regnal_name=yes
-		}
-		portrait="humanoid_hp_12" # ORK13
-		texture=0
-		attachment=0
-		clothes=2
-		ruler_title=
-		{
-			key="PRESCRIPTED_ruler_title_ork"
-		}
-		# Max lenght only 304
-		custom_biography=
-		{
-			key="Ghazghkull Thraka, da big boss of all Orks, stomps 'round, smashin' and unitin' Ork mobs. He's from Urk, wants da biggest Waaagh! ever for da 'Great Waaagh!' prophecy. His black power klaw shows he's da boss. Ghazghkull's a real scary git, always a big, mean threat."
-			literal=yes
-		}
-		trait="trait_ruler_logistic_understanding"
-		leader_class="official"
-	}
-	spawn_as_fallen=no
-	ignore_portrait_duplication=no
-	room="scrappy_room"
-	spawn_enabled=yes	# Yes / no / always
-	ethic="ethic_fanatic_xenophobe"
-	ethic="ethic_militarist"
-	civics=
-	{
-		"civic_fanatic_purifiers"
-		"civic_nationalistic_zeal"
-		"civic_warrior_culture"
-	}
-	origin="origin_barbarichorde"
-}
-# Craftworlds Asuryani (Eldar) "Soulkeeper Unity"
+# Craftworlds Asuryani (Eldar) "Soulkeeper Unity" #LOADS
 "soulkeeperunity"={
 	key="EMPIRE_DESIGN_eldar"
 	ship_prefix=
@@ -504,12 +654,6 @@
 		key="PRESCRIPTED_adjective_eldar"
 	}
 	authority="auth_oligarchic"
-	flags=
-	{
-		"custom_start_screen"
-		"eldarian"
-		"eldar_empire"
-	}
 	government="gov_citizen_stratocracy"
 	planet_name=
 	{
@@ -580,7 +724,7 @@
 	origin="origin_soulkeepers"
 }
 # Vol 2
-# Chaos Space Marine "World Eaters" (XII Legion - former "War Hounds") - Khorne
+# Chaos Space Marine "World Eaters" (XII Legion - former "War Hounds") - Khorne  #LOADS
 "Khornate Ravagers"=
 {
 	key="EMPIRE_DESIGN_khorne"
@@ -697,14 +841,6 @@
 		}
 	}
 	authority="auth_imperial" # "auth_chaos"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_world_eater"
-		"khorne"
-	}
 	government="gov_blood_court" # gov_anarcho_tribalism gov_bandit_kingdom
 	planet_name=
 	{
@@ -793,7 +929,7 @@
 	origin="origin_shroudrage"	# "origin_world_eater"
 }
 # Tzeentch: Thousand Sons (XV Legion) - Cursed by Tzeentch, they are powerful sorcerers and serve the Chaos God of change and manipulation.
-# Alpha Legion (XX Legion)
+# Alpha Legion (XX Legion)   #LOADS 
 "Tzeentch Fellowship"=
 {
 	key="Tzeentch Fellowship"
@@ -840,15 +976,6 @@
 		key="Tzeentish"
 	}
 	authority="auth_oligarchic"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_thousand_sons"
-		"the_alpha_legion"
-		"tzeentch"
-	}
 	government="gov_grim_council"
 	planet_name=
 	{
@@ -914,7 +1041,7 @@
 	}
 	origin="origin_shroudmutated"
 }
-# Clone with DLC
+# Clone with DLC   #LOADS
 # Slaanesh: Emperor's Children (III Legion) - Devoted to Slaanesh, the Chaos God of excess and pleasure.
 "Slaaneshi Covenant"=
 {
@@ -961,14 +1088,6 @@
 		key="Slanneshee"
 	}
 	authority="auth_corporate"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_emperor_children"
-		"slaanesh"
-	}
 	government="gov_criminal_syndicate"	# government="gov_holy_tribunal"
 	planet_name=
 	{
@@ -1082,14 +1201,6 @@ Slaanesh=
 		key="Slanneshee"
 	}
 	authority="auth_oligarchic"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_emperor_children"
-		"slaanesh"
-	}
 	government="gov_holy_tribunal" # gov_theocratic_oligarchy
 	planet_name=
 	{
@@ -1160,7 +1271,7 @@ Slaanesh=
 }
 # TODO infected jobs do not work?
 # Nurgle: Death Guard (XIV Legion) - Devoted to Nurgle, the Chaos God of decay and pestilence.
-# "Nurglen Clique"
+# "Nurglen Clique"  #LOADS
 "nurglenclique"=
 {
 	key="nurglenclique"
@@ -1206,14 +1317,6 @@ Slaanesh=
 		key="Nurgly"
 	}
 	authority="auth_hive_mind"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_death_guard"
-		"nurgle"
-	}
 	government="gov_hive_mind"
 	planet_name=
 	{
@@ -1278,7 +1381,7 @@ Slaanesh=
 	}
 	origin="origin_shroudsick"
 }
-# Fallback Clone without DLC
+# Fallback Clone without DLC #LOADS
 "Nurglen Clique"=
 {
 	key="Nurglen Clique"
@@ -1324,14 +1427,6 @@ Slaanesh=
 		key="Nurgly"
 	}
 	authority="auth_hive_mind"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"the_death_guard"
-		"nurgle"
-	}
 	government="gov_hive_mind"
 	planet_name=
 	{
@@ -1396,348 +1491,7 @@ Slaanesh=
 	}
 	origin="origin_shroudsick"
 }
-# Vol 3
-# "Necron Resurgency" Hive
-"necronresurge"=
-{
-	key="necronresurge"
-	ship_prefix=
-	{
-		key="NRS"
-		literal=yes
-	}
-	species=
-	{
-		class="MACHINE" # Necrons
-		portrait="sd_hum_robot" # Szarekhan_Dynasty
-		species_name=
-		{
-			key="name_list_NECRON1" # "name_list_NECRON1"
-		}
-		species_plural=
-		{
-			key="PRESCRIPTED_species_plural_necron"
-		}
-		species_adjective=
-		{
-			key="%ADJECTIVE%"
-			variables=
-			{
-				{
-					key="adjective"
-					value=
-					{
-						key="PRESCRIPTED_species_adjective_necron"
-					}
-				}
-			}
-		}
-		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
-		name_list="NECRON1"
-		gender=not_set
-		trait="trait_machine_unit"
-		trait="trait_necrons"
-		trait="trait_robot_high_bandwidth"
-		trait="trait_robot_recycled"
-		trait="trait_robot_mass_produced"
-		trait="trait_robot_repurposed_hardware"
-		trait="trait_robot_durable"
-	}
-	name=
-	{
-		key="%ADJECTIVE%"
-		variables=
-		{
-			{
-				key="adjective"
-				value=
-				{
-					key="name_list_NECRON1"
-				}
-			}
-			{
-				key="1"
-				value=
-				{
-					key="Resurgency"
-				}
-			}
-		}
-	}
-	adjective=
-	{
-		key="PRESCRIPTED_adjective_necron"
-	}
-	authority="auth_machine_intelligence"
-	flags=
-	{
-		"custom_start_screen"
-		"necron_empire"
-	}
-	government="gov_machine_terminator"
-	advisor_voice_type="l_necroid_vir"
-	planet_name=
-	{
-		key="PRESCRIPTED_planet_name_necron"
-	}
-	planet_class="pc_desert"
-	system_name=
-	{
-		key="PRESCRIPTED_system_name_necron"
-	}
-	initializer=""
-	graphical_culture="steelribs_01" # "humanoid_01"
-	city_graphical_culture="steelribs_01" # "mammalian_01"
-	empire_flag=
-	{
-		icon=
-		{
-			category="necrons"
-			file="necron_emblem.dds"
-		}
-		background=
-		{
-			category="backgrounds"
-			file="stripe.dds"
-		}
-		colors=
-		{
-			"orange"
-			"dark_purple"
-			"null"
-			"null"
-		}
-	}
-	ruler=
-	{
-		gender=female
-		name=
-		{
-			full_names=
-			{
-				# key="PRESCRIPTED_ruler_name_necron"
-				key="%LEADER_2%"
-				variables=
-				{
-					{
-						key="1"
-						value=
-						{
-							key="Varagon"
-							literal=yes
-						}
-					}
-					{
-						key="2"
-						value=
-						{
-							key="Drakvir"
-							literal=yes
-						}
-					}
-				}
-			}
-			# use_full_regnal_name=yes
-		}
-		portrait="sd_hum_robot"		# "Szarekhan13"
-		texture=3
-		attachment=0
-		clothes=0
-		ruler_title=
-		{
-			key="PRESCRIPTED_ruler_title_necron"
-		}
-		trait="trait_ruler_logistic_understanding"
-		leader_class="official"
-	}
-	spawn_as_fallen=no
-	ignore_portrait_duplication=no
-	room="necron2_room"	# "machine_room"
-	spawn_enabled=yes	# Yes / no / always
-	playable = has_synthetic_dawn
-	ethic="ethic_gestalt_consciousness"
-	civics=
-	{
-		"civic_machine_terminator"
-		"civic_machine_warbots"
-	}
-	origin="origin_necron_awakening"
-}
-# Copy with DLC
-"EMPIRE_DESIGN_necron"=
-{
-	key="EMPIRE_DESIGN_necron"
-	ship_prefix=
-	{
-		key="NRS"
-		literal=yes
-	}
-	species=
-	{
-		class="MACHINE" # Necrons
-		portrait="sd_hum_robot" # Szarekhan_Dynasty
-		species_name=
-		{
-			key="name_list_NECRON1" # "name_list_NECRON1"
-		}
-		species_plural=
-		{
-			key="PRESCRIPTED_species_plural_necron"
-		}
-		species_adjective=
-		{
-			key="%ADJECTIVE%"
-			variables=
-			{
-				{
-					key="adjective"
-					value=
-					{
-						key="PRESCRIPTED_species_adjective_necron"
-					}
-				}
-			}
-		}
-		species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
-		name_list="NECRON1"
-		gender=not_set
-		# trait="trait_mechanical"
-		trait="trait_machine_unit"
-		trait="trait_necrons"
-		trait="trait_robot_high_bandwidth"
-		trait="trait_robot_recycled"
-		trait="trait_robot_mass_produced"
-		trait="trait_robot_repurposed_hardware"
-		trait="trait_robot_durable"
-	}
-	name=
-	{
-		key="%ADJECTIVE%"
-		variables=
-		{
-			{
-				key="adjective"
-				value=
-				{
-					key="name_list_NECRON1"
-				}
-			}
-			{
-				key="1"
-				value=
-				{
-					key="Resurgency"
-				}
-			}
-		}
-	}
-	adjective=
-	{
-		key="PRESCRIPTED_adjective_necron"
-	}
-	authority="auth_imperial"
-	flags=
-	{
-		"custom_start_screen"
-		"necron_empire"
-	}
-	government = "gov_star_empire"
-	advisor_voice_type="l_necroid_vir"
-	planet_name=
-	{
-		key="PRESCRIPTED_planet_name_necron"
-	}
-	planet_class="pc_desert"
-	system_name=
-	{
-		key="PRESCRIPTED_system_name_necron"
-	}
-	initializer=""
-	graphical_culture="steelribs_01" # "humanoid_01"
-	city_graphical_culture="steelribs_01" # "mammalian_01"
-	empire_flag=
-	{
-		icon=
-		{
-			category="necrons"
-			file="necron_emblem.dds"
-		}
-		background=
-		{
-			category="backgrounds"
-			file="stripe.dds"
-		}
-		colors=
-		{
-			"orange"
-			"dark_purple"
-			"null"
-			"null"
-		}
-	}
-	ruler=
-	{
-		gender=female
-		name=
-		{
-			full_names=
-			{
-				# key="PRESCRIPTED_ruler_name_necron"
-				key="%LEADER_2%"
-				variables=
-				{
-					{
-						key="1"
-						value=
-						{
-							key="Varagon"
-							literal=yes
-						}
-					}
-					{
-						key="2"
-						value=
-						{
-							key="Drakvir"
-							literal=yes
-						}
-					}
-				}
-			}
-			# use_full_regnal_name=yes
-		}
-		portrait="sd_hum_robot"		# "Szarekhan13"
-		texture=3
-		attachment=0
-		clothes=0
-		ruler_title=
-		{
-			key="PRESCRIPTED_ruler_title_necron"
-		}
-		trait="trait_ruler_logistic_understanding"
-		leader_class="official"
-	}
-	spawn_as_fallen=no
-	spawn_enabled=yes	# Yes / no / always
-	playable = has_machine_age_dlc
-	ignore_portrait_duplication=no
-	room="necron2_room"	# "machine_room"
-	ethic="ethic_fanatic_authoritarian"
-	# ethic="ethic_materialist"
-	ethic="ethic_militarist"
-	# ethic="ethic_xenophobe"
-	civics=
-	{
-		# "civic_imperial_cult"			# is_spiritualist Necrons have a godlike reverence for their rulers, especially the Silent King or their Phaeron, who is seen as an immortal, divine figure. While the Necrons don’t worship in the traditional sense, their supreme ruler commands unquestioned loyalty and is the literal embodiment of their empire’s will.
-		# "civic_technocracy"				# is_materialist This civic could work well for the Necrons due to their focus on technology and science. The Necrons are driven by a mastery of advanced technologies, such as stasis fields, necrodermis bodies, and gauss weaponry. Their leadership is often scientifically driven, with the Crypteks being the architects of their technological might.
-		"civic_distinguished_admiralty" # is_militarist This civic would represent the Necrons’ highly disciplined and militarized nature. The Necrons' military is ancient, meticulously organized, and terrifyingly efficient. A civic focused on enhancing their military command structure fits perfectly with their warlike tendencies and the endless legions of Necron warriors and war machines.
-		# "civic_warrior_culture"		# is_militarist Necrons are ancient warriors with a culture built on military prowess and conquest. This civic can represent their strong emphasis on combat and their historical dominance through force.
-		"civic_efficient_bureaucracy"	# Necron society is ancient and hyper-organized, with millennia of meticulous bureaucratic control over their vast legions and conquered worlds. This civic reflects the unrelenting efficiency of their empire and the robotic precision with which they manage their domains.
-		"civic_functional_architecture"	# Necron structures are known for their cold, efficient, and indestructible architecture. This civic reflects the Necron empire’s focus on perfect, functional designs, where nothing is wasted, and every structure is built for eternity.
-	}
-	origin="origin_necron_awakening"
-}
-# Dark Eldar "Drukhari Regime"
+# Dark Eldar "Drukhari Regime" #LOADS
 "drukravagers"=
 {
 	key="EMPIRE_DESIGN_darkeldar"
@@ -1844,13 +1598,6 @@ Slaanesh=
 		key="PRESCRIPTED_adjective_darkeldar"
 	}
 	authority="auth_imperial"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"eldarian"
-		"darkeldar_empire"
-	}
 	government="gov_star_empire" # gov_bandit_kingdom
 	planet_name=
 	{
@@ -1924,7 +1671,7 @@ Slaanesh=
 	origin="origin_paindrinkers"
 }
 # Vol 4
-# "Tyranid Swarm"
+# "Tyranid Swarm"  #LOADS
 "tryanidswarmalp"=
 {
 	key="EMPIRE_DESIGN_tyranid"
@@ -1996,11 +1743,6 @@ Slaanesh=
 		key="PRESCRIPTED_adjective_tyranid"
 	}
 	authority="auth_hive_mind"
-	flags=
-	{
-		"custom_start_screen"
-		"tyranid_empire"
-	}
 	government="gov_devouring_swarm"
 	planet_name=
 	{
@@ -2089,7 +1831,7 @@ Slaanesh=
 	}
 	origin="origin_bioreformers"
 }
-# "Tau Empire"
+# "Tau Empire" #LOADS
 "tauunityalp"=
 {
 	key="EMPIRE_DESIGN_tau"
@@ -2195,12 +1937,6 @@ Slaanesh=
 		key="PRESCRIPTED_adjective_tau"
 	}
 	authority="auth_oligarchic"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"tau_empire"
-	}
 	government="gov_executive_committee"
 	planet_name=
 	{
@@ -2299,7 +2035,7 @@ Slaanesh=
 	}
 	origin="origin_greatergood"
 }
-# O God Ruler "Terran Imperium"
+# O God Ruler "Terran Imperium" #LOADS
 imp=
 {
 	key="EMPIRE_DESIGN_imp"
@@ -2352,15 +2088,6 @@ imp=
 		key="PRESCRIPTED_adjective_mankind"
 	}
 	authority="auth_imperial"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"human_empire"
-		"ai_no_leave_fed"
-		"the_mankind"
-		"imperium" # For whom?
-	}
 	government="gov_feudal_empire"
 	planet_name=
 	{
@@ -2457,7 +2184,7 @@ imp=
 	}
 	origin="origin_godruler"
 }
-"blacklegion"=
+"blacklegion"=   #LOADS
 {
 	key="EMPIRE_DESIGN_black_legion"
 	ship_prefix=
@@ -2511,16 +2238,6 @@ imp=
 		key="PRESCRIPTED_adjective_black_legion"
 	}
 	authority="auth_dictatorial"
-	flags=
-	{
-		"custom_start_screen"
-		"humanoid"
-		"chaos_empire"
-		"chaos_undivided_worship" # "undividedworship"
-		# "chaos_undivided"
-		"the_black_legion"
-		"eyechaos_empire"
-	}
 	government="gov_theocratic_dictatorship"	# gov_anarcho_tribalism
 	planet_name=
 	{

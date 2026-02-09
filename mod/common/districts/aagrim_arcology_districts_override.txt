@@ -1,7 +1,12 @@
 district_arcology_housing = {
 	base_buildtime = 600
-	is_capped_by_modifier = no
 	exempt_from_ai_planet_specialization = yes
+
+	zone_slots = {
+		slot_city_government
+		slot_city_01
+		slot_city_02
+	}
 
 	show_on_uncolonized = {
 		OR = {
@@ -34,6 +39,7 @@ district_arcology_housing = {
 		district_city
 		district_nexus
 		district_hive
+		district_mindlink    
 	}
 
 	resources = {
@@ -47,16 +53,17 @@ district_arcology_housing = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 15
+		planet_housing_add = 1500
 	}
 
+	# Gestalt maintenance jobs – from 4.0 reference
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			job_maintenance_drone_add = 9
+			job_maintenance_drone_add = 900
 		}
 	}
 
@@ -69,7 +76,7 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			job_maintenance_drone_add = 6
+			job_maintenance_drone_add = 600
 		}
 	}
 
@@ -79,10 +86,11 @@ district_arcology_housing = {
 			owner = { has_active_tradition = tr_prosperity_public_works }
 		}
 		modifier = {
-			planet_housing_add = 3
+			planet_housing_add = 300
 		}
 	}
 
+	# Housing tech 1 – unchanged
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -91,7 +99,7 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 3
+			planet_housing_add = 300
 		}
 	}
 
@@ -104,10 +112,11 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 3
+			planet_housing_add = 300
 		}
 	}
 
+	# Housing tech 2 + gestalt – from reference
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -117,10 +126,11 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			job_maintenance_drone_add = 3
+			job_maintenance_drone_add = 300
 		}
 	}
 
+	# Regular empires (non-godruler / non-machine_cult)
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -130,21 +140,7 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			job_clerk_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				has_active_tradition = tr_virtuality_4 # tr_prosperity_interstellar_franchising
-				NOR = { has_origin = origin_godruler has_machine_cult = yes }
-			}
-		}
-		modifier = {
-			job_clerk_add = 3
+			job_clerk_add = 300
 		}
 	}
 
@@ -158,10 +154,25 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			job_imperium_scribe_add = 3
+			job_clerk_add = 300
 		}
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_active_tradition = tr_virtuality_4 # tr_prosperity_interstellar_franchising
+				NOR = { has_origin = origin_godruler has_machine_cult = yes }
+			}
+		}
+		modifier = {
+			job_imperium_scribe_add = 300
+		}
+	}
+
+	# Godruler / machine cult empires – scribes + arbiters
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -171,11 +182,25 @@ district_arcology_housing = {
 			}
 		}
 		modifier = {
-			job_imperium_scribe_add = 2
-			job_imperium_arbiter_add = 1
+			job_imperium_scribe_add = 200
+			job_imperium_arbiter_add = 100
 		}
 	}
 
+	# Your old tankbound effect, adapted to 4.0
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_tankbound_empire = yes
+			}
+		}
+		modifier = {
+			job_production_overseer_add = 100
+		}
+	}
+
+	# Triggered descriptions – from reference
 	triggered_desc = {
 		trigger = {
 			exists = owner

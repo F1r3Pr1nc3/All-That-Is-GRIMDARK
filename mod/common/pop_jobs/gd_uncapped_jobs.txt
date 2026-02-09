@@ -1,16 +1,17 @@
 cultist = {
 	category = worker
-	is_capped_by_modifier = no
-	building_icon = building_luxury_residence
-	clothes_texture_index = 2
-	icon = death_priest
+	swappable_data = {
+		default = {
+			condition_string = WORKER_JOB_TRIGGER
+			building_icon = building_luxury_residence
+		}
+    }
 
+	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
 	}
-
-	possible_precalc = can_fill_worker_job
 
 	possible = {
 		can_take_servant_job = no
@@ -23,7 +24,6 @@ cultist = {
 			}
 		}
 		OR = {
-			has_job = cultist
 			is_unemployed = yes
 		}
 	}
@@ -35,24 +35,13 @@ cultist = {
 		}
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			is_organic_species = yes
-		}
-		pop_housing_usage_add = -0.5
-	}
-
 	planet_modifier = {
 		planet_amenities_add = 1
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 1
-	}
-
 	triggered_planet_modifier = {
-		potential = {
-			OR = {
+        potential = {
+            any_owned_species = {
 				has_trait = trait_robot_domestic_protocols
 				has_trait = trait_charismatic
 			}
@@ -61,14 +50,18 @@ cultist = {
 			planet_amenities_add = 0.25
 		}
 	}
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_repugnant
-		}
-		modifier = {
-			planet_amenities_add = -0.25
-		}
-	}
+	
+    triggered_planet_modifier = {
+        potential = {
+            any_owned_species = {
+                has_trait = trait_repugnant
+            }
+        }
+        modifier = {
+            planet_amenities_add = -0.25
+        }
+    }
+
 
 	weight = {
 		weight = @special_job_weight
@@ -77,12 +70,14 @@ cultist = {
 
 cultist_master = {
 	category = worker
-	is_capped_by_modifier = no
-	building_icon = building_luxury_residence
-	clothes_texture_index = 2
-	icon = death_priest
+	swappable_data = {
+		default = {
+			condition_string = WORKER_JOB_TRIGGER
+			building_icon = building_luxury_residence
+		}
+    }
 
-	possible_precalc = can_fill_worker_job
+	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -95,7 +90,6 @@ cultist_master = {
 			has_origin = origin_shroudsinners
 		}
 		OR = {
-			has_job = cultist_master
 			is_unemployed = yes
 		}
 	}
@@ -110,24 +104,13 @@ cultist_master = {
 		}
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			is_organic_species = yes
-		}
-		pop_housing_usage_add = -0.5
-	}
-
 	planet_modifier = {
 		planet_amenities_add = 2
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 2
-	}
-
 	triggered_planet_modifier = {
-		potential = {
-			OR = {
+        potential = {
+            any_owned_species = {
 				has_trait = trait_robot_domestic_protocols
 				has_trait = trait_charismatic
 			}
@@ -136,9 +119,12 @@ cultist_master = {
 			planet_amenities_add = 0.5
 		}
 	}
+	
 	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_repugnant
+        potential = {
+            any_owned_species = {
+			    has_trait = trait_repugnant
+		    }
 		}
 		modifier = {
 			planet_amenities_add = -0.5
@@ -152,18 +138,19 @@ cultist_master = {
 
 conscript = {
 	category = worker
-	is_capped_by_modifier = no
-	building_icon = building_stronghold
-	clothes_texture_index = 4
-	icon = duelist
+	swappable_data = {
+		default = {
+			condition_string = WORKER_JOB_TRIGGER
+			building_icon = building_stronghold
+		}
+    }
 
+	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-
-	possible_precalc = can_fill_worker_job
 
 	possible = {
 		# can_take_servant_job = no
@@ -176,7 +163,6 @@ conscript = {
 			}
 		}
 		OR = {
-			has_job = conscript
 			is_unemployed = yes
 		}
 	}
@@ -196,17 +182,6 @@ conscript = {
 		modifier = {
 			country_naval_cap_add = 1
 		}
-	}
-
-	triggered_pop_modifier = {
-		potential = {
-			is_organic_species = yes
-		}
-		pop_housing_usage_add = -0.5
-	}
-
-	pop_modifier = {
-		pop_defense_armies_add = 1
 	}
 
 	resources = {
@@ -239,10 +214,14 @@ conscript = {
 
 nameless = {
 	category = simple_drone
-	building_icon = building_maintenance_depot
-	is_capped_by_modifier = no
-	icon = primitive_laborer
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			building_icon = building_maintenance_depot
+		}
+    }
 
+	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
 		is_being_purged = no
@@ -258,13 +237,10 @@ nameless = {
 		}
 	}
 
-	possible_precalc = can_fill_drone_job
-
 	possible = {
 		hidden_trigger = { exists = owner }
 		owner = { has_shroudsick_origin = yes }
 		OR = {
-			has_job = nameless
 			is_unemployed = yes
 		}
 	}
@@ -274,8 +250,8 @@ nameless = {
 		planet_crime_no_happiness_add = -1
 	}
 	triggered_planet_modifier = {
-		potential = {
-			OR = {
+        potential = {
+            any_owned_species = {
 				has_trait = trait_robot_emotion_emulators
 				has_trait = trait_charismatic
 			}
@@ -285,8 +261,8 @@ nameless = {
 		}
 	}
 	triggered_planet_modifier = {
-		potential = {
-			OR = {
+        potential = {
+            any_owned_species = {
 				has_trait = trait_robot_uncanny
 				has_trait = trait_repugnant
 			}

@@ -126,5 +126,4 @@ can_reanimate_armies  = {
 	has_origin = origin_shroudsick
 	has_valid_civic = civic_reanimated_armies
 	has_valid_civic = civic_hive_reanimated_armies
-	has_technology = tech_plague_zombies # tech_army_assimilation
 }

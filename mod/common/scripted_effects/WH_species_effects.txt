@@ -49,14 +49,15 @@ mirror_species = {
 			effect = { save_event_target_as = mirror_species }
 		}
 	}
-
-	every_species_pop = {
-		if = {
-			limit = { exists = owner }
-			change_species =  event_target:mirror_species
-		}
-		else = { kill_pop = yes }
-	}
+	
+    every_owned_pop = {
+        if = {
+            limit = { exists = owner }
+            change_species = event_target:mirror_species
+        }
+        else = { kill_pop = yes }
+    }
+	
 	random_species_pop = {
 		limit = { exists = owner }
 		owner = {

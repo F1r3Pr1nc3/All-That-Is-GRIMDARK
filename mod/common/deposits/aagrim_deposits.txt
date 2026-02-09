@@ -1,98 +1,94 @@
 d_aa_stasis_chambers = {
-	time = 180
+    time = 180
 
-	is_for_colonizable = yes
-	category = deposit_cat_rare_blocker
+    is_for_colonizable = yes
+    category = deposit_cat_rare_blocker
 
-	potential = {
-		is_artificial = no
-		OR = {
-			is_dry = yes
-			# is_planet_class = pc_tomb
-			is_planet_class = pc_nuked
-			gpm_is_planet_class_city = yes
-		}
-	}
+    potential = {
+        is_artificial = no
+        OR = {
+            is_dry = yes
+            # is_planet_class = pc_tomb
+            is_planet_class = pc_nuked
+            gpm_is_planet_class_city = yes
+        }
+    }
 
-	can_be_cleared = {
-		custom_tooltip = {
-			fail_text = has_ranger_lodge
-			planet = {
-				exists = owner
-				owner = {
-					OR = {
-						has_necron_origin = yes
-						AND = {
-							has_technology = tech_global_defense_grid # tier = 2
-							has_technology = tech_tomb_world_adaption # tier = 3
-						}
-					}
-				}
-			}
-		}
-	}
+    can_be_cleared = {
+        custom_tooltip = {
+            fail_text = has_ranger_lodge
 
-	on_cleared = {
-		if = {
-			limit = { exists = owner }
-			if = {
-				limit = { owner = { has_necron_origin = yes } }
-				create_pop = { species = owner }
-				random = { chance = 35 create_pop = { species = owner } }
-			}
-			else = {
-				owner = { add_resource = { alloys = 100 } }
-			}
-		}
-	}
-	planet_modifier = {
-		district_mining_max = -1
-	}
+            exists = owner
+            owner = {
+                OR = {
+                    has_necron_origin = yes
+                    AND = {
+                        has_technology = tech_global_defense_grid        # tier 2
+                        has_technology = tech_tomb_world_adaption        # tier 3
+                    }
+                }
+            }
+        }
+    }
 
-	resources = {
-		category = deposit_blockers
-		cost = {
-			trigger = {
-				exists = owner
-				owner = { has_necron_origin = no }
-			}
-			energy = 1000
-		}
-		cost = {
-			trigger = {
-				exists = owner
-				owner = { has_necron_origin = yes }
-			}
-			energy = 500
-		}
-	}
+    on_cleared = {
+        if = {
+            limit = { exists = owner }
 
-	ai_weight = {
-		weight = 1
-		modifier = {
-			factor = 2
-			exists = owner
-			owner = { has_necron_origin = yes }
-		}
-	}
+            if = {
+                limit = { owner = { has_necron_origin = yes } }
 
-	drop_weight = {
-		weight = 3 # @blocker_low
-		modifier = {
-			factor = 2
-			OR = {
-				is_planet_class = pc_desert
-				merg_is_relic_world = yes
-			}
-		}
-		modifier = {
-			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
-		}
-	}
+                # 35% chance to "wake" something from stasis
+                random_list = {
+                    35 = {
+                        create_pop_group = {
+                            species = owner_main_species
+                            size = 500
+                        }
+                    }
+                    65 = { }
+                }
+            }
+            else = {
+                owner = { add_resource = { alloys = 100 } }
+            }
+        }
+    }
 
-	# prerequisites = { "tech_tomb_world_adaption" }
+    resources = {
+        category = deposit_blockers
+        cost = {
+            energy = 500
+        }
+    }
+	
+    ai_weight = {
+        weight = 1
+        modifier = {
+            factor = 2
+            owner = { has_origin = origin_necron_awakening }
+        }
+    }
+
+    drop_weight = {
+        weight = 3 # @blocker_low
+
+        modifier = {
+            factor = 2
+            OR = {
+                is_planet_class = pc_desert
+                merg_is_relic_world = yes
+            }
+        }
+
+        modifier = {
+            factor = 0
+            num_free_districts = {
+                type = district_city
+                value < 2
+            }
+        }
+    }
+    # prerequisites = { "tech_tomb_world_adaption" }
 }
+

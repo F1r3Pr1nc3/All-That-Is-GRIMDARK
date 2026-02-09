@@ -1,22 +1,36 @@
-# on_game_start = {
-# 	events = {
-# 		aagrimstarts.0
-# 	}
-# }
 
-on_game_start_country = {
+on_press_begin = {
 	events = {
-		aagrimstarts.2000
+		grimstart.1 #god ruler
+		grimstart.2 #shroud rage
+		grimstart.3 #soul keepers
+		grimstart.4 #soul drinkers
+		grimstart.5 #greater good
+		grimstart.6 #bioformers
+		grimstart.7 #necron 
+		grimstart.8 #Mechanicus
+		grimstart.9 #Ork horde
+        grimstart.10 #chaos sub faction starts
 	}
 }
 
+on_five_year_pulse_country = { # Calls on Main relation update File and the sub events for singly applied opinions #Applys the general Opinions that are not faction specific
+	events = {                 # Event 2001 will be the only event to fire on the completion of the setup files, It DOESN'T cover the sub events, that will be handled by this on Action as well as the main Event.
+		aagrimstarts.2001  #Relation events Merged into one for easy and non reliance on other events. mainly for interchangable Opinions across multiple Races still kinda prototyping this. WIP but functional
+		aagrimstarts.2101  #Necron Relations seperated for debug and ease. The event Above still has the part of this Event which still fires the same opinion modifer but the block doesnt apply it because stellaris modding is so fun and logical!
+		aagrimstarts.2102  #Chaos-Imperium relations broken down the same as above.(Sub event)
+		aagrimstarts.2103  #Eldar-Chaos Relations (Same as Above) (Sub event)
+		aagrimstarts.2104  #Eldar-Imperium Relations (Same as Above)(Sub event)
+		aagrimstarts.2105  #Chaos God Rivalry (Sub event)
+	}
+}
 # No scope, like on_game_start
 # Does not run when loading MP saves due to OOS concerns
-on_single_player_save_game_load = {
-	events = {
-		aagrimstarts.99			# Backward fixes
-	}
-}
+#on_single_player_save_game_load = {
+#	events = {
+#		aagrimstarts.99			# Backward fixes  #Event removed For now given old events are almost entirely broken and these have likely either been fixed or are not of high importance. 
+#	}
+#}
 
 # A planet has been colonized.
 # Scope = Planet
@@ -24,7 +38,7 @@ on_colonized = {
 	events = {
 		necron.1110
 		aagrimstarts.1200
-		aagrimstarts.1400		# origin_shroudsick
+		aagrimstarts.1400		# origin_shroudsick 
 	}
 }
 
@@ -40,40 +54,15 @@ on_planet_occupied = {
 	}
 }
 
-on_monthly_pulse = {
-	events = {
-		aagrimstarts.1001
-	}
-}
-
-# on_monthly_pulse_country = {
-# 	events = {
-# 		aagrimstarts.100
-# 		aagrimstarts.1300
-# 	}
-# }
-
-on_yearly_pulse_country = {
+on_yearly_pulse_country = {  # Handle peace_sucks modifiers 
 	events = {
 		aagrimstarts.100
 	}
 }
 
-# on_yearly_pulse = {
-# 	events = {
-# 		lessgalcom.1
-# 	}
-# }
-
 on_bi_yearly_pulse = {
 	events = {
 		lessgalcom.1
-	}
-}
-
-on_five_year_pulse_country = {
-	events = {
-		aagrimstarts.2003		# Upd Relations
 	}
 }
 
@@ -108,16 +97,6 @@ on_war_beginning = {
 	}
 }
 
-# A war has been won
-# Root = Winner Warleader
-# From = Loser Warleader
-# fromfrom = War
-on_war_won = {
-	events = {
-		aagrimstarts.2003		# Upd Relations
-	}
-}
-
 # This = Federation leader
 # From = Joining member
 on_join_federation = {
@@ -132,12 +111,6 @@ on_galactic_council_established = {
 		aagrimstarts.2010
 	}
 }
-# Bad naming
-# on_join_alliance = {
-# 	events = {
-# 		aagrimstarts.2010
-# 	}
-# }
 
 on_remove_community_member = {
 	events = {
@@ -158,16 +131,11 @@ on_add_to_imperial_council = {
 # From = root of context where create_country/create_rebels happens
 on_country_created = {
 	events = {
-		aagrimstarts.2003		# Upd Relations
+		aagrimstarts.2001		# Updated Relations calls main rewritten file.
 	}
 }
 
-# # This = destroyed country
-# # From = optional, destroyer (country)
-# on_country_destroyed = {
-# 	events = {
-# 	}
-# }
+
 
 # A pop has finished purging
 # This = Planet scope

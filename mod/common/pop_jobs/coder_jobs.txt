@@ -1,17 +1,27 @@
 coder = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_research_lab_1
-	clothes_texture_index = 3
-	icon = priest
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_research_lab_1
+		}
+    }
+
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-	possible_precalc = can_fill_specialist_job
-	possible = { complex_specialist_job_check_trigger = yes }
+	
+	possible = {
+		owner = {
+			is_gestalt = no
+			has_origin = origin_godruler
+			has_origin = origin_iforge
+		}
+	}
+	
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -22,62 +32,51 @@ coder = {
 		}
 		upkeep = { consumer_goods = 2 }
 	}
+	
 	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 0.2
-			NOR = { has_citizenship_rights = yes has_trait = trait_mechanical }
-		}
+		weight = @specialist_job_weight # Fairly important job
+		mult = value:job_weights_modifier|JOB|coder|RESOURCE|unity|
 		modifier = {
 			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
+			can_take_servant_job = no
 		}
-		modifier = { factor = 3 has_trait = trait_erudite }
-		modifier = {
-			factor = 2
-			OR = { has_trait = trait_robot_logic_engines has_trait = trait_intelligent }
-		}
-		modifier = { factor = 2 has_trait = trait_brainslug }
-		modifier = {
-			factor = 1.5
-			OR = {
-				has_trait = trait_natural_engineers
-				has_trait = trait_natural_physicists
-				has_trait = trait_natural_sociologists
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = specialist
+				AMOUNT = local_pop_amount
 			}
-		}
-		modifier = { factor = 0.1 can_take_servant_job = yes }
-		modifier = { factor = 0.65 has_trait = trait_presapient_proles }
-		modifier = { factor = 1.5 has_job = researcher }
-		modifier = { factor = 1.5 has_trait = trait_latent_psionic }
-		modifier = { factor = 2 has_trait = trait_psionic }
-		modifier = { factor = 0.1 has_trait = trait_enigmatic_intelligence_failed }
-		modifier = {
-			factor = 2
-			OR = { has_trait = trait_enigmatic_intelligence has_trait = trait_enigmatic_intelligence_poor }
-		}
-		modifier = { factor = 2 has_trait = trait_presapient_natural_intellectuals }
-		modifier = {
-			factor = 1.5
-			OR = { has_trait = trait_robust has_trait = trait_robot_efficient_processors }
 		}
 	}
 }
 
 magos_coder = {
 	category = ruler
-	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_institute
-	clothes_texture_index = 1
-	icon = researcher
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_institute
+		}
+    }
+
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
-	possible_precalc = can_fill_ruler_job
-	possible = { }
+	
+	possible = {
+		owner = {
+			is_gestalt = no
+			has_origin = origin_godruler
+			has_origin = origin_iforge
+		}
+	}
+	
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -88,60 +87,22 @@ magos_coder = {
 		}
 	}
 	planet_modifier = { planet_amenities_add = 5 }
-	triggered_planet_modifier = {
-		potential = {
-			OR = { has_trait = trait_robot_domestic_protocols has_trait = trait_charismatic }
-		}
-		modifier = { planet_amenities_add = 1 }
-	}
-	triggered_planet_modifier = {
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = -1 }
-	}
+
 	weight = {
-		weight = @ruler_job_weight
-		modifier = {
-			factor = 0.2
-			NOR = { has_citizenship_rights = yes has_trait = trait_mechanical }
-		}
+		weight = @specialist_job_weight # Fairly important job
+		mult = value:job_weights_modifier|JOB|magos_coder|RESOURCE|unity|
 		modifier = {
 			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
+			can_take_servant_job = no
 		}
-		modifier = { factor = 3 has_trait = trait_erudite }
-		modifier = {
-			factor = 2
-			OR = { has_trait = trait_robot_logic_engines has_trait = trait_intelligent }
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				has_trait = trait_natural_engineers
-				has_trait = trait_natural_physicists
-				has_trait = trait_natural_sociologists
-			}
-		}
-		modifier = { factor = 5 has_job = head_researcher }
-		modifier = { factor = 0.65 has_trait = trait_presapient_proles }
-		modifier = { factor = 1.5 has_trait = trait_latent_psionic }
-		modifier = { factor = 2 has_trait = trait_psionic }
-		modifier = { factor = 0.1 has_trait = trait_enigmatic_intelligence_failed }
-		modifier = {
-			factor = 2
-			OR = { has_trait = trait_enigmatic_intelligence has_trait = trait_enigmatic_intelligence_poor }
-		}
-		modifier = { factor = 2 has_trait = trait_presapient_natural_intellectuals }
-		modifier = { factor = 2 has_trait = trait_brainslug }
-		modifier = { factor = 1.5 has_trait = trait_robust }
-		modifier = {
-			factor = 1.25
-			OR = { has_trait = trait_robot_domestic_protocols has_trait = trait_charismatic }
-		}
-		modifier = { factor = 0.75 has_trait = trait_repugnant }
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = { is_country_type = swarm is_country_type = ai_empire }
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = specialist
+				AMOUNT = local_pop_amount
 			}
 		}
 	}

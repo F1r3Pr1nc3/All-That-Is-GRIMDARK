@@ -13,9 +13,9 @@ sol_holy_mars_system_initializer = {
 		radius = 290
 	}
 
-	flags = { empire_home_system sol_system sol }
+	flags = { empire_home_system holy_mars_sol }
 
-	usage = custom_empire
+	usage = origin
 
 	init_effect = {
 		every_neighbor_system = {
@@ -82,7 +82,7 @@ sol_holy_mars_system_initializer = {
 		deposit_blockers = none
 		modifiers = none
 		# starting_planet = yes
-		home_planet = yes
+		home_planet = no
 		flags = { planet_earth legionhomeworld spacemarinehomeworld }
 
 		init_effect = {
@@ -109,7 +109,7 @@ sol_holy_mars_system_initializer = {
 
 	planet = {
 		name = "NAME_Mars"
-		class = "ideal_planet_class"
+		class = "pc_hive_tundra"
 		orbit_distance = 25
 		orbit_angle = 60
 		size = 18 # 20
@@ -120,8 +120,8 @@ sol_holy_mars_system_initializer = {
 		entity = "continental_planet_mars_entity"
 		init_effect = {
 			prevent_anomaly = yes
+			auto_generate_districts = no
 			add_modifier = { modifier = "ancient_forgeworld" }
-			generate_empire_home_planet = yes
 			solar_system = {
 				spawn_megastructure = {
 					type = "orbital_ring_ruined"

@@ -1,6 +1,11 @@
 district_hive_infected = {
 	base_buildtime = 720
-	is_capped_by_modifier = no
+
+	zone_slots = {
+		slot_city_government
+		slot_city_01
+		slot_city_02
+	}
 
 	show_on_uncolonized = {
 		exists = from
@@ -40,13 +45,13 @@ district_hive_infected = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 6
-		job_tallier_add = 1
-		job_tallier_drone_add = 1
-		job_sickneophyte_add = 1
-		job_sickneophyte_drone_add = 1
-		job_maintenance_drone_add = 1
-		planet_max_buildings_add = 2
+		planet_housing_add = 600
+		job_tallier_add = 100
+		job_tallier_drone_add = 100
+		job_sickneophyte_add = 100
+		job_sickneophyte_drone_add = 100
+		job_maintenance_drone_add = 100
+		planet_max_buildings_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -55,7 +60,7 @@ district_hive_infected = {
 			owner = { has_technology = tech_housing_1 }
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 
@@ -65,8 +70,8 @@ district_hive_infected = {
 			owner = { has_technology = tech_housing_2 }
 		}
 		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
+			planet_housing_add = 100
+			job_maintenance_drone_add = 100
 		}
 	}
 
@@ -76,14 +81,17 @@ district_hive_infected = {
 			owner = { has_active_tradition = tr_prosperity_extended_hives }
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 }
 
 district_generator_infected = {
 	base_buildtime = 360
-	is_capped_by_modifier = no
+
+	zone_slots = {
+                slot_minerals
+	}
 
 	show_on_uncolonized = {
 		uses_district_set = infected_world
@@ -113,7 +121,7 @@ district_generator_infected = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -124,7 +132,7 @@ district_generator_infected = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 
@@ -134,7 +142,7 @@ district_generator_infected = {
 			owner = { is_hive_empire = yes }
 		}
 		modifier = {
-			job_technician_drone_add = 3
+			job_technician_drone_add = 300
 		}
 	}
 
@@ -144,8 +152,8 @@ district_generator_infected = {
 			owner = { is_machine_empire = yes }
 		}
 		modifier = {
-			job_technician_drone_add = 2
-			planet_housing_add = 1
+			job_technician_drone_add = 200
+			planet_housing_add = 100
 		}
 	}
 
@@ -158,7 +166,7 @@ district_generator_infected = {
 			}
 		}
 		modifier = {
-			job_technician_add = 2
+			job_technician_add = 200
 		}
 	}
 
@@ -168,7 +176,7 @@ district_generator_infected = {
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
 		modifier = {
-			job_fe_acolyte_generator_add = 2
+			job_fe_acolyte_generator_add = 200
 		}
 	}
 
@@ -182,7 +190,10 @@ district_generator_infected = {
 
 district_mining_infected = {
 	base_buildtime = 360
-	is_capped_by_modifier = no
+
+	zone_slots = {
+		slot_minerals
+	}
 
 	show_on_uncolonized = {
 		uses_district_set = infected_world
@@ -215,7 +226,7 @@ district_mining_infected = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -226,7 +237,7 @@ district_mining_infected = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 
@@ -236,7 +247,7 @@ district_mining_infected = {
 			owner = { is_hive_empire = yes }
 		}
 		modifier = {
-			job_mining_drone_add = 3
+			job_mining_drone_add = 300
 		}
 	}
 
@@ -246,8 +257,8 @@ district_mining_infected = {
 			owner = { is_machine_empire = yes }
 		}
 		modifier = {
-			job_mining_drone_add = 2
-			planet_housing_add = 1
+			job_mining_drone_add = 200
+			planet_housing_add = 100
 		}
 	}
 
@@ -260,7 +271,7 @@ district_mining_infected = {
 			}
 		}
 		modifier = {
-			job_miner_add = 2
+			job_miner_add = 200
 		}
 	}
 
@@ -270,7 +281,7 @@ district_mining_infected = {
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
 		modifier = {
-			job_fe_acolyte_mine_add = 2
+			job_fe_acolyte_mine_add = 200
 		}
 	}
 
@@ -287,7 +298,10 @@ district_mining_infected = {
 
 district_farming_infected = {
 	base_buildtime = 240
-	is_capped_by_modifier = no
+
+	zone_slots = {
+		slot_food
+	}
 
 	show_on_uncolonized = { uses_district_set = infected_world }
 
@@ -317,7 +331,7 @@ district_farming_infected = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -328,7 +342,7 @@ district_farming_infected = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 
@@ -341,7 +355,7 @@ district_farming_infected = {
 			}
 		}
 		modifier = {
-			planet_housing_add = 1
+			planet_housing_add = 100
 		}
 	}
 
@@ -351,7 +365,7 @@ district_farming_infected = {
 			owner = { is_hive_empire = no }
 		}
 		modifier = {
-			job_putrifier_add = 2
+			job_putrifier_add = 200
 		}
 	}
 
@@ -361,7 +375,7 @@ district_farming_infected = {
 			owner = { is_hive_empire = yes }
 		}
 		modifier = {
-			job_putrifier_drone_add = 2
+			job_putrifier_drone_add = 200
 		}
 	}
 
@@ -371,8 +385,8 @@ district_farming_infected = {
 			owner = { is_machine_empire = yes }
 		}
 		modifier = {
-			job_agri_drone_add = 2
-			planet_housing_add = 1
+			job_agri_drone_add = 200
+			planet_housing_add = 100
 		}
 	}
 
@@ -385,7 +399,7 @@ district_farming_infected = {
 			}
 		}
 		modifier = {
-			job_farmer_add = 2
+			job_farmer_add = 200
 		}
 	}
 
@@ -395,7 +409,7 @@ district_farming_infected = {
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
 		modifier = {
-			job_fe_acolyte_farm_add = 2
+			job_fe_acolyte_farm_add = 200
 		}
 	}
 

@@ -1,8 +1,0 @@
-# This = species
-num_species_pop = {
-	complex_trigger_modifier = {
-		trigger = count_species_pop
-		# parameters = { limit = { } }
-		mode = add
-	}
-}

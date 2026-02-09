@@ -118,7 +118,7 @@ decision_reactivate_shroudgate = {
 		is_terraforming = no
 		is_under_colonization = no
 		is_colony = no
-		num_sapient_pops < 1
+		pop_amount < 1
 		has_deposit = d_aa_shroudgate_inactive
 	}
 

@@ -3,7 +3,6 @@
 ##################
 trait_self_sustained = {
 	cost = 1
-	potential_crossbreeding_chance = 0.1
 	sorting_priority = 20
 	# initial = no
 	randomized = no
@@ -42,7 +41,6 @@ trait_self_sustained = {
 
 trait_functional = {
 	cost = 0
-	potential_crossbreeding_chance = 1
 	sorting_priority = 20
 	initial = no
 	randomized = no
@@ -170,7 +168,6 @@ trait_cute_AI = {
 # Nurgle
 trait_shroud_sick = {
 	cost = 0
-	potential_crossbreeding_chance = 0.5
 	sorting_priority = 20
 	initial = no
 	randomized = no

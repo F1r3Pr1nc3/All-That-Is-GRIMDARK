@@ -30,8 +30,7 @@ pc_scrapworld = {
 
 	carry_cap_per_free_district = @carry_cap_low
 }
-#
-# pc_infected = {
+
 pc_infested = {
 	entity = "infested_planet" # "toxic_planet" #
 	entity_scale = @planet_standard_scale
@@ -71,7 +70,6 @@ pc_infested = {
 	colonizable_by_event = yes	# Ensure colonization mechanics are handled even if the planet cannot be colonized the usual way
 
 	district_set = infected_world # TODO/FIXME ?
-	building_set = infected_world # TODO/FIXME ?
 
 	ideal = yes
 	starting_planet = no
@@ -117,7 +115,6 @@ pc_infected = {
 	colonizable_by_event = yes	# Ensure colonization mechanics are handled even if the planet cannot be colonized the usual way
 
 	district_set = infected_world # TODO/FIXME ?
-	building_set = infected_world # TODO/FIXME ?
 
 	ideal = yes
 	starting_planet = no
@@ -183,8 +180,7 @@ pc_hive_tundra = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.20
-		pop_growth_speed = 0.50
-		planet_max_buildings_add = 12
+		bonus_pop_growth_mult = 0.50
 	}
 
 	min_distance_from_sun = @habitable_min_distance

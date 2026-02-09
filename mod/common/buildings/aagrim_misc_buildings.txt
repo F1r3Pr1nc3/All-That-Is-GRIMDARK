@@ -1,6 +1,11 @@
 building_gladiatorarena = {
 	base_buildtime = @b1_time
 	category = amenity
+	
+	building_sets = {
+		government
+		unity
+	}
 	potential = {
 		exists = owner
 		owner = {
@@ -16,7 +21,7 @@ building_gladiatorarena = {
 			NOR = { has_origin = origin_paindrinkers has_origin = origin_shroudrage has_origin = origin_barbarichorde }
 		}
 	}
-	planet_modifier = { job_duelist_add = 3 }
+	planet_modifier = { job_duelist_add = 300 }
 	resources = {
 		category = planet_buildings
 		cost = { minerals = @b1_minerals }
@@ -39,6 +44,9 @@ building_chaos_temple = {
 	base_buildtime = 360
 
 	category = army
+	building_sets = {
+		fortress
+	}
 
 	potential = {
 		exists = owner

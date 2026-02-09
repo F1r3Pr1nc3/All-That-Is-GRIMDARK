@@ -6,7 +6,6 @@
 # necron_tomb
 #############
 building_necron_tomb = {
-	# icon = building_necron_tomb
 	base_buildtime = 330	# 220
 	can_build = yes
 	can_demolish = no
@@ -15,6 +14,10 @@ building_necron_tomb = {
 	base_cap_amount = 1
 	planetary_ftl_inhibitor = yes
 	category = resource
+	building_sets = {
+		government
+		urban
+	}
 	empire_limit = {
 		base = 5
 		# modifier = { factor = 2 has_country_flag = test_flag }
@@ -45,10 +48,9 @@ building_necron_tomb = {
 		}
 	}
 	planet_modifier = {
-		planet_housing_add = 20
+		planet_housing_add = 2000
 		planet_army_build_speed_mult = -0.25
 		planet_army_build_time_mult = -0.25
-		defense_armies_add = 8		# planet_fortification_strength = 8
 		# planet_combat_width_add = 4		# Entry not allowed by category
 		army_defense_health_mult = 1.5		# TODO?
 		army_defense_damage_mult = 1.5		# TODO?
@@ -69,13 +71,10 @@ building_necron_tomb = {
 			owner = { is_machine_empire = yes }
 		}
 		modifier = {
-			district_mining_max = 1
-			district_generator_max = 1
-			job_coordinator_add = 1
-			job_warrior_drone_add = 1
-			job_fabricator_add = 2
-			job_technician_drone_add = 2
-			job_calculator_add = 8
+			job_coordinator_add = 100
+			job_warrior_drone_add = 100
+			job_fabricator_add = 200
+			job_technician_drone_add = 200
 		}
 	}
 	country_modifier = {
@@ -154,6 +153,9 @@ building_forbidden_archive = {
 	base_cap_amount = 2 # 6
 	empire_limit = 6
 	category = research
+	building_sets = {
+		research
+	}
 	potential = {
 		exists = owner
 		owner = { has_necron_origin = yes }
@@ -169,7 +171,7 @@ building_forbidden_archive = {
 		upkeep = { energy = 60 consumer_goods = 30 }
 		produces = { physics_research = 30 society_research = 30 engineering_research = 30 }
 	}
-	planet_modifier = { planet_researchers_produces_mult = 0.15 job_head_researcher_add = 2 }
+	planet_modifier = { planet_researchers_produces_mult = 0.15 job_head_researcher_add = 200 }
 	# prerequisites = { }
 	# triggered_desc = { }
 	# ai_weight = { base = 500 }
@@ -179,6 +181,10 @@ building_plasma_auxiliary = {
 	base_buildtime = 65
 	icon = "building_necron_amplification_generator"
 	category = resource
+	building_sets = {
+		generator
+		urban
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 65 }
@@ -206,6 +212,10 @@ building_plasma_generator = {
 	base_buildtime = 95
 	icon = "building_necron_plasma_generator"
 	category = resource
+	building_sets = {
+		generator
+		urban
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 95 }
@@ -226,6 +236,10 @@ building_energy_core = {
 	base_buildtime = 365
 	base_cap_amount = 1
 	category = resource
+	building_sets = {
+		generator
+		urban
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 365 }
@@ -252,6 +266,9 @@ building_monolith_complex = {
 	base_cap_amount = 1
 	can_be_ruined = no
 	category = army
+	building_sets = {
+		fortress
+	}
 	potential = {
 		exists = owner
 		owner = { has_necron_origin = yes }
@@ -264,7 +281,7 @@ building_monolith_complex = {
 	}
 	army_modifier = { army_starting_experience_add = 150 }
 	triggered_planet_modifier = {
-		modifier = { job_soldier_add = 4 }
+		modifier = { job_soldier_add = 400 }
 	}
 	resources = {
 		category = planet_buildings
@@ -300,6 +317,9 @@ building_awakened_monolith = {
 	icon = building_monolith_0
 	can_build = no
 	category = army
+	building_sets = {
+		fortress
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 665 }
@@ -321,6 +341,9 @@ building_engaged_monolith = {
 	icon = building_monolith_0
 	can_build = no
 	category = army
+	building_sets = {
+		fortress
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 965 }
@@ -369,6 +392,9 @@ building_summoning_core = {
 	base_buildtime = 365
 	base_cap_amount = 1
 	category = army
+	building_sets = {
+		fortress
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 365 }
@@ -392,6 +418,9 @@ building_greater_summoning_core = {
 	base_cap_amount = 1
 	can_build = no
 	category = army
+	building_sets = {
+		fortress
+	}
 	resources = {
 		category = planet_buildings
 		cost = { energy = 465 }

@@ -103,22 +103,32 @@
  ####################################
  # OPINIONS
  ####################################
- opinion_both_human: "Both Humans"
- opinion_both_chaos: "Both Chaos"
- opinion_traitor_human: "Chaos Traitor"
- opinion_traitor_chaos: "Human Traitor"
- opinion_necron_hate_everyone: "Bio Creature"
- opinion_both_eldar: "Both Eldars"
+ opinion_both_human: "Both Humans" (In Use)
+ opinion_both_chaos: "Both Chaos" (In Use)
+ opinion_traitor_human: "Chaos Heretics" (In Use)
+ #opinion_traitor_chaos: "Human Traitor"
+ opinion_necron_hate_everyone: "Biological Vermin" (In Use)
+ opinion_both_eldar: "Both Eldar" (In Use)
  opinion_both_ork: "Both Orks"
  opinion_both_xenos: "Both Xenos"
- opinion_both_tyranid: "Both Tyranids"
- opinion_both_necron: "Both Necrons"
- # opinion_both_darkeldar: "Both Darkeldars"
- # opinion_human_hate_xenos: "Xeno Creature"
- # opinion_chaos_hate_xenos: "Xeno Creature"
- # opinion_chaos_hate_chaos: "Chaos Renegade"
- # opinion_chaos_hate_rival: "Chaos Rival"
- # opinion_senatorum: "Senatorum Imperialis"
+ opinion_ork_risk_friend: "Risky Allies" (In Use)
+ opinion_tau_natural_ally: "Natural Allies" (In Use)
+ opinion_tau_hate_chaos: "Abominations" (In Use)
+ opinion_eldar_dislike: "Arrogant Distrust" (In Use)
+ opinion_eldar_natural_ally: "Shared Fate" (In Use)
+ opinion_eldar_hates_chaos: "Hatred of servants of Chaos" (In Use)
+ opinion_both_tyranid: "Both Tyranids" (In Use)
+ opinion_both_necron: "Both Necrons" (In Use)
+ opinion_both_darkeldar: "Both Dark Eldar"
+ opinion_human_hate_xenos: "Xeno Scum" (In Use)
+ opinion_chaos_hate_xenos: "Xeno Scum" (In Use)
+ opinion_chaos_hate_chaos: "Chaos Renegade"
+ opinion_chaos_hate_rival: "Rival Chaos God"
+ #opinion_senatorum: "Senatorum Imperialis"
+ opinion_corpse_emperor: "Corpse Emperor Followers" (In Use)
+ opinion_ork_natural_ally: "Natural Allies in War"
+ opinion_eldar_history: "Ancient Grievances"
+ opinion_traitor_chaos: "Traitors to Chaos"
 
  # tech_nurglings:0 "Nurglings"
  # tech_nurglings_desc:0 ""
