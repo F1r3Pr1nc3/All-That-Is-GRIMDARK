@@ -31,8 +31,7 @@ col_maidenworld = {
 	weight_modifier = {
 		base = 0
 		modifier = { add = 5 has_designation = col_maidenworld }
-		modifier = { add = 10 pop_amount > 0 }
-		modifier = { add = 5 dpop_amount > 500 }
+		modifier = { add = 5 pop_amount > 500 }
 	}
 }
 

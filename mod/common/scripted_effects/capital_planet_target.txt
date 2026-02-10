@@ -67,7 +67,8 @@ get_capital_planet = {
 				random_owned_planet = {
 					limit = {
 						has_owner = yes
-						pop_amount > 0
+						is_colony = yes
+						is_under_colonization = no
 					}
 					weights = {
 						base = 1
@@ -87,7 +88,8 @@ get_capital_planet = {
 			random_owned_planet = {
 				limit = {
 					has_owner = yes
-					pop_amount > 0
+					is_colony = yes
+					is_under_colonization = no
 				}
 				weights = {
 					base = 1

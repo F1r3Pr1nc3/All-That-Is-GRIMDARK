@@ -6,6 +6,6 @@ tags={
 	"Balance"
 	"Economy"
 }
-name="All That Is Grimdark 4.0"
+name="All That Is Grimdark 4.2"
 supported_version="v4.2.0"
 remote_file_id="3659787138"

@@ -1,9 +1,10 @@
-[h3]This is an approved update and continuation in honor of [b]AlphaAsh’s great [URL=//steamcommunity.com/sharedfiles/filedetails/2833876037]All That Is GRIMDARK[/URL][/b], bringing it to version [b]3.14.*[/b] of the game. Credit goes to him and all the WH40K creators.[/h3]
+[h3]This is an approved update and continuation in honor of [b]Fireprince's and [b]AlphaAsh’s great [URL=//steamcommunity.com/sharedfiles/filedetails/2833876037]All That Is GRIMDARK[/URL][/b], bringing it to version [b]4.0*[/b] of the game. Credit goes to both of them as it is their mod.
+
+[b] Note: Most things should be ready to go but if there's any issues/bugs let me know and it shall be fixed.
 
 [img]//i.ibb.co/G9XB6gZ/grimdark-head.png[/IMG][b]Bringing a galaxy’s worth of WH40K-themed content to Stellaris…[/b]
 This mod combines God Ruler and all four volumes of GRIMDARK, providing an extensive set of origins and predefined empires, as well as bespoke content for them.
 
-[img]//i.ibb.co/R7TGM2y/atigrim-mods.png[/IMG] 
 
 [b][i]'Similarities'[/i] of all the major factions from Games Workshop’s Warhammer 40K are included.[/b]
 
@@ -22,11 +23,11 @@ FILES PARTIAL OVERRIDDEN:[CODE]
 ./districts/00_urban_districts.txt
 ./districts/01_arcology_districts.txt
 ./districts/02_rural_districts.txt
-./pop_categories/02_other_categories.txt
+./pop_categories/02_other_categories.txt (Temporarily removed)
 ./pop_faction_types/00_traditionalist.txt (full - Machine God)
 ./scripted_effects/01_start_of_game_effects.txt
-./species_rights/00_citizenship_types.txt
-./species_rights/03_slavery_types.txt
+./species_rights/00_citizenship_types.txt (Temporarily removed)
+./species_rights/03_slavery_types.txt (Temporarily removed)
 ./terraform/02_special_terraform_links.txt
 interface/frontend.gui (full - minor)
 [/CODE]
@@ -39,8 +40,7 @@ Anywhere. But if you hit compatibility issues, try moving it to the bottom.
 [b]• [URL=//steamcommunity.com/workshop/filedetails/discussion/3041579530/4299320351876126588/]Warhammer 40k Collection[/URL][/b] (Discussion)
 [b]• [URL=//steamcommunity.com/sharedfiles/filedetails/2603074910]Warhammer 30/40k factions[/URL] with [URL=//steamcommunity.com/sharedfiles/filedetails/3079627064]Compat. Patch[/URL][/b]
 [b]• [URL=//www.fandomspot.com/stellaris-warhammer-40k-mods/]The Best Warhammer 40K Mods for Stellaris[/URL][/b]
-• [URL=//steamcommunity.com/sharedfiles/filedetails/3133787332]40k Planet Specialization[/URL]
-• [URL=//steamcommunity.com/sharedfiles/filedetails/3170252871]Shroud Rising Patch[/URL]
+• [URL=//steamcommunity.com/sharedfiles/filedetails/3133787332]AOI: Age of Indomitus[/URL]
 • [URL=//steamcommunity.com/sharedfiles/filedetails/3242334575]Invasion![/URL]
 • [URL=//steamcommunity.com/sharedfiles/filedetails/3268667852]Rise and Fall[/URL]
 • Warhammer Mechanicus Music
@@ -52,12 +52,26 @@ Anywhere. But if you hit compatibility issues, try moving it to the bottom.
 • 🇷🇺 [URL=//steamcommunity.com/sharedfiles/filedetails/2517039224]Russian by ☭Domynion[/URL]
 • 🇺🇸 English fallback for all others.
 
+[b]Changelog 4.0[/b]
+• Updated for 4.2.3
+• Setup Events rebuilt and firing for game starts. (Adjusted scopes as well)
+• Adjusted all buildings for 4.0 balance
+• Adjusted all jobs for 4.0 balance
+• Adjusted all deposits for 4.0 balance
+• Adjusted and updated scopes and effects for Relation events file
+• Adjusted Mechanicus starting buildings slightly 
+• Kept all prescripted empires from 3.14 
+• Kept the Menu edit and links to Both Alphaashes work and Fireprince's
+• Kept all the species traits the same as pre 4.0
+• Adjusted scopes to function on 4.0 for all decisions
+
 [b]Changelog 3.9[/b]
 • Increased compatibility 
 • All factions now have lore based biographies.
 • All factions now have a custom start screen.
 • All factions now have a specific namelist.
 • All factions have new styled emblems (although some of the old ones were already very good).
+
 [b]Changelog 3.9.3[/b]
 • Improved Necrons with unique features:
 	⠀• Resurrecting armies 
@@ -67,7 +81,6 @@ Anywhere. But if you hit compatibility issues, try moving it to the bottom.
 • Adaptation of individual personalities according to lore.
 • Added 12th Origin "Adeptus Mechanicus"… (Omnissiah told me)
 • Added 13th Origin "Chaos Undivided" (Fallen Psionics for Black Legion)
-[b]Changelog >3.* see Change Notes tab[/b]
 
 [b]Credit[/b]
 • Warhammer 40K ® TM and/or © Copyright Games Workshop Ltd 2000-2023
@@ -77,13 +90,9 @@ Anywhere. But if you hit compatibility issues, try moving it to the bottom.
 • Kamil19976 as pioneer, role model and inspiration and his huge work on a totalconversion
 • G marceau for steady feedback
 
-[b]Planned[/b]
-• Necron Relic (Celestial Orrery or Tesseract Labyrinth)
-• Implementing the "Old Ones" as Precursor.
-
 [b][i]𝔉𝔬𝔯 𝔱𝔥𝔢 𝔈𝔪𝔭𝔢𝔯𝔬𝔯![/i][/b]
 
 [img]//i.ibb.co/RSzQQDZ/grimdark-logos.png[/IMG]
 [img]//i.ibb.co/t3YzYZj/donot3.png[/IMG][img]//i.ibb.co/VJq3PKr/ratenfave.gif[/IMG]
 [URL=//discordapp.com/invite/CMjnnET][IMG]//i.imgur.com/4Und3QN.png[/IMG][/URL]
-[URL=//steamcommunity.com/profiles/76561198858429698/myworkshopfiles/?appid=281990]Check out my other mods![/URL]
+[URL=//steamcommunity.com/profiles/76561198858429698/myworkshopfiles/?appid=281990]Check out Fireprince's  other mods![/URL]

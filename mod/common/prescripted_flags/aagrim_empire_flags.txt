@@ -1,0 +1,35 @@
+# Generated/updated by Stellaris Mod Updater
+
+empire_adeptus_mechanicus = {
+	flags = { mankind_star_empire loyallegion humanoid human_empire ai_no_leave_fed }
+}
+empire_black_legion = {
+	flags = { custom_start_screen humanoid chaos_empire chaos_undivided_worship the_black_legion eyechaos_empire }
+}
+empire_death_guard = {
+	flags = { custom_start_screen humanoid chaos_empire the_death_guard nurgle }
+}
+empire_drukravagers = {
+	flags = { custom_start_screen humanoid eldarian darkeldar_empire }
+}
+empire_emperor_children = {
+	flags = { custom_start_screen humanoid chaos_empire the_emperor_children slaanesh }
+}
+empire_goff = {
+	flags = { custom_start_screen humanoid ork_empire the_goff }
+}
+empire_mankind = {
+	flags = { custom_start_screen humanoid human_empire ai_no_leave_fed the_mankind imperium }
+}
+empire_necron = {
+	flags = { custom_start_screen necron_empire }
+}
+empire_soulkeeperunity = {
+	flags = { custom_start_screen eldarian eldar_empire }
+}
+empire_tauunityalp = {
+	flags = { custom_start_screen humanoid tau_empire }
+}
+empire_tyranid = {
+	flags = { custom_start_screen tyranid_empire }
+}
