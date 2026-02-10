@@ -5,7 +5,7 @@ cultist = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_luxury_residence
 		}
-    }
+	}
 
 	is_capped_by_modifier = no
 	possible_pre_triggers = {
@@ -40,28 +40,23 @@ cultist = {
 	}
 
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
+		potential = {
+			any_owned_species = {
 				has_trait = trait_robot_domestic_protocols
 				has_trait = trait_charismatic
 			}
 		}
-		modifier = {
-			planet_amenities_add = 0.25
-		}
+		planet_amenities_add = 0.25
 	}
-	
-    triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
-                has_trait = trait_repugnant
-            }
-        }
-        modifier = {
-            planet_amenities_add = -0.25
-        }
-    }
 
+	triggered_planet_modifier = {
+		potential = {
+			any_owned_species = {
+				has_trait = trait_repugnant
+			}
+		}
+		planet_amenities_add = -0.25
+	}
 
 	weight = {
 		weight = @special_job_weight
@@ -75,7 +70,7 @@ cultist_master = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_luxury_residence
 		}
-    }
+	}
 
 	is_capped_by_modifier = no
 	possible_pre_triggers = {
@@ -109,26 +104,22 @@ cultist_master = {
 	}
 
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
+		potential = {
+			any_owned_species = {
 				has_trait = trait_robot_domestic_protocols
 				has_trait = trait_charismatic
 			}
 		}
-		modifier = {
-			planet_amenities_add = 0.5
-		}
+		planet_amenities_add = 0.5
 	}
-	
+
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
-			    has_trait = trait_repugnant
-		    }
+		potential = {
+			any_owned_species = {
+				has_trait = trait_repugnant
+			}
 		}
-		modifier = {
-			planet_amenities_add = -0.5
-		}
+		planet_amenities_add = -0.5
 	}
 
 	weight = {
@@ -143,13 +134,13 @@ conscript = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_stronghold
 		}
-    }
+	}
 
 	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -175,13 +166,11 @@ conscript = {
 		potential = {
 			exists = planet
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = {
-			country_naval_cap_add = 1
-		}
+		country_naval_cap_add = 1
 	}
 
 	resources = {
@@ -197,14 +186,9 @@ conscript = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = planet
-			planet = {
-				has_modifier = martial_law
-			}
+			has_modifier = martial_law
 		}
-		modifier = {
-			planet_stability_add = 2
-		}
+		planet_stability_add = 2
 	}
 
 	weight = {
@@ -219,13 +203,13 @@ nameless = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_maintenance_depot
 		}
-    }
+	}
 
 	is_capped_by_modifier = no
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	resources = {
@@ -250,26 +234,22 @@ nameless = {
 		planet_crime_no_happiness_add = -1
 	}
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
+		potential = {
+			any_owned_species = {
 				has_trait = trait_robot_emotion_emulators
 				has_trait = trait_charismatic
 			}
 		}
-		modifier = {
-			planet_amenities_no_happiness_add = 0.5
-		}
+		planet_amenities_no_happiness_add = 0.5
 	}
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
+		potential = {
+			any_owned_species = {
 				has_trait = trait_robot_uncanny
 				has_trait = trait_repugnant
 			}
 		}
-		modifier = {
-			planet_amenities_no_happiness_add = -0.5
-		}
+		planet_amenities_no_happiness_add = -0.5
 	}
 
 	weight = {

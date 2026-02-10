@@ -1,3 +1,4 @@
+
 namespace = necron
 # Necron pop creation (on_planet_attackers_win)
 # This = country, lead attacker
@@ -7,6 +8,7 @@ country_event = {
 	id = necron.7
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		exists = fromfrom
 		OR = {
@@ -14,11 +16,13 @@ country_event = {
 			has_shroudsick_origin = yes
 		}
 	}
+
 	immediate = {
 		fromfrom = {
 			create_pop_group = { species = root.species }
 		}
 	}
+
 	after = {
 		fromfrom = {
 			set_controller = root
@@ -31,6 +35,7 @@ country_event = {
 		}
 	}
 }
+
 # Necron stasis_chamber creation (on_planet_defenders_lose)
 # This = country, planet owner
 # From = country, attack leader
@@ -39,21 +44,28 @@ country_event = {
 	id = necron.8 # Compare necroids.15
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		exists = fromfrom
 		has_necron_origin = yes
 	}
+
 	immediate = {
 		fromfrom = { add_deposit = d_aa_stasis_chambers }
 	}
 }
+
 ## Necron stasis_chamber creation
 # (on_planet_zero_pops/on_planet_zero_pops_ground_combat)
 planet_event = {
 	id = necron.9
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = { has_owner = yes }
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
 	trigger = {
 		# has_global_flag = necron_empire_created
 		OR = {
@@ -69,20 +81,38 @@ planet_event = {
 		# owner = { has_necron_origin = yes }
 		# any_playable_country = { has_origin = origin_necron_awakening }
 	}
+
 	immediate = {
 		every_planet_army = {
-			limit = { OR = { is_defensive_army = yes army_type = necron_warriors } }
-			random = { chance = 50 root = { add_deposit = d_aa_stasis_chambers } }
+			limit = {
+				OR = {
+					is_defensive_army = yes
+					army_type = necron_warriors
+				}
+			}
+			random = {
+				chance = 50
+				root = { add_deposit = d_aa_stasis_chambers }
+			}
 		}
 	}
-	after = { add_deposit = d_aa_stasis_chambers }
+
+	after = {
+		add_deposit = d_aa_stasis_chambers
+	}
 }
+
 # Necron (on_colony_destroyed)
 planet_event = {
 	id = necron.107
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = { has_owner = yes has_ground_combat = no }
+
+	pre_triggers = {
+		has_owner = yes
+		has_ground_combat = no
+	}
+
 	trigger = {
 		# has_global_flag = necron_empire_created
 		NOT = { has_global_flag = necron_empire_destroyed }
@@ -95,9 +125,12 @@ planet_event = {
 		}
 		has_orbital_bombardment = no
 	}
+
 	immediate = {
 		if = {
-			limit = { owner = { has_origin = origin_necron_awakening } }
+			limit = {
+				owner = { has_origin = origin_necron_awakening }
+			}
 			owner = { save_event_target_as = necron_empire }
 		}
 		else = {
@@ -106,6 +139,7 @@ planet_event = {
 		set_owner = event_target:necron_empire
 		create_pop_group = { species = event_target:necron_empire.species }
 	}
+
 	after = {
 		set_controller = event_target:necron_empire
 		create_army = {
@@ -116,21 +150,24 @@ planet_event = {
 		}
 	}
 }
+
 # Necrons destroyed (on_country_destroyed)
 # From = optional, destroyer
 country_event = {
 	id = necron.108
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		is_country_type_with_subjects = yes
 		# OR = { NOT = { has_global_flag = necron_empire_created }
 		has_necron_origin = yes
 	}
+
 	immediate = {
 		if = {
 			limit = {
-				NOR = {
+				NOT = {
 					# has_global_flag = necron_empire_created
 					has_global_flag = necron_empire_destroyed
 				}
@@ -141,17 +178,23 @@ country_event = {
 		# set_global_flag = necron_empire_created
 	}
 }
+
 # Necrons not anymore recent destroyed (on_five_year_pulse)
 event = {
 	id = necron.109
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		# has_global_flag = necron_empire_created
 		has_global_flag = necron_empire_destroyed
 	}
-	immediate = { remove_global_flag = necron_empire_destroyed }
+
+	immediate = {
+		remove_global_flag = necron_empire_destroyed
+	}
 }
+
 # Reanimated only own Necron Armies:
 # An Necron army has been killed in ground combat (on_army_killed_in_combat)
 # This = owner
@@ -162,6 +205,7 @@ country_event = {
 	id = necron.110	# Compare necromancy.210 necroids.15
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		# exists = from
 		# exists = fromfrom
@@ -175,6 +219,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		# if = { # Own army
 		# 	limit = { has_necron_origin = yes }
@@ -197,11 +242,13 @@ country_event = {
 		# }
 	}
 }
+
 # Necron Awakening (Also Console Test)
 country_event = {
 	id = necron.1111
 	hide_window = yes
 	is_triggered_only = yes
+
 	immediate = {
 		set_global_flag = necron_empire_created
 		if = {
@@ -214,6 +261,7 @@ country_event = {
 		if = {
 			limit = {
 				count_galaxy_planet = {
+					count = 0
 					limit = {
 						is_star = no
 						is_asteroid = no
@@ -222,7 +270,6 @@ country_event = {
 						has_deposit = d_aa_stasis_chambers
 						is_under_crisis_bombardment = no
 					}
-					count = 0
 				}
 			}
 			random_system = {
@@ -276,15 +323,20 @@ country_event = {
 				}
 			}
 		}
-		else = { log = "FAIL: No Necron planet found!" break = yes }
+		else = {
+			log = "FAIL: No Necron planet found!"
+			break = yes
+		}
 		country_event = { id = necron.111 } # Hack: Target event is not of the correct type, expected it to be a country: but it works
 	}
 }
+
 # Necron re-awakening (on_decade_pulse)
 event = {
 	id = necron.111
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		# has_global_flag = necron_empire_created
 		# NOR = {
@@ -299,21 +351,25 @@ event = {
 			}
 			has_planet_flag = pf_generated_stasis_tombs
 			has_deposit = d_aa_stasis_chambers
-			NAND = {
-				exists = space_owner
-				space_owner = { is_ai = no }
-			}
-			NAND = {
-				has_owner = yes
-				owner = { is_ai = no }
+			NOR = {
+				AND = {
+					exists = space_owner
+					space_owner = { is_ai = no }
+				}
+				AND = {
+					has_owner = yes
+					owner = { is_ai = no }
+				}
 			}
 		}
 	}
+
 	immediate = {
 		## RESTORE NECRON COUNTRY
 		if = {
 			limit = {
 				count_galaxy_species = {
+					count = 0
 					limit = {
 						is_sapient = yes
 						is_robotic = yes
@@ -323,7 +379,6 @@ event = {
 							species_portrait = par_renown_03
 						}
 					}
-					count = 0
 				}
 			}
 			# if = {
@@ -361,7 +416,7 @@ event = {
 				name = name_list_NECRON1
 				class = MACHINE
 				portrait = sd_hum_robot
-				species_bio="The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
+				species_bio = "The Necrons are an ancient, enigmatic species. Once flesh-and-blood beings, they underwent a transformation into living metal constructs, achieving a form of immortality at the cost of their humanity. Now, they are formidable warriors encased in powerful, highly advanced mechanical bodies. With advanced technology and an unyielding resolve, the Necrons are on a quest to reclaim their former glory and dominate the galaxy once more. They wield devastating weaponry and have access to formidable constructs, making them a force to be reckoned with on the battlefield. The Necrons' mysterious origins and relentless pursuit of their goals make them a formidable and intriguing faction."
 				traits = {
 					trait = "trait_machine_unit"
 					trait = "trait_necrons"
@@ -375,7 +430,9 @@ event = {
 				namelist = NECRON1
 				gender = indeterminable
 				extra_trait_points = 2
-				effect = { save_event_target_as = necron_species }
+				effect = {
+					save_event_target_as = necron_species
+				}
 			}
 			# }
 		}
@@ -421,7 +478,9 @@ event = {
 			save_event_target_as = necron_planet
 		}
 		if = {
-			limit = { NOT = { exists = event_target:necron_planet } }
+			limit = {
+				NOT = { exists = event_target:necron_planet }
+			}
 			random_galaxy_planet = {
 				limit = {
 					has_owner = yes
@@ -436,11 +495,13 @@ event = {
 					}
 					has_planet_flag = pf_generated_stasis_tombs
 					has_deposit = d_aa_stasis_chambers
-					NAND = {
-						exists = space_owner
-						space_owner = { is_ai = no }
+					NOR = {
+						AND = {
+							exists = space_owner
+							space_owner = { is_ai = no }
+						}
+						is_under_crisis_bombardment = yes
 					}
-					is_under_crisis_bombardment = no
 					event_target:necron_species = { can_live_on_planet = prev }
 				}
 				save_event_target_as = necron_planet
@@ -461,7 +522,10 @@ event = {
 				ship_prefix = "NRS"
 				authority = auth_machine_intelligence
 				ethos = { ethic = ethic_gestalt_consciousness }
-				civics = { civic = civic_machine_terminator civic = civic_machine_warbots }
+				civics = {
+					civic = civic_machine_terminator
+					civic = civic_machine_warbots
+				}
 				origin = "origin_default"
 				# flag = {
 				# 	icon = { category="necrons" file="necron_emblem.dds" }
@@ -502,7 +566,10 @@ event = {
 			}
 			if = { # create_colony
 				limit = { has_owner = no }
-				create_colony = { owner = event_target:necron_empire species = event_target:necron_species }
+				create_colony = {
+					owner = event_target:necron_empire
+					species = event_target:necron_species
+				}
 				set_capital = yes
 				set_variable = { which = tomb_armies value = 10 }
 			}
@@ -512,11 +579,14 @@ event = {
 				multiply_variable = { which = tomb_armies value = 0.55 }
 				ceiling_variable = tomb_armies
 				if = {
-					limit = { check_variable = { which = tomb_armies value < 10 } }
+					limit = {
+						check_variable = { which = tomb_armies value < 10 }
+					}
 					set_variable = { which = tomb_armies value = 10 }
 				}
 			}
-			while = { count = tomb_armies
+			while = {
+				count = tomb_armies
 				create_pop_group = { species = event_target:necron_species }
 				random_list = {
 					1 = {
@@ -549,9 +619,13 @@ event = {
 		}
 		# else = { remove_global_flag = necron_empire_created }
 	}
+
 	after = {
 		if = {
-			limit = { exists = event_target:necron_empire mid_game_years_passed > 0 }
+			limit = {
+				exists = event_target:necron_empire
+				mid_game_years_passed > 0
+			}
 			event_target:necron_empire = {
 				set_country_type = awakened_fallen_empire
 				if = {
@@ -562,22 +636,25 @@ event = {
 		}
 	}
 }
+
 # Take system if won
 planet_event = {
 	id = necron.113
 	hide_window = yes
 	is_triggered_only = yes
+
 	pre_triggers = {
 		has_owner = yes
 	}
-	trigger = {}
+
+	trigger = {
+	}
+
 	immediate = {
 		if = {
 			limit = {
 				exists = controller
-				NOT = {
-					controller = { has_origin = origin_necron_awakening }
-				}
+				NOT = { controller = { has_origin = origin_necron_awakening } }
 			}
 			if = {
 				limit = { has_ground_combat = yes }
@@ -594,35 +671,43 @@ planet_event = {
 			break = yes # Try again later
 		}
 		if = {
-			limit = { NOT = { exists = event_target:necron_empire } }
+			limit = {
+				NOT = { exists = event_target:necron_empire }
+			}
 			random_playable_country = {
 				limit = { has_origin = origin_necron_awakening }
 				save_event_target_as = necron_empire
 			}
 		}
 		if = {
-			limit = { NOT = { exists = event_target:necron_empire } }
+			limit = {
+				NOT = { exists = event_target:necron_empire }
+			}
 			save_event_target_as = necron_planet
 			# create_necron_dynasty = yes?
 			break = yes
 		}
 		if = {
-			limit = { NOT = { exists = event_target:necron_species } }
+			limit = {
+				NOT = { exists = event_target:necron_species }
+			}
 			event_target:necron_empire.species = { save_event_target_as = necron_species }
 		}
 		if = {
 			limit = { has_owner = no }
-			create_colony = { owner = event_target:necron_empire species = event_target:necron_species }
+			create_colony = {
+				owner = event_target:necron_empire
+				species = event_target:necron_species
+			}
 		}
 		set_owner = event_target:necron_empire
 		event_target:necron_planet = {
-          while = {
-             count = 5 
-             create_pop_group = { species = event_target:necron_species }
-             }
-        }
+			create_pop_group = { species = event_target:necron_species size = 500 }
+		}
 		if = {
-			limit = { NOT = { has_building = building_fortress } }
+			limit = {
+				NOT = { has_building = building_fortress }
+			}
 			add_building = building_fortress
 		}
 		# Flip control solar system
@@ -640,7 +725,10 @@ planet_event = {
 				limit = {
 					has_owner = yes
 					owner = { is_country_type_with_subjects = yes }
-					NOR = { is_planet = prevprev is_owned_by = event_target:necron_empire }
+					NOR = {
+						is_planet = prevprev
+						is_owned_by = event_target:necron_empire
+					}
 				}
 				set_owner = event_target:necron_empire
 				if = {
@@ -679,14 +767,20 @@ planet_event = {
 		}
 	}
 }
+
 # Add Necron stasis_chambers (on_colonized)
 planet_event = {
 	id = necron.1110
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = { has_owner = yes original_owner = yes }
+
+	pre_triggers = {
+		has_owner = yes
+		original_owner = yes
+	}
+
 	trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_origin = origin_necron_awakening }
 		uses_district_set = standard
 		NOR = {
@@ -696,18 +790,27 @@ planet_event = {
 			has_planet_flag = pf_checked_for_stasis_tombs
 		}
 	}
+
 	immediate = {
 		if = {
-			limit = { is_colony = yes pop_amount > 1 }
+			limit = {
+				is_colony = yes
+				pop_amount > 1
+			}
 			if = {
 				limit = { has_planet_flag = pf_guarenteed_stasis_tombs }
 				planet_event = { id = necron.1112 days = 10 random = 20 }
 			}
 			else = {
 				random_list = {
-					75 = { }
+					75 = {  }
 					5 = { planet_event = { id = necron.1112 days = 10 random = 20 } }
-					20 = { if = { limit = { is_planet_class = pc_nuked } planet_event = { id = necron.1112 days = 10 random = 20 } } }
+					20 = {
+						if = {
+							limit = { is_planet_class = pc_nuked }
+							planet_event = { id = necron.1112 days = 10 random = 20 }
+						}
+					}
 				}
 			}
 			set_planet_flag = pf_checked_for_stasis_tombs
@@ -717,6 +820,7 @@ planet_event = {
 		}
 	}
 }
+
 # Add Necron stasis_chambers (from necron.1110)
 planet_event = {
 	id = necron.1112
@@ -724,20 +828,37 @@ planet_event = {
 	title = necron.1112.name
 	desc = necron.1112.desc
 	picture = GFX_evt_ancient_databank
-	pre_triggers = { has_owner = yes original_owner = yes }
+
+	pre_triggers = {
+		has_owner = yes
+		original_owner = yes
+	}
+
 	trigger = {
 		is_colony = yes
-		exists = owner
+		has_owner = yes
 		owner = { has_origin = origin_necron_awakening }
 		NOT = { has_planet_flag = pf_generated_stasis_tombs }
 	}
+
 	immediate = {
 		set_planet_flag = pf_generated_stasis_tombs
 		add_deposit = d_aa_stasis_chambers
 		random_list = {
-			25 = { }
-			25 = { if = { limit = { is_planet_class = pc_nuked } add_deposit = d_aa_stasis_chambers } }
-			25 = { add_deposit = d_aa_stasis_chambers if = { limit = { is_planet_class = pc_nuked } add_deposit = d_aa_stasis_chambers } }
+			25 = {  }
+			25 = {
+				if = {
+					limit = { is_planet_class = pc_nuked }
+					add_deposit = d_aa_stasis_chambers
+				}
+			}
+			25 = {
+				add_deposit = d_aa_stasis_chambers
+				if = {
+					limit = { is_planet_class = pc_nuked }
+					add_deposit = d_aa_stasis_chambers
+				}
+			}
 			25 = {
 				add_deposit = d_aa_stasis_chambers
 				if = {
@@ -748,30 +869,34 @@ planet_event = {
 			}
 		}
 	}
-	option = { name = CONFIRM }
+
+	option = {
+		name = CONFIRM
+	}
 }
+
 ## Necron stasis_chamber creation 2
 # (on_pop_purged)
 # From = Country
 # From = Country
 # fromfrom = Pop
-
 planet_event = {
-    id = necron.91
-    hide_window = yes
-    is_triggered_only = yes
-    pre_triggers = { has_owner = yes }
+	id = necron.91
+	hide_window = yes
+	is_triggered_only = yes
 
-    trigger = {
-          owner = { has_origin = origin_necron_awakening }
-        }
+	pre_triggers = {
+		has_owner = yes
+	}
 
-    immediate = {
-        random_chance = {
-            chance = 25
-            add_deposit = d_aa_stasis_chambers
-        }
-    }
+	trigger = {
+		has_owner = yes
+		owner = { has_origin = origin_necron_awakening }
+	}
+
+	immediate = {
+		random_chance = { chance = 25 add_deposit = d_aa_stasis_chambers }
+	}
 }
 
 # Reawakening
@@ -782,24 +907,25 @@ planet_event = {
 
 	immediate = {
 		if = {
-			limit = { NOT = { exists = event_target:necron_empire } }
+			limit = {
+				NOT = { exists = event_target:necron_empire }
+			}
 			random_country = {
 				limit = { has_necron_origin = yes }
 				save_event_target_as = necron_empire
 			}
 		}
 		if = {
-			limit = { NOT = { exists = event_target:necron_empire } }
+			limit = {
+				NOT = { exists = event_target:necron_empire }
+			}
 			break = yes
 		}
-
 		if = {
 			limit = {
 				exists = owner
 				exists = controller
-				NOT = {
-					controller = { is_same_empire = event_target:necron_empire }
-				}
+				NOT = { controller = { is_same_empire = event_target:necron_empire } }
 			}
 			if = {
 				limit = { has_ground_combat = yes }
@@ -822,36 +948,40 @@ planet_event = {
 				break = yes
 			}
 		}
-
 		if = {
-			limit = { NOT = { exists = event_target:necron_species } }
+			limit = {
+				NOT = { exists = event_target:necron_species }
+			}
 			event_target:necron_empire.owner_main_species = { save_event_target_as = necron_species }
 		}
-
 		if = {
 			limit = { has_owner = no }
-			create_colony = { owner = event_target:necron_empire species = event_target:necron_species }
+			create_colony = {
+				owner = event_target:necron_empire
+				species = event_target:necron_species
+			}
 		}
-
 		if = {
 			limit = {
 				exists = owner
-				NOR = { exists = event_target:necron_enemy is_owned_by = event_target:necron_empire }
+				NOR = {
+					exists = event_target:necron_enemy
+					is_owned_by = event_target:necron_empire
+				}
 				owner = { is_country_type_with_subjects = yes }
 			}
 			owner = { save_event_target_as = necron_enemy }
 		}
-
 		set_owner = event_target:necron_empire
 		set_controller = event_target:necron_empire
 		set_capital = yes
-
-		# Old “10 pops” equivalent in 4.0 
-		while = {
-           count = 100
-           create_pop_group = { species = event_target:necron_species }
-        }
-		create_cluster = { id = necron_cluster@root center = solar_system radius = 30 }
+		# Old “10 pops” equivalent in 4.0
+		create_pop_group = { species = event_target:necron_species size = 10000 }
+		create_cluster = {
+			id = necron_cluster@root
+			center = solar_system
+			radius = 30
+		}
 		every_system_in_cluster = {
 			limit = { is_in_cluster = necron_cluster@root }
 			random_system_planet = {
@@ -859,7 +989,10 @@ planet_event = {
 					is_star = no
 					is_asteroid = no
 					is_artificial = no
-					OR = { is_colonizable = yes is_colony = yes }
+					OR = {
+						is_colonizable = yes
+						is_colony = yes
+					}
 					NOR = {
 						is_terraformed = yes
 						is_terraforming = yes
@@ -874,25 +1007,25 @@ planet_event = {
 				set_planet_flag = pf_guarenteed_stasis_tombs
 			}
 		}
-
 		fire_on_action = { on_action = on_initialize_advanced_colony }
-
 		owner = {
 			set_country_type = default
 			set_origin = origin_necron_awakening
-
 			if = {
 				limit = { is_gestalt = yes }
 				if = {
-					limit = { NOT = { has_civic = civic_machine_terminator } }
+					limit = {
+						NOT = { has_civic = civic_machine_terminator }
+					}
 					force_add_civic = civic_machine_terminator
 				}
 				if = {
-					limit = { NOT = { has_civic = civic_machine_warbots } }
+					limit = {
+						NOT = { has_civic = civic_machine_warbots }
+					}
 					force_add_civic = civic_machine_warbots
 				}
 			}
-
 			add_tradition = tr_adaptability_recycling
 			add_tradition = tr_adaptability_survival_fittest
 			add_tradition = tr_adaptability_environmental_diversification
@@ -902,16 +1035,20 @@ planet_event = {
 			add_tradition = tr_prosperity_administrative_operations
 			add_tradition = tr_prosperity_sct
 			add_tradition = tr_prosperity_public_works
-
 			every_playable_country = {
 				limit = {
 					pop_amount > 3000
 					OR = {
 						is_neighbor_of = prev
-						AND = { is_synthetic_empire = yes NOT = { has_technology = tech_dyson_sphere } }
+						AND = {
+							is_synthetic_empire = yes
+							NOT = { has_technology = tech_dyson_sphere }
+						}
 					}
 					NOT = { has_technology = tech_mega_engineering }
-					prev = { can_copy_random_tech_from = { who = prev } }
+					prev = {
+						can_copy_random_tech_from = { who = prev }
+					}
 				}
 				log = "Copy techs from [This.GetName]"
 				prev = {
@@ -920,7 +1057,6 @@ planet_event = {
 					copy_random_tech_from = { who = prev }
 				}
 			}
-
 			add_resource = {
 				consumer_goods = 2000
 				minerals = 30000
@@ -929,19 +1065,18 @@ planet_event = {
 				food = 2000
 				influence = 1000
 			}
-
 			add_500_unity_per_year_passed = yes
-			country_event = { id = aagrimstarts.2001 } #Updated Main Relation Event File
+			country_event = { id = aagrimstarts.2001 } # Updated Main Relation Event File
 			country_event = { id = game_start.6 days = 6 random = 2 }
 			country_event = { id = game_start.8 days = 9 random = 3 }
 			country_event = { id = game_start.9 days = 12 random = 4 }
 		}
-
 		if = {
-			limit = { NOT = { has_building = building_fortress } }
+			limit = {
+				NOT = { has_building = building_fortress }
+			}
 			add_building = building_fortress
 		}
-
 		solar_system = {
 			every_fleet_in_system = {
 				limit = {
@@ -951,20 +1086,21 @@ planet_event = {
 				}
 				set_mia = mia_return_home
 			}
-
 			if = {
 				limit = { exists = starbase }
 				starbase = {
 					if = {
 						limit = {
 							exists = owner
-							NOR = { exists = event_target:necron_enemy is_owned_by = root.owner }
+							NOR = {
+								exists = event_target:necron_enemy
+								is_owned_by = root.owner
+							}
 							owner = { is_country_type_with_subjects = yes }
 						}
 						owner = { save_event_target_as = necron_enemy }
 					}
 					set_owner = root.owner
-
 					if = {
 						limit = { has_starbase_size < starbase_starport }
 						set_starbase_size = starbase_starport
@@ -972,7 +1108,9 @@ planet_event = {
 						set_starbase_module = { slot = 2 module = shipyard }
 					}
 					else_if = {
-						limit = { NOT = { has_starbase_module = shipyard } }
+						limit = {
+							NOT = { has_starbase_module = shipyard }
+						}
 						set_starbase_module = { slot = 1 module = shipyard }
 						set_starbase_module = { slot = 2 module = shipyard }
 					}
@@ -987,7 +1125,7 @@ planet_event = {
 				}
 			}
 		}
-        owner = {
+		owner = {
 			# Attack / Ally / Wars
 			random_neighbor_country = {
 				limit = {
@@ -995,41 +1133,65 @@ planet_event = {
 					OR = {
 						is_hostile_to = prev
 						opinion_level = { who = prev level <= neutral }
-						AND = { exists = event_target:necron_enemy is_same_empire = event_target:necron_enemy }
+						AND = {
+							exists = event_target:necron_enemy
+							is_same_empire = event_target:necron_enemy
+						}
 					}
 				}
-
 				weights = {
 					base = 1
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= inferior } }
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= equivalent } }
-					modifier = { add = 30 exists = event_target:necron_enemy NOT = { is_same_empire = event_target:necron_enemy } }
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= inferior
+						}
+					}
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= equivalent
+						}
+					}
+					modifier = {
+						add = 30
+						exists = event_target:necron_enemy
+						NOT = { is_same_empire = event_target:necron_enemy }
+					}
 					modifier = { add = 40 is_ai = yes }
 				}
-
 				establish_communications_no_message = root.owner
 				establish_contact = { who = root.owner location = root }
-
 				prev = {
-					declare_war = {
-						target = prev
-						attacker_war_goal = wg_cleansing
-					}
+					declare_war = { target = prev attacker_war_goal = wg_cleansing }
 					add_opinion_modifier = { modifier = opinion_first_contact_war who = prev }
 				}
-
 				if = {
-					limit = { exists = event_target:necron_enemy NOT = { is_same_empire = event_target:necron_enemy } }
+					limit = {
+						exists = event_target:necron_enemy
+						NOT = { is_same_empire = event_target:necron_enemy }
+					}
 					random_war = {
-						limit = { is_war_participant = { who = root.owner side = attackers } }
+						limit = {
+							is_war_participant = { who = root.owner side = attackers }
+						}
 						event_target:necron_enemy = {
 							join_war_on_side = { war = prev side = defenders }
 						}
 					}
 				}
-
 				if = {
-					limit = { is_ai = yes OR = { has_federation = yes num_defensive_pacts > 1 } }
+					limit = {
+						is_ai = yes
+						OR = {
+							has_federation = yes
+							num_defensive_pacts > 1
+						}
+					}
 					random_playable_country = {
 						limit = {
 							is_ai = yes
@@ -1050,16 +1212,20 @@ planet_event = {
 								is_neighbor_of = prevprev
 								is_in_sensor_range = root
 							}
-							relative_power = { who = prev category = fleet value <= equivalent }
+							relative_power = {
+								who = prev
+								category = fleet
+								value <= equivalent
+							}
 						}
-
 						save_event_target_as = necron_helper
 						establish_communications_no_message = root.owner
 						establish_contact = { who = root.owner location = root }
-
 						prev = {
 							random_war = {
-								limit = { is_war_participant = { who = root.owner side = attackers } }
+								limit = {
+									is_war_participant = { who = root.owner side = attackers }
+								}
 								prevprev = {
 									join_war_on_side = { war = prev side = attackers }
 								}

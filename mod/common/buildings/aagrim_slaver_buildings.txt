@@ -1,9 +1,9 @@
+
 building_overseer_homes_grim = {
 	base_buildtime = 720
 	base_cap_amount = 1
-
 	category = amenity
-	
+
 	building_sets = {
 		government
 		urban
@@ -12,7 +12,7 @@ building_overseer_homes_grim = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			has_policy_flag = slavery_allowed
 			OR = {
@@ -24,11 +24,12 @@ building_overseer_homes_grim = {
 	}
 
 	allow = {
+		is_occupied_flag = no
 		count_enslaved_species = { count > 0 }
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			NOR = {
 				has_valid_civic = civic_slaver_guilds

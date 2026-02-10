@@ -59,9 +59,7 @@ district_hive_infected = {
 			exists = owner
 			owner = { has_technology = tech_housing_1 }
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -69,10 +67,8 @@ district_hive_infected = {
 			exists = owner
 			owner = { has_technology = tech_housing_2 }
 		}
-		modifier = {
-			planet_housing_add = 100
-			job_maintenance_drone_add = 100
-		}
+		planet_housing_add = 100
+		job_maintenance_drone_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -80,9 +76,7 @@ district_hive_infected = {
 			exists = owner
 			owner = { has_active_tradition = tr_prosperity_extended_hives }
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 }
 
@@ -90,7 +84,7 @@ district_generator_infected = {
 	base_buildtime = 360
 
 	zone_slots = {
-                slot_minerals
+		slot_minerals
 	}
 
 	show_on_uncolonized = {
@@ -131,9 +125,7 @@ district_generator_infected = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -141,9 +133,7 @@ district_generator_infected = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_technician_drone_add = 300
-		}
+		job_technician_drone_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -151,10 +141,8 @@ district_generator_infected = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_technician_drone_add = 200
-			planet_housing_add = 100
-		}
+		job_technician_drone_add = 200
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -165,9 +153,7 @@ district_generator_infected = {
 				is_fallen_empire_spiritualist = no
 			}
 		}
-		modifier = {
-			job_technician_add = 200
-		}
+		job_technician_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -175,9 +161,7 @@ district_generator_infected = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
-		modifier = {
-			job_fe_acolyte_generator_add = 200
-		}
+		job_fe_acolyte_generator_add = 200
 	}
 
 	ai_resource_production = {
@@ -236,9 +220,7 @@ district_mining_infected = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -246,9 +228,7 @@ district_mining_infected = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_mining_drone_add = 300
-		}
+		job_mining_drone_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -256,10 +236,8 @@ district_mining_infected = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_mining_drone_add = 200
-			planet_housing_add = 100
-		}
+		job_mining_drone_add = 200
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -270,9 +248,7 @@ district_mining_infected = {
 				is_fallen_empire_spiritualist = no
 			}
 		}
-		modifier = {
-			job_miner_add = 200
-		}
+		job_miner_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -280,9 +256,7 @@ district_mining_infected = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
-		modifier = {
-			job_fe_acolyte_mine_add = 200
-		}
+		job_fe_acolyte_mine_add = 200
 	}
 
 	prerequisites = {
@@ -341,9 +315,7 @@ district_farming_infected = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -354,9 +326,7 @@ district_farming_infected = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -364,9 +334,7 @@ district_farming_infected = {
 			exists = owner
 			owner = { is_hive_empire = no }
 		}
-		modifier = {
-			job_putrifier_add = 200
-		}
+		job_putrifier_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -374,9 +342,7 @@ district_farming_infected = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_putrifier_drone_add = 200
-		}
+		job_putrifier_drone_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -384,10 +350,8 @@ district_farming_infected = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_agri_drone_add = 200
-			planet_housing_add = 100
-		}
+		job_agri_drone_add = 200
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -398,9 +362,7 @@ district_farming_infected = {
 				is_fallen_empire_spiritualist = no
 			}
 		}
-		modifier = {
-			job_farmer_add = 200
-		}
+		job_farmer_add = 200
 	}
 
 	triggered_planet_modifier = {
@@ -408,9 +370,7 @@ district_farming_infected = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
-		modifier = {
-			job_fe_acolyte_farm_add = 200
-		}
+		job_fe_acolyte_farm_add = 200
 	}
 
 	ai_resource_production = {

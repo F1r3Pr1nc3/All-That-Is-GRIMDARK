@@ -7,24 +7,37 @@ trait_cyborg = {
 	icon = "gfx/interface/icons/traits/trait_cyborg.dds"
 	sorting_priority = 18
 	randomized = no
+
 	opposites = {
 		"trait_natural_machinist"
 		"trait_natural_engineers"
 		"trait_natural_physicists"
 		"trait_natural_sociologists"
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		LITHOID
 	}
-	species_potential_add = { always = no }
-	species_possible_remove = { always = no }
-	species_possible_merge_add = { always = no }
+
+	species_potential_add = {
+		always = no
+	}
+
+	species_possible_remove = {
+		always = no
+	}
+
+	species_possible_merge_add = {
+		always = no
+	}
+
 	forced_happiness = yes
 	immortal_leaders = yes
 	improves_leaders = yes
 	leader_age_min = 50
 	leader_age_max = 100 # 1000
+
 	modifier = {
 		pop_environment_tolerance = 0.2		# 0.5
 		# Sacred Machines
@@ -33,20 +46,26 @@ trait_cyborg = {
 		planet_jobs_minerals_produces_mult = 0.15
 		leader_lifespan_add = 200 # 1000
 	}
-	slave_cost = { energy = 1500 }
+
+	slave_cost = {
+		energy = 1500
+	}
 }
 
 trait_adeptus_astartes = {
 	cost = 1
 	icon = "gfx/interface/icons/traits/trait_adeptus_astartes.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	species_class = {
 		# Astartes  enable via Patch
 		# Legiones_Astartes enable via Patch
 		HUM
 	}
+
 	opposites = {
 		trait_heretic_astartes
 		trait_shroud_sick
@@ -61,34 +80,43 @@ trait_adeptus_astartes = {
 		trait_cute_AI
 		trait_necrons
 	}
+
 	initial = no
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = no
 	improves_leaders = yes
 	leader_age_min = 50	# 100
 	leader_age_max = 200
+
 	opposites = {
 	}
+
 	modifier = {
 		pop_environment_tolerance = 0.25		# 1
 		leader_lifespan_add = 1000
 		# leader_skill_levels = 1
 		# species_leader_exp_gain = 0.1
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
 }
+
 # Chaos-Touched
 # TODO
 # Optional Event Effect: “Chaos Blessing”
@@ -99,6 +127,7 @@ trait_adeptus_astartes = {
 trait_heretic_astartes = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_primordial_touch.dds"
+
 	allowed_origins = {
 		origin_shroudrage
 		origin_shroudmutated
@@ -106,6 +135,7 @@ trait_heretic_astartes = {
 		origin_shroudsick
 		origin_fallen_psionic # origin_black_legion
 	}
+
 	# TODO more
 	forbidden_origins = {
 		origin_iforge
@@ -117,6 +147,7 @@ trait_heretic_astartes = {
 		origin_greatergood
 		origin_godruler
 	}
+
 	allowed_ethics = {
 		# ethic_fanatic_xenophobe
 		# ethic_fanatic_militarist
@@ -126,26 +157,33 @@ trait_heretic_astartes = {
 		ethic_spiritualist
 		ethic_gestalt_consciousness
 	}
+
 	# initial = no
 	randomized = no
 	infertile = yes
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = no
 	improves_leaders = yes
 	leader_age_min = 100
 	leader_age_max = 500		# 2000
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	# species_class = {
 	# 	Chaos_Daemons
 	#	Heretic_Astartes
@@ -162,6 +200,7 @@ trait_heretic_astartes = {
 		"trait_functional"
 		"trait_adeptus_astartes"
 	}
+
 	modifier = {
 		army_damage_mult = 0.15				# Increased Morale and Resilience: Reflecting their formidable combat abilities, give a bonus to army damage. This represents the enhanced martial prowess of the Warp-touched warriors.
 		pop_happiness = -0.1
@@ -177,31 +216,44 @@ trait_heretic_astartes = {
 	}
 }
 
-
 trait_adeptus_mechanicus = {
 	cost = 1
 	icon = "gfx/interface/icons/traits/trait_adeptus_mechanicus.dds"
+
 	allowed_origins = {
 		origin_mechanists
 		origin_iforge
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	# species_class = {
 	# 	Mechanicus
 	# 	HUM
 	# }
 	# initial = no
 	randomized = no
-	species_potential_add = { always = no }
-	species_possible_remove = { always = no }
-	species_possible_merge_add = { always = no }
+
+	species_potential_add = {
+		always = no
+	}
+
+	species_possible_remove = {
+		always = no
+	}
+
+	species_possible_merge_add = {
+		always = no
+	}
+
 	forced_happiness = yes
 	immortal_leaders = yes
 	improves_leaders = yes
 	leader_age_min = 50
 	leader_age_max = 250		# 1000
+
 	modifier = {
 		pop_environment_tolerance = 0.5
 		leader_lifespan_add = 2500 # 10000
@@ -212,14 +264,15 @@ trait_adeptus_mechanicus = {
 		planet_pops_robotics_upkeep_mult = -0.1
 		planet_pops_cyborgs_upkeep_mult = -0.1
 		# councilor_modifier = {
-			# all_technology_research_speed = 0.1 # Technological Prowess
-			# monthly_unity_add = 0.05 # Machine Cognition
-			# tradition_cost_add = -0.1 # Techsage Tradition
+		# all_technology_research_speed = 0.1 # Technological Prowess
+		# monthly_unity_add = 0.05 # Machine Cognition
+		# tradition_cost_add = -0.1 # Techsage Tradition
 		# }
 		# # Leader Innovative Minds
 		# survey_speed_add = 0.15
 		# ship_anomaly_research_speed_mult = 0.2
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
@@ -229,35 +282,44 @@ trait_necrons = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_necrons.dds"
 	sorting_priority = 18
+
 	allowed_origins = {
 		origin_necron_awakening
 	}
+
 	initial = yes
 	randomized = no
 	forced_happiness = yes
 	infertile = yes
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	species_class = {
 		# Necrons enable via Patch
 		MACHINE
 		PARAGON # Not really
 	}
+
 	allowed_archetypes = {
 		ROBOT
 		MACHINE
 	}
+
 	immortal_leaders = yes # Due machine?
 	improves_leaders = yes
 	leader_age_min = 10000
 	leader_age_max = 100000
+
 	opposites = {
 		trait_heretic_astartes
 		# trait_shroud_sick
@@ -271,6 +333,7 @@ trait_necrons = {
 		trait_drukhari
 		trait_cute_AI
 	}
+
 	modifier = {
 		# pop_environment_tolerance = 2 due machine
 		army_morale_damage_mult = 0.2
@@ -282,6 +345,7 @@ trait_necrons = {
 		leader_lifespan_add = 100000
 		pop_factions_unity_produces_mult = 0.25
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
@@ -290,44 +354,55 @@ trait_necrons = {
 trait_orkz = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_orkz.dds"
+
 	allowed_origins = {
 		origin_barbarichorde
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	species_class = {
 		# Orkz enable via Patch
 		HUM
 	}
+
 	initial = yes
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = no
 	improves_leaders = yes
 	leader_age_min = 50 # 100
 	leader_age_max = 90 # 150
+
 	opposites = {
 		trait_adeptus_astartes
 		trait_adeptus_custodes
 		trait_adeptus_mechanicus
 		trait_necrons
 	}
+
 	modifier = {
-		pop_environment_tolerance = 0.5	# 2			
+		pop_environment_tolerance = 0.5	# 2
 		leader_lifespan_add = 100		# 500 leader_lifespan_mult = 2
 		leader_skill_levels = 1
 		species_leader_exp_gain = 0.1
 	}
+
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
 			exists = owner
@@ -339,41 +414,51 @@ trait_orkz = {
 			}
 		}
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
 }
+
 trait_tyranid = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_tyranid.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	# species_class = {
 	# 	# Tyranids enable via Patch
 	# 	# ART
 	# }
 	initial = yes
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = no
 	leader_age_min = 40
 	leader_age_max = 100
+
 	opposites = {
 		trait_adeptus_astartes
 		trait_adeptus_custodes
 		trait_adeptus_mechanicus
 		trait_necrons
 	}
+
 	modifier = {
 		pop_environment_tolerance = 1		# 3
 		leader_lifespan_add = 500 # 1000
@@ -381,6 +466,7 @@ trait_tyranid = {
 		# species_leader_exp_gain = 0.2
 		pc_infested_habitability = 0.65
 	}
+
 	triggered_planet_growth_habitability_modifier = {
 		potential = {
 			exists = owner
@@ -392,6 +478,7 @@ trait_tyranid = {
 			}
 		}
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
@@ -400,6 +487,7 @@ trait_tyranid = {
 trait_daemons = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_daemons.dds"
+
 	allowed_origins = {
 		origin_shroudrage
 		origin_shroudmutated
@@ -407,6 +495,7 @@ trait_daemons = {
 		origin_shroudsick
 		origin_fallen_psionic # origin_black_legion
 	}
+
 	# TODO more
 	forbidden_origins = {
 		origin_iforge
@@ -418,6 +507,7 @@ trait_daemons = {
 		origin_greatergood
 		origin_godruler
 	}
+
 	allowed_ethics = {
 		ethic_fanatic_xenophobe
 		ethic_fanatic_militarist
@@ -426,9 +516,11 @@ trait_daemons = {
 		ethic_militarist
 		ethic_spiritualist
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	# species_class = {
 	# 	Chaos_Daemons # TODO?
 	# 	HUM
@@ -436,26 +528,32 @@ trait_daemons = {
 	# initial = no
 	randomized = no
 	advanced_trait = yes
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = yes
 	improves_leaders = yes
 	leader_age_min = 100
 	leader_age_max = 2000
+
 	opposites = {
 		trait_adeptus_astartes
 		trait_adeptus_custodes
 		trait_adeptus_mechanicus
 		trait_necrons
 	}
+
 	modifier = {
 		army_damage_mult = 0.1
 		army_defense_health_mult = 0.25
@@ -464,22 +562,28 @@ trait_daemons = {
 		species_leader_exp_gain = 0.1 # 0.2
 		leader_lifespan_add = 10000
 	}
+
 	slave_cost = {
 		energy = 500
 	}
+
 	ai_weight = {
 		weight = 0
 	}
 }
+
 trait_tau = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_tau.dds"
+
 	allowed_origins = {
 		origin_greatergood
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	# species_class = {
 	# 	HUM
 	# 	MAM
@@ -488,28 +592,35 @@ trait_tau = {
 	# }
 	# initial = no
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = no
 	improves_leaders = yes
 	leader_age_min = 20
 	leader_age_max = 40
+
 	opposites = {
 	}
+
 	modifier = {
 		pop_environment_tolerance = 0.05
 		leader_lifespan_add = 100
 		leader_skill_levels = 1
 		species_leader_exp_gain = 0.15
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
@@ -518,34 +629,44 @@ trait_tau = {
 trait_eldar = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_eldar.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
+
 	species_class = {
 		# Eldars  enable via Patch
 		HUM
 	}
+
 	# initial = no
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = yes
 	improves_leaders = yes
 	leader_age_min = 100
 	leader_age_max = 1500
+
 	opposites = {
 	}
+
 	# Dying species with other advantages
 	modifier = {
 		pop_environment_tolerance = 0.25		# 1
@@ -556,42 +677,53 @@ trait_eldar = {
 		leader_lifespan_add = 5000 # 10000
 	}
 }
+
 # DEPRECATED TODO? Elite protectors of the Emperor
 trait_adeptus_custodes = {
 	cost = 1
 	icon = "gfx/interface/icons/traits/trait_custodian.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	species_class = {
 		# Imperium  enable via Patch
 		HUM
 	}
+
 	initial = no
 	randomized = no
 	infertile = yes
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = yes
 	improves_leaders = yes
 	leader_age_min = 100
 	leader_age_max = 2000
+
 	opposites = {
 	}
+
 	modifier = {
 		pop_environment_tolerance = 0.5		# 2
 		leader_lifespan_add = 6000 # 10000
 		leader_skill_levels = 2
 		species_leader_exp_gain = 0.25
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
@@ -600,42 +732,52 @@ trait_adeptus_custodes = {
 trait_drukhari = {
 	cost = 0
 	icon = "gfx/interface/icons/traits/trait_drukhari.dds"
+
 	allowed_origins = {
 		origin_paindrinkers
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	species_class = {
 		# Drukhari enable via Patch
 		HUM
 	}
+
 	# initial = no
 	randomized = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = yes
 	immortal_leaders = no
 	improves_leaders = yes
 	leader_age_min = 100 # 200
 	leader_age_max = 1500 # 3000
+
 	opposites = {
 	}
+
 	modifier = {
 		pop_environment_tolerance = -0.1
 		leader_lifespan_add = 5000 # 10000
 		leader_skill_levels = 2
 		species_leader_exp_gain = 0.3
 	}
+
 	slave_cost = {
 		energy = 1500
 	}
 }
-

@@ -43,50 +43,58 @@ mirror_species = {
 			homeworld = this
 			namelist = this
 			gender = this
-			traits = {
-				ideal_planet_class = this
+			traits = { ideal_planet_class = this }
+			effect = {
+				save_event_target_as = mirror_species
 			}
-			effect = { save_event_target_as = mirror_species }
 		}
 	}
-	
-    every_owned_pop = {
-        if = {
-            limit = { exists = owner }
-            change_species = event_target:mirror_species
-        }
-        else = { kill_pop = yes }
-    }
-	
-	random_species_pop = {
+	every_owned_pop_group = {
+		if = {
+			limit = { exists = owner }
+			change_species = event_target:mirror_species
+		}
+		else = {
+			kill_single_pop = yes
+		}
+	}
+
+	random_species_pop_group = {
 		limit = { exists = owner }
 		owner = {
-			every_owned_pop = {
+			every_owned_pop_group = {
 				limit = { is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				change_species = event_target:mirror_species
 			}
 			every_owned_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				change_species = event_target:mirror_species
 			}
 			every_pool_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				change_species = event_target:mirror_species
 			}
 			every_envoy = {
 				limit = { is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				change_species = event_target:mirror_species
 			}
 			every_owned_army = {
-				limit = { exists = species is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				limit = {
+					exists = species
+					is_exact_same_species = event_target:changing_species
+				}
+				change_species = event_target:mirror_species
 			}
 			every_controlled_ship = {
-				limit = { is_ship_class = shipclass_colonizer is_exact_same_species = event_target:changing_species }
-				change_species =  event_target:mirror_species
+				limit = {
+					is_ship_class = shipclass_colonizer
+					is_exact_same_species = event_target:changing_species
+				}
+				change_species = event_target:mirror_species
 			}
 		}
 	}
+
 	# event_target:changing_species = { set_species_identity = event_target:mirror_species }
 	# if = {
 	# 	limit = {

@@ -32,10 +32,9 @@ col_maidenworld = {
 		base = 0
 		modifier = { add = 5 has_designation = col_maidenworld }
 		modifier = { add = 10 pop_amount > 0 }
-		modifier = { add = 5 pop_amount > 5 }
+		modifier = { add = 5 dpop_amount > 500 }
 	}
 }
-
 
 # col_infested = {
 # 	icon = GFX_colony_type_dying
@@ -53,7 +52,6 @@ col_maidenworld = {
 # 		base = 1000
 # 	}
 # }
-
 # Infested/Infected World
 col_infected_world = {
 	icon = GFX_wg_declared_crisis # GFX_colony_type_dying

@@ -15,30 +15,32 @@ can_be_part_of_galactic_community = {
 	}
 	custom_tooltip = {
 		fail_text = "community_homicidal_failtext"
-		is_homicidal = no
-		# NOR = {
-		# 	is_homicidal = yes
-		# 	# Galactic Imperium Origin
-		# 	has_origin = origin_chosen_of_the_shroud
-		# 	has_necron_origin = yes
-		# }
-		NAND = {
-			is_ai = yes
-			has_country_flag = chaos_empire
+		NOR = {
+			is_homicidal = yes
+			# NOR = {
+			# 	is_homicidal = yes
+			# 	# Galactic Imperium Origin
+			# 	has_origin = origin_chosen_of_the_shroud
+			# 	has_necron_origin = yes
+			# }
+			AND = {
+				is_ai = yes
+				has_country_flag = chaos_empire
+			}
+			# NOR = {
+			# 	# has_origin = origin_chosen_of_the_shroud # Galactic Imperium Origin
+			# 	AND = {
+			# 		is_ai = yes
+			# 		has_country_flag = chaos_empire
+			# 		OR = {
+			# 			# has_country_flag = tzeentch
+			# 			# has_country_flag = slaanesh
+			# 			has_origin = origin_shroudmutated
+			# 			has_origin = origin_shroudsinners
+			# 		}
+			# 	}
+			# }
 		}
-		# NOR = {
-		# 	# has_origin = origin_chosen_of_the_shroud # Galactic Imperium Origin
-		# 	AND = {
-		# 		is_ai = yes
-		# 		has_country_flag = chaos_empire
-		# 		OR = {
-		# 			# has_country_flag = tzeentch
-		# 			# has_country_flag = slaanesh
-		# 			has_origin = origin_shroudmutated
-		# 			has_origin = origin_shroudsinners
-		# 		}
-		# 	}
-		# }
 	}
 	custom_tooltip = {
 		fail_text = "community_declared_crisis_failtext"
@@ -53,6 +55,7 @@ can_be_part_of_galactic_community = {
 			has_country_flag = wgfm_quit_community # Warship Girls R And MIST Species
 		}
 	}
+
 	# Playable Katzenartig Imperium
 	# custom_tooltip = {
 	# 	fail_text = "community_declared_crisis_failtext"
@@ -107,13 +110,14 @@ can_be_part_of_galactic_empire = {
 	}
 	custom_tooltip = {
 		fail_text = "community_declared_crisis_failtext"
-		OR = {
-			NOT = { exists = overlord }
-			overlord = { has_been_declared_crisis = no }
+		NAND = {
+			exists = overlord
+			overlord = { has_been_declared_crisis = yes }
 			# Warship Girls R And MIST Species
-			NOT = { has_country_flag = wgfm_quit_community }
+			has_country_flag = wgfm_quit_community
 		}
 	}
+
 	# More Emperor & Custodian Resolutions, and Galactic Unification
 	MECR_trigger_2_can_be_part_of_galactic_empire = yes
 	# Expel them!

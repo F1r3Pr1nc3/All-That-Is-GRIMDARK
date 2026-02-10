@@ -1,3 +1,4 @@
+
 decision_extend_circuit = {
 	owned_planets_only = yes
 	sound = event_laboratory_sound
@@ -41,7 +42,9 @@ decision_extend_circuit = {
 				set_planet_flag = pf_infinity_circuit_ext_2
 			}
 			else_if = {
-				limit = { NOT = { has_planet_flag = pf_infinity_circuit_ext_1 } }
+				limit = {
+					NOT = { has_planet_flag = pf_infinity_circuit_ext_1 }
+				}
 				set_planet_flag = pf_infinity_circuit_ext_1
 			}
 		}
@@ -93,7 +96,9 @@ decision_extend_circuit_alt = {
 				set_planet_flag = pf_infinity_circuit_ext_2
 			}
 			else_if = {
-				limit = { NOT = { has_planet_flag = pf_infinity_circuit_ext_1 } }
+				limit = {
+					NOT = { has_planet_flag = pf_infinity_circuit_ext_1 }
+				}
 				set_planet_flag = pf_infinity_circuit_ext_1
 			}
 		}
@@ -118,7 +123,7 @@ decision_reactivate_shroudgate = {
 		is_terraforming = no
 		is_under_colonization = no
 		is_colony = no
-		pop_amount < 1
+		pop_amount < 100
 		has_deposit = d_aa_shroudgate_inactive
 	}
 
@@ -129,19 +134,17 @@ decision_reactivate_shroudgate = {
 	effect = {
 		remove_deposit = d_aa_shroudgate_inactive
 		add_deposit = d_aa_shroudgate_active
-		create_colony = {
-			owner = space_owner
-			species = owner_main_species
-		}
+		create_colony = { owner = space_owner species = owner_species }
 		hidden_effect = {
 			random_list = {
-				10 = {}
+				10 = {  }
 				60 = {
 					add_deposit = d_aa_exodite_enclave
 					if = {
 						limit = { merg_is_habitat = yes }
 						add_deposit = d_aa_infinity_circuit
-					} else = {
+					}
+					else = {
 						add_deposit = d_aa_infinity_circuit_alt
 					}
 				}
@@ -151,7 +154,8 @@ decision_reactivate_shroudgate = {
 					if = {
 						limit = { merg_is_habitat = yes }
 						add_deposit = d_aa_infinity_circuit
-					} else = {
+					}
+					else = {
 						add_deposit = d_aa_infinity_circuit_alt
 					}
 				}
@@ -162,7 +166,8 @@ decision_reactivate_shroudgate = {
 					if = {
 						limit = { merg_is_habitat = yes }
 						add_deposit = d_aa_infinity_circuit
-					} else = {
+					}
+					else = {
 						add_deposit = d_aa_infinity_circuit_alt
 					}
 				}

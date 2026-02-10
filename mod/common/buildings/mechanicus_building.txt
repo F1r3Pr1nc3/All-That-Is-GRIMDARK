@@ -2,28 +2,47 @@
 # BALANCE
 # Can change the time and cost of all common buildings with these variables below
 ## MECHANICUS MEGACORP ##
+
 building_machine_temple = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	icon = building_titan_manufactorum
 	owner_type = corporate
-
 	category = resource
+
 	building_sets = {
 		industrial
 		foundry
 	}
+
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { has_machine_cult = yes }
 	}
-	planet_modifier = { job_coder_per_pop = 0.05 pop_ethic_spiritualist_attraction_mult = 0.5 }
+
+	allow = {
+		is_occupied_flag = no
+	}
+
+	planet_modifier = {
+		job_coder_per_pop = 0.05
+		pop_ethic_spiritualist_attraction_mult = 0.5
+	}
+
 	resources = {
 		category = planet_branch_office_buildings
-		cost = { minerals = 500 }
-		produces = { alloys = 6 }
-		upkeep = { energy = 2 minerals = 3 }
+		cost = {
+			minerals = 500
+		}
+		produces = {
+			alloys = 6
+		}
+		upkeep = {
+			energy = 2
+			minerals = 3
+		}
 	}
+
 	ai_weight = {
 		weight = 1
 		modifier = {
@@ -41,27 +60,42 @@ building_manufactorums = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	icon = building_titan_manufactorum
-
 	category = resource
+
 	building_sets = {
 		industrial
 		foundry
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_machine_cult = yes }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	planet_modifier = {
 		job_coder_add = 100
 		job_imperium_magos_add = 100
 		pop_ethic_spiritualist_attraction_mult = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { minerals = 500 }
-		produces = { alloys = 6 }
-		upkeep = { energy = 2 minerals = 12 }
+		cost = {
+			minerals = 500
+		}
+		produces = {
+			alloys = 6
+		}
+		upkeep = {
+			energy = 2
+			minerals = 12
+		}
 	}
+
 	# ai_weight = {
 	# 	weight = 1
 	# 	modifier = { factor = 5 owner = { has_ethic = ethic_spiritualist } }

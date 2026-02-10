@@ -9,18 +9,18 @@ putrifier = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_food_processing_facility
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
@@ -84,27 +84,26 @@ tallier = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_hive_capital
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
 	resources = {
-		category = planet_administrators
+		category = planet_bureaucrats
 		produces = { unity = 2 society_research = 2 }
 		upkeep = {
 			trigger = {
-				exists = pop
 				exists = planet
 				is_lithoid = no
 			}
@@ -113,7 +112,6 @@ tallier = {
 		}
 		upkeep = {
 			trigger = {
-				exists = pop
 				exists = planet
 				is_lithoid = yes
 			}
@@ -124,9 +122,9 @@ tallier = {
 
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_modifier = planet_artifact_relays_hivemind }
+			has_modifier = planet_artifact_relays_hivemind
 		}
-		modifier = { planet_stability_add = 2 planet_jobs_simple_drone_produces_mult = 0.01 }
+		planet_stability_add = 2 planet_jobs_simple_drone_produces_mult = 0.01
 	}
 
 	triggered_planet_modifier = {
@@ -134,7 +132,7 @@ tallier = {
 			exists = owner
 			owner = { has_active_tradition = tr_synchronicity_instinctive_synchronization }
 		}
-		modifier = { planet_amenities_no_happiness_add = 2 }
+		planet_amenities_no_happiness_add = 2
 	}
 
 	country_modifier = { country_admin_cap_add = 5 }
@@ -150,7 +148,7 @@ tallier = {
 				}
 			}
 		}
-		modifier = { country_admin_cap_add = 1 }
+		country_admin_cap_add = 1
 	}
 
 	weight = {
@@ -170,18 +168,18 @@ sickneophyte = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_stronghold
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
@@ -190,22 +188,20 @@ sickneophyte = {
 	triggered_country_modifier = {
 		potential = {
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = { country_naval_cap_add = 2 }
+		country_naval_cap_add = 2
 	}
 
 	planet_modifier = { planet_crime_no_happiness_add = -10 }
 
 	triggered_planet_modifier = {
 		potential = {
-			planet = {
-				OR = { has_modifier = compliance_protocols has_modifier = hunter_killer_drones }
-			}
+			OR = { has_modifier = compliance_protocols has_modifier = hunter_killer_drones }
 		}
-		modifier = { planet_stability_add = 5 }
+		planet_stability_add = 5
 	}
 
 	weight = {
@@ -249,18 +245,18 @@ putrifier_drone = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_food_processing_facility
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
@@ -324,18 +320,18 @@ tallier_drone = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_hive_capital
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
 
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
@@ -344,7 +340,6 @@ tallier_drone = {
 		produces = { unity = 2 society_research = 2 }
 		upkeep = {
 			trigger = {
-				exists = pop
 				exists = planet
 				is_lithoid = no
 			}
@@ -353,7 +348,6 @@ tallier_drone = {
 		}
 		upkeep = {
 			trigger = {
-				exists = pop
 				exists = planet
 				is_lithoid = yes
 			}
@@ -364,9 +358,9 @@ tallier_drone = {
 
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_modifier = planet_artifact_relays_hivemind }
+			has_modifier = planet_artifact_relays_hivemind
 		}
-		modifier = { planet_stability_add = 2 planet_jobs_simple_drone_produces_mult = 0.01 }
+		planet_stability_add = 2 planet_jobs_simple_drone_produces_mult = 0.01
 	}
 
 	triggered_planet_modifier = {
@@ -374,7 +368,7 @@ tallier_drone = {
 			exists = owner
 			owner = { has_active_tradition = tr_synchronicity_instinctive_synchronization }
 		}
-		modifier = { planet_amenities_no_happiness_add = 2 }
+		planet_amenities_no_happiness_add = 2
 	}
 
 	country_modifier = { country_admin_cap_add = 5 }
@@ -390,7 +384,7 @@ tallier_drone = {
 				}
 			}
 		}
-		modifier = { country_admin_cap_add = 1 }
+		country_admin_cap_add = 1
 	}
 
 	weight = {
@@ -409,18 +403,18 @@ sickneophyte_drone = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_stronghold
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
 
 	possible = {
 		owner = {
-			has_origin = origin_shroudsick 
+			has_origin = origin_shroudsick
 		}
 	}
 
@@ -429,22 +423,20 @@ sickneophyte_drone = {
 	triggered_country_modifier = {
 		potential = {
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = { country_naval_cap_add = 2 }
+		country_naval_cap_add = 2
 	}
 
 	planet_modifier = { planet_crime_no_happiness_add = -10 }
 
 	triggered_planet_modifier = {
 		potential = {
-			planet = {
-				OR = { has_modifier = compliance_protocols has_modifier = hunter_killer_drones }
-			}
+			OR = { has_modifier = compliance_protocols has_modifier = hunter_killer_drones }
 		}
-		modifier = { planet_stability_add = 5 }
+		planet_stability_add = 5
 	}
 
 	weight = {

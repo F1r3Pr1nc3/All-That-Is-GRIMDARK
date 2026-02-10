@@ -1,7 +1,8 @@
 ## WH40K RELATIONS ##
-namespace = aagrimstarts
 
-country_event = { #This is used for cross empire opinion modifers can also be modified to go directly from peer to peer however sometimes it works other times it doesnt, Fairly WIP this block.
+namespace = aagrimstarts
+# This is used for cross empire opinion modifers can also be modified to go directly from peer to peer however sometimes it works other times it doesnt, Fairly WIP this block.
+country_event = {
 	id = aagrimstarts.2001
 	hide_window = yes
 	is_triggered_only = yes
@@ -30,31 +31,54 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Humans (YOU -> THEM)
 			# ================================================================
 			if = {
-				limit = { root = { OR = { has_country_flag = human_empire has_country_flag = loyallegion } } }
-
+				limit = {
+					root = {
+						OR = {
+							has_country_flag = human_empire
+							has_country_flag = loyallegion
+						}
+					}
+				}
 				if = {
-					limit = { OR = { has_country_flag = human_empire has_country_flag = loyallegion } }
-
+					limit = {
+						OR = {
+							has_country_flag = human_empire
+							has_country_flag = loyallegion
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_human } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_human } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_human }
 						}
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up }
 						}
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us }
 						}
 					}
 				}
 				else_if = {
-					limit = { OR = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } }
+					limit = {
+						OR = {
+							has_country_flag = chaos_empire
+							has_country_flag = eyechaos_empire
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_traitor_human } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_traitor_human } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_traitor_human }
 						}
 					}
@@ -62,7 +86,9 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 				else = {
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_human_hate_xenos } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_human_hate_xenos } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_human_hate_xenos }
 						}
 					}
@@ -72,13 +98,21 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Orks (YOU -> THEM)
 			# ================================================================
 			else_if = {
-				limit = { root = { has_country_flag = ork_empire } }
-
+				limit = {
+					root = { has_country_flag = ork_empire }
+				}
 				if = {
-					limit = { OR = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } }
+					limit = {
+						OR = {
+							has_country_flag = chaos_empire
+							has_country_flag = eyechaos_empire
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_natural_ally } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_natural_ally } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_natural_ally }
 						}
 					}
@@ -87,7 +121,9 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 					limit = { has_country_flag = human_empire }
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_risk_friend } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_risk_friend } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_ork_risk_friend }
 						}
 					}
@@ -97,22 +133,37 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Tau (YOU -> THEM)
 			# ================================================================
 			else_if = {
-				limit = { root = { has_country_flag = tau_empire } }
-
+				limit = {
+					root = { has_country_flag = tau_empire }
+				}
 				if = {
-					limit = { OR = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } }
+					limit = {
+						OR = {
+							has_country_flag = chaos_empire
+							has_country_flag = eyechaos_empire
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_hate_chaos } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_hate_chaos } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_hate_chaos }
 						}
 					}
 				}
 				else_if = {
-					limit = { OR = { has_country_flag = human_empire has_country_flag = loyallegion } }
+					limit = {
+						OR = {
+							has_country_flag = human_empire
+							has_country_flag = loyallegion
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_natural_ally } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_natural_ally } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_tau_natural_ally }
 						}
 					}
@@ -122,12 +173,22 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Eldar (THEM -> YOU)
 			# ================================================================
 			else_if = {
-				limit = { root = { has_country_flag = eldar_empire } }
+				limit = {
+					root = { has_country_flag = eldar_empire }
+				}
 				if = {
-					limit = { OR = { has_country_flag = eldar_empire has_country_flag = loyallegion has_country_flag = human_empire } }
+					limit = {
+						OR = {
+							has_country_flag = eldar_empire
+							has_country_flag = loyallegion
+							has_country_flag = human_empire
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_natural_ally } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_natural_ally } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_natural_ally }
 						}
 					}
@@ -136,7 +197,9 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 					limit = { has_country_flag = human_empire }
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_history } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_history } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_eldar_history }
 						}
 					}
@@ -145,48 +208,71 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# ================================================================
 			# Chaos (YOU -> THEM) Also (THEM -> YOU)
 			# ================================================================
-            else_if = {
-                limit = { root = { OR = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } } }
-				
-                if = {
-                    limit = { OR = { has_country_flag = chaos_empire has_country_flag = eyechaos_empire } }
-                    # ------------------------------------------------
-                    # YOU -> THEM
-                    # ------------------------------------------------
-                    root = {
-                        if = {
-                            limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_chaos } } }
-                            add_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_chaos }
-                        }
-                        if = {
-                            limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } } }
-                            add_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us }
-                        }
-                    }
-                    # ------------------------------------------------
-                    # THEM -> YOU
-                    # ------------------------------------------------
-                    if = {
-                        limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } } }
-                        add_opinion_modifier = { who = root modifier = opinion_both_chaos }
-                    }
-                    if = {
-                        limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us } } }
-                        add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
-                    }
-                }                         
-            }
+			else_if = {
+				limit = {
+					root = {
+						OR = {
+							has_country_flag = chaos_empire
+							has_country_flag = eyechaos_empire
+						}
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_country_flag = chaos_empire
+							has_country_flag = eyechaos_empire
+						}
+					}
+					# ------------------------------------------------
+					# YOU -> THEM
+					# ------------------------------------------------
+					root = {
+						if = {
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_chaos } }
+							}
+							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_chaos }
+						}
+						if = {
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } }
+							}
+							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us }
+						}
+					}
+					# ------------------------------------------------
+					# THEM -> YOU
+					# ------------------------------------------------
+					if = {
+						limit = {
+							NOT = { has_opinion_modifier = { who = root modifier = opinion_both_chaos } }
+						}
+						add_opinion_modifier = { who = root modifier = opinion_both_chaos }
+					}
+					if = {
+						limit = {
+							NOT = { has_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us } }
+						}
+						add_opinion_modifier = { who = root modifier = opinion_first_contact_speak_like_us }
+					}
+				}
+			}
 			else_if = {
 				limit = { has_country_flag = human_empire }
-                    # ------------------------------------------------
-                    # THEM -> YOU or "Their opinion of us" #What the Imperium thinks of Chaos
-                    # ------------------------------------------------
+				# ------------------------------------------------
+				# THEM -> YOU or "Their opinion of us" #What the Imperium thinks of Chaos
+				# ------------------------------------------------
 				if = {
-					limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_traitor_chaos } } }
+					limit = {
+						NOT = { has_opinion_modifier = { who = root modifier = opinion_traitor_chaos } }
+					}
 					add_opinion_modifier = { who = root modifier = opinion_traitor_chaos }
 				}
 				if = {
-					limit = { NOT = { has_opinion_modifier = { who = root modifier = opinion_flavors_down } } }
+					limit = {
+						NOT = { has_opinion_modifier = { who = root modifier = opinion_flavors_down } }
+					}
 					add_opinion_modifier = { who = root modifier = opinion_flavors_down }
 				}
 			}
@@ -194,19 +280,26 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Tyranids THEM -> THEM normally other tyranids because they just fucking eat everything thats not tyranid anyway
 			# ================================================================
 			else_if = {
-				limit = { root = { has_country_flag = tyranid_empire } }
-
+				limit = {
+					root = { has_country_flag = tyranid_empire }
+				}
 				root = {
 					if = {
-						limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_tyranid } } }
+						limit = {
+							NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_tyranid } }
+						}
 						add_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_tyranid }
 					}
 					if = {
-						limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } } }
+						limit = {
+							NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } }
+						}
 						add_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up }
 					}
 					if = {
-						limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } } }
+						limit = {
+							NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } }
+						}
 						add_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us }
 					}
 				}
@@ -215,253 +308,286 @@ country_event = { #This is used for cross empire opinion modifers can also be mo
 			# Necrons (YOU -> THEM) NEEDS MAJOR ADJUSTMENTS BUT IS WORKING only half of the time. This is done slightly differently to the rest #Got secondary events sorting this out if it doesnt fire correctly.
 			# ================================================================
 			else_if = {
-				limit = { root = { OR = { has_country_flag = necron_empire has_necron_origin = yes } } }
+				limit = {
+					root = {
+						OR = {
+							has_country_flag = necron_empire
+							has_necron_origin = yes
+						}
+					}
+				}
 				# baseline hate everyone (YOU -> THEM)
 				root = {
 					if = {
 						limit = {
 							# wont apply to machine empires
-							NOT = { event_target:rel_country = { is_machine_empire = yes } }
-							NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone } }
+							NOR = {
+								event_target:rel_country = { is_machine_empire = yes }
+								has_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone }
+							}
 						}
 						add_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone }
 					}
-				}				
+				}
 				# friendly to other necrons (YOU -> THEM only)
 				if = {
-					limit = { OR = { has_country_flag = necron_empire has_necron_origin = yes } }
+					limit = {
+						OR = {
+							has_country_flag = necron_empire
+							has_necron_origin = yes
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_necron } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_necron } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_both_necron }
 						}
 					}
 				}
-				# machine sympathy (YOU -> THEM), remove hate baseline 
+				# machine sympathy (YOU -> THEM), remove hate baseline
 				if = {
-					limit = { OR = { has_machine_cult = yes has_origin = origin_syncretic_evolution is_synthetic_empire = yes is_machine_empire = yes} }
+					limit = {
+						OR = {
+							has_machine_cult = yes
+							has_origin = origin_syncretic_evolution
+							is_synthetic_empire = yes
+							is_machine_empire = yes
+						}
+					}
 					root = {
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_flavors_up }
 						}
 						if = {
-							limit = { NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } } }
+							limit = {
+								NOT = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us } }
+							}
 							add_opinion_modifier = { who = event_target:rel_country modifier = opinion_first_contact_speak_like_us }
 						}
 						if = {
-							limit = { has_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone } }
+							limit = {
+								has_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone }
+							}
 							remove_opinion_modifier = { who = event_target:rel_country modifier = opinion_necron_hate_everyone }
 						}
 					}
 				}
-				
 			}
 		}
 	}
 }
 
 country_event = {
-    id = aagrimstarts.2105
-    hide_window = yes
-    is_triggered_only = yes
+	id = aagrimstarts.2105
+	hide_window = yes
+	is_triggered_only = yes
+	# Only Chaos empires run this
+	trigger = {
+		OR = {
+			has_origin = origin_shroudrage
+			has_shroudsick_origin = yes
+			has_origin = origin_shroudmutated
+			has_origin = origin_shroudsinners
+		}
+	}
 
-    # Only Chaos empires run this
-    trigger = {
-        OR = {
-            has_origin = origin_shroudrage
-            has_shroudsick_origin = yes
-            has_origin = origin_shroudmutated
-            has_origin = origin_shroudsinners
-        }
-    }
-
-    immediate = {
-        every_playable_country = {
-            limit = {
-                NOT = { is_same_empire = root }
-                has_communications = root
-
-                # target must ALSO be chaos
-                OR = {
-                    has_origin = origin_shroudrage
-                    has_shroudsick_origin = yes
-                    has_origin = origin_shroudmutated
-                    has_origin = origin_shroudsinners
-                }
-            }
-
-            # skip same god
-            if = {
-                limit = {
-                    OR = {
-                        AND = { root = { has_origin = origin_shroudrage	 }    has_origin = origin_shroudrage }
-                        AND = { root = { has_shroudsick_origin = yes }        has_shroudsick_origin = yes }
-                        AND = { root = { has_origin = origin_shroudmutated }  has_origin = origin_shroudmutated }
-                        AND = { root = { has_origin = origin_shroudsinners }  has_origin = origin_shroudsinners }
-                    }
-                }
-                break = yes
-            }
-
-            # YOU -> THEM (Chaos rivalry)
-            root = {
-                if = {
-                    limit = {
-                        NOT = { has_opinion_modifier = { who = prev modifier = opinion_chaos_hate_rival } }
-                    }
-                    add_opinion_modifier = { who = prev modifier = opinion_chaos_hate_rival }
-                }
-            }
-        }
-    }
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_empire = root }
+				has_communications = root
+				# target must ALSO be chaos
+				OR = {
+					has_origin = origin_shroudrage
+					has_shroudsick_origin = yes
+					has_origin = origin_shroudmutated
+					has_origin = origin_shroudsinners
+				}
+			}
+			# skip same god
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							root = { has_origin = origin_shroudrage }
+							has_origin = origin_shroudrage
+						}
+						AND = {
+							root = { has_shroudsick_origin = yes }
+							has_shroudsick_origin = yes
+						}
+						AND = {
+							root = { has_origin = origin_shroudmutated }
+							has_origin = origin_shroudmutated
+						}
+						AND = {
+							root = { has_origin = origin_shroudsinners }
+							has_origin = origin_shroudsinners
+						}
+					}
+				}
+				break = yes
+			}
+			# YOU -> THEM (Chaos rivalry)
+			root = {
+				if = {
+					limit = {
+						NOT = { has_opinion_modifier = { who = prev modifier = opinion_chaos_hate_rival } }
+					}
+					add_opinion_modifier = { who = prev modifier = opinion_chaos_hate_rival }
+				}
+			}
+		}
+	}
 }
 
-country_event = { #Eldar-Imperium Interaction
-    id = aagrimstarts.2104
-    hide_window = yes
-    is_triggered_only = yes
-
-    # ONLY Eldar run this
-    trigger = {
-        OR = {
-            has_country_flag = eldar_empire
-            has_trait = trait_eldar
-        }
-    }
-
-    immediate = {
-        every_playable_country = {
-            limit = {
-                NOT = { is_same_empire = root }
-                has_communications = root
-
-                # ONLY Humans / Imperium
-                OR = {
-                    has_country_flag = human_empire
-                    has_country_flag = loyallegion
-                }
-            }
-
-            # ELDAR -> HUMANS
-            root = {
-                if = {
-                    limit = {
-                        NOT = { has_opinion_modifier = { who = prev modifier = opinion_eldar_dislike } }
-                    }
-                    add_opinion_modifier = { who = prev modifier = opinion_eldar_dislike }
-                }
-            }
-        }
-    }
-}
-country_event = { #Chaos - Eldar Interaction
-    id = aagrimstarts.2103
-    hide_window = yes
-    is_triggered_only = yes
-
-    # ONLY Eldar run this
-    trigger = {
-        OR = {
-            has_country_flag = eldar_empire
-            has_trait = trait_eldar
-        }
-    }
-
-    immediate = {
-        every_playable_country = {
-            limit = {
-                NOT = { is_same_empire = root }
-                has_communications = root
-
-                # ONLY Chaos targets
-                OR = {
-                    has_country_flag = chaos_empire
-                    has_country_flag = eyechaos_empire
-                }
-            }
-
-            # ELDAR -> CHAOS
-            root = {
-                if = {
-                    limit = {
-                        NOT = { has_opinion_modifier = { who = prev modifier = opinion_eldar_hates_chaos } }
-                    }
-                    add_opinion_modifier = { who = prev modifier = opinion_eldar_hates_chaos }
-                }
-            }
-        }
-    }
-}
-
-country_event = { #Chaos - Imperium Interaction
-    id = aagrimstarts.2102
-    hide_window = yes
-    is_triggered_only = yes
-
-    # ONLY Chaos runs this
-    trigger = {
-        OR = {
-            has_country_flag = chaos_empire
-            has_country_flag = eyechaos_empire
-        }
-    }
-
-    immediate = {
-        every_playable_country = {
-            limit = {
-                NOT = { is_same_empire = root }
-                has_communications = root
-
-                # ONLY humans / imperium
-                OR = {
-                    has_country_flag = human_empire
-                    has_country_flag = loyallegion
-                }
-            }
-
-            # CHAOS -> HUMAN
-            root = {
-                if = {
-                    limit = {
-                        NOT = { has_opinion_modifier = { who = prev modifier = opinion_corpse_emperor } }
-                    }
-                    add_opinion_modifier = { who = prev modifier = opinion_corpse_emperor }
-                }
-            }
-        }
-
-    }
-}
-#Necron Hate everyone Opinion applier Will remain like this for both future debugging and simplicity.
+# Eldar-Imperium Interaction
 country_event = {
-    id = aagrimstarts.2101
-    hide_window = yes
-    is_triggered_only = yes
-    # ONLY Necrons run this
-    trigger = {
-        OR = {
-            has_country_flag = necron_empire
-            has_necron_origin = yes
-        }
-    }
-    immediate = {
-        every_playable_country = {
-            limit = {
-                NOT = { is_same_empire = root }
-                has_communications = root
-                NOT = { is_machine_empire = yes }
-            }
-            # NECRON -> THEM (Our opinion of them)
-            root = {
-                if = {
-                    limit = { NOT = { has_opinion_modifier = { who = prev modifier = opinion_necron_hate_everyone } } }
-                    add_opinion_modifier = { who = prev modifier = opinion_necron_hate_everyone }
-                }
-            }
-        }
+	id = aagrimstarts.2104
+	hide_window = yes
+	is_triggered_only = yes
+	# ONLY Eldar run this
+	trigger = {
+		OR = {
+			has_country_flag = eldar_empire
+			has_trait = trait_eldar
+		}
+	}
 
-    }
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_empire = root }
+				has_communications = root
+				# ONLY Humans / Imperium
+				OR = {
+					has_country_flag = human_empire
+					has_country_flag = loyallegion
+				}
+			}
+			# ELDAR -> HUMANS
+			root = {
+				if = {
+					limit = {
+						NOT = { has_opinion_modifier = { who = prev modifier = opinion_eldar_dislike } }
+					}
+					add_opinion_modifier = { who = prev modifier = opinion_eldar_dislike }
+				}
+			}
+		}
+	}
+}
+
+# Chaos - Eldar Interaction
+country_event = {
+	id = aagrimstarts.2103
+	hide_window = yes
+	is_triggered_only = yes
+	# ONLY Eldar run this
+	trigger = {
+		OR = {
+			has_country_flag = eldar_empire
+			has_trait = trait_eldar
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_empire = root }
+				has_communications = root
+				# ONLY Chaos targets
+				OR = {
+					has_country_flag = chaos_empire
+					has_country_flag = eyechaos_empire
+				}
+			}
+			# ELDAR -> CHAOS
+			root = {
+				if = {
+					limit = {
+						NOT = { has_opinion_modifier = { who = prev modifier = opinion_eldar_hates_chaos } }
+					}
+					add_opinion_modifier = { who = prev modifier = opinion_eldar_hates_chaos }
+				}
+			}
+		}
+	}
+}
+
+# Chaos - Imperium Interaction
+country_event = {
+	id = aagrimstarts.2102
+	hide_window = yes
+	is_triggered_only = yes
+	# ONLY Chaos runs this
+	trigger = {
+		OR = {
+			has_country_flag = chaos_empire
+			has_country_flag = eyechaos_empire
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_empire = root }
+				has_communications = root
+				# ONLY humans / imperium
+				OR = {
+					has_country_flag = human_empire
+					has_country_flag = loyallegion
+				}
+			}
+			# CHAOS -> HUMAN
+			root = {
+				if = {
+					limit = {
+						NOT = { has_opinion_modifier = { who = prev modifier = opinion_corpse_emperor } }
+					}
+					add_opinion_modifier = { who = prev modifier = opinion_corpse_emperor }
+				}
+			}
+		}
+	}
+}
+
+# Necron Hate everyone Opinion applier Will remain like this for both future debugging and simplicity.
+country_event = {
+	id = aagrimstarts.2101
+	hide_window = yes
+	is_triggered_only = yes
+	# ONLY Necrons run this
+	trigger = {
+		OR = {
+			has_country_flag = necron_empire
+			has_necron_origin = yes
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { is_same_empire = root }
+				has_communications = root
+				is_machine_empire = no
+			}
+			# NECRON -> THEM (Our opinion of them)
+			root = {
+				if = {
+					limit = {
+						NOT = { has_opinion_modifier = { who = prev modifier = opinion_necron_hate_everyone } }
+					}
+					add_opinion_modifier = { who = prev modifier = opinion_necron_hate_everyone }
+				}
+			}
+		}
+	}
 }
 
 # Imperial Federation Member to be together (on_action)  #Working just fine doesnt need rewriting
@@ -469,6 +595,7 @@ country_event = {
 	id = aagrimstarts.2010
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_federation = yes
 		any_federation_ally = {
@@ -479,6 +606,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		random_playable_country = {
 			limit = {
@@ -488,16 +616,20 @@ country_event = {
 			save_event_target_as = godruler
 		}
 		if = {
-			limit = { NOT = { exists = event_target:godruler } }
+			limit = {
+				NOT = { exists = event_target:godruler }
+			}
 			break = yes
 		}
 		federation = {
 			if = {
-				limit = { any_member = { is_same_empire = event_target:godruler } }
+				limit = {
+					any_member = { is_same_empire = event_target:godruler }
+				}
 				event_target:godruler = {
 					if = {
 						limit = { is_federation_leader = no }
-						prev = { set_federation_leader = prev }
+						set_federation_leader = this
 					}
 				}
 				# if = {
@@ -507,8 +639,8 @@ country_event = {
 				if = {
 					limit = {
 						count_member = {
-							limit = { has_machine_cult = yes }
 							count = 0
+							limit = { has_machine_cult = yes }
 						}
 						any_playable_country = {
 							is_ai = yes
@@ -550,15 +682,14 @@ country_event = {
 							limit = { has_federation = yes }
 							leave_alliance = { override_requirements = yes }
 						}
-						join_alliance = {
-							who = root
-							override_requirements = yes
-						}
+						join_alliance = { who = root override_requirements = yes }
 					}
 				}
 			}
 			else_if = {
-				limit = { event_target:godruler = { is_ai = yes } }
+				limit = {
+					event_target:godruler = { is_ai = yes }
+				}
 				random_member = {
 					limit = {
 						OR = {
@@ -570,7 +701,7 @@ country_event = {
 					}
 					if = {
 						limit = { is_federation_leader = yes }
-						set_federation_leader = prev
+						set_federation_leader = this
 					}
 				}
 			}
@@ -583,10 +714,12 @@ country_event = {
 	id = aagrimstarts.2451
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_country_flag = human_empire
 		from = { army_type = adeptus_astartes }
 	}
+
 	immediate = {
 		change_variable = { which = adeptus_astartes_count value = -1 }
 	}
@@ -594,6 +727,7 @@ country_event = {
 
 # De-increment variable for counting Space Marines (on_army_killed_in_combat / on_army_killed_no_combat)
 ### 9 Heretic Traitor Legions ###
+
 country_event = {
 	id = aagrimstarts.2450
 	hide_window = yes

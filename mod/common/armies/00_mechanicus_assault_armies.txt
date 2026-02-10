@@ -22,7 +22,7 @@ machine_assault_10 = {
 	allow = {
 		OR = {
 			has_building = "building_manufactorums"
-			has_holding = { holding = building_machine_temple owner = planet.owner.overlord	}
+			has_holding = { holding = building_machine_temple owner = planet_owner.overlord	}
 		}
 	}
 	potential_country = {

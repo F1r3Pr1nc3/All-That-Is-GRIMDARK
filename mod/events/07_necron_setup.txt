@@ -1,0 +1,176 @@
+
+namespace = grimstart
+
+country_event = {
+	id = grimstart.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_necron_awakening
+	}
+
+	immediate = {
+		# give_technology = { message = no tech = tech_power_hub_1 }
+		give_technology = { message = no tech = tech_cryostasis_1 }
+		give_technology = { message = no tech = tech_sensors_2 }            # Tier 2
+		give_technology = { message = no tech = tech_hyper_drive_2 }        # Tier 2
+		give_technology = { message = no tech = tech_experimental_subspace_navigation }    # Tier 2
+		give_tech_no_error_effect = {
+			TECH = tech_lasers_2
+			MESSAGE = no
+		}    # Tier 1
+		give_tech_no_error_effect = {
+			TECH = tech_plasma_1
+			MESSAGE = no
+		}    # Tier 2
+		give_tech_no_error_effect = {
+			TECH = tech_lasers_3
+			MESSAGE = no
+		}    # Tier 2
+		give_tech_no_error_effect = {
+			TECH = tech_mine_dark_matter
+			MESSAGE = yes
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_mine_living_metal
+			MESSAGE = yes
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_adaptive_combat_algorithms
+			MESSAGE = no
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_powered_exoskeletons
+			MESSAGE = no
+		}
+		set_country_flag = necron_empire
+		set_country_flag = laser_tech
+		set_ai_personality = necron
+		set_global_flag = necron_empire_created
+		capital_scope = { save_event_target_as = capital_planet }
+		event_target:capital_planet = {
+			add_deposit = d_ancient_battlefield
+			add_deposit = d_organic_landfill
+			add_deposit = d_former_battlefield
+			add_deposit = d_exterminators_ruins
+			add_deposit = d_abandoned_mining_tunnels
+			add_deposit = d_ancient_reactor_pits
+			set_planet_flag = pf_generated_stasis_tombs
+			set_planet_flag = pf_guarenteed_stasis_tombs
+			add_deposit = d_collapsed_spire
+			add_deposit = d_abandoned_mining_tunnels
+			add_deposit = d_immense_solar_array
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_aa_stasis_chambers
+			add_deposit = d_ancient_reactor_pits
+			add_deposit = d_crumbling_mining_tunnels
+			add_deposit = d_relic_metal_boneyard
+			add_deposit = d_relic_metal_boneyard
+			add_building = building_class_4_singularity
+			add_building = building_master_archive
+		}
+		country_event = { id = aagrimstarts.2001 days = 10 }
+		event_target:capital_planet = {
+			if = {
+				limit = { has_building = building_research_lab_1 }
+				remove_building = building_research_lab_1
+			}
+			if = {
+				limit = { planet_size < 22 }
+				set_planet_size = 22
+			}
+		}
+		solar_system = {
+			random_system_planet = {
+				limit = {
+					is_star = no
+					is_colony = no
+				}
+				weights = {
+					base = 40
+					modifier = {
+						add = -10
+						OR = {
+							is_moon = yes
+							is_asteroid = yes
+						}
+					}
+				}
+				if = {
+					limit = { planet_size < 14 }
+					set_planet_size = 14
+				}
+				if = {
+					limit = {
+						OR = {
+							habitable_planet_not_urban = yes
+							colonizable_planet = no
+						}
+					}
+					change_pc = pc_nuked
+				}
+				set_planet_flag = pf_guarenteed_stasis_tombs
+				if = {
+					limit = {
+						NOT = { has_modifier = "irradiated_planet" }
+					}
+					add_modifier = { modifier = "irradiated_planet" days = -1 }
+				}
+			}
+		}
+		create_fleet = {
+			set_take_point = yes
+			effect = {
+				set_owner = prev
+				while = {
+					count = 3
+					create_ship = { name = random random_existing_design = corvette }
+				}
+				set_location = prev.capital_star
+			}
+		}
+		owner_species = {
+			create_species = {
+				name = PRESCRIPTED_ruler_name_necron
+				is_mod = yes
+				species_bio = "This species is so far above others that they're often viewed as deities."
+				class = MACHINE
+				portrait = par_renown_03
+				homeworld = this
+				immortal = yes
+				can_be_modified = no
+				gender = indeterminable
+				allow_negative_traits = no
+				extra_trait_points = 3
+				traits = {
+					trait = trait_machine_unit
+					trait = trait_necrons
+					trait = trait_robot_high_bandwidth
+				}
+			}
+			last_created_species = {
+				set_species_flag = machine_god
+				save_event_target_as = azaryn_species
+			}
+			if = {
+				limit = {
+					event_target:capital_planet = { pop_amount < 1 }
+				}
+				event_target:capital_planet = {
+					create_pop_group = {
+						species = event_target:azaryn_species
+						ethos = {
+							ethic = ethic_xenophobe
+							ethic = ethic_militarist
+						}
+					}
+				}
+			}
+		}
+	}
+}

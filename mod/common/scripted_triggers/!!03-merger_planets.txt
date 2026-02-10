@@ -1,9 +1,25 @@
 ## For compatibility: Dummy triggers - to be overwritten by their respective mods.
-merg_is_molten = { is_planet_class = pc_molten }
-merg_is_toxic = { is_planet_class = pc_toxic }
-merg_is_frozen = { is_planet_class = pc_frozen }
-merg_is_barren = { is_planet_class = pc_barren }
-merg_is_barren_cold = { is_planet_class = pc_barren_cold }
+
+merg_is_molten = {
+	is_planet_class = pc_molten
+}
+
+merg_is_toxic = {
+	is_planet_class = pc_toxic
+}
+
+merg_is_frozen = {
+	is_planet_class = pc_frozen
+}
+
+merg_is_barren = {
+	is_planet_class = pc_barren
+}
+
+merg_is_barren_cold = {
+	is_planet_class = pc_barren_cold
+}
+
 merg_is_gaia_basic = {
 	optimize_memory
 	OR = {
@@ -12,7 +28,7 @@ merg_is_gaia_basic = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				atw_is_gaia = yes
+			atw_is_gaia = yes
 			"
 			toggle = @has_atw_lite
 		}
@@ -20,11 +36,11 @@ merg_is_gaia_basic = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				pd_is_planet_class_gaia = yes
+			pd_is_planet_class_gaia = yes
 			"
 			toggle = @has_planetary_diversity
 		}
-		 # Nanite Machine and Distant Stars Overhaul
+		# Nanite Machine and Distant Stars Overhaul
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
@@ -62,8 +78,13 @@ merg_is_shielded_world = {
 # is_nanite_gaia =				{ always = no }
 # is_nanite_habitat_shielded =	{ always = no }
 # is_nanite_gas_giant = { always = no }
-is_dessanu_relic = { always = no }
-is_ds_skycatcher = { always = no }
+is_dessanu_relic = {
+	always = no
+}
+
+is_ds_skycatcher = {
+	always = no
+}
 
 # Listing habitats
 merg_is_habitat = {
@@ -74,7 +95,7 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_aot_habitat = yes
+			is_aot_habitat = yes
 			"
 			toggle = @has_acquisition_of_tech
 		}
@@ -84,8 +105,8 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				giga_is_pc_giga_elysium = yes
-				giga_is_pc_giga_orbital = yes
+			giga_is_pc_giga_elysium = yes
+			giga_is_pc_giga_orbital = yes
 			"
 			toggle = @has_gigastructures
 		}
@@ -97,7 +118,7 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_pc_mem_vazuran_habitat = yes
+			is_pc_mem_vazuran_habitat = yes
 			"
 			toggle = @has_more_events_mod
 		}
@@ -105,7 +126,7 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_GFnytp_habitis
+			is_planet_class = pc_GFnytp_habitis
 			"
 			toggle = @gf_compatch_var
 		}
@@ -117,7 +138,7 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_fallen_empire_rogue_trader_habitat
+			is_planet_class = pc_fallen_empire_rogue_trader_habitat
 			"
 			toggle = @wula_compatch_var
 		}
@@ -125,14 +146,14 @@ merg_is_habitat = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_utopian_habitat
+			is_planet_class = pc_utopian_habitat
 			"
 			toggle = @has_zofe_vanilla
 		}
 		inline_script = { ## NSC2 Modjam Freebooters Origin
 			script = merger_of_rules/toggled_code
 			code = "
-				uses_district_set = nsc_freebooter_habitat
+			uses_district_set = nsc_freebooter_habitat
 			"
 			toggle = @has_nsc_freebooter_mod
 		}
@@ -193,7 +214,7 @@ merg_is_hive_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				giga_is_pc_ringworld_hive = yes
+			giga_is_pc_ringworld_hive = yes
 			"
 			toggle = @has_gigastructures
 		}
@@ -201,14 +222,14 @@ merg_is_hive_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				pd_is_pd_hive_world = yes
+			pd_is_pd_hive_world = yes
 			"
 			toggle = @has_planetary_diversity_ascension_worlds
 		}
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				pd_is_planet_class_hive = yes
+			pd_is_planet_class_hive = yes
 			"
 			toggle = @has_planetary_diversity
 		}
@@ -216,8 +237,8 @@ merg_is_hive_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_utopian_hive
-				is_planet_class = pc_utopian_hive_ringworld
+			is_planet_class = pc_utopian_hive
+			is_planet_class = pc_utopian_hive_ringworld
 			"
 			toggle = @has_zofe_vanilla
 		}
@@ -232,7 +253,7 @@ merg_is_gas_giant = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				atw_is_gas_giant = yes
+			atw_is_gas_giant = yes
 			"
 			toggle = @has_atw_lite
 		}
@@ -242,7 +263,7 @@ merg_is_gas_giant = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_azur_gas_giant
+			is_planet_class = pc_azur_gas_giant
 			"
 			toggle = @azl_mod
 		}
@@ -265,14 +286,14 @@ merg_is_machine_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				pd_is_pd_machine_arc = yes
+			pd_is_pd_machine_arc = yes
 			"
 			toggle = @has_planetary_diversity_ascension_worlds
 		}
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				pd_is_planet_class_machine = yes
+			pd_is_planet_class_machine = yes
 			"
 			toggle = @has_planetary_diversity
 		}
@@ -280,7 +301,7 @@ merg_is_machine_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				giga_is_pc_ringworld_machine = yes
+			giga_is_pc_ringworld_machine = yes
 			"
 			toggle = @has_gigastructures
 		}
@@ -288,7 +309,7 @@ merg_is_machine_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				msgsc_GF_sf_machine = yes
+			msgsc_GF_sf_machine = yes
 			"
 			toggle = @GF_OGAS_leveled_thread_add_start_after_level
 		}
@@ -296,7 +317,7 @@ merg_is_machine_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_awaken_ai
+			is_planet_class = pc_awaken_ai
 			"
 			toggle = @fcss_mod
 		}
@@ -304,15 +325,17 @@ merg_is_machine_world = {
 		inline_script = {
 			script = merger_of_rules/toggled_code
 			code = "
-				is_planet_class = pc_utopian_machine
-				is_planet_class = pc_utopian_machine_ringworld
+			is_planet_class = pc_utopian_machine
+			is_planet_class = pc_utopian_machine_ringworld
 			"
 			toggle = @has_zofe_vanilla
 		}
 	}
 }
 
-merg_is_arcology = { is_planet_class = pc_city }
+merg_is_arcology = {
+	is_planet_class = pc_city
+}
 
 merg_is_relic_world = {
 	OR = {
@@ -327,7 +350,9 @@ merg_is_relic_world = {
 		# is_planet_class = pc_midas_relic # Midas
 	}
 }
+
 ### Guilli's Planet Modifiers and Features
+
 gpm_is_planet_class_city = {
 	optimize_memory
 	OR = {
@@ -337,4 +362,3 @@ gpm_is_planet_class_city = {
 		# is_planet_class = pc_hollow ### (Mod) Additional Mega Planets merged into Forgotten Queens
 	}
 }
-

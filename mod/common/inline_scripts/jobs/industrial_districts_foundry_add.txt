@@ -534,6 +534,6 @@ triggered_planet_modifier = {
 		owner = { has_origin = origin_barbarichorde }
 	}
 	modifier = {
-		job_mekboy_add = 2
+		job_mekboy_add = 200
 	}
 }

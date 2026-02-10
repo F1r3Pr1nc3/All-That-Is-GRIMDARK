@@ -1,8 +1,8 @@
 # Recycled Mod file from Reanimated Armies (id=2273587346 by Flying Scorpion)
 # v3.13: Completely overhauled by FirePrince
 # v3.13: Removed special trait requirement by FirePrince
-
 namespace = necromancy
+
 #########################################
 @reanimation_ratio = 50 # Chance in %
 # necromancy.10 counts defending armies
@@ -23,6 +23,7 @@ planet_event = {
 	id = necromancy.10
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		OR = {
 			controller = { has_origin = origin_shroudsick }
@@ -52,6 +53,7 @@ planet_event = {
 		# 	is_robotic_species = no
 		# }
 	}
+
 	immediate = {
 		# log = "Potential necromancy event detected..."
 		random_planet_army = {
@@ -89,6 +91,7 @@ planet_event = {
 	id = necromancy.12
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		OR = {
 			controller = { has_origin = origin_necron_awakening }
@@ -100,10 +103,13 @@ planet_event = {
 			leader.species = { is_robotic = yes has_trait = trait_necrons }
 		}
 	}
+
 	immediate = {
 		# log = "Potential necromancy event detected..."
 		if = { # Attacker
-			limit = { from = { has_origin = origin_necron_awakening } }
+			limit = {
+				from = { has_origin = origin_necron_awakening }
+			}
 			random_ground_combat_attacker = {
 				limit = {
 					exists = leader
@@ -114,7 +120,10 @@ planet_event = {
 			export_trigger_value_to_variable = {
 				trigger = count_ground_combat_attacker
 				parameters = {
-					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+					limit = {
+						exists = species
+						species = { is_robotic = yes has_trait = trait_necrons }
+					}
 				}
 				variable = attackers_necro
 			}
@@ -138,7 +147,10 @@ planet_event = {
 			export_trigger_value_to_variable = {
 				trigger = count_ground_combat_defender
 				parameters = {
-					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+					limit = {
+						exists = species
+						species = { is_robotic = yes has_trait = trait_necrons }
+					}
 				}
 				variable = defenders_necro
 			}
@@ -179,7 +191,6 @@ planet_event = {
 # 		}
 # 	}
 # }
-
 #########################################
 # OBSOLETE: merged with necromancy.10
 # Counting the Necromancers attackers (on_ground_combat_started)
@@ -222,7 +233,6 @@ planet_event = {
 # 		# log = "Planet [This.GetName] has [This.attackers_necro] hostile armies."
 # 	}
 # }
-
 #########################################
 # OBSOLETE: replacd with on_ground_combat_started
 # Flagging the defending army leader
@@ -259,7 +269,6 @@ planet_event = {
 # 		}
 # 	}
 # }
-
 #########################################
 #
 # Necromancy attackers reward (on_planet_attackers_win)
@@ -275,6 +284,7 @@ country_event = {
 	id = necromancy.30
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_origin = origin_shroudsick
 		fromfrom = {
@@ -287,6 +297,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		fromfrom = {
 			# Calculate all possible died armies
@@ -308,7 +319,9 @@ country_event = {
 			}
 			subtract_variable = { which = stored_armies_necro value = stored_armies_necro_tmp }
 			if = {
-				limit = { check_variable = { which = stored_armies_necro value > 0 } }
+				limit = {
+					check_variable = { which = stored_armies_necro value > 0 }
+				}
 				random_ground_combat_attacker = {
 					limit = {
 						exists = leader
@@ -316,8 +329,10 @@ country_event = {
 					}
 					leader = { remove_leader_flag = "necro_can_die" }
 				}
-				while = { count = stored_armies_necro
-					random = { chance = @reanimation_ratio
+				while = {
+					count = stored_armies_necro
+					random = {
+						chance = @reanimation_ratio
 						create_army = {
 							owner = root
 							species = root.from.species # Same species of the defender
@@ -339,6 +354,7 @@ country_event = {
 	id = necromancy.32
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_origin = origin_necron_awakening
 		fromfrom = {
@@ -351,19 +367,25 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		fromfrom = {
 			# Calculate possible died Necrons
 			export_trigger_value_to_variable = {
 				trigger = count_ground_combat_attacker
 				parameters = {
-					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+					limit = {
+						exists = species
+						species = { is_robotic = yes has_trait = trait_necrons }
+					}
 				}
 				variable = attackers_necro_tmp
 			}
 			subtract_variable = { which = attackers_necro value = attackers_necro_tmp }
 			if = {
-				limit = { check_variable = { which = attackers_necro value > 0 } }
+				limit = {
+					check_variable = { which = attackers_necro value > 0 }
+				}
 				random_ground_combat_attacker = {
 					limit = {
 						exists = leader
@@ -371,8 +393,10 @@ country_event = {
 					}
 					leader = { remove_leader_flag = "necro_can_die" }
 				}
-				while = { count = attackers_necro
-					random = { chance = @reanimation_ratio
+				while = {
+					count = attackers_necro
+					random = {
+						chance = @reanimation_ratio
 						create_army = {
 							owner = root
 							species = root.from.species # Same species of the defender
@@ -402,6 +426,7 @@ country_event = {
 	id = necromancy.40
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_origin = origin_shroudsick
 		fromfrom = {
@@ -415,6 +440,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		fromfrom = {
 			# Calculate all possible died armies
@@ -436,7 +462,9 @@ country_event = {
 			}
 			subtract_variable = { which = stored_armies_necro value = stored_armies_necro_tmp }
 			if = {
-				limit = { check_variable = { which = stored_armies_necro value > 0 } }
+				limit = {
+					check_variable = { which = stored_armies_necro value > 0 }
+				}
 				random_ground_combat_defender = {
 					limit = {
 						exists = leader
@@ -444,8 +472,10 @@ country_event = {
 					}
 					leader = { remove_leader_flag = "necro_can_die" }
 				}
-				while = { count = stored_armies_necro
-					random = { chance = @reanimation_ratio
+				while = {
+					count = stored_armies_necro
+					random = {
+						chance = @reanimation_ratio
 						create_army = {
 							owner = root
 							species = root.species # Same species of the defender
@@ -460,12 +490,14 @@ country_event = {
 		}
 	}
 }
+
 # Copy of necromancy.40
 # If Necrons defending leader wins, restore Necron armies
 country_event = {
 	id = necromancy.42
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_origin = origin_necron_awakening
 		fromfrom = {
@@ -477,19 +509,25 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		fromfrom = {
 			# Calculate possible died Necrons
 			export_trigger_value_to_variable = {
 				trigger = count_ground_combat_defender
 				parameters = {
-					limit = { exists = species species = { is_robotic = yes has_trait = trait_necrons } }
+					limit = {
+						exists = species
+						species = { is_robotic = yes has_trait = trait_necrons }
+					}
 				}
 				variable = defenders_necro_tmp
 			}
 			subtract_variable = { which = defenders_necro value = defenders_necro_tmp }
 			if = {
-				limit = { check_variable = { which = defenders_necro value > 0 } }
+				limit = {
+					check_variable = { which = defenders_necro value > 0 }
+				}
 				random_ground_combat_defender = {
 					limit = {
 						exists = leader
@@ -497,8 +535,10 @@ country_event = {
 					}
 					leader = { remove_leader_flag = "necro_can_die" }
 				}
-				while = { count = defenders_necro
-					random = { chance = @reanimation_ratio
+				while = {
+					count = defenders_necro
+					random = {
+						chance = @reanimation_ratio
 						create_army = {
 							owner = root
 							species = root.species # Same species of the defender
@@ -525,6 +565,7 @@ country_event = {
 	id = necromancy.50
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		OR = { # can_reanimate_armies = yes
 			has_origin = origin_necron_awakening
@@ -535,15 +576,22 @@ country_event = {
 			leader_class = commander
 			has_leader_flag = "necro_can_die"
 			species = {
-				OR = { has_trait = trait_shroud_sick has_trait = trait_necrons }
+				OR = {
+					has_trait = trait_shroud_sick
+					has_trait = trait_necrons
+				}
 			}
 			exists = planet
 			planet = {
 				has_owner = yes
-				OR = { has_ground_combat = yes has_orbital_bombardment = yes }
+				OR = {
+					has_ground_combat = yes
+					has_orbital_bombardment = yes
+				}
 			}
 		}
 	}
+
 	immediate = {
 		# TODO
 		# create_saved_leader = {
@@ -562,6 +610,7 @@ country_event = {
 		}
 		# Possible just once at 100 days
 	}
+
 	after = {
 		country_event = { id = necromancy.52 days = 100 }
 	}
@@ -597,7 +646,6 @@ country_event = {
 # 	option = { name = monkeys.paw.a }
 # 	option = { name = monkeys.paw.b }
 # }
-
 # Create the "regenerated" necromancer.
 country_event = {
 	id = necromancy.52
@@ -606,15 +654,29 @@ country_event = {
 	picture = GFX_evt_necrophage
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
-	option = { name = monkeys.paw.c }
+
+	option = {
+		name = monkeys.paw.c
+	}
+
 	immediate = {
 		log = "Running necromancy.52" # TODO TEST
 		return_leader_from_exile = necromancer_reg
 		# TODO maybe find better method!? Seems odd
 		if = {
-			limit = { any_owned_leader = { leader_class = commander is_idle = yes has_leader_flag = necromancer_reg } }
+			limit = {
+				any_owned_leader = {
+					leader_class = commander
+					is_idle = yes
+					has_leader_flag = necromancer_reg
+				}
+			}
 			random_owned_leader = {
-				limit = { leader_class = commander is_idle = yes has_leader_flag = necromancer_reg }
+				limit = {
+					leader_class = commander
+					is_idle = yes
+					has_leader_flag = necromancer_reg
+				}
 				remove_leader_flag = necromancer_reg
 			}
 		}
@@ -657,7 +719,6 @@ country_event = {
 # 		}
 # 	}
 # }
-
 ### Nurgle
 # Reanimated Nurgle Armies: Reanimating all armies as your own
 # An Nurgle army has been killed in ground combat (on_army_killed_in_combat)
@@ -669,6 +730,7 @@ country_event = {
 	id = necromancy.210	# Compare necroids.15 necron.110
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		# exists = from
 		exists = fromfrom
@@ -680,11 +742,13 @@ country_event = {
 		}
 		from = { is_robotic_species = no }
 	}
+
 	immediate = {
 		# TODO Call with delay - needs test should be more fun :-)
 		if = { # Own
 			limit = { has_shroudsick_origin = yes }
-			random = { chance = @reanimation_ratio
+			random = {
+				chance = @reanimation_ratio
 				from = {
 					switch = { trigger = army_type
 						plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root fromfrom = root.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
@@ -706,17 +770,17 @@ country_event = {
 		else = { # Opponent (no infected_army but more likely)
 			from = {
 				switch = { trigger = army_type
-				plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
-				giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
-				titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
-				titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
-				gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = gene_warrior_army	value = 1 } } }
-				imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
-				adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
-				chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
-				undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_defense_army	value = 1 } } }
-				undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_army			value = 1 } } }
-				default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
+					plague_zombies			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
+					giant_undead_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+					titanic_guardian_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+					titanic_assault_army	= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = giant_undead_army	value = 1 } } }
+					gene_warrior_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = gene_warrior_army	value = 1 } } }
+					imperial_legion			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+					adeptus_astartes		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+					chaos_marines			= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = death_guard			value = 1 } } }
+					undead_defense_army		= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_defense_army	value = 1 } } }
+					undead_army				= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = undead_army			value = 1 } } }
+					default					= { fromfrom = { planet_event = { id = necromancy.211 scopes = { from = root.fromfrom fromfrom = root.from.species } days = 16 } change_variable = { which = plague_zombies		value = 1 } } }
 				}
 			}
 		}
@@ -764,14 +828,152 @@ planet_event = {
 	id = necromancy.211
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { exists = from exists = fromfrom }
+
+	trigger = {
+		exists = from
+		exists = fromfrom
+	}
+
 	immediate = {
-		if = {		limit = { is_variable_set = giant_undead_army	check_variable = { which = giant_undead_army	value > 0 } } create_army = { owner = from species = fromfrom type = giant_undead_army }	if = { limit = { check_variable = { which = giant_undead_army	value = 1 } } clear_variable = giant_undead_army	} else = { change_variable = { which = giant_undead_army	value = -1 } } }
-		else_if = { limit = { is_variable_set = plague_zombies		check_variable = { which = plague_zombies		value > 0 } } create_army = { owner = from species = fromfrom type = plague_zombies }		if = { limit = { check_variable = { which = plague_zombies		value = 1 } } clear_variable = plague_zombies		} else = { change_variable = { which = plague_zombies		value = -1 } } }
-		else_if = { limit = { is_variable_set = gene_warrior_army	check_variable = { which = gene_warrior_army	value > 0 } } create_army = { owner = from species = fromfrom type = gene_warrior_army }	if = { limit = { check_variable = { which = gene_warrior_army	value = 1 } } clear_variable = gene_warrior_army	} else = { change_variable = { which = gene_warrior_army	value = -1 } } }
-		else_if = { limit = { is_variable_set = death_guard			check_variable = { which = death_guard			value > 0 } } create_army = { owner = from species = fromfrom type = death_guard }			if = { limit = { check_variable = { which = death_guard			value = 1 } } clear_variable = death_guard			} else = { change_variable = { which = death_guard			value = -1 } } }
-		else_if = { limit = { is_variable_set = undead_defense_army	check_variable = { which = undead_defense_army	value > 0 } } create_army = { owner = from species = fromfrom type = undead_defense_army }	if = { limit = { check_variable = { which = undead_defense_army	value = 1 } } clear_variable = undead_defense_army	} else = { change_variable = { which = undead_defense_army	value = -1 } } }
-		else_if = { limit = { is_variable_set = undead_army			check_variable = { which = undead_army			value > 0 } } create_army = { owner = from species = fromfrom type = undead_army }			if = { limit = { check_variable = { which = undead_army			value = 1 } } clear_variable = undead_army			} else = { change_variable = { which = undead_army			value = -1 } } }
-		else_if = { limit = { is_variable_set = plague_zombies		check_variable = { which = plague_zombies		value > 0 } } create_army = { owner = from species = fromfrom type = plague_zombies }		if = { limit = { check_variable = { which = plague_zombies		value = 1 } } clear_variable = plague_zombies		} else = { change_variable = { which = plague_zombies		value = -1 } } }
+		if = {
+			limit = {
+				is_variable_set = giant_undead_army
+				check_variable = { which = giant_undead_army value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = giant_undead_army
+			}
+			if = {
+				limit = {
+					check_variable = { which = giant_undead_army value = 1 }
+				}
+				clear_variable = giant_undead_army
+			}
+			else = {
+				change_variable = { which = giant_undead_army value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = plague_zombies
+				check_variable = { which = plague_zombies value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = plague_zombies
+			}
+			if = {
+				limit = {
+					check_variable = { which = plague_zombies value = 1 }
+				}
+				clear_variable = plague_zombies
+			}
+			else = {
+				change_variable = { which = plague_zombies value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = gene_warrior_army
+				check_variable = { which = gene_warrior_army value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = gene_warrior_army
+			}
+			if = {
+				limit = {
+					check_variable = { which = gene_warrior_army value = 1 }
+				}
+				clear_variable = gene_warrior_army
+			}
+			else = {
+				change_variable = { which = gene_warrior_army value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = death_guard
+				check_variable = { which = death_guard value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = death_guard
+			}
+			if = {
+				limit = {
+					check_variable = { which = death_guard value = 1 }
+				}
+				clear_variable = death_guard
+			}
+			else = {
+				change_variable = { which = death_guard value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = undead_defense_army
+				check_variable = { which = undead_defense_army value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = undead_defense_army
+			}
+			if = {
+				limit = {
+					check_variable = { which = undead_defense_army value = 1 }
+				}
+				clear_variable = undead_defense_army
+			}
+			else = {
+				change_variable = { which = undead_defense_army value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = undead_army
+				check_variable = { which = undead_army value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = undead_army
+			}
+			if = {
+				limit = {
+					check_variable = { which = undead_army value = 1 }
+				}
+				clear_variable = undead_army
+			}
+			else = {
+				change_variable = { which = undead_army value = -1 }
+			}
+		}
+		else_if = {
+			limit = {
+				is_variable_set = plague_zombies
+				check_variable = { which = plague_zombies value > 0 }
+			}
+			create_army = {
+				owner = from
+				species = fromfrom
+				type = plague_zombies
+			}
+			if = {
+				limit = {
+					check_variable = { which = plague_zombies value = 1 }
+				}
+				clear_variable = plague_zombies
+			}
+			else = {
+				change_variable = { which = plague_zombies value = -1 }
+			}
+		}
 	}
 }

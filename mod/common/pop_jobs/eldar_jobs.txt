@@ -5,12 +5,12 @@ bonesinger = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_shaper_shrine
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 	possible = { has_trait = trait_eldar }
 	resources = {
@@ -61,12 +61,12 @@ seer = {
 			condition_string = RULER_JOB_TRIGGER
 			building_icon = building_seer_shrine
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 	possible = { has_trait = trait_eldar }
 
@@ -104,15 +104,14 @@ seer = {
 			exists = owner
 			owner = { has_active_tradition = tr_domination_judgment_corps }
 		}
-		modifier = { planet_crime_add = -5 }
+		planet_crime_add = -5
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = planet
-			planet = { has_modifier = anticrime_campaign }
+			has_modifier = anticrime_campaign
 		}
-		modifier = { planet_crime_add = -10 }
+		planet_crime_add = -10
 	}
 
 	weight = {
@@ -149,18 +148,18 @@ exarch = {
 			condition_string = RULER_JOB_TRIGGER
 			building_icon = building_aspect_shrine
 		}
-    }
-	
+	}
+
 	country_modifier = { country_naval_cap_add = 6 }
 	triggered_country_modifier = {
 		potential = {
 			exists = planet
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = { country_naval_cap_add = 2 }
+		country_naval_cap_add = 2
 	}
 
 	resources = {
@@ -176,19 +175,18 @@ exarch = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = planet
-			planet = { has_modifier = martial_law }
+			has_modifier = martial_law
 		}
-		modifier = { planet_stability_add = 10 }
+		planet_stability_add = 10
 	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
-    possible = { has_trait = trait_eldar }
+	possible = { has_trait = trait_eldar }
 
 	weight = {
 		weight = @soldier_job_weight
@@ -240,7 +238,7 @@ aspectwarrior = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_aspect_shrine
 		}
-    }
+	}
 
 	country_modifier = { country_naval_cap_add = 5 }
 
@@ -248,11 +246,11 @@ aspectwarrior = {
 		potential = {
 			exists = planet
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = { country_naval_cap_add = 2 }
+		country_naval_cap_add = 2
 	}
 
 	resources = {
@@ -270,19 +268,18 @@ aspectwarrior = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = planet
-			planet = { has_modifier = martial_law }
+			has_modifier = martial_law
 		}
-		modifier = { planet_stability_add = 5 }
+		planet_stability_add = 5
 	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
-    possible = { has_trait = trait_eldar }
+	possible = { has_trait = trait_eldar }
 
 	weight = {
 		weight = @soldier_job_weight
@@ -334,15 +331,15 @@ exodite = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_food_processing_facility
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
-    possible = { has_trait = trait_eldar }
+	possible = { has_trait = trait_eldar }
 
 	resources = {
 		category = planet_farmers
@@ -368,47 +365,47 @@ exodite = {
 			exists = owner
 			owner = { has_valid_civic = civic_agrarian_idyll }
 		}
-		modifier = { planet_amenities_add = 2 }
+		planet_amenities_add = 2
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
 		}
-		modifier = { planet_amenities_add = 2 }
+		planet_amenities_add = 2
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_valid_civic = civic_agrarian_idyll }
 		}
-		modifier = { planet_amenities_add = 0.4 }
+		planet_amenities_add = 0.4
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_valid_civic = civic_agrarian_idyll }
 		}
-		modifier = { planet_amenities_add = -0.4 }
+		planet_amenities_add = -0.4
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
 		}
-		modifier = { planet_amenities_add = 0.4 }
+		planet_amenities_add = 0.4
 	}
-	
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_soulkeepers_origin = yes }
 		}
-		modifier = { planet_amenities_add = -0.4 }
+		planet_amenities_add = -0.4
 	}
 
 	weight = {

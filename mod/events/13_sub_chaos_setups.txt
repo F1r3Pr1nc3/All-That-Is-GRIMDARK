@@ -1,21 +1,35 @@
-namespace = grimstart
 
+namespace = grimstart
 # (on_game_start_country)
 country_event = {
 	id = grimstart.10
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { merg_is_default_empire = yes }
+
+	trigger = {
+		merg_is_default_empire = yes
+	}
+
 	immediate = {
 		if = { # 2 Setup Shroud Rage
-			limit = { OR = { has_origin = origin_shroudrage has_country_flag = khorne is_species = PRESCRIPTED_species_name_khorne } }
+			limit = {
+				OR = {
+					has_origin = origin_shroudrage
+					has_country_flag = khorne
+					is_species = PRESCRIPTED_species_name_khorne
+				}
+			}
 			owner_main_species = {
 				if = {
-					limit = { NOT = { has_trait = trait_pc_nuked_preference } }
+					limit = {
+						NOT = { has_trait = trait_pc_nuked_preference }
+					}
 					change_species_characteristics = { add_trait = trait_pc_nuked_preference }
 				}
 				if = {
-					limit = { NOT = { has_trait = trait_survivor } }
+					limit = {
+						NOT = { has_trait = trait_survivor }
+					}
 					change_species_characteristics = { add_trait = trait_survivor }
 				}
 			}
@@ -33,15 +47,29 @@ country_event = {
 			country_event = { id = grimstart.2 }
 		}
 		else_if = { # 3 Setup Shroud Mutated
-			limit = { OR = { has_origin = origin_shroudmutated has_country_flag = tzeentch is_species = "Tzeentick" } }
+			limit = {
+				OR = {
+					has_origin = origin_shroudmutated
+					has_country_flag = tzeentch
+					is_species = "Tzeentick"
+				}
+			}
 			give_technology = { message = yes tech = tech_psionic_theory }		# Tier 3
 			give_technology = { message = no tech = tech_telepathy }
 			set_country_flag = breached_shroud
 			if = {
 				limit = { exists = event_target:capital_planet }
 				event_target:capital_planet = {
-					create_pop_group = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
-					add_district_and_planet_size_if_needed_effect = { district = district_city }
+					create_pop_group = {
+						species = owner_species
+						ethos = {
+							ethic = ethic_xenophobe
+							ethic = ethic_militarist
+						}
+					}
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_city
+					}
 					remove_building = building_research_lab_1
 					add_building = building_holo_theatres
 					add_building = building_factory_1
@@ -67,7 +95,6 @@ country_event = {
 			give_technology = { message = no tech = tech_glandular_acclimation }
 			give_technology = { message = no tech = tech_gene_seed_purification }
 			give_technology = { message = no tech = tech_exotic_gases }
-
 			# if = {
 			# 	limit = { is_gestalt = no }
 			if = {
@@ -75,16 +102,16 @@ country_event = {
 				if = {
 					limit = {
 						# is_ai = yes
-						owner_main_species = {
-							NOR = {
-								has_trait = trait_necrophage
-								has_trait = trait_plantoid_budding
-								has_trait = trait_lithoid_budding
-								has_trait = trait_advanced_budding
-								has_trait = trait_tiyanki
-							}
-						}
 						NOR = {
+							owner_main_species = {
+								OR = {
+									has_trait = trait_necrophage
+									has_trait = trait_plantoid_budding
+									has_trait = trait_lithoid_budding
+									has_trait = trait_advanced_budding
+									has_trait = trait_tiyanki
+								}
+							}
 							is_xenophile = yes
 							has_ethic = ethic_fanatic_egalitarian
 							# is_death_cult_empire = yes
@@ -93,19 +120,32 @@ country_event = {
 						}
 					}
 					owner_main_species = {
-						change_species_characteristics = { add_trait = trait_necrophage can_change_leader = yes }
+						change_species_characteristics = {
+							add_trait = trait_necrophage
+							can_change_leader = yes
+						}
 					}
 				}
 				if = {
-					limit = { NOR = { is_reanimator = yes is_pacifist = yes } }
+					limit = {
+						NOR = {
+							is_reanimator = yes
+							is_pacifist = yes
+						}
+					}
 					force_add_civic = civic_reanimated_armies
 				}
 				set_origin = origin_necrophage
 			}
 			owner_main_species = {
 				if = {
-					limit = { NOT = { has_trait = trait_shroud_sick } }
-					change_species_characteristics = { add_trait = trait_shroud_sick add_traits_at_start_of_list = yes }
+					limit = {
+						NOT = { has_trait = trait_shroud_sick }
+					}
+					change_species_characteristics = {
+						add_trait = trait_shroud_sick
+						add_traits_at_start_of_list = yes
+					}
 				}
 			}
 			# }
@@ -124,10 +164,19 @@ country_event = {
 					add_district = { district_type = district_mining_infected ignore_cap = yes }
 					add_district = { district_type = district_farming_infected ignore_cap = yes }
 					add_district = { district_type = district_hive_infected ignore_cap = yes }
-					create_pop_group = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+					create_pop_group = {
+						species = owner_species
+						ethos = {
+							ethic = ethic_xenophobe
+							ethic = ethic_militarist
+						}
+					}
 					solar_system = {
 						random_system_planet = {
-							limit = { is_star = no is_colony = no }
+							limit = {
+								is_star = no
+								is_colony = no
+							}
 							change_pc = pc_nuked
 							add_deposit = d_ore_rich_caverns
 							add_deposit = d_fungal_caves
@@ -170,11 +219,23 @@ country_event = {
 			if = {
 				limit = { exists = event_target:capital_planet }
 				event_target:capital_planet = {
-					create_pop_group = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+					create_pop_group = {
+						species = owner_species
+						ethos = {
+							ethic = ethic_xenophobe
+							ethic = ethic_militarist
+						}
+					}
 					add_deposit = d_decrepit_dwellings
-					add_district_and_planet_size_if_needed_effect = { district = district_farming }
-					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
-					add_district_and_planet_size_if_needed_effect = { district = district_industrial }
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_farming
+					}
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_industrial
+					}
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_industrial
+					}
 					add_district = { district_type = district_mining ignore_cap = yes }
 					add_building = building_paradise_dome
 					add_building = building_hyper_entertainment_forum

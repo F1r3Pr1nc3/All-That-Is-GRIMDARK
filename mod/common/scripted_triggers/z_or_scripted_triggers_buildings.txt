@@ -1,6 +1,5 @@
 # Just adding building_hive_major_capital_sick and building_system_capital_gr
 # Vanilla scripted triggers from 01_scripted_triggers_buildings.txt
-
 has_upgraded_capital = {
 	if = {
 		limit = { has_modifier = resort_colony }
@@ -37,7 +36,9 @@ has_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_hive_empire = yes } }
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_hive_capital"
 			OR = {
@@ -49,7 +50,9 @@ has_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_machine_empire = yes } }
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_machine_capital"
 			OR = {
@@ -103,7 +106,9 @@ has_major_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_hive_empire = yes } }
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_major_hive_capital"
 			OR = {
@@ -114,7 +119,9 @@ has_major_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_machine_empire = yes } }
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_machine_major_capital"
 			OR = {
@@ -165,7 +172,9 @@ has_fully_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_hive_empire = yes } }
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_major_hive_capital"
 			OR = {
@@ -176,7 +185,9 @@ has_fully_upgraded_capital = {
 		}
 	}
 	else_if = {
-		limit = { owner = { is_machine_empire = yes } }
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
 		custom_tooltip = {
 			fail_text = "requires_building_machine_major_capital"
 			OR = {
@@ -250,6 +261,7 @@ has_flesh_is_weak_anti_synergy = {
 		has_origin = origin_shroudrage			# has_country_flag = khorne
 	}
 }
+
 # Gets overriden by blocks_ai_synthetic_evolution
 has_synthetic_evolution_anti_synergy = {
 	OR = {
@@ -263,6 +275,7 @@ has_synthetic_evolution_anti_synergy = {
 		has_origin = origin_shroudrage		# has_country_flag = khorne
 	}
 }
+
 # Machine
 # has_synthetic_age_anti_synergy = {
 # 	has_civic = civic_machine_assimilator

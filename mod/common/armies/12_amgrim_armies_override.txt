@@ -135,10 +135,8 @@ undead_army = {
 	potential_country = { can_reanimate_armies = yes }
 	potential = {
 		from = {
-			from = {
-				is_sapient = yes
-				is_robotic = no
-			}
+			is_sapient = yes
+			is_robotic = no
 		}
 		planet = {
 			has_active_building = building_dread_encampment
@@ -181,7 +179,6 @@ undead_defense_army = {
 				has_planet_flag = active_dread_outpost
 			}
 		}
-
 	}
 
 	resources = {

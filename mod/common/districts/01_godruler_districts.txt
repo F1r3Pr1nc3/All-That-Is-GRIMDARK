@@ -59,11 +59,9 @@ district_arcology_manufactorum = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_fabricator_add = 200
-			job_artisan_drone_add = 200
-			job_mining_drone_add = 600
-		}
+		job_fabricator_add = 200
+		job_artisan_drone_add = 200
+		job_mining_drone_add = 600
 	}
 
 	triggered_planet_modifier = {
@@ -71,11 +69,9 @@ district_arcology_manufactorum = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_alloy_drone_add = 200
-			job_artisan_drone_add = 200
-			job_mining_drone_add = 600
-		}
+		job_alloy_drone_add = 200
+		job_artisan_drone_add = 200
+		job_mining_drone_add = 600
 	}
 
 	triggered_planet_modifier = {
@@ -83,10 +79,8 @@ district_arcology_manufactorum = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		modifier = {
-			job_imperium_labourer_add = 500
-			job_miner_add = 500
-		}
+		job_imperium_labourer_add = 500
+		job_miner_add = 500
 	}
 
 	ai_weight = {
@@ -108,7 +102,7 @@ district_arcology_mechanicum = {
 	base_buildtime = 600
 	zone_slots = {
 		slot_energy
-        slot_minerals
+		slot_minerals
 		slot_city_01
 		slot_city_02
 	}
@@ -161,9 +155,7 @@ district_arcology_mechanicum = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_technician_drone_add = 500
-		}
+		job_technician_drone_add = 500
 	}
 
 	triggered_planet_modifier = {
@@ -171,9 +163,7 @@ district_arcology_mechanicum = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_technician_drone_add = 500
-		}
+		job_technician_drone_add = 500
 	}
 
 	triggered_planet_modifier = {
@@ -184,11 +174,9 @@ district_arcology_mechanicum = {
 				is_fallen_empire_spiritualist = no
 			}
 		}
-		modifier = {
-			job_imperium_magos_add = 100
-			job_imperium_techpriest_add = 200
-			job_imperium_servitor_add = 300
-		}
+		job_imperium_magos_add = 100
+		job_imperium_techpriest_add = 200
+		job_imperium_servitor_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -196,9 +184,7 @@ district_arcology_mechanicum = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
-		modifier = {
-			job_fe_acolyte_generator_add = 500
-		}
+		job_fe_acolyte_generator_add = 500
 	}
 
 	prerequisites = {
@@ -277,9 +263,7 @@ district_arcology_corpsestarch = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -290,9 +274,7 @@ district_arcology_corpsestarch = {
 				has_valid_civic = civic_agrarian_idyll
 			}
 		}
-		modifier = {
-			planet_housing_add = 100
-		}
+		planet_housing_add = 100
 	}
 
 	triggered_planet_modifier = {
@@ -300,9 +282,7 @@ district_arcology_corpsestarch = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
-		modifier = {
-			job_agri_drone_add = 500
-		}
+		job_agri_drone_add = 500
 	}
 
 	triggered_planet_modifier = {
@@ -310,9 +290,7 @@ district_arcology_corpsestarch = {
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_agri_drone_add = 500
-		}
+		job_agri_drone_add = 500
 	}
 
 	triggered_planet_modifier = {
@@ -323,9 +301,7 @@ district_arcology_corpsestarch = {
 				is_fallen_empire_spiritualist = no
 			}
 		}
-		modifier = {
-			job_imperium_farmer_add = 500
-		}
+		job_imperium_farmer_add = 500
 	}
 
 	triggered_planet_modifier = {
@@ -333,9 +309,7 @@ district_arcology_corpsestarch = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
 		}
-		modifier = {
-			job_fe_acolyte_farm_add = 500
-		}
+		job_fe_acolyte_farm_add = 500
 	}
 
 	prerequisites = {

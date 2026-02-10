@@ -1,31 +1,51 @@
+
 namespace = grimstart
 
 country_event = {
 	id = grimstart.6
 	hide_window = yes
 	is_triggered_only = yes
-        trigger = { has_origin = origin_bioreformers }
+
+	trigger = {
+		has_origin = origin_bioreformers
+	}
+
 	immediate = {
 		owner_main_species = {
 			if = {
-				limit = { NOT = { has_trait = trait_tyranid } }
-				change_species_characteristics = { add_trait = trait_tyranid add_traits_at_start_of_list = yes can_change_leader = yes }
+				limit = {
+					NOT = { has_trait = trait_tyranid }
+				}
+				change_species_characteristics = {
+					add_trait = trait_tyranid
+					add_traits_at_start_of_list = yes
+					can_change_leader = yes
+				}
 			}
 			if = {
 				limit = {
-					OR = { prev = { is_ai = yes } has_necroids = yes }
-					NOT = { has_trait = trait_necrophage }
-					prev = {
-						NOR = {
-							is_xenophile = yes
-							has_ethic = ethic_fanatic_egalitarian
-							is_death_cult_empire = yes
-							has_civic = civic_hive_empath
-							has_civic = civic_permanent_employment
+					OR = {
+						prev = { is_ai = yes }
+						has_necroids = yes
+					}
+					NOR = {
+						has_trait = trait_necrophage
+						prev = {
+							OR = {
+								is_xenophile = yes
+								has_ethic = ethic_fanatic_egalitarian
+								is_death_cult_empire = yes
+								has_civic = civic_hive_empath
+								has_civic = civic_permanent_employment
+							}
 						}
 					}
 				}
-				change_species_characteristics = { add_trait = trait_necrophage add_traits_at_start_of_list = yes can_change_leader = yes }
+				change_species_characteristics = {
+					add_trait = trait_necrophage
+					add_traits_at_start_of_list = yes
+					can_change_leader = yes
+				}
 			}
 		}
 		give_technology = { message = no tech = tech_space_exploration }
@@ -36,7 +56,6 @@ country_event = {
 		give_technology = { message = no tech = tech_gene_tailoring }	# Tier 3
 		give_technology = { message = no tech = tech_morphogenetic_field_mastery }
 		give_technology = { message = no tech = tech_climate_restoration }
-
 		get_capital_planet = yes
 		event_target:capital_planet = {
 			clear_blockers = yes
@@ -52,52 +71,46 @@ country_event = {
 				count = 3
 				add_district = district_hive
 			}
-			add_zone = {
-				district = district_hive
-				zone = zone_default
-			}
-			add_zone = {
-				district = district_hive
-				zone = zone_urban
-			}
+			add_zone = { district = district_hive zone = zone_default }
+			add_zone = { district = district_hive zone = zone_urban }
 			while = {
 				count = 4
-				add_district = district_farming_uncapped 
+				add_district = district_farming_uncapped
 			}
-			add_zone = {
-				district = district_farming_uncapped 
-				zone = zone_urban_food
-			}
+			add_zone = { district = district_farming_uncapped zone = zone_urban_food }
 			while = {
 				count = 1
 				add_district = district_mining_uncapped
 			}
-			add_zone = {
-				district = district_mining_uncapped
-				zone = zone_minerals
-			}
+			add_zone = { district = district_mining_uncapped zone = zone_minerals }
 			while = {
 				count = 3
 				add_district = district_generator_uncapped
 			}
-			add_zone = {
-				district = district_generator_uncapped
-				zone = zone_energy
-			}
+			add_zone = { district = district_generator_uncapped zone = zone_energy }
 		}
 		create_fleet = {
 			set_take_point = yes
 			effect = {
 				set_owner = prev
-				while = { count = 2
+				while = {
+					count = 2
 					create_ship = { name = random random_existing_design = corvette }
 				}
 				set_location = prev.capital_star
 			}
 		}
 		# Buff them
-		add_resource = { energy = 1000 minerals = 5000 alloys = 500 }
-                add_resource = { energy = 1000 minerals = 5000 alloys = 500 }
+		add_resource = {
+			energy = 1000
+			minerals = 5000
+			alloys = 500
+		}
+		add_resource = {
+			energy = 1000
+			minerals = 5000
+			alloys = 500
+		}
 		if = {
 			limit = { is_machine_empire = no }
 			add_resource = { food = 1000 }
@@ -108,7 +121,6 @@ country_event = {
 		}
 		set_country_flag = tyranid_empire
 		country_event = { id = aagrimstarts.2001 days = 10 } # Updated Relations event
-
 		if = {
 			limit = {
 				has_grand_archive_dlc = yes
@@ -125,7 +137,10 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					OR = { is_megacorp = yes has_civic = civic_galactic_sovereign_megacorp }
+					OR = {
+						is_megacorp = yes
+						has_civic = civic_galactic_sovereign_megacorp
+					}
 					NOT = { has_civic = civic_privatized_exploration }
 				}
 				force_add_civic = civic_corporate_beastmasters
@@ -137,7 +152,6 @@ country_event = {
 			set_graphical_culture = tyranid_01
 			set_city_graphical_culture = tyranid_01
 		}
-
 		if = { # Compat
 			limit = {
 				NOR = {
@@ -152,11 +166,15 @@ country_event = {
 				}
 			}
 			if = {
-				limit = { NOT = { has_origin = origin_bioreformers } }
+				limit = {
+					NOT = { has_origin = origin_bioreformers }
+				}
 				if = { # Compat Mod "Warhammer 40K - Tyranids"
 					limit = {
 						has_origin = origin_tyranid_planet
-						owner_main_species = { NOT = { is_species_class = "Tyranid" } }
+						owner_main_species = {
+							NOT = { is_species_class = "Tyranid" }
+						}
 					}
 					owner_main_species = {
 						mirror_species = { class = "Tyranid" }
@@ -164,15 +182,20 @@ country_event = {
 				}
 				set_origin = origin_bioreformers
 			}
-			set_policy = { policy = first_contact_protocol option = first_contact_attack_allowed cooldown = yes }
+			set_policy = {
+				policy = first_contact_protocol
+				option = first_contact_attack_allowed
+				cooldown = yes
+			}
 		}
 		else_if = { # Compat Genestealer
-			limit = { NOT = { has_origin = origin_bioreformers } }
+			limit = {
+				NOT = { has_origin = origin_bioreformers }
+			}
 			if = {
 				limit = { has_ethic = ethic_authoritarian }
 				country_remove_ethic = ethic_authoritarian
 			}
-
 			if = {
 				limit = { is_pacifist = no }
 				shift_ethic = ethic_pacifist
@@ -183,7 +206,9 @@ country_event = {
 			}
 			set_ai_personality = migrating_flock
 			if = {
-				limit = { NOT = { has_civic = civic_selective_kinship } }
+				limit = {
+					NOT = { has_civic = civic_selective_kinship }
+				}
 				force_add_civic = civic_selective_kinship
 			}
 			if = {
@@ -201,28 +226,44 @@ country_event = {
 				limit = { is_megacorp = no }
 				change_government = {
 					authority = auth_corporate
-					civics = { civic = civic_selective_kinship civic = civic_criminal_heritage }
+					civics = {
+						civic = civic_selective_kinship
+						civic = civic_criminal_heritage
+					}
 					remove_invalid_civics = yes
 				}
 			}
-
 			if = {
-				limit = { NAND = { is_megacorp = yes has_civic = civic_galactic_sovereign_megacorp } }
+				limit = {
+					NAND = {
+						is_megacorp = yes
+						has_civic = civic_galactic_sovereign_megacorp
+					}
+				}
 				force_add_civic = civic_galactic_sovereign_megacorp
 			}
 			if = {
-				limit = { NOT = { has_civic = civic_criminal_heritage } }
+				limit = {
+					NOT = { has_civic = civic_criminal_heritage }
+				}
 				force_add_civic = civic_criminal_heritage
 			}
 			if = {
 				limit = { is_ai = yes }
 				set_ai_personality = migrating_flock
 			}
-			set_policy = { policy = first_contact_protocol option = first_contact_proactive cooldown = yes }
+			set_policy = {
+				policy = first_contact_protocol
+				option = first_contact_proactive
+				cooldown = yes
+			}
 			set_country_flag = human_empire
 		}
 		if = {
-			limit = { is_ai = yes has_origin = origin_bioreformers }
+			limit = {
+				is_ai = yes
+				has_origin = origin_bioreformers
+			}
 			give_technology = { message = no tech = tech_fusion_power }				# tier = 1
 			give_technology = { message = no tech = tech_missiles_2 }				# tier = 1
 			give_technology = { message = no tech = tech_space_whale_weapon_1 }		        # tier = 1

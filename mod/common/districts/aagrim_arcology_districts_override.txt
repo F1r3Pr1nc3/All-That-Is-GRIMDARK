@@ -39,7 +39,7 @@ district_arcology_housing = {
 		district_city
 		district_nexus
 		district_hive
-		district_mindlink    
+		district_mindlink
 	}
 
 	resources = {
@@ -62,9 +62,7 @@ district_arcology_housing = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		modifier = {
-			job_maintenance_drone_add = 900
-		}
+		job_maintenance_drone_add = 900
 	}
 
 	triggered_planet_modifier = {
@@ -75,9 +73,7 @@ district_arcology_housing = {
 				has_active_tradition = tr_virtuality_4
 			}
 		}
-		modifier = {
-			job_maintenance_drone_add = 600
-		}
+		job_maintenance_drone_add = 600
 	}
 
 	triggered_planet_modifier = {
@@ -85,9 +81,7 @@ district_arcology_housing = {
 			exists = owner
 			owner = { has_active_tradition = tr_prosperity_public_works }
 		}
-		modifier = {
-			planet_housing_add = 300
-		}
+		planet_housing_add = 300
 	}
 
 	# Housing tech 1 – unchanged
@@ -98,9 +92,7 @@ district_arcology_housing = {
 				has_technology = tech_housing_1
 			}
 		}
-		modifier = {
-			planet_housing_add = 300
-		}
+		planet_housing_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -111,9 +103,7 @@ district_arcology_housing = {
 				NOT = { has_civic = civic_agrarian_idyll }
 			}
 		}
-		modifier = {
-			planet_housing_add = 300
-		}
+		planet_housing_add = 300
 	}
 
 	# Housing tech 2 + gestalt – from reference
@@ -125,9 +115,7 @@ district_arcology_housing = {
 				is_gestalt = yes
 			}
 		}
-		modifier = {
-			job_maintenance_drone_add = 300
-		}
+		job_maintenance_drone_add = 300
 	}
 
 	# Regular empires (non-godruler / non-machine_cult)
@@ -139,9 +127,7 @@ district_arcology_housing = {
 				NOR = { has_origin = origin_godruler has_machine_cult = yes }
 			}
 		}
-		modifier = {
-			job_clerk_add = 300
-		}
+		job_clerk_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -153,9 +139,7 @@ district_arcology_housing = {
 				NOR = { has_origin = origin_godruler has_machine_cult = yes }
 			}
 		}
-		modifier = {
-			job_clerk_add = 300
-		}
+		job_clerk_add = 300
 	}
 
 	triggered_planet_modifier = {
@@ -167,9 +151,7 @@ district_arcology_housing = {
 				NOR = { has_origin = origin_godruler has_machine_cult = yes }
 			}
 		}
-		modifier = {
-			job_imperium_scribe_add = 300
-		}
+		job_imperium_scribe_add = 300
 	}
 
 	# Godruler / machine cult empires – scribes + arbiters
@@ -181,10 +163,8 @@ district_arcology_housing = {
 				OR = { has_origin = origin_godruler has_machine_cult = yes }
 			}
 		}
-		modifier = {
-			job_imperium_scribe_add = 200
-			job_imperium_arbiter_add = 100
-		}
+		job_imperium_scribe_add = 200
+		job_imperium_arbiter_add = 100
 	}
 
 	# Your old tankbound effect, adapted to 4.0
@@ -195,9 +175,7 @@ district_arcology_housing = {
 				is_tankbound_empire = yes
 			}
 		}
-		modifier = {
-			job_production_overseer_add = 100
-		}
+		job_production_overseer_add = 100
 	}
 
 	# Triggered descriptions – from reference

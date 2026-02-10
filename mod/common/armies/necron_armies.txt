@@ -249,7 +249,7 @@ necron_warriors_defense = {
 # 			OR = {
 # 				AND = {
 # 					has_active_building = building_dread_encampment
-# 					num_assigned_jobs = { job = necromancer value >= 1 }
+# 					num_assigned_jobs = { job = necromancer value >= 100 }
 # 				}
 # 				has_planet_flag = active_dread_outpost
 # 			}
@@ -306,8 +306,8 @@ plague_zombies = {
 		upkeep = { energy = 2 }
 	}
 	prerequisites = { "tech_plague_zombies" }
-	show_tech_unlock_if = { has_valid_civic = civic_reanimated_armies }
-	potential_country = { has_country_flag = chaos_empire  } # has_valid_civic = civic_reanimated_armies
+	show_tech_unlock_if = { is_reanimator = yes }
+	potential_country = { has_country_flag = chaos_empire  } # is_reanimator = yes
 	potential = {
 		from = {
 			is_sapient = yes
@@ -315,7 +315,7 @@ plague_zombies = {
 		}
 		planet = {
 			has_active_building = building_dread_encampment
-			num_assigned_jobs = { job = necromancer value >= 1 }
+			num_assigned_jobs = { job = necromancer value >= 100 }
 		}
 	}
 	ai_weight = { base = 100 }

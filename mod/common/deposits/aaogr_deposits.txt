@@ -1,19 +1,20 @@
+
 d_holyterra_sprawl = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_city
+
 	resources = {
 		category = planet_deposits
 		produces = {
 			unity = 2
 		}
 	}
-	
-	planet_modifier = { 
+
+	planet_modifier = {
 		planet_crime_add = 15
 	}
-	
+
 	drop_weight = {
 		weight = 0
 	}
@@ -22,8 +23,8 @@ d_holyterra_sprawl = {
 d_holyterra_defences = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
-
 	icon = d_central_spire
+
 	resources = {
 		category = planet_deposits
 		upkeep = {
@@ -31,12 +32,12 @@ d_holyterra_defences = {
 			alloys = 1
 		}
 	}
-	
-	planet_modifier = { 
+
+	planet_modifier = {
 		planet_max_districts_add = -1
 		planet_orbital_bombardment_damage = -0.15
 	}
-	
+
 	drop_weight = {
 		weight = 0
 	}

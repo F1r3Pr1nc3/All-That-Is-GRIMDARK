@@ -6,15 +6,26 @@ create_nearby_shroudgate_planet = {
 	random_system_planet = {
 		limit = {
 			is_colonizable = yes
-			NOR = { is_colony = yes has_owner = yes has_deposit = d_aa_shroudgate_inactive }
+			NOR = {
+				is_colony = yes
+				has_owner = yes
+				has_deposit = d_aa_shroudgate_inactive
+			}
 		}
 		add_deposit = d_aa_shroudgate_inactive
 		if = {
-			limit = { NOR = { has_deposit = d_zro_deposit_1 has_deposit = d_zro_deposit_2 has_deposit = d_zro_deposit_3 } }
+			limit = {
+				NOR = {
+					has_deposit = d_zro_deposit_1
+					has_deposit = d_zro_deposit_2
+					has_deposit = d_zro_deposit_3
+				}
+			}
 			random = { chance = 50 add_zro = yes }
 		}
 	}
 }
+
 create_nearby_tomb_planet = {
 	if = {
 		limit = { root = { is_ai = yes } }
@@ -26,7 +37,11 @@ create_nearby_tomb_planet = {
 	random_system_planet = {
 		limit = {
 			is_colonizable = yes
-			NOR = { is_colony = yes has_owner = yes has_deposit = d_aa_stasis_chambers }
+			NOR = {
+				is_colony = yes
+				has_owner = yes
+				has_deposit = d_aa_stasis_chambers
+			}
 		}
 		add_deposit = d_aa_stasis_chambers
 	}
@@ -38,6 +53,7 @@ colonize_planet = {
 			start_colony = { owner = root species = prev.species }
 		}
 	}
+
 	log = "\\[Root.GetName] starts effect auto-colonizing \\[prevprev.GetName]"
 	delete_fleet = this
 }
@@ -46,7 +62,10 @@ colonize_planet = {
 set_choas_origin = {
 	set_country_flag = chaos_empire
 	if = {
-		limit = { exists = from from = { is_scope_type = country } }
+		limit = {
+			exists = from
+			from = { is_scope_type = country }
+		}
 		from = {
 			switch = { trigger = has_origin
 				origin_fallen_psionic	= { prev = { set_country_flag = eyechaos_empire } }
@@ -69,11 +88,114 @@ set_choas_origin = {
 		}
 		# randomize_flag_symbol = chaos
 		random_list = {
-			88 = { set_origin = origin_fallen_psionic	change_country_flag = { background = { category="backgrounds" file="star_eight.dds" } colors = { "dark_purple" "red" "black" "null" } icon = { category = chaos file = black_legion.dds } }		modifier = { factor = 88 has_country_flag = eyechaos_empire }	modifier = { factor = 0.1 any_playable_country = { has_origin = origin_fallen_psionic } }	modifier = { factor = 0 OR = { has_civic = civic_agrarian_idyll is_pacifist = yes } } }
-			88 = { set_origin = origin_shroudrage		change_country_flag = { background = { category="backgrounds" file="star_eight.dds" } colors = { "dark_purple" "red" "black" "null" } icon = { category = chaos file = khorne_emblem.dds } }	modifier = { factor = 88 has_country_flag = khorne }			modifier = { factor = 0.1 any_playable_country = { has_origin = origin_shroudrage } }		modifier = { factor = 0 NAND = { is_megacorp = yes is_xenophobe = yes is_militarist = yes } } }
-			88 = { set_origin = origin_shroudmutated	change_country_flag = { background = { category="backgrounds" file="star_eight.dds" } colors = { "dark_purple" "red" "black" "null" } icon = { category = chaos file = tzeentch_emblem.dds } }	modifier = { factor = 88 has_country_flag = tzeentch }			modifier = { factor = 0.1 any_playable_country = { has_origin = origin_shroudmutated } }	modifier = { factor = 0 OR = { is_spiritualist = no is_pacifist = yes is_xenophile = yes } } }
-			88 = { set_origin = origin_shroudsinners	change_country_flag = { background = { category="backgrounds" file="star_eight.dds" } colors = { "dark_purple" "red" "black" "null" } icon = { category = chaos file = slaanesh_emblem.dds } }	modifier = { factor = 88 has_country_flag = slaanesh }			modifier = { factor = 0.1 any_playable_country = { has_origin = origin_shroudsinners } }	modifier = { factor = 0 OR = { is_gestalt = yes is_xenophobe = yes } } }
-			88 = { set_origin = origin_shroudsick		change_country_flag = { background = { category="backgrounds" file="star_eight.dds" } colors = { "dark_purple" "red" "black" "null" } icon = { category = chaos file = nurgle_emblem.dds } }	modifier = { factor = 88 OR = { has_country_flag = nurgle has_trait = trait_shroud_sick } }			modifier = { factor = 0.1 any_playable_country = { has_shroudsick_origin = yes } }			modifier = { factor = 0 OR = { has_civic = civic_hive_empath has_civic = civic_hive_devouring_swarm } } }
+			88 = {
+				set_origin = origin_fallen_psionic
+				change_country_flag = {
+					background = { category = "backgrounds" file = "star_eight.dds" }
+					colors = { "dark_purple" "red" "black" "null" }
+					icon = { category = chaos file = black_legion.dds }
+				}
+				modifier = { factor = 88 has_country_flag = eyechaos_empire }
+				modifier = {
+					factor = 0.1
+					any_playable_country = { has_origin = origin_fallen_psionic }
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_civic = civic_agrarian_idyll
+						is_pacifist = yes
+					}
+				}
+			}
+			88 = {
+				set_origin = origin_shroudrage
+				change_country_flag = {
+					background = { category = "backgrounds" file = "star_eight.dds" }
+					colors = { "dark_purple" "red" "black" "null" }
+					icon = { category = chaos file = khorne_emblem.dds }
+				}
+				modifier = { factor = 88 has_country_flag = khorne }
+				modifier = {
+					factor = 0.1
+					any_playable_country = { has_origin = origin_shroudrage }
+				}
+				modifier = {
+					factor = 0
+					NAND = {
+						is_megacorp = yes
+						is_xenophobe = yes
+						is_militarist = yes
+					}
+				}
+			}
+			88 = {
+				set_origin = origin_shroudmutated
+				change_country_flag = {
+					background = { category = "backgrounds" file = "star_eight.dds" }
+					colors = { "dark_purple" "red" "black" "null" }
+					icon = { category = chaos file = tzeentch_emblem.dds }
+				}
+				modifier = { factor = 88 has_country_flag = tzeentch }
+				modifier = {
+					factor = 0.1
+					any_playable_country = { has_origin = origin_shroudmutated }
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						is_spiritualist = no
+						is_pacifist = yes
+						is_xenophile = yes
+					}
+				}
+			}
+			88 = {
+				set_origin = origin_shroudsinners
+				change_country_flag = {
+					background = { category = "backgrounds" file = "star_eight.dds" }
+					colors = { "dark_purple" "red" "black" "null" }
+					icon = { category = chaos file = slaanesh_emblem.dds }
+				}
+				modifier = { factor = 88 has_country_flag = slaanesh }
+				modifier = {
+					factor = 0.1
+					any_playable_country = { has_origin = origin_shroudsinners }
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						is_gestalt = yes
+						is_xenophobe = yes
+					}
+				}
+			}
+			88 = {
+				set_origin = origin_shroudsick
+				change_country_flag = {
+					background = { category = "backgrounds" file = "star_eight.dds" }
+					colors = { "dark_purple" "red" "black" "null" }
+					icon = { category = chaos file = nurgle_emblem.dds }
+				}
+				modifier = {
+					factor = 88
+					OR = {
+						has_country_flag = nurgle
+						has_trait = trait_shroud_sick
+					}
+				}
+				modifier = {
+					factor = 0.1
+					any_playable_country = { has_shroudsick_origin = yes }
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_civic = civic_hive_empath
+						has_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
 		}
 	}
 }
@@ -87,5 +209,6 @@ cure_hangover = {
 		add_modifier = { modifier = toxic_terraforming_candidate }
 	}
 }
+
 # This = necron_planet
 # create_necron_dynasty = {  }

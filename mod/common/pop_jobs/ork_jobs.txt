@@ -5,13 +5,13 @@ teefdealer = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_residence
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -29,29 +29,25 @@ teefdealer = {
 			food = 1
 		}
 	}
-	
+
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
-			    has_trait = trait_thrifty
-		    }
+		potential = {
+			any_owned_species = {
+				has_trait = trait_thrifty
+			}
 		}
-		modifier = {
-			pop_trader_bonus_workforce_mult = 0.10
-		}
+		pop_trader_bonus_workforce_mult = 0.10
 	}
-	
+
 	triggered_planet_modifier = {
-        potential = {
-            any_owned_species = {
-			    has_trait = trait_thrifty
-		    }
+		potential = {
+			any_owned_species = {
+				has_trait = trait_thrifty
+			}
 		}
-		modifier = {
-			pop_trader_bonus_workforce_mult = 0.20
-	    }
+		pop_trader_bonus_workforce_mult = 0.20
 	}
-	
+
 	weight = {
 		weight = @specialist_job_weight
 		modifier = {
@@ -59,7 +55,7 @@ teefdealer = {
 		}
 		modifier = {
 			factor = 5
-			has_trait = trait_latent_psionic
+			is_latent_psionic_species = yes
 		}
 	}
 }
@@ -72,13 +68,13 @@ weirdboy = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_temple
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -88,7 +84,7 @@ weirdboy = {
 	}
 
 	resources = {
-		category = planet_priests
+		category = planet_bureaucrats
 		produces = {
 			unity = 5
 			physics_research = 2
@@ -111,7 +107,7 @@ weirdboy = {
 		}
 		modifier = {
 			factor = 5
-			has_trait = trait_latent_psionic
+			is_latent_psionic_species = yes
 		}
 	}
 }
@@ -124,13 +120,13 @@ bignob = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_precinct_house
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -157,12 +153,9 @@ bignob = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = planet
-			planet = { has_modifier = anticrime_campaign }
+			has_modifier = anticrime_campaign
 		}
-		modifier = {
-			planet_crime_add = -10
-		}
+		planet_crime_add = -10
 	}
 
 	weight = {
@@ -188,13 +181,13 @@ bossnob = {
 			condition_string = RULER_JOB_TRIGGER
 			building_icon = building_precinct_house
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -243,13 +236,13 @@ burnaboy = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_energy_grid
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -292,12 +285,12 @@ squigherder = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_squigburna
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -336,12 +329,12 @@ mekboy = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_mekworkshop
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -381,12 +374,12 @@ bigmek = {
 			condition_string = RULER_JOB_TRIGGER
 			building_icon = building_mekworkshop
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -427,12 +420,12 @@ mekgrot = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_mineral_purification_plant
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {

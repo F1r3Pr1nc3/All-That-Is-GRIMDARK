@@ -6,18 +6,20 @@ building_hive_major_capital_sick = {
 	can_demolish = no
 	can_be_ruined = no
 	can_be_disabled = no
+
 	building_sets = {
 		government
 		urban
 	}
+
 	category = government
+
 	potential = {
 		uses_district_set = infected_world
-		exists = owner
-		owner = {
-			has_shroudsick_origin = yes
-		}
+		has_owner = yes
+		owner = { has_shroudsick_origin = yes }
 	}
+
 	convert_to = {
 		building_machine_major_capital
 		building_major_capital
@@ -25,6 +27,11 @@ building_hive_major_capital_sick = {
 		building_ancient_palace
 		building_hive_major_capital
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	planet_modifier = {
 		planet_housing_add = 1000
 		job_tallier_add = 200
@@ -33,42 +40,32 @@ building_hive_major_capital_sick = {
 		job_sickneophyte_add = 300
 		job_sickneophyte_drone_add = 300
 	}
+
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				has_technology = tech_capital_productivity_1
-			}
+			has_owner = yes
+			owner = { has_technology = tech_capital_productivity_1 }
 		}
-		modifier = {
-			planet_jobs_productive_upkeep_mult = 0.1
-			planet_jobs_productive_produces_mult = 0.1
-		}
+		planet_jobs_productive_upkeep_mult = 0.1
+		planet_jobs_productive_produces_mult = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				has_technology = tech_capital_productivity_2
-			}
+			has_owner = yes
+			owner = { has_technology = tech_capital_productivity_2 }
 		}
-		modifier = {
-			planet_jobs_productive_upkeep_mult = 0.1
-			planet_jobs_productive_produces_mult = 0.1
-		}
+		planet_jobs_productive_upkeep_mult = 0.1
+		planet_jobs_productive_produces_mult = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				has_technology = tech_capital_productivity_3
-			}
+			has_owner = yes
+			owner = { has_technology = tech_capital_productivity_3 }
 		}
-		modifier = {
-			planet_jobs_productive_upkeep_mult = 0.1
-			planet_jobs_productive_produces_mult = 0.1
-		}
+		planet_jobs_productive_upkeep_mult = 0.1
+		planet_jobs_productive_produces_mult = 0.1
 	}
+
 	resources = {
 		category = planet_buildings
 		upkeep = {
@@ -79,27 +76,27 @@ building_hive_major_capital_sick = {
 
 building_hive_node_sick = {
 	base_buildtime = @b1_time
+
 	building_sets = {
 		government
 		urban
 	}
 
 	category = unity
+
 	potential = {
 		uses_district_set = infected_world
-		exists = owner
-		owner = {
-			has_shroudsick_origin = yes
-		}
+		has_owner = yes
+		owner = { has_shroudsick_origin = yes }
 	}
+
 	destroy_trigger = {
 		NAND = {
-			exists = owner
-			owner = {
-				has_shroudsick_origin = yes
-			}
+			has_owner = yes
+			owner = { has_shroudsick_origin = yes }
 		}
 	}
+
 	convert_to = {
 		building_temple
 		building_simulation_1
@@ -107,6 +104,11 @@ building_hive_node_sick = {
 		building_corporate_monument
 		building_hive_node
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -119,64 +121,64 @@ building_hive_node_sick = {
 			unity = 2
 		}
 	}
+
 	planet_modifier = {
 		job_tallier_add = 300
 		job_tallier_drone_add = 300
 	}
+
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				has_active_tradition = tr_domination_synaptic_extensions
-			}
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_synaptic_extensions }
 		}
-		modifier = {
-			planet_housing_add = 200
-		}
+		planet_housing_add = 200
 	}
+
 	on_queued = {
-		planet = {
-			set_timed_planet_flag = {
-				flag = recent_admin_building_built
-				years = 2
-			}
-		}
+		set_timed_planet_flag = { flag = recent_admin_building_built years = 2 }
 	}
 }
 
 building_hive_warren_sick = {
 	base_buildtime = @b1_time
-		building_sets = {
+
+	building_sets = {
 		government
 		urban
 	}
 
 	category = amenity
+
 	potential = {
 		uses_district_set = infected_world
-		exists = owner
-		owner = {
-			has_shroudsick_origin = yes
-		}
+		has_owner = yes
+		owner = { has_shroudsick_origin = yes }
 	}
+
 	destroy_trigger = {
 		NAND = {
-			exists = owner
-			owner = {
-				has_shroudsick_origin = yes
-			}
+			has_owner = yes
+			owner = { has_shroudsick_origin = yes }
 		}
 	}
+
 	convert_to = {
 		building_luxury_residence
 		building_drone_storage
 		building_communal_housing
 		building_hive_warren
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	planet_modifier = {
 		planet_housing_add = 300
 		planet_amenities_no_happiness_add = 500
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {

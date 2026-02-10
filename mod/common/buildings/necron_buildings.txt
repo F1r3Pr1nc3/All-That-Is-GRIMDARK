@@ -5,6 +5,7 @@
 #############
 # necron_tomb
 #############
+
 building_necron_tomb = {
 	base_buildtime = 330	# 220
 	can_build = yes
@@ -14,16 +15,19 @@ building_necron_tomb = {
 	base_cap_amount = 1
 	planetary_ftl_inhibitor = yes
 	category = resource
+
 	building_sets = {
 		government
 		urban
 	}
+
 	empire_limit = {
 		base = 5
 		# modifier = { factor = 2 has_country_flag = test_flag }
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 		custom_tooltip = {
 			text = EMPIRE_UNIQUE_BUILDING
@@ -34,19 +38,30 @@ building_necron_tomb = {
 		}
 		NOT = { has_modifier = slave_colony }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	abort_trigger = {
 		owner = {
 			check_variable = { which = built_necron_tomb value >= 5 }
 		}
 	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		OR = {
 			has_modifier = slave_colony
-			owner = { has_necron_origin = no }
-			owner = { check_variable = { which = built_necron_tomb value >= 5 } }
+			owner = {
+				NAND = {
+					has_necron_origin = yes
+					check_variable = { which = built_necron_tomb value < 5 }
+				}
+			}
 		}
 	}
+
 	planet_modifier = {
 		planet_housing_add = 2000
 		planet_army_build_speed_mult = -0.25
@@ -56,9 +71,10 @@ building_necron_tomb = {
 		army_defense_damage_mult = 1.5		# TODO?
 		pop_happiness = 5
 	}
+
 	# triggered_planet_modifier = {
 	# 	potential = {
-	# 		exists = owner
+	# 		has_owner = yes
 	# 		owner = { is_regular_empire = yes }
 	# 	}
 	# 	modifier = {
@@ -67,26 +83,31 @@ building_necron_tomb = {
 	# }
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		modifier = {
-			job_coordinator_add = 100
-			job_warrior_drone_add = 100
-			job_fabricator_add = 200
-			job_technician_drone_add = 200
-		}
+		job_coordinator_add = 100
+		job_warrior_drone_add = 100
+		job_fabricator_add = 200
+		job_technician_drone_add = 200
 	}
+
 	country_modifier = {
 		country_admin_cap_add = 15
 		country_resource_max_add = 5000
 		country_leader_cap_add = 10
 		planet_colony_development_speed_mult = 0.3
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { minerals = 500 energy = 500 }
-		upkeep = { energy = 5 }
+		cost = {
+			minerals = 500
+			energy = 500
+		}
+		upkeep = {
+			energy = 5
+		}
 		produces = {
 			unity = 10
 			influence = 1
@@ -95,11 +116,16 @@ building_necron_tomb = {
 			food = 1
 		}
 	}
+
 	army_modifier = {
 		army_starting_experience_add = 500
 		planet_combat_width_add = 4
 	}
-	triggered_desc = { text = job_merchant_effect_desc }
+
+	triggered_desc = {
+		text = job_merchant_effect_desc
+	}
+
 	on_built = {
 		owner = {
 			change_variable = { which = built_necron_tomb value = 1 }
@@ -115,6 +141,7 @@ building_necron_tomb = {
 			# else = { set_country_flag = built_two_necron_tomb }
 		}
 	}
+
 	on_destroy = {
 		owner = {
 			subtract_variable = { which = built_necron_tomb value = 1 }
@@ -130,6 +157,7 @@ building_necron_tomb = {
 			# else = { remove_country_flag = built_one_necron_tomb }
 		}
 	}
+
 	# ai_weight = {
 	# 	weight = 8
 	# 	# There are already unworked jobs
@@ -153,25 +181,46 @@ building_forbidden_archive = {
 	base_cap_amount = 2 # 6
 	empire_limit = 6
 	category = research
+
 	building_sets = {
 		research
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	allow = { }
+
 	resources = {
 		category = planet_buildings
-		cost = { alloys = 500 }
-		upkeep = { energy = 60 consumer_goods = 30 }
-		produces = { physics_research = 30 society_research = 30 engineering_research = 30 }
+		cost = {
+			alloys = 500
+		}
+		upkeep = {
+			energy = 60
+			consumer_goods = 30
+		}
+		produces = {
+			physics_research = 30
+			society_research = 30
+			engineering_research = 30
+		}
 	}
-	planet_modifier = { planet_researchers_produces_mult = 0.15 job_head_researcher_add = 200 }
+
+	planet_modifier = {
+		planet_researchers_produces_mult = 0.15
+		job_head_researcher_add = 200
+	}
+
 	# prerequisites = { }
 	# triggered_desc = { }
 	# ai_weight = { base = 500 }
@@ -181,24 +230,37 @@ building_plasma_auxiliary = {
 	base_buildtime = 65
 	icon = "building_necron_amplification_generator"
 	category = resource
+
 	building_sets = {
 		generator
 		urban
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 65 }
-		produces = { energy = 5 }
+		cost = {
+			energy = 65
+		}
+		produces = {
+			energy = 5
+		}
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	# allow = { }
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
+
 	country_modifier = {
 		army_health = 0.05
 		ship_hull_mult = 0.05
@@ -212,22 +274,34 @@ building_plasma_generator = {
 	base_buildtime = 95
 	icon = "building_necron_plasma_generator"
 	category = resource
+
 	building_sets = {
 		generator
 		urban
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 95 }
-		produces = { energy = 15 }
+		cost = {
+			energy = 95
+		}
+		produces = {
+			energy = 15
+		}
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	# allow = { }
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
 }
@@ -236,25 +310,39 @@ building_energy_core = {
 	base_buildtime = 365
 	base_cap_amount = 1
 	category = resource
+
 	building_sets = {
 		generator
 		urban
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 365 }
-		produces = { energy = 10 }
+		cost = {
+			energy = 365
+		}
+		produces = {
+			energy = 10
+		}
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	# allow = { }
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	planet_modifier = { }
+
+	planet_modifier = {
+	}
 }
 
 ####################################
@@ -266,30 +354,54 @@ building_monolith_complex = {
 	base_cap_amount = 1
 	can_be_ruined = no
 	category = army
+
 	building_sets = {
 		fortress
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 		merg_is_relic_world = yes
 	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	# allow = { }
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	army_modifier = { army_starting_experience_add = 150 }
-	triggered_planet_modifier = {
-		modifier = { job_soldier_add = 400 }
+
+	army_modifier = {
+		army_starting_experience_add = 150
 	}
+
+	triggered_planet_modifier = {
+		job_soldier_add = 400
+	}
+
 	resources = {
 		category = planet_buildings
-		cost = { minerals = 400 }
-		upkeep = { energy = 40 }
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 40
+		}
 	}
-	planet_modifier = { army_health = 1 army_defense_damage_mult = 1 }
-	upgrades = { building_awakened_monolith }
+
+	planet_modifier = {
+		army_health = 1
+		army_defense_damage_mult = 1
+	}
+
+	upgrades = {
+		building_awakened_monolith
+	}
+
 	# prerequisites = { }
 	# ai_weight = { base = 500 }
 }
@@ -304,7 +416,7 @@ building_monolith_complex = {
 # 		produces = { unity = 10 energy = 10 }
 # 	}
 # 	potential = {
-# 		exists = owner
+# 		has_owner = yes
 # 		owner = { has_necron_origin = yes }
 # 	}
 # 	planet_modifier = { army_health = 1 army_defense_damage_mult = 1 }
@@ -317,22 +429,46 @@ building_awakened_monolith = {
 	icon = building_monolith_0
 	can_build = no
 	category = army
+
 	building_sets = {
 		fortress
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 665 }
-		produces = { unity = 12 energy = 10 }
+		cost = {
+			energy = 665
+		}
+		produces = {
+			unity = 12
+			energy = 10
+		}
 	}
+
 	# allow = { }
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	army_modifier = { army_health = 1 army_defense_damage_mult = 1 army_starting_experience_add = 250 }
-	planet_modifier = { army_health = 1.2 army_defense_damage_mult = 1.1 }
-	upgrades = { building_engaged_monolith }
+
+	army_modifier = {
+		army_health = 1
+		army_defense_damage_mult = 1
+		army_starting_experience_add = 250
+	}
+
+	planet_modifier = {
+		army_health = 1.2
+		army_defense_damage_mult = 1.1
+	}
+
+	upgrades = {
+		building_engaged_monolith
+	}
 }
 
 building_engaged_monolith = {
@@ -341,21 +477,43 @@ building_engaged_monolith = {
 	icon = building_monolith_0
 	can_build = no
 	category = army
+
 	building_sets = {
 		fortress
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 965 }
-		produces = { unity = 14 energy = 11 }
+		cost = {
+			energy = 965
+		}
+		produces = {
+			unity = 14
+			energy = 11
+		}
 	}
+
 	# allow = { }
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	army_modifier = { army_health = 1 army_defense_damage_mult = 1 army_starting_experience_add = 500 }
-	planet_modifier = { army_health = 1.4 army_defense_damage_mult = 1.2 }
+
+	army_modifier = {
+		army_health = 1
+		army_defense_damage_mult = 1
+		army_starting_experience_add = 500
+	}
+
+	planet_modifier = {
+		army_health = 1.4
+		army_defense_damage_mult = 1.2
+	}
+
 	# upgrades = { building_great_pyramid }
 }
 
@@ -374,7 +532,7 @@ building_engaged_monolith = {
 # 	}
 # 	# allow = { }
 # 	destroy_trigger = {
-# 		exists = owner
+# 		has_owner = yes
 # 		owner = { has_necron_origin = no }
 # 	}
 # 	army_modifier = {
@@ -384,33 +542,51 @@ building_engaged_monolith = {
 # 	}
 # 	planet_modifier = { army_health = 1.6 army_defense_damage_mult = 1.4 }
 # }
-
 ####################################
 # upgrades/summoning core
 ####################################
+
 building_summoning_core = {
 	base_buildtime = 365
 	base_cap_amount = 1
 	category = army
+
 	building_sets = {
 		fortress
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 365 }
-		upkeep = { energy = 5 }
+		cost = {
+			energy = 365
+		}
+		upkeep = {
+			energy = 5
+		}
 	}
+
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = yes }
 	}
-	# allow = { }
+
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	country_modifier = { army_defense_health_mult = 0.5 army_defense_damage_mult = 0.5 }
-	upgrades = { building_greater_summoning_core }
+
+	country_modifier = {
+		army_defense_health_mult = 0.5
+		army_defense_damage_mult = 0.5
+	}
+
+	upgrades = {
+		building_greater_summoning_core
+	}
 }
 
 building_greater_summoning_core = {
@@ -418,20 +594,36 @@ building_greater_summoning_core = {
 	base_cap_amount = 1
 	can_build = no
 	category = army
+
 	building_sets = {
 		fortress
 	}
+
 	resources = {
 		category = planet_buildings
-		cost = { energy = 465 }
-		upkeep = { energy = 8 }
+		cost = {
+			energy = 465
+		}
+		upkeep = {
+			energy = 8
+		}
 	}
+
 	# allow = { }
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = { has_necron_origin = no }
 	}
-	country_modifier = { army_defense_health_mult = 0.7 army_defense_damage_mult = 0.7 }
+
+	country_modifier = {
+		army_defense_health_mult = 0.7
+		army_defense_damage_mult = 0.7
+	}
+
 	# upgrades = { building_ancient_summoning_core }
 }
 

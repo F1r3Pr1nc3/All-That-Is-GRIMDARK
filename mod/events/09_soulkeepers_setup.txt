@@ -1,54 +1,84 @@
+
 namespace = grimstart
 
 country_event = {
 	id = grimstart.3
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { has_origin = origin_soulkeepers }
+
+	trigger = {
+		has_origin = origin_soulkeepers
+	}
+
 	immediate = {
 		set_country_flag = origin_soulkeepers
 		set_country_flag = eldar_empire
 		set_country_flag = laser_tech
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_starbase_2 }	# Tier 0
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_eco_simulation }
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_hydroponics }
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_hyper_drive_2 }	# Tier 2
-		#give_technology = { message = no tech = tech_physics_1 }			# Tier 2
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_starbase_2
+		}	# Tier 0
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_eco_simulation
+		}
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_hydroponics
+		}
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_hyper_drive_2
+		}	# Tier 2
+		# give_technology = { message = no tech = tech_physics_1 }			# Tier 2
 		give_technology = { message = no tech = tech_sensors_2 }			# Tier 2
-		#give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
-		#give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3			# Tier 3
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_space_mining_1 }
+		# give_tech_no_error_effect = { TECH = tech_society_1 MESSAGE = yes }		# Tier 2
+		# give_tech_no_error_effect = { TECH = tech_society_2 MESSAGE = yes }		# Tier 3			# Tier 3
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_space_mining_1
+		}
 		give_technology = { tech = "tech_mine_zro" message = yes }
 		give_technology = { message = no tech = "tech_rare_crystals" }
 		give_technology = { tech = "tech_mine_rare_crystals" message = yes }
 		give_technology = { message = no tech = tech_starbase_3 }			# Tier 2
-		give_tech_no_error_effect = { MESSAGE = no TECH = tech_habitat_1 }	# Tier 3
+		give_tech_no_error_effect = {
+			MESSAGE = no
+			TECH = tech_habitat_1
+		}	# Tier 3
 		give_technology = { message = no tech = tech_experimental_subspace_navigation }	# Tier 2
 		add_research_option = tech_habitat_2		# Tier 4
 		## Craftworlds Asuryani (initializer void_dweller_system)
-		
 		save_event_target_as = void_dweller_owner
 		get_capital_planet = yes
 		event_target:capital_planet = { # void_dweller_home_planet_setup
 			add_deposit = d_aa_infinity_circuit
 			add_deposit = d_aa_infinity_circuit
 			add_deposit = d_aa_shroudgate_active
-			add_district_and_planet_size_if_needed_effect = { district = district_hab_housing }
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_hab_housing
+			}
 			add_district = { district_type = district_hab_energy ignore_cap = yes }
 			add_district = { district_type = district_hab_mining ignore_cap = yes }
 			add_district = district_hab_housing
 			add_building = building_shaper_shrine
 			add_building = building_hydroponics_farm
-
 			if = {
-				limit = { owner = { is_lithoid_empire = no } }
+				limit = {
+					owner = { is_lithoid_empire = no }
+				}
 				add_building = building_bureaucratic_1
 				add_building = building_hydroponics_farm
 			}
-			else = { add_building = building_holo_theatres }
+			else = {
+				add_building = building_holo_theatres
+			}
 			# GRIMDARK_SOULKEEPERS_HABITAT END
 		}# From < v.3.9
-		if = { limit = { owner = { has_origin = origin_soulkeepers } }
+		if = {
+			limit = {
+				owner = { has_origin = origin_soulkeepers }
+			}
 			solar_system = {
 				if = {
 					limit = { num_guaranteed_colonies > 0 }
@@ -72,7 +102,10 @@ country_event = {
 									flags = { void_dweller_habitat_2 megastructure habitat mining_habitat }
 									init_effect = {
 										set_name = prevprev
-										set_planet_entity = { entity = "habitat_phase_02_entity" graphical_culture = event_target:void_dweller_owner }
+										set_planet_entity = {
+											entity = "habitat_phase_02_entity"
+											graphical_culture = event_target:void_dweller_owner
+										}
 										set_surveyed = { surveyed = yes surveyor = event_target:void_dweller_owner }
 										set_all_comms_surveyed = yes
 										set_planet_flag = habitat_level_1
@@ -86,31 +119,49 @@ country_event = {
 						event_target:target_habitat = {
 							set_owner = event_target:void_dweller_owner
 							if = {
-								limit = { OR = { event_target:void_dweller_owner = { is_ai = yes } is_difficulty < 5 } }
-								if = {
-									limit = { owner = { is_eager_explorer_empire = no } }
-									create_pop = { species = owner_species  }
-									create_pop = { species = owner_species  }
-									create_pop = { species = owner_species  }
+								limit = {
+									OR = {
+										event_target:void_dweller_owner = { is_ai = yes }
+										is_difficulty < 5
+									}
 								}
-								create_pop = { species = owner_species }
+								if = {
+									limit = {
+										owner = { is_eager_explorer_empire = no }
+									}
+									create_pop_group = { species = owner_species }
+									create_pop_group = { species = owner_species }
+									create_pop_group = { species = owner_species }
+								}
+								create_pop_group = { species = owner_species }
 							}
 							prev = { set_planet_flag = habitat@PREV }
 							set_planet_flag = mining_habitat
-							add_district_and_planet_size_if_needed_effect = { district = district_hab_housing }
-							add_district_and_planet_size_if_needed_effect = { district = district_hab_mining }
+							add_district_and_planet_size_if_needed_effect = {
+								district = district_hab_housing
+							}
+							add_district_and_planet_size_if_needed_effect = {
+								district = district_hab_mining
+							}
 							if = {
 								limit = {
 									owner = {
-										OR = { is_lithoid_empire = no is_catalytic_empire = yes }
+										OR = {
+											is_lithoid_empire = no
+											is_catalytic_empire = yes
+										}
 									}
 								}
 								add_building = building_hydroponics_farm
-								add_district_and_planet_size_if_needed_effect = { district = district_hab_energy } # district_hab_commercial
+								add_district_and_planet_size_if_needed_effect = {
+									district = district_hab_energy
+								} # district_hab_commercial
 							}
 							else = {
 								add_building = building_commercial_zone
-								add_district_and_planet_size_if_needed_effect = { district = district_hab_mining }
+								add_district_and_planet_size_if_needed_effect = {
+									district = district_hab_mining
+								}
 							}
 							add_deposit = d_aa_infinity_circuit # grimdark_soulkeepers_circuit
 							start_colony = { owner = event_target:void_dweller_owner }
@@ -120,26 +171,31 @@ country_event = {
 				}
 			}
 		}
-	    random_system = {
-		    limit = {
+		random_system = {
+			limit = {
 				starting_system = no
 				has_special_star_flag_trigger = no
 				any_system_planet = {
 					is_colonizable = yes
-					NOR = { is_colony = yes exists = owner has_deposit = d_aa_shroudgate_inactive }
+					NOR = {
+						is_colony = yes
+						exists = owner
+						has_deposit = d_aa_shroudgate_inactive
+					}
 				}
 			}
-				create_nearby_shroudgate_planet = yes
+			create_nearby_shroudgate_planet = yes
 		}
-		
 		if = {
 			limit = {
-				OR = { is_ai = yes has_utopia = yes }
+				OR = {
+					is_ai = yes
+					has_utopia = yes
+				}
 				NOT = { has_tradition = tr_psionics_adopt }
 			}
 			add_tradition = tr_psionics_adopt
 		}
-		
 		if = {
 			limit = {
 				is_ai = yes
@@ -149,9 +205,10 @@ country_event = {
 			add_tradition = tr_prosperity_sct
 			add_tradition = tr_prosperity_public_works
 		}
-
 		every_owned_species = {
-			limit = { NOT = { has_trait = trait_pc_habitat_preference } }
+			limit = {
+				NOT = { has_trait = trait_pc_habitat_preference }
+			}
 			root = {
 				modify_species = {
 					species = prev
@@ -162,26 +219,36 @@ country_event = {
 			}
 		}
 		every_owned_leader = {
-			limit = { NOT = { has_trait = leader_trait_psionic } }
-			add_trait = leader_trait_psionic
+			limit = {
+				NOT = { has_trait = leader_trait_psionic }
+			}
+			add_trait = { trait = leader_trait_psionic }
 		}
 		every_pool_leader = {
-			limit = { NOT = { has_trait = leader_trait_psionic } }
-			add_trait = leader_trait_psionic
+			limit = {
+				NOT = { has_trait = leader_trait_psionic }
+			}
+			add_trait = { trait = leader_trait_psionic }
 		}
 		ruler = {
 			if = {
-				limit = { NOT = { has_trait = leader_trait_chosen } }
-				add_trait = leader_trait_chosen
+				limit = {
+					NOT = { has_trait = leader_trait_chosen }
+				}
+				add_trait = { trait = leader_trait_chosen }
 			}
 			if = {
-				limit = { NOT = { has_trait = leader_trait_expertise_psionics } }
-				add_trait = leader_trait_expertise_psionics
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_psionics }
+				}
+				add_trait = { trait = leader_trait_expertise_psionics }
 			}
 			# leader_trait_type = veteran
 			if = {
-				limit = { NOT = { has_trait = leader_trait_cultural_focus } }
-				add_trait = leader_trait_cultural_focus
+				limit = {
+					NOT = { has_trait = leader_trait_cultural_focus }
+				}
+				add_trait = { trait = leader_trait_cultural_focus }
 			}
 		}
 		country_event = { id = origin.1001 } # Fake origin_galactic_doorstep
@@ -193,7 +260,7 @@ country_event = {
 			}
 			set_planet_flag = void_dweller_habitat_1
 			validate_planet_buildings_and_districts = yes
-			every_owned_pop = { clear_pop_category = yes }
+			every_owned_pop_group = { clear_pop_category = yes }
 			set_colony_type = col_capital
 			solar_system = {
 				every_neighbor_system = {
@@ -207,7 +274,10 @@ country_event = {
 					limit = {
 						any_system_planet = {
 							is_colonizable = yes
-							NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+							NOR = {
+								is_colony = yes
+								has_deposit = d_aa_shroudgate_inactive
+							}
 						}
 					}
 					max_steps = 6
@@ -216,7 +286,10 @@ country_event = {
 						limit = {
 							any_system_planet = {
 								is_colonizable = yes
-								NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+								NOR = {
+									is_colony = yes
+									has_deposit = d_aa_shroudgate_inactive
+								}
 							}
 						}
 						max_steps = 10
@@ -225,7 +298,10 @@ country_event = {
 							limit = {
 								any_system_planet = {
 									is_colonizable = yes
-									NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+									NOR = {
+										is_colony = yes
+										has_deposit = d_aa_shroudgate_inactive
+									}
 								}
 							}
 							max_steps = 15
@@ -235,7 +311,10 @@ country_event = {
 							limit = {
 								any_system_planet = {
 									is_colonizable = yes
-									NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+									NOR = {
+										is_colony = yes
+										has_deposit = d_aa_shroudgate_inactive
+									}
 								}
 							}
 							max_steps = 25
@@ -245,7 +324,10 @@ country_event = {
 							limit = {
 								any_system_planet = {
 									is_colonizable = yes
-									NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+									NOR = {
+										is_colony = yes
+										has_deposit = d_aa_shroudgate_inactive
+									}
 								}
 							}
 							max_steps = 50
@@ -254,7 +336,10 @@ country_event = {
 								limit = {
 									any_system_planet = {
 										is_colonizable = yes
-										NOR = { is_colony = yes has_deposit = d_aa_shroudgate_inactive }
+										NOR = {
+											is_colony = yes
+											has_deposit = d_aa_shroudgate_inactive
+										}
 									}
 								}
 								max_steps = 50
@@ -265,11 +350,15 @@ country_event = {
 				}
 				random_fleet_in_system = {
 					limit = { is_owned_by = root }
-					weights = { base = 1
+					weights = {
+						base = 1
 						modifier = { add = 50 is_ship_class = shipclass_science_ship }
 					}
 					random_owned_ship = {
-						fire_on_action = { on_action = on_entering_system_first_time scopes = { from = prevprev fromfrom = root } }
+						fire_on_action = {
+							on_action = on_entering_system_first_time
+							scopes = { from = prevprev fromfrom = root }
+						}
 						if = {
 							limit = { is_ship_size = science }
 							if = {
@@ -284,19 +373,29 @@ country_event = {
 							}
 						}
 					}
-					root = { fire_on_action = { on_action = on_system_survey scopes = { from = prevprev fromfrom = prev.fleet } } }
+					root = {
+						fire_on_action = {
+							on_action = on_system_survey
+							scopes = { from = prevprev fromfrom = prev.fleet }
+						}
+					}
 				}
 			}
 		}
 		# add_research_option = tech_psionic_theory
 		give_technology = { message = yes tech = tech_psionic_theory }		# Tier 3
 		if = {
-			limit = { NOT = { has_country_flag = encountered_first_gateway } }
+			limit = {
+				NOT = { has_country_flag = encountered_first_gateway }
+			}
 			set_country_flag = encountered_first_gateway
 			add_seen_bypass_type = gateway
 			if = {
 				limit = { is_ai = yes }
-				give_tech_no_error_effect = { MESSAGE = yes TECH = tech_hyper_drive_3 } # Tier 3
+				give_tech_no_error_effect = {
+					MESSAGE = yes
+					TECH = tech_hyper_drive_3
+				} # Tier 3
 				# give_tech_no_error_effect = { MESSAGE = yes TECH = tech_physics_3 } # Tier 4
 				add_tech_option_or_research_effect = {
 					TECH = tech_gateway_activation # Tier 4 prerequisites = { "tech_hyper_drive_3" "tech_physics_3" }
@@ -305,16 +404,15 @@ country_event = {
 				}
 			}
 		}
-
 		if = {
 			limit = {
 				any_owned_fleet = { is_ship_size = constructor }
 				count_owned_fleet = {
+					count = 0
 					limit = {
 						is_ship_class = shipclass_constructor
 						any_owned_ship = { has_component = PSI_JUMP_DRIVE_1 }
 					}
-					count = 0
 				}
 			}
 			random_owned_fleet = {
@@ -323,5 +421,5 @@ country_event = {
 				set_fleet_settings = { can_upgrade = no spawn_debris = no }
 			}
 		}
-    }
+	}
 }

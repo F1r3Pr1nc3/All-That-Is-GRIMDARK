@@ -2,11 +2,16 @@
 namespace = grimstart
 
 ## setup_shroudrage (on_game_start)
+
 country_event = {
 	id = grimstart.2
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { has_origin = origin_shroudrage }
+
+	trigger = {
+		has_origin = origin_shroudrage
+	}
+
 	immediate = {
 		give_technology = { message = no tech = tech_gene_seed_purification }
 		give_technology = { message = no tech = tech_penal_colonies }
@@ -18,9 +23,17 @@ country_event = {
 			add_deposit = d_fungal_caves
 			add_deposit = d_searing_desert
 			add_district = district_mining
-			add_district_and_planet_size_if_needed_effect = { district = district_farming }
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_farming
+			}
 			add_deposit = d_decrepit_dwellings
-			create_pop = { species = owner_species ethos = { ethic = ethic_xenophobe ethic = ethic_militarist } }
+			create_pop_group = {
+				species = owner_species
+				ethos = {
+					ethic = ethic_xenophobe
+					ethic = ethic_militarist
+				}
+			}
 			remove_building = building_research_lab_1
 			add_building = building_gladiatorarena
 		}
@@ -29,17 +42,23 @@ country_event = {
 			set_take_point = yes
 			effect = {
 				set_owner = root
-				while = { count = 3
+				while = {
+					count = 3
 					create_ship = { name = random random_existing_design = corvette }
 				}
 				set_location = root.capital_star.starbase
 			}
 		}
 		every_owned_leader = {
-			limit = { NOR = { leader_class = scientist species = { has_trait = trait_very_strong } } }
+			limit = {
+				NOR = {
+					leader_class = scientist
+					species = { has_trait = trait_very_strong }
+				}
+			}
 			modify_species = { add_trait = trait_very_strong }
 		}
 		set_country_flag = chaos_empire
-		country_event = { id = aagrimstarts.2001 days = 10 } #Updated relations
+		country_event = { id = aagrimstarts.2001 days = 10 } # Updated relations
 	}
 }

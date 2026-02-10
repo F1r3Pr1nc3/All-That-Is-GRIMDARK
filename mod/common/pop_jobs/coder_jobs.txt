@@ -5,15 +5,15 @@ coder = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_research_lab_1
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
 			is_gestalt = no
@@ -21,7 +21,7 @@ coder = {
 			has_origin = origin_iforge
 		}
 	}
-	
+
 	resources = {
 		category = planet_researchers
 		produces = {
@@ -32,7 +32,7 @@ coder = {
 		}
 		upkeep = { consumer_goods = 2 }
 	}
-	
+
 	weight = {
 		weight = @specialist_job_weight # Fairly important job
 		mult = value:job_weights_modifier|JOB|coder|RESOURCE|unity|
@@ -60,15 +60,15 @@ magos_coder = {
 			condition_string = RULER_JOB_TRIGGER
 			building_icon = building_institute
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
-	
+
 	possible = {
 		owner = {
 			is_gestalt = no
@@ -76,7 +76,7 @@ magos_coder = {
 			has_origin = origin_iforge
 		}
 	}
-	
+
 	resources = {
 		category = planet_researchers
 		produces = {

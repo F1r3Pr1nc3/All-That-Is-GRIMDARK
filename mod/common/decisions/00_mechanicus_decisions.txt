@@ -6,21 +6,30 @@ decision_holy_forge = {
 	owned_planets_only = yes
 	icon = decision_arcology_project
 	enactment_time = 30
+
 	resources = {
 		category = decisions
-		cost = { influence = 500 }
+		cost = {
+			influence = 500
+		}
 	}
+
 	potential = {
 		merg_is_arcology = yes
 		exists = owner
 		owner = { has_machine_cult = yes }
 	}
+
 	allow = {
 		NOT = { has_modifier = "holy_forge" }
 	}
+
 	effect = {
 		set_planet_entity = { entity = "ai_planet_01_entity" }
 		add_modifier = { modifier = "holy_forge" }
 	}
-	ai_weight = { weight = 0 }
+
+	ai_weight = {
+		weight = 0
+	}
 }

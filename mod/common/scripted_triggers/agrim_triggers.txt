@@ -1,20 +1,19 @@
 # SUPPORT WH40k Planets Renewed: Introduced in v3.11
 is_imperium_hive_planet = {
-	OR = {
-		# is_planet_class = pc_imperiumhive
-		# # Tier I Hive Worlds
-		is_planet_class = pc_hive_tundra
-		# is_planet_class = pc_hive_continental_01
-		# is_planet_class = pc_hive_continental_02
-		# is_planet_class = pc_hive_ocean
-		# # Tier II Hive Worlds
-		# is_planet_class = pc_hive_medium
-		# is_planet_class = pc_hive_industrial
-		# # Tier III Hive Worlds
-		# is_planet_class = pc_super_hive
-		# is_planet_class = pc_mega_hive
-	}
+	# is_planet_class = pc_imperiumhive
+	# # Tier I Hive Worlds
+	is_planet_class = pc_hive_tundra
+	# is_planet_class = pc_hive_continental_01
+	# is_planet_class = pc_hive_continental_02
+	# is_planet_class = pc_hive_ocean
+	# # Tier II Hive Worlds
+	# is_planet_class = pc_hive_medium
+	# is_planet_class = pc_hive_industrial
+	# # Tier III Hive Worlds
+	# is_planet_class = pc_super_hive
+	# is_planet_class = pc_mega_hive
 }
+
 # is_forge_planet = {
 # 	always = no
 # 	# OR = {
@@ -39,7 +38,7 @@ is_wh_planet_industrial = {
 	# 	is_planet_class = pc_forge_ring3
 	# 	is_planet_class = pc_refinery
 	# 	is_planet_class = pc_armoury
-    # }
+	# }
 }
 
 has_not_toxoids = {
@@ -56,6 +55,7 @@ uses_district_industrial = {
 		uses_district_set = shattered_ring_world
 	}
 }
+
 # is_void_dweller_empire = {
 # 	OR = {
 # 		has_ascension_perk = ap_voidborn
@@ -66,7 +66,10 @@ uses_district_industrial = {
 # For most compatibility
 has_soulkeepers_origin = {
 	OR = {
-		AND = { has_void_dweller_origin = yes has_country_flag = eldar_empire }
+		AND = {
+			has_void_dweller_origin = yes
+			has_country_flag = eldar_empire
+		}
 		has_origin = origin_soulkeepers
 		has_country_flag = origin_soulkeepers
 	}
@@ -106,12 +109,15 @@ has_machine_cult = {
 
 # Merger of Rules
 MECR_trigger_1_can_be_part_of_galactic_community = {
-	has_necron_origin = no
-	NAND = {
-		is_ai = yes
-		has_country_flag = chaos_empire
+	NOR = {
+		has_necron_origin = yes
+		AND = {
+			is_ai = yes
+			has_country_flag = chaos_empire
+		}
 	}
 }
+
 MECR_trigger_2_can_be_part_of_galactic_empire = {
 	NOR = {
 		has_necron_origin = yes
@@ -119,9 +125,11 @@ MECR_trigger_2_can_be_part_of_galactic_empire = {
 	}
 }
 
-uses_grimdark_infected_world_district = { uses_district_set = infected_world }
+uses_grimdark_infected_world_district = {
+	uses_district_set = infected_world
+}
 
-can_reanimate_armies  = {
+can_reanimate_armies = {
 	# has_necron_origin = yes machines
 	has_origin = origin_shroudsick
 	has_valid_civic = civic_reanimated_armies

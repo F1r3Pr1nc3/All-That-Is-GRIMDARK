@@ -1,26 +1,33 @@
 ##################
 # W40K Traits
 ##################
+
 trait_self_sustained = {
 	cost = 1
 	sorting_priority = 20
 	# initial = no
 	randomized = no
 	advanced_trait = yes
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = no
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	modifier = {
 		pop_amenities_usage_mult = -0.1
 		planet_pops_consumer_goods_upkeep_mult = -0.25
@@ -28,12 +35,14 @@ trait_self_sustained = {
 		pc_scrapworld_habitability = 0.5
 		pop_environment_tolerance = 0.3
 	}
+
 	opposites = {
 		"trait_adaptive"
 		"trait_adaptive_lithoid"
 		"trait_extremely_adaptive"
 		"trait_charismatic"
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -45,21 +54,27 @@ trait_functional = {
 	initial = no
 	randomized = no
 	advanced_trait = yes
+
 	species_potential_add = {
 		# custom_tooltip = { text = cannot_add_this_trait }
 		always = no
 	}
+
 	species_possible_remove = {
 		always = no
 	}
+
 	species_possible_merge_remove = {
 		always = yes
 	}
+
 	species_possible_merge_add = {
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = no
+
 	opposites = {
 		"trait_unruly"
 		"trait_sedentary"
@@ -72,13 +87,16 @@ trait_functional = {
 		"trait_latent_psionic"
 		"trait_psionic"
 	}
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	modifier = {
 		pop_amenities_usage_mult = -0.1
 		planet_pops_consumer_goods_upkeep_mult = -0.5
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -93,7 +111,12 @@ trait_lobotomised_servitors = {
 	randomized = no
 	advanced_trait = yes
 	forced_happiness = yes
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+
+	allowed_archetypes = {
+		BIOLOGICAL
+		LITHOID
+	}
+
 	# icon = "GFX_leader_trait_cyborg"
 	# icon = {
 	# 	layer = {
@@ -121,14 +144,26 @@ trait_lobotomised_servitors = {
 		"trait_natural_physicists"
 		"trait_natural_sociologists"
 	}
-	allowed_origins = { origin_iforge }
+
+	allowed_origins = {
+		origin_iforge
+	}
+
 	species_potential_add = {
 		exists = from
 		from = { has_machine_cult = yes }
 	}
-	species_possible_merge_remove = { always = yes }
-	species_possible_merge_add = { always = no }
+
+	species_possible_merge_remove = {
+		always = yes
+	}
+
+	species_possible_merge_add = {
+		always = no
+	}
+
 	custom_tooltip = TRAIT_LOBOTOMISED_SERVITORS_EFFECT # Partial from TRAIT_SYNCRETIC_PROLES_EFFECT
+
 	modifier = {
 		# NOTE: changes needs also be done at the custom_tooltip
 		# planet_jobs_ruler_produces_mult = -0.2
@@ -141,20 +176,39 @@ trait_lobotomised_servitors = {
 		pop_cat_worker_happiness = 0.1
 		pop_happiness = 0.2
 	}
-	slave_cost = { energy = 300 } # 150
+
+	slave_cost = {
+		energy = 300
+	} # 150
 }
+
 trait_war_bot = {
 	cost = 3
 	# icon = "gfx/interface/icons/traits/trait_war_bot.dds"
+	allowed_archetypes = {
+		ROBOT
+		MACHINE
+	}
 
-	allowed_archetypes = { ROBOT MACHINE }
-	modifier = { army_damage_mult = 0.4 planet_jobs_worker_produces_mult = 0.05 }
-	slave_cost = { energy = 150 }
+	modifier = {
+		army_damage_mult = 0.4
+		planet_jobs_worker_produces_mult = 0.05
+	}
+
+	slave_cost = {
+		energy = 150
+	}
 }
+
 trait_cute_AI = {
 	cost = 1
-	allowed_archetypes = { MACHINE }
+
+	allowed_archetypes = {
+		MACHINE
+	}
+
 	advanced_trait = no
+
 	species_potential_add = {
 		exists = from
 		from = {
@@ -162,9 +216,11 @@ trait_cute_AI = {
 			# NOT = { has_policy_flag = ai_outlawed }
 		}
 	}
+
 	forced_happiness = yes
 	custom_tooltip = TRAIT_CUTE_AI_EFFECT
 }
+
 # Nurgle
 trait_shroud_sick = {
 	cost = 0
@@ -172,26 +228,32 @@ trait_shroud_sick = {
 	initial = no
 	randomized = no
 	advanced_trait = no
+
 	species_potential_add = {
 		always = no
 	}
+
 	species_possible_remove = {
 		# custom_tooltip = {
 		# 	text = cannot_remove_this_trait
 		# }
 		always = no
 	}
+
 	species_possible_merge_add = {
 		# custom_tooltip = {
 		# 	text = cannot_add_this_trait
 		# }
 		always = no
 	}
+
 	forced_happiness = no
 	immortal_leaders = no
+
 	allowed_archetypes = {
 		BIOLOGICAL
 	}
+
 	modifier = {
 		planet_pops_organics_food_upkeep_mult = -0.5
 		planet_jobs_produces_mult = -0.1
@@ -201,6 +263,7 @@ trait_shroud_sick = {
 		army_health = 0.5
 		pc_infested_habitability = 0.65
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -208,14 +271,18 @@ trait_shroud_sick = {
 
 trait_pc_infested_preference = {
 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		PRESAPIENT
 	}
+
 	sorting_priority = 30
+
 	modifier = {
 		pc_infested_habitability = 1
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -224,14 +291,18 @@ trait_pc_infested_preference = {
 # DEPRECATED on v3.13
 trait_pc_infected_preference = {
 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		PRESAPIENT
 	}
+
 	sorting_priority = 30
+
 	modifier = {
 		pc_infected_habitability = 1
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -255,14 +326,18 @@ trait_pc_infected_preference = {
 
 trait_pc_hive_tundra_preference = {
 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		PRESAPIENT
 	}
+
 	sorting_priority = 30
+
 	modifier = {
 		pc_hive_tundra_habitability = 1
 	}
+
 	ai_weight = {
 		weight = 0
 	}
@@ -270,14 +345,18 @@ trait_pc_hive_tundra_preference = {
 
 trait_pc_scrapworld_preference = {
 	icon = "gfx/interface/icons/traits/trait_pc_toxic_habitable_preference.dds"
+
 	allowed_archetypes = {
 		BIOLOGICAL
 		PRESAPIENT
 	}
+
 	sorting_priority = 30
+
 	modifier = {
 		pc_scrapworld_habitability = 1
 	}
+
 	ai_weight = {
 		weight = 0
 	}

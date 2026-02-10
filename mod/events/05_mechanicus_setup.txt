@@ -1,0 +1,318 @@
+
+country_event = {
+	id = grimstart.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_iforge
+	}
+
+	immediate = {
+		give_tech_no_error_effect = {
+			TECH = tech_thrusters_1
+			MESSAGE = no
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_automated_exploration
+			MESSAGE = no
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_sensors_2
+			MESSAGE = no
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_starbase_1
+			MESSAGE = no
+		}
+		give_tech_no_error_effect = {
+			TECH = tech_mining_1
+			MESSAGE = no
+		}
+		give_technology = { message = no tech = tech_thrusters_2 }
+		give_technology = { message = no tech = tech_powered_exoskeletons }
+		give_technology = { message = no tech = tech_disruptors_1 }
+		give_technology = { message = no tech = tech_robotic_workers } # tier1weight3
+		give_technology = { message = no tech = tech_colonial_centralization } # tier2weight2
+		give_technology = { message = no tech = tech_droid_workers } # tier2weight3
+		give_technology = { message = yes tech = tech_integrated_cybernetics } # tier2weight3
+		add_modifier = {
+			modifier = "artifact_find_peaceful_application_leader_improvement"
+		}
+		get_capital_planet = yes
+		event_target:capital_planet = {
+			# aaogr_initialize
+			remove_building = building_temple
+			remove_building = building_temple
+			remove_building = building_research_lab_1
+			remove_building = building_bureaucratic_1
+			add_building = building_manufactorums
+			add_building = building_research_lab_1_gr
+			add_building = building_foundry_1_gr
+			add_building = building_machine_temple
+			add_building = building_robot_assembly_plant
+		}
+		if = {
+			limit = {
+				root = { num_owned_planets < 2 }
+			}
+			solar_system = {
+				random_system_planet = {
+					limit = {
+						is_colony = no
+						is_colonizable = yes
+					}
+					weights = {
+						base = 1
+						modifier = {
+							add = 50
+							OR = {
+								is_urban_planet = yes
+								merg_is_gaia_basic = yes
+								is_ideal_planet_class = { who = root status = yes }
+								has_planet_flag = planet_earth
+							}
+						}
+					}
+					add_planet_devastation = 35
+					if = {
+						limit = { root = { is_ai = yes } }
+						# clear_blockers = yes
+						start_colony = { owner = root species = root.owner_species }
+					}
+				}
+			}
+		}
+		if = {
+			limit = { is_ai = no }
+			add_resource = {
+				energy = 500
+				volatile_motes = 25
+			}
+		}
+		else = {
+			add_resource = {
+				energy = 2000
+				alloys = 200
+				volatile_motes = 75
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_tradition = tr_cybernetics_adopt }
+				# OR = { is_ai = yes has_utopia = yes } DEBUG
+			}
+			set_origin = origin_cybernetic_creed
+			add_tradition = "tr_cybernetics_adopt"
+			add_tradition = "tr_cybernetics_transubstantiation_synthesis"
+			# add_tradition = "tr_cybernetics_metabolic_reprocessing"
+			# add_tradition = "tr_cybernetics_integrated_anatomy"
+			# add_tradition = "tr_cybernetics_augmentation_overload"
+			# add_tradition = "tr_cybernetics_modular_cybernetics"
+			# add_tradition = "tr_cybernetics_finish"
+		}
+		random_owned_species = { # Has num pop can still 0
+			limit = {
+				is_crossbreeding_possible = yes
+				NOT = { is_same_species = prev }
+			}
+			root = {
+				modify_species = {
+					species = prev
+					effect = {
+						if = {
+							limit = {
+								NOT = { has_trait = trait_syncretic_proles }
+							}
+							change_species_characteristics = { add_trait = trait_syncretic_proles }
+						}
+						if = {
+							limit = {
+								NOT = { has_trait = trait_cyborg_double_jointed }
+							}
+							change_species_characteristics = { add_trait = trait_cyborg_double_jointed }
+						}
+						if = {
+							limit = {
+								NOT = { has_trait = trait_lobotomised_servitors }
+							}
+							change_species_characteristics = { add_trait = trait_lobotomised_servitors }
+						}
+						if = {
+							limit = {
+								NOT = { has_trait = trait_limited_cybernetic }
+							}
+							change_species_characteristics = { add_trait = trait_limited_cybernetic }
+						}
+						if = {
+							limit = {
+								NOT = { has_trait = trait_functional }
+							}
+							change_species_characteristics = {
+								add_trait = trait_functional
+								add_traits_at_start_of_list = yes
+							}
+						}
+						save_event_target_as = servile_species
+						set_species_flag = syncretic_species@root
+						log = "Found servile species \\[servile_species.GetName] for \\[Root.GetOriginName]"
+					}
+				}
+			}
+		}
+		owner_main_species = {  # Debuff
+			while = {
+				count = 10
+				limit = { pop_amount = { count > 3 } }
+				random_species_pop_group = { kill_single_pop = yes }
+			}
+			if = {
+				limit = {
+					NOT = { has_trait = trait_adeptus_mechanicus }
+				}
+				change_species_characteristics = {
+					add_trait = trait_adeptus_mechanicus
+					add_traits_at_start_of_list = yes
+					can_change_leader = yes
+				}
+			}
+			if = { # Try to prevent purge somehow for fanatic xenophobe
+				limit = {
+					exists = event_target:servile_species
+					root = { is_xenophobe = yes }
+				}
+				event_target:servile_species = { set_species_identity = prev }
+			}
+		}
+		# Given a species, create a mod with trait_cybernetic and apply to all pops, leaders
+		# And armies that have the original species and the same owner as the scope object.
+		# create_cyber_species_effect
+		weighted_random_owned_pop_group = {
+			limit = { is_exact_same_species = root }
+			if = {
+				limit = {
+					any_owned_species = { has_trait = trait_cyborg }
+				}
+				modify_species = {
+					add_trait = trait_cyborg
+					effect = {
+						if = {
+							limit = {
+								NOT = { has_trait = trait_functional }
+							}
+							change_species_characteristics = {
+								add_trait = trait_functional
+								add_traits_at_start_of_list = yes
+							}
+							create_cybernetic_species_mod = yes
+							last_created_species = { save_event_target_as = cyber_species }
+							root = {
+								change_dominant_species = { species = event_target:cyber_species }
+							}
+						}
+					}
+				}
+			}
+			event_target:cyber_species = {
+				modify_species = {
+					remove_trait = trait_cyborg_neural_limiters
+					add_trait = trait_talented
+					add_trait = trait_cyborg_enhanced_memory
+					add_trait = trait_cyborg_learning_algorithms
+					add_traits_at_start_of_list = yes
+					effect = {
+						save_event_target_as = cyber_species
+					}
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					is_leader_tier = leader_tier_default
+					NOT = { has_trait = leader_trait_cyborg }
+				}
+				add_trait = { trait = leader_trait_cyborg }
+				change_species = event_target:cyber_species
+			}
+			every_pool_leader = {
+				limit = {
+					NOT = { has_trait = leader_trait_cyborg }
+				}
+				add_trait = { trait = leader_trait_cyborg }
+				change_species = event_target:cyber_species
+			}
+			ruler = {
+				add_skill_without_trait_selection = yes
+				set_immortal = yes
+				if = {
+					limit = {
+						NOT = { has_trait = leader_trait_resilient }
+					}
+					add_trait = { trait = leader_trait_resilient }
+				}
+				if = {
+					limit = {
+						NOT = { has_trait = leader_trait_cyborg }
+					}
+					add_trait = { trait = leader_trait_cyborg }
+				}
+				if = {
+					limit = {
+						NOT = { has_trait = leader_trait_the_cybernetic_luminary }
+					}
+					add_trait = { trait = leader_trait_the_cybernetic_luminary }
+				}
+				if = {
+					limit = {
+						NOT = { has_trait = leader_trait_legendary_great_teacher }
+					}
+					add_trait = { trait = leader_trait_legendary_great_teacher }
+				}
+				if = {
+					limit = {
+						species = {
+							NOT = { has_trait = trait_cyborg_enhanced_memory }
+						}
+					}
+					change_species = event_target:cyber_species
+				}
+			}
+			if = {
+				limit = {
+					is_spiritualist = yes
+					is_authoritarian = yes
+					NOR = {
+						is_gestalt = yes
+						has_civic = civic_imperial_cult
+					}
+				}
+				force_add_civic = "civic_imperial_cult"
+			}
+			country_event = { # Updated Relations
+				id = aagrimstarts.2001
+				days = 10
+			}
+			if = {
+				limit = { has_machine_cult = no }
+				set_origin = origin_iforge # origin_mechanists
+			}
+			if = {
+				limit = {
+					count_situation = {
+						count = 0
+						limit = {
+							OR = {
+								is_situation_type = situation_cyberization
+								is_situation_type = situation_cyberization_hive
+							}
+						}
+					}
+				}
+			}
+			set_country_flag = human_empire
+			country_event = { # Set Servile Species
+				id = aagrimstarts.222
+				days = 1
+			}
+		}
+	}
+}

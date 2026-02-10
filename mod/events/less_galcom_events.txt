@@ -5,7 +5,11 @@ event = {
 	id = lessgalcom.1
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { is_galactic_community_formed = yes }
+
+	trigger = {
+		is_galactic_community_formed = yes
+	}
+
 	immediate = {
 		every_playable_country = {
 			limit = {
@@ -62,15 +66,21 @@ event = {
 			if = {
 				limit = { has_federation = yes }
 				if = {
-					limit = { any_federation_ally = { is_galactic_community_member = yes } }
+					limit = {
+						any_federation_ally = { is_galactic_community_member = yes }
+					}
 					change_variable = { which = galcom_opinion value = 10 }
 					if = {
-						limit = { any_federation_ally = { is_part_of_galactic_council = yes } }
+						limit = {
+							any_federation_ally = { is_part_of_galactic_council = yes }
+						}
 						change_variable = { which = galcom_opinion value = 20 }
 					}
 				}
 				if = {
-					limit = { any_federation_ally = { is_galactic_community_member = no } }
+					limit = {
+						any_federation_ally = { is_galactic_community_member = no }
+					}
 					subtract_variable = { which = galcom_opinion value = 5 }
 				}
 			}
@@ -81,12 +91,17 @@ event = {
 					any_agreement = {
 						OR = {
 							has_term_value = { term = subject_diplomacy value = subject_can_not_do_diplomacy }
-							has_term_value = { term = subject_diplomacy value = subject_can_do_diplomacy_but_not_vote }
+							has_term_value = {
+								term = subject_diplomacy
+								value = subject_can_do_diplomacy_but_not_vote
+							}
 						}
 					}
 				}
 				if = {
-					limit = { overlord = { is_galactic_community_member = yes } }
+					limit = {
+						overlord = { is_galactic_community_member = yes }
+					}
 					change_variable = { which = galcom_opinion value = 99999 }
 				}
 				else = {
@@ -95,7 +110,9 @@ event = {
 			}
 			# Rival Related
 			if = {
-				limit = { count_rival_country = { count > 0 } }
+				limit = {
+					count_rival_country = { count > 0 }
+				}
 				if = {
 					limit = {
 						any_rival_country = { is_part_of_galactic_council = yes }
@@ -104,7 +121,9 @@ event = {
 					subtract_variable = { which = galcom_opinion value = 70 }
 				}
 				if = {
-					limit = { any_rival_country = { is_galactic_custodian = yes } }
+					limit = {
+						any_rival_country = { is_galactic_custodian = yes }
+					}
 					subtract_variable = { which = galcom_opinion value = 999 }
 				}
 				every_rival_country = {
@@ -123,12 +142,17 @@ event = {
 			}
 			# Evaluating
 			if = {
-				limit = { check_variable = { which = galcom_opinion value < 0 } }
+				limit = {
+					check_variable = { which = galcom_opinion value < 0 }
+				}
 				set_country_flag = expelled_from_community
 				if = {
 					limit = { is_galactic_community_member = yes }
 					if = {
-						limit = { is_galactic_council_established = yes is_part_of_galactic_council = yes }
+						limit = {
+							is_galactic_council_established = yes
+							is_part_of_galactic_council = yes
+						}
 						remove_from_galactic_council = yes
 					}
 					remove_from_galactic_community = yes
@@ -149,10 +173,12 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	trigger = {
 		years_passed > 31
 		any_playable_country = { has_origin = origin_godruler }
 	}
+
 	immediate = {
 		random_playable_country = {
 			limit = { has_origin = origin_godruler }
@@ -160,18 +186,26 @@ event = {
 		}
 		every_playable_country = {
 			limit = {
-				NOR = { has_origin = origin_godruler has_origin = origin_hegemon }
+				NOR = {
+					has_origin = origin_godruler
+					has_origin = origin_hegemon
+				}
 				OR = {
 					has_country_flag = human_empire
 					has_country_flag = loyallegion
 					has_country_flag = the_mankind
 					has_country_flag = mankind_star_empire
 				}
-				NAND = { is_at_war = yes is_at_war_with = event_target:godruler }
-				NAND = {
-					has_federation = yes
-					event_target:godruler = { has_federation = yes }
-					any_federation_ally = { is_same_empire = event_target:godruler }
+				NOR = {
+					AND = {
+						is_at_war = yes
+						is_at_war_with = event_target:godruler
+					}
+					AND = {
+						has_federation = yes
+						event_target:godruler = { has_federation = yes }
+						any_federation_ally = { is_same_empire = event_target:godruler }
+					}
 				}
 			}
 			if = {
@@ -201,12 +235,27 @@ event = {
 				federation = { set_federation_leader = prev }
 			}
 			if = {
-				limit = { can_set_ai_policy = yes NOT = { has_policy_flag = ai_outlawed } can_set_policy = { policy = artificial_intelligence_policy option = ai_outlawed } }
-				set_policy = { policy = artificial_intelligence_policy option = ai_outlawed cooldown = yes }
+				limit = {
+					can_set_ai_policy = yes
+					NOT = { has_policy_flag = ai_outlawed }
+					can_set_policy = { policy = artificial_intelligence_policy option = ai_outlawed }
+				}
+				set_policy = {
+					policy = artificial_intelligence_policy
+					option = ai_outlawed
+					cooldown = yes
+				}
 			}
 			else_if = {
-				limit = { NOT = { has_policy_flag = robots_outlawed } can_set_policy = { policy = robot_pop_policy option = robot_pops_outlawed } }
-				set_policy = { policy = robot_pop_policy option = robot_pops_outlawed cooldown = yes }
+				limit = {
+					NOT = { has_policy_flag = robots_outlawed }
+					can_set_policy = { policy = robot_pop_policy option = robot_pops_outlawed }
+				}
+				set_policy = {
+					policy = robot_pop_policy
+					option = robot_pops_outlawed
+					cooldown = yes
+				}
 			}
 		}
 	}
@@ -218,6 +267,7 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	trigger = {
 		# OR = {
 		# 	has_global_flag = small_tear_active # Shroud Rising
@@ -228,62 +278,88 @@ event = {
 			limit = { has_country_flag = chaos_empire }
 		}
 	}
+
 	immediate = {
 		if = { # Only if not fire_only_once
-			limit = { NOT = { has_global_flag = small_tear_active } }
+			limit = {
+				NOT = { has_global_flag = small_tear_active }
+			}
 			if = {
 				limit = { years_passed > 64 }
-				random = { chance = 50	break = yes }
+				random = { chance = 50 break = yes }
 				if = {
 					limit = { years_passed > 96 }
-					random = { chance = 50	break = yes }
+					random = { chance = 50 break = yes }
 					if = {
 						limit = { years_passed > 132 }
-						random = { chance = 50	break = yes }
+						random = { chance = 50 break = yes }
 					}
 				}
 			}
 		}
-
 		# Find Chaos Undivided leader
 		random_playable_country = { # Black Legion
-			limit = { OR = { has_origin = origin_fallen_psionic has_country_flag = chaos_undivided_worship has_country_flag = the_black_legion } }
+			limit = {
+				OR = {
+					has_origin = origin_fallen_psionic
+					has_country_flag = chaos_undivided_worship
+					has_country_flag = the_black_legion
+				}
+			}
 			save_event_target_as = chaos_undivided
 		}
 		if = { # Khârn the Betrayer (World Eaters - Khorne)
-			limit = { NOT = { exists = event_target:chaos_undivided } }
+			limit = {
+				NOT = { exists = event_target:chaos_undivided }
+			}
 			random_playable_country = {
 				limit = { has_country_flag = the_world_eater }
 				save_event_target_as = chaos_undivided
 			}
 			if = { # Magnus the Red (Thousand Sons - Tzeentch)
-				limit = { NOT = { exists = event_target:chaos_undivided } }
+				limit = {
+					NOT = { exists = event_target:chaos_undivided }
+				}
 				random_playable_country = {
 					limit = { has_country_flag = the_thousand_sons }
 					save_event_target_as = chaos_undivided
 				}
 				if = { # Fulgrim (Emperor's Children - Slaanesh)
-					limit = { NOT = { exists = event_target:chaos_undivided } }
+					limit = {
+						NOT = { exists = event_target:chaos_undivided }
+					}
 					random_playable_country = {
 						limit = { has_country_flag = the_emperor_children }
 						save_event_target_as = chaos_undivided
 					}
 					if = { # Mortarion (Death Guard - Nurgle)
-						limit = { NOT = { exists = event_target:chaos_undivided } }
+						limit = {
+							NOT = { exists = event_target:chaos_undivided }
+						}
 						random_playable_country = {
 							limit = { has_country_flag = the_death_guard }
 							save_event_target_as = chaos_undivided
 						}
 						if = { # Lorgar (Word Bearers - Chaos Pantheon)
-							limit = { NOT = { exists = event_target:chaos_undivided } }
+							limit = {
+								NOT = { exists = event_target:chaos_undivided }
+							}
 							random_playable_country = {
-								limit = { has_country_flag = chaos_empire has_country_flag = the_word_bearer }
+								limit = {
+									has_country_flag = chaos_empire
+									has_country_flag = the_word_bearer
+								}
 								save_event_target_as = chaos_undivided
 							}
 							if = { # Sevatar (Night Lords - Undivided Renegades)
-								limit = { NOT = { exists = event_target:chaos_undivided } }
+								limit = {
+									NOT = { exists = event_target:chaos_undivided }
+								}
 								random_playable_country = {
-									limit = { has_country_flag = chaos_empire has_country_flag = the_night_lords }
+									limit = {
+										has_country_flag = chaos_empire
+										has_country_flag = the_night_lords
+									}
 									save_event_target_as = chaos_undivided
 								}
 							}
@@ -293,22 +369,28 @@ event = {
 			}
 		}
 		if = {
-			limit = { NOT = { exists = event_target:chaos_undivided } }
+			limit = {
+				NOT = { exists = event_target:chaos_undivided }
+			}
 			random_playable_country = {
 				limit = { has_country_flag = chaos_empire }
 				save_event_target_as = chaos_undivided
 			}
 		}
-
 		every_playable_country = {
 			limit = {
 				NOT = { is_same_empire = event_target:chaos_undivided }
 				has_country_flag = chaos_empire
-				NAND = { is_at_war = yes is_at_war_with = event_target:chaos_undivided }
-				NAND = {
-					has_federation = yes
-					event_target:chaos_undivided = { has_federation = yes }
-					any_federation_ally = { is_same_empire = event_target:chaos_undivided }
+				NOR = {
+					AND = {
+						is_at_war = yes
+						is_at_war_with = event_target:chaos_undivided
+					}
+					AND = {
+						has_federation = yes
+						event_target:chaos_undivided = { has_federation = yes }
+						any_federation_ally = { is_same_empire = event_target:chaos_undivided }
+					}
 				}
 			}
 			if = {
@@ -346,23 +428,32 @@ event = {
 }
 
 ## Ork war - on_decade_pulse
+
 event = {
 	id = lessgalcom.7
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		years_passed > 42
 		any_playable_country = {
 			is_ai = yes
-			OR = { has_origin = origin_barbarichorde has_country_flag = ork_empire }
+			OR = {
+				has_origin = origin_barbarichorde
+				has_country_flag = ork_empire
+			}
 			is_at_war = no
 		}
 	}
+
 	immediate = {
 		random_playable_country = {
 			limit = {
 				is_ai = yes
-				OR = { has_origin = origin_barbarichorde has_country_flag = ork_empire }
+				OR = {
+					has_origin = origin_barbarichorde
+					has_country_flag = ork_empire
+				}
 				is_at_war = no
 			}
 			if = {
@@ -386,17 +477,22 @@ event = {
 			create_fleet = {
 				effect = {
 					set_owner = prev
-					while = { count = 10
+					while = {
+						count = 10
 						create_army_transport = { army_type = "assault_army" species = prev.owner_species }
 					}
-					while = { count = 3
-						create_army_transport = { army_type = "mecha_army" army_name = "NAME_mechawarrior_contractors" species = prev.owner_species }
+					while = {
+						count = 3
+						create_army_transport = {
+							army_type = "mecha_army"
+							army_name = "NAME_mechawarrior_contractors"
+							species = prev.owner_species
+						}
 					}
 					create_army_transport = { army_type = "titanic_assault_army" species = prev.owner_species }
 					set_location = { target = prev.capital_scope }
 				}
 			}
-
 			# Attack
 			random_neighbor_country = {
 				limit = {
@@ -406,13 +502,30 @@ event = {
 						opinion_level = { who = prev level <= neutral }
 					}
 				}
-				weights = { base = 1
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= inferior } }
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= equivalent } }
+				weights = {
+					base = 1
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= inferior
+						}
+					}
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= equivalent
+						}
+					}
 					modifier = { add = 40 is_ai = yes }
 				}
 				if = {
-					limit = { NOT = {  has_communications = prev } }
+					limit = {
+						NOT = { has_communications = prev }
+					}
 					establish_communications_no_message = prev
 					establish_contact = { who = prev location = prev.capital_scope }
 				}
@@ -429,7 +542,10 @@ event = {
 					add_opinion_modifier = { modifier = opinion_first_contact_war who = prev }
 				}
 				if = { # Need an ally?
-					limit = { is_ai = yes has_federation = yes }
+					limit = {
+						is_ai = yes
+						has_federation = yes
+					}
 					random_playable_country = {
 						limit = {
 							is_ai = yes
@@ -446,22 +562,35 @@ event = {
 								is_hostile_to = prev
 								opinion_level = { who = prev level <= neutral }
 							}
-							OR = { is_neighbor_of = prev is_neighbor_of = prevprev is_in_sensor_range = prevprev.capital_scope }
-							relative_power = { who = prev category = fleet value <= equivalent }
+							OR = {
+								is_neighbor_of = prev
+								is_neighbor_of = prevprev
+								is_in_sensor_range = prevprev.capital_scope
+							}
+							relative_power = {
+								who = prev
+								category = fleet
+								value <= equivalent
+							}
 						}
 						if = {
 							limit = { is_subject = yes }
 							set_subject_of = { who = none }
 						}
 						if = {
-							limit = { has_federation = yes any_federation_ally = { is_same_empire = prevprev } }
+							limit = {
+								has_federation = yes
+								any_federation_ally = { is_same_empire = prevprev }
+							}
 							leave_alliance = { override_requirements = yes }
 						}
 						establish_communications_no_message = prevprev
 						establish_contact = { who = prevprev location = prevprev.capital_scope }
 						prev = {
 							random_war = {
-								limit = { is_war_participant = { who = prev side = defenders } }
+								limit = {
+									is_war_participant = { who = prev side = defenders }
+								}
 								prevprev = {
 									join_war_on_side = { war = prev side = attackers }
 								}
@@ -475,23 +604,32 @@ event = {
 }
 
 ## Tyranid war - on_decade_pulse
+
 event = {
 	id = lessgalcom.8
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		years_passed > 31
 		any_playable_country = {
 			is_ai = yes
-			OR = { has_origin = origin_bioreformers has_country_flag = tyranid_empire }
+			OR = {
+				has_origin = origin_bioreformers
+				has_country_flag = tyranid_empire
+			}
 			is_at_war = no
 		}
 	}
+
 	immediate = {
 		random_playable_country = {
 			limit = {
 				is_ai = yes
-				OR = { has_origin = origin_bioreformers has_country_flag = tyranid_empire }
+				OR = {
+					has_origin = origin_bioreformers
+					has_country_flag = tyranid_empire
+				}
 				is_at_war = no
 			}
 			if = {
@@ -518,13 +656,13 @@ event = {
 			create_fleet = {
 				effect = {
 					set_owner = prev
-					while = { count = 3
+					while = {
+						count = 3
 						create_army_transport = { army_type = "mutant_army" species = prev.owner_species }
 					}
 					set_location = { target = prev.capital_scope }
 				}
 			}
-
 			# Attack
 			random_neighbor_country = {
 				limit = {
@@ -534,48 +672,88 @@ event = {
 						opinion_level = { who = prev level <= neutral }
 					}
 				}
-				weights = { base = 1
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= inferior } }
-					modifier = { add = 10 relative_power = { who = prev category = fleet value <= equivalent } }
+				weights = {
+					base = 1
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= inferior
+						}
+					}
+					modifier = {
+						add = 10
+						relative_power = {
+							who = prev
+							category = fleet
+							value <= equivalent
+						}
+					}
 					modifier = { add = 40 is_ai = yes }
 				}
 				if = {
-					limit = { NOT = {  has_communications = prev } }
+					limit = {
+						NOT = { has_communications = prev }
+					}
 					establish_communications_no_message = prev
 					establish_contact = { who = prev location = prev.capital_scope }
 				}
 				prev = {
-					declare_war = { target = prev attacker_war_goal = wg_absorption name = "situation.2048.name" }
+					declare_war = {
+						target = prev
+						attacker_war_goal = wg_absorption
+						name = "situation.2048.name"
+					}
 					add_opinion_modifier = { modifier = opinion_first_contact_war who = prev }
 				}
 				if = { # Need an ally?
-					limit = { is_ai = yes has_federation = yes }
+					limit = {
+						is_ai = yes
+						has_federation = yes
+					}
 					random_playable_country = {
 						limit = {
 							is_ai = yes
-							OR = { has_origin = origin_bioreformers has_country_flag = tyranid_empire }
+							OR = {
+								has_origin = origin_bioreformers
+								has_country_flag = tyranid_empire
+							}
 							NOT = { is_at_war_with = prev }
 							# has_communications = prev
 							# OR = {
 							# 	is_hostile_to = prev
 							# 	opinion_level = { who = prev level <= neutral }
 							# }
-							OR = { is_neighbor_of = prev is_neighbor_of = prevprev is_in_sensor_range = prevprev.capital_scope }
-							relative_power = { who = prev category = fleet value <= equivalent }
+							OR = {
+								is_neighbor_of = prev
+								is_neighbor_of = prevprev
+								is_in_sensor_range = prevprev.capital_scope
+							}
+							relative_power = {
+								who = prev
+								category = fleet
+								value <= equivalent
+							}
 						}
 						if = {
 							limit = { is_subject = yes }
 							set_subject_of = { who = none }
 						}
 						if = {
-							limit = { has_federation = yes any_federation_ally = { is_same_empire = prevprev } }
+							limit = {
+								has_federation = yes
+								any_federation_ally = { is_same_empire = prevprev }
+							}
 							leave_alliance = { override_requirements = yes }
 						}
 						establish_communications_no_message = prevprev
 						establish_contact = { who = prevprev location = prevprev.capital_scope }
 						prev = {
 							random_war = {
-								limit = { is_war_participant = { who = prev side = defenders } }
+								limit = {
+									is_war_participant = { who = prev side = defenders }
+								}
 								prevprev = {
 									join_war_on_side = { war = prev side = attackers }
 								}

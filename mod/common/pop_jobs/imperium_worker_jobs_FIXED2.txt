@@ -13,11 +13,11 @@ imperium_militarum = {
 		potential = {
 			exists = planet
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = { country_naval_cap_add = 2 }
+		country_naval_cap_add = 2
 	}
 
 	resources = {
@@ -33,8 +33,8 @@ imperium_militarum = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -81,9 +81,8 @@ imperium_militarum = {
 		modifier = { factor = 0.9 has_trait = trait_quarrelsome }
 		modifier = { factor = 0 can_be_soldier = no }
 		modifier = { factor = 2 has_trait = trait_lithoid }
-	    }
-    }
-
+	}
+}
 
 imperium_farmer = {
 	category = worker
@@ -96,8 +95,8 @@ imperium_farmer = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -203,8 +202,8 @@ imperium_servitor = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -260,8 +259,8 @@ imperium_labourer = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {
@@ -297,16 +296,16 @@ imperium_acolyte = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
-	
+
 	possible = {
 		owner = { is_gestalt = no }
 	}
 
 	resources = {
-		category = planet_priests
+		category = planet_bureaucrats
 		produces = { unity = 2 }
 	}
 
@@ -331,8 +330,8 @@ imperium_scribe = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
 		is_being_assimilated = no
+		is_being_purged = no
 	}
 
 	possible = {

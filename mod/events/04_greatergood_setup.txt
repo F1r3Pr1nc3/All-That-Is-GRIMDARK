@@ -1,10 +1,15 @@
+
 namespace = grimstart
 
 country_event = {
 	id = grimstart.5
 	is_triggered_only = yes
 	hide_window = yes
-	trigger = { has_origin = origin_greatergood }
+
+	trigger = {
+		has_origin = origin_greatergood
+	}
+
 	immediate = {
 		set_country_flag = laser_tech
 		if = {
@@ -14,45 +19,62 @@ country_event = {
 			shift_ethic = ethic_fanatic_xenophile
 		}
 		else_if = {
-			limit = { NOT = { has_ethic = ethic_fanatic_xenophile } }
+			limit = {
+				NOT = { has_ethic = ethic_fanatic_xenophile }
+			}
 			shift_ethic = ethic_fanatic_xenophile
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_aristocratic_elite } }
+			limit = {
+				NOT = { has_civic = civic_aristocratic_elite }
+			}
 			force_add_civic = civic_aristocratic_elite
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_inwards_perfection } }
+			limit = {
+				NOT = { has_civic = civic_inwards_perfection }
+			}
 			force_add_civic = civic_inwards_perfection
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_efficient_bureaucracy } }
+			limit = {
+				NOT = { has_civic = civic_efficient_bureaucracy }
+			}
 			force_add_civic = civic_efficient_bureaucracy # Reflecting their organized society
 		}
 		if = {
-			limit = { NOT = { has_civic = civic_meritocracy } }
+			limit = {
+				NOT = { has_civic = civic_meritocracy }
+			}
 			force_add_civic = civic_meritocracy # Reflecting their organized society
 		}
 		give_technology = { message = no tech = tech_robotic_workers }
 		give_technology = { message = no tech = tech_droid_workers }
 		give_technology = { message = no tech = tech_space_trading }
-
 		owner_main_species = {
 			if = {
 				limit = { NOT = { has_trait = trait_tau } }
-				change_species_characteristics = { add_trait = trait_tau add_traits_at_start_of_list = yes can_change_leader = yes }
+				change_species_characteristics = {
+					add_trait = trait_tau
+					add_traits_at_start_of_list = yes
+					can_change_leader = yes
+				}
 			}
 			if = {
 				limit = { is_species_class = HUM }
 				mirror_species = { CLASS = MAM }
 				change_species_portrait = rep2
-				root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
+				root = {
+					change_dominant_species = { species = event_target:mirror_species change_all = yes }
+				}
 			}
 			else_if = {
 				limit = { is_species_class = REP }
 				mirror_species = { CLASS = MAM }
 				change_species_portrait = rep2
-				root = { change_dominant_species = { species = event_target:mirror_species change_all = yes } }
+				root = {
+					change_dominant_species = { species = event_target:mirror_species change_all = yes }
+				}
 			}
 			else_if = {
 				limit = { is_species_class = MAM }
@@ -67,7 +89,6 @@ country_event = {
 			save_event_target_as = servile_species
 			set_species_flag = syncretic_species@root
 		}
-
 		if = {
 			limit = { exists = event_target:servile_species }
 			modify_species = {
@@ -89,19 +110,17 @@ country_event = {
 			}
 			event_target:servile_species = {
 				set_citizenship_type = { country = root type = citizenship_full }
-
 			}
 			every_owned_species = {
 				limit = {
 					is_same_species = event_target:servile_species
 					NOT = { is_exact_same_species = event_target:servile_species }
 				}
-				every_species_pop = { change_species = event_target:servile_species }
+				every_species_pop_group = { change_species = event_target:servile_species }
 				set_species_identity = event_target:servile_species
 			}
 			country_event = { id = aagrimstarts.2001 days = 10 scopes = { from = event_target:servile_species } } # Try merge
 		}
-
 		get_capital_planet = yes
 		event_target:capital_planet = {
 			add_deposit = d_ore_rich_caverns
@@ -119,7 +138,11 @@ country_event = {
 					limit = { has_star_flag = neighbor_t1_first_colony }
 					max_steps = 3
 					random_system_planet = {
-						limit = { is_colonizable = yes is_colony = no has_planet_flag = prescripted_ideal }
+						limit = {
+							is_colonizable = yes
+							is_colony = no
+							has_planet_flag = prescripted_ideal
+						}
 						set_name = "Pech"
 						# generate_late_pre_ftls_on_planet = yes
 						change_pc = "pc_tropical"
@@ -179,8 +202,13 @@ country_event = {
 						setup_pre_ftl_planet = yes
 						pre_ftl_clean_up_effect = yes
 						change_colony_foundation_date = -461
-						while = { count = 4
-							create_army = { owner = last_created_country type = primitive_additional_army species = event_target:servile_species }
+						while = {
+							count = 4
+							create_army = {
+								owner = last_created_country
+								type = primitive_additional_army
+								species = event_target:servile_species
+							}
 						}
 						# Somehow vanilla bug
 						last_created_country = {
@@ -200,7 +228,11 @@ country_event = {
 					limit = { has_star_flag = neighbor_t2_second_colony }
 					max_steps = 6
 					random_system_planet = {
-						limit = { is_colonizable = yes is_colony = no has_planet_flag = prescripted_ideal }
+						limit = {
+							is_colonizable = yes
+							is_colony = no
+							has_planet_flag = prescripted_ideal
+						}
 						# generate_late_pre_ftls_on_planet = yes
 						set_name = "Vespid Prime"
 						change_pc = "pc_desert"
@@ -253,8 +285,13 @@ country_event = {
 						setup_pre_ftl_planet = yes
 						pre_ftl_clean_up_effect = yes
 						change_colony_foundation_date = -1275
-						while = { count = 4
-							create_army = { owner = last_created_country type = primitive_additional_army species = event_target:servile_species }
+						while = {
+							count = 4
+							create_army = {
+								owner = last_created_country
+								type = primitive_additional_army
+								species = event_target:servile_species
+							}
 						}
 					}
 					# Somehow vanilla bug

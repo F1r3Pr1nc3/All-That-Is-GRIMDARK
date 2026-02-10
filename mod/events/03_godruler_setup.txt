@@ -1,11 +1,16 @@
+
 namespace = grimstart
 
 ## Setup godruler (on_game_start)
+
 country_event = {
 	id = grimstart.1
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { has_origin = origin_godruler }
+
+	trigger = {
+		has_origin = origin_godruler
+	}
 
 	immediate = {
 		ruler = { save_event_target_as = godruler }
@@ -19,21 +24,25 @@ country_event = {
 			can_assign_to_council = yes
 			hide_leader = yes
 			randomize_traits = no
-			effect = { save_event_target_as = godruler }
+			effect = {
+				save_event_target_as = godruler
+			}
 		}
 		event_target:godruler = {
 			add_skill_without_trait_selection = 4
-			add_trait = leader_trait_chosen
-			add_trait = leader_trait_psionic
+			add_trait = { trait = leader_trait_chosen }
+			add_trait = { trait = leader_trait_psionic }
 			set_leader_flag = leader_death_events_blocked
 			set_immortal = yes
 			shift_ethic = ethic_materialist
 			freeze_leader_age = yes
 			if = {
-				limit = { root = { is_ai = yes has_paragon_dlc = yes } }
-				add_trait = leader_trait_legendary_leader
-				add_trait = leader_trait_governor_psionic_communion
-				add_trait = leader_trait_the_genetic_luminary # 100 food
+				limit = {
+					root = { is_ai = yes has_paragon_dlc = yes }
+				}
+				add_trait = { trait = leader_trait_legendary_leader }
+				add_trait = { trait = leader_trait_governor_psionic_communion }
+				add_trait = { trait = leader_trait_the_genetic_luminary } # 100 food
 				set_leader_flag = paragon_origin_legendary_leader
 				paragon_origin_legendary_leader_trait_giver = yes
 			}
@@ -92,7 +101,6 @@ country_event = {
 			remove_building = building_research_lab_1
 			remove_building = building_bureaucratic_1
 			remove_building = building_capital
-
 			add_building = building_system_capital_gr
 			add_district = district_arcology_housing
 			add_district = district_arcology_manufactorum
@@ -113,10 +121,11 @@ country_event = {
 			add_deposit = d_holyterra_defences
 			add_deposit = d_holyterra_defences
 			validate_planet_buildings_and_districts = yes
-
 			owner_main_species = { save_event_target_as = secondary_species }
 			if = {
-				limit = { NOT = { exists = event_target:sol_system_earth } }
+				limit = {
+					NOT = { exists = event_target:sol_system_earth }
+				}
 				save_global_event_target_as = sol_system_earth
 			}
 			if = {
@@ -124,7 +133,11 @@ country_event = {
 					any_galaxy_species = {
 						is_sapient = yes
 						is_species_class = HUM
-						NOR = { is_exact_same_species = root.owner_main_species has_trait = trait_daemons has_trait = trait_heretic_astartes }
+						NOR = {
+							is_exact_same_species = root.owner_main_species
+							has_trait = trait_daemons
+							has_trait = trait_heretic_astartes
+						}
 						is_human_species = yes
 					}
 				}
@@ -132,7 +145,11 @@ country_event = {
 					limit = {
 						is_sapient = yes
 						is_species_class = HUM
-						NOR = { is_exact_same_species = root.owner_main_species has_trait = trait_daemons has_trait = trait_heretic_astartes }
+						NOR = {
+							is_exact_same_species = root.owner_main_species
+							has_trait = trait_daemons
+							has_trait = trait_heretic_astartes
+						}
 						is_human_species = yes
 					}
 					save_event_target_as = secondary_species
@@ -147,15 +164,18 @@ country_event = {
 					portrait = "human_legacy"
 					traits = random
 					homeworld = event_target:sol_system_earth
-					effect = { save_event_target_as = secondary_species }
+					effect = {
+						save_event_target_as = secondary_species
+					}
 				}
 			}
-
 			# "Legio Custodes"
 			if = {
 				limit = {
 					has_global_flag = WHspecies_installed
-					owner_main_species = { NOT = { has_trait = trait_adeptus_custodes } }
+					owner_main_species = {
+						NOT = { has_trait = trait_adeptus_custodes }
+					}
 				}
 				create_species = {
 					name = "SPEC_Adeptus_Custodes"
@@ -165,11 +185,11 @@ country_event = {
 					portrait = "Adeptus_Custodes"
 					homeworld = event_target:sol_system_earth
 					traits = {
-						trait="trait_adeptus_custodes"
-						trait="trait_perfected_genes"
-						trait="trait_humanoid_existential_iteroparity"
-						trait="trait_wasteful"
-						trait="trait_solitary"
+						trait = "trait_adeptus_custodes"
+						trait = "trait_perfected_genes"
+						trait = "trait_humanoid_existential_iteroparity"
+						trait = "trait_wasteful"
+						trait = "trait_solitary"
 						# trait="trait_latent_psionic"
 					}
 					immortal = yes
@@ -181,86 +201,69 @@ country_event = {
 				}
 			}
 		}
-    if = {
-        limit = { is_authoritarian = no }
-        shift_ethic = ethic_authoritarian
-    }
+		if = {
+			limit = { is_authoritarian = no }
+			shift_ethic = ethic_authoritarian
+		}
+		if = {
+			limit = { is_spiritualist = no } # Needed for setting policy
+			shift_ethic = ethic_spiritualist
+		}
+		if = {
+			limit = {
+				is_spiritualist = yes
+				is_authoritarian = yes
+				NOR = {
+					is_gestalt = yes
+					has_civic = civic_imperial_cult
+				}
+			}
+			force_add_civic = civic_imperial_cult
+		}
+		if = {
+			limit = {
+				NOT = { has_policy_flag = robots_outlawed }
+				can_set_policy = { policy = robot_pop_policy option = robot_pops_outlawed }
+			}
+			set_policy = {
+				policy = robot_pop_policy
+				option = robot_pops_outlawed
+				cooldown = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_policy_flag = ai_outlawed }
+				can_set_ai_policy = yes
+				can_set_policy = { policy = artificial_intelligence_policy option = ai_outlawed }
+			}
+			set_policy = {
+				policy = artificial_intelligence_policy
+				option = ai_outlawed
+				cooldown = yes
+			}
+		}
+		else = {
+			set_country_flag = synthetic_empire
+			if = {
+				limit = {
+					NOT = { has_policy_flag = ai_servitude }
+					can_set_ai_policy = yes
+					can_set_policy = { policy = artificial_intelligence_policy option = ai_servitude }
+				}
+				set_policy = {
+					policy = artificial_intelligence_policy
+					option = ai_servitude
+					cooldown = yes
+				}
+			}
+			remove_country_flag = synthetic_empire
+		}
+		set_country_flag = human_empire
+		country_event = { id = aagrimstarts.2001 days = 10 } # Updated Relations event
+	}
 
-    if = {
-        limit = { is_spiritualist = no } # Needed for setting policy
-        shift_ethic = ethic_spiritualist
-    }
-
-    if = {
-        limit = {
-            is_spiritualist = yes
-            is_authoritarian = yes
-            NOR = {
-                is_gestalt = yes
-                has_civic = civic_imperial_cult
-            }
-        }
-        force_add_civic = civic_imperial_cult
-    }
-
-    if = {
-        limit = {
-            NOT = { has_policy_flag = robots_outlawed }
-            can_set_policy = {
-                policy = robot_pop_policy
-                option = robot_pops_outlawed
-            }
-        }
-        set_policy = {
-            policy = robot_pop_policy
-            option = robot_pops_outlawed
-            cooldown = yes
-        }
-    }
-
-    if = {
-        limit = {
-            NOT = { has_policy_flag = ai_outlawed }
-            can_set_ai_policy = yes
-            can_set_policy = {
-                policy = artificial_intelligence_policy
-                option = ai_outlawed
-            }
-        }
-        set_policy = {
-            policy = artificial_intelligence_policy
-            option = ai_outlawed
-            cooldown = yes
-        }
-    }
-    else = {
-        set_country_flag = synthetic_empire
-
-        if = {
-            limit = {
-                NOT = { has_policy_flag = ai_servitude }
-                can_set_ai_policy = yes
-                can_set_policy = {
-                    policy = artificial_intelligence_policy
-                    option = ai_servitude
-                }
-            }
-            set_policy = {
-                policy = artificial_intelligence_policy
-                option = ai_servitude
-                cooldown = yes
-            }
-        }
-
-        remove_country_flag = synthetic_empire
-    }
-
-    set_country_flag = human_empire
-	country_event = { id = aagrimstarts.2001 days = 10 } # Updated Relations event
-}
-
-after = {
-    event_target:capital_planet = {
-        disable_building = building_fortress_gr
-    }
+	after = {
+		event_target:capital_planet = { disable_building = building_fortress_gr }
+	}
 }

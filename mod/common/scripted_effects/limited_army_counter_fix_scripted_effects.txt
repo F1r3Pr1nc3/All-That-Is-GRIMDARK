@@ -1,5 +1,4 @@
 @titanic_life_soldier_per_planet_maximum = 3
-
 # Root = prev = country
 # This = removed_army
 decrement_army_count = {
@@ -66,12 +65,18 @@ decrement_army_count = {
 # this = country
 increment_titanic_life_soldier_maximum = {
 	optimize_memory
-	change_variable = { which = titanic_life_soldier_maximum value = @titanic_life_soldier_per_planet_maximum }
+	change_variable = {
+		which = titanic_life_soldier_maximum
+		value = @titanic_life_soldier_per_planet_maximum
+	}
 }
 
 # Invoke this effect when a country loses a planet with Titanic Life
 # this = country
 decrement_titanic_life_soldier_maximum = {
 	optimize_memory
-	subtract_variable = { which = titanic_life_soldier_maximum value = @titanic_life_soldier_per_planet_maximum }
+	subtract_variable = {
+		which = titanic_life_soldier_maximum
+		value = @titanic_life_soldier_per_planet_maximum
+	}
 }

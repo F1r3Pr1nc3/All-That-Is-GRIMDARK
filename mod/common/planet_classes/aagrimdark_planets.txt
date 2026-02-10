@@ -49,7 +49,7 @@ pc_infested = {
 	modifier = {
 		planet_jobs_produces_mult = 0.1
 		planet_max_buildings_add = 8
-		job_spawning_drone_add = 1
+		job_spawning_drone_add = 100
 		planet_resettlement_unemployed_destination_mult = 0.5
 		planet_orbital_bombardment_damage = -0.2
 		planet_crime_add = -25
@@ -75,7 +75,6 @@ pc_infested = {
 	starting_planet = no
 	show_city = no
 	carry_cap_per_free_district = @carry_cap_high
-
 }
 # DEPRECATED TODO REPLACE  with pc_infested
 pc_infected = {
@@ -96,7 +95,7 @@ pc_infected = {
 	modifier = {
 		planet_jobs_produces_mult = 0.1
 		planet_max_buildings_add = 8
-		job_spawning_drone_add = 1
+		job_spawning_drone_add = 100
 		planet_resettlement_unemployed_destination_mult = 0.5
 		planet_orbital_bombardment_damage = -0.2
 	}

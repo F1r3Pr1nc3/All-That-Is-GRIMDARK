@@ -5,14 +5,14 @@ hive_necromancer = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_dread_encampment
 		}
-    }
+	}
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
 		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
 	}
 
 	possible_precalc = can_fill_drone_job
@@ -21,13 +21,11 @@ hive_necromancer = {
 		potential = {
 			exists = planet
 			planet = {
-				exists = owner
+				has_owner = yes
 				owner = { has_technology = "tech_ground_defense_planning" }
 			}
 		}
-		modifier = {
-			country_naval_cap_add = 2
-		}
+		country_naval_cap_add = 2
 	}
 
 	planet_modifier = {
@@ -35,28 +33,22 @@ hive_necromancer = {
 	}
 
 	triggered_planet_modifier = {
-        potential = {
-          any_owned_species = {
-			  has_trait = trait_charismatic
-		    }
-		}
-		modifier = {
-			planet_amenities_no_happiness_add = 0.5
-		}
-	}
-	
-	triggered_planet_modifier = {
 		potential = {
-			planet = {
-				OR = {
-					has_modifier = compliance_protocols
-					has_modifier = hunter_killer_drones
-				}
+			any_owned_species = {
+				has_trait = trait_charismatic
 			}
 		}
-		modifier = {
-			planet_stability_add = 5
+		planet_amenities_no_happiness_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_modifier = compliance_protocols
+				has_modifier = hunter_killer_drones
+			}
 		}
+		planet_stability_add = 5
 	}
 
 	resources = {
@@ -84,10 +76,10 @@ hive_necromancer = {
 			factor = 10
 			exists = planet
 			planet = {
-					OR = {
-						has_modifier = compliance_protocols
-						has_modifier = hunter_killer_drones
-					}
+				OR = {
+					has_modifier = compliance_protocols
+					has_modifier = hunter_killer_drones
+				}
 			}
 		}
 		modifier = {

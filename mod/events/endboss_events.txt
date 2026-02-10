@@ -1,11 +1,17 @@
+
 namespace = endboss
 # https://steamcommunity.com/sharedfiles/filedetails/?id=1771007724 by Persepheus
 event = {
 	id = endboss.0
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { is_multiplayer = no }
+
+	trigger = {
+		is_multiplayer = no
+	}
+
 	fire_only_once = yes
+
 	immediate = {
 		random_playable_country = {
 			limit = { is_ai = no }
@@ -50,7 +56,9 @@ event = {
 				}
 			}
 			if = {
-				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				limit = {
+					NOT = { has_global_flag = endboss_one_country_eligible }
+				}
 				every_playable_country = {
 					limit = {
 						is_ai = yes
@@ -80,7 +88,9 @@ event = {
 				}
 			}
 			if = {
-				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				limit = {
+					NOT = { has_global_flag = endboss_one_country_eligible }
+				}
 				every_playable_country = {
 					limit = {
 						is_ai = yes
@@ -109,9 +119,14 @@ event = {
 				}
 			}
 			if = {
-				limit = { NOT = { has_global_flag = endboss_one_country_eligible } }
+				limit = {
+					NOT = { has_global_flag = endboss_one_country_eligible }
+				}
 				every_playable_country = {
-					limit = { is_ai = yes exists = capital_star }
+					limit = {
+						is_ai = yes
+						exists = capital_star
+					}
 					# endboss_handle_eligible_country
 					set_global_flag = endboss_one_country_eligible
 					capital_star.solar_system = {
@@ -150,20 +165,31 @@ event = {
 					give_technology = { tech = tech_fusion_power }
 					give_technology = { tech = tech_shields_2 }
 					give_technology = { tech = tech_ship_armor_2 }
-					add_basic_resources_effect = { VALUE = 1000 }
-					add_manufactured_resources_effect = { VALUE = 1000 }
-					add_resource = { unity = 1000 influence = 1000 }
+					add_basic_resources_effect = {
+						VALUE = 1000
+					}
+					add_manufactured_resources_effect = {
+						VALUE = 1000
+					}
+					add_resource = {
+						unity = 1000
+						influence = 1000
+					}
 					capital_scope = {
 						fire_on_action = { on_action = on_initialize_advanced_colony }
 					}
 					fire_on_action = { on_action = empire_init_create_ships }	# Create starter set of ships
 					country_event = { id = game_start.33 days = 2 }				# Needs delay for system ownership to settle
-					set_variable = { which = eb_distance_to_player value = capital_star.solar_system.eb_distance_to_player }
+					set_variable = {
+						which = eb_distance_to_player
+						value = capital_star.solar_system.eb_distance_to_player
+					}
 					# log = "Empire \\[This.GetName] is Final Opponent."
 				}
 			}
 		}
 	}
+
 	after = {
 		# Remove variables endboss_cleanup_eligible_country
 		every_playable_country = {
@@ -182,9 +208,13 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	immediate = {
 		random_playable_country = {
-			limit = { is_ai = yes is_variable_set = eb_distance_to_player }
+			limit = {
+				is_ai = yes
+				is_variable_set = eb_distance_to_player
+			}
 			add_modifier = { modifier = endboss }
 			clear_variable = eb_distance_to_player
 		}
@@ -222,12 +252,22 @@ event = {
 				add_modifier = { modifier = endboss }
 				ordered_playable_country = {
 					limit = {
-						relative_power = { who = prev category = technology value > equivalent }
-						relative_power = { who = prev category = technology value < overwhelming }
+						relative_power = {
+							who = prev
+							category = technology
+							value > equivalent
+						}
+						relative_power = {
+							who = prev
+							category = technology
+							value < overwhelming
+						}
 					}
 					position = 0
 					order_by = trigger:num_researched_techs
-					prev = { copy_techs_from = { target = prev } }
+					prev = {
+						copy_techs_from = { target = prev }
+					}
 				}
 				create_fleet_from_naval_cap = 0.35
 			}
